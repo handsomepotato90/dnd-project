@@ -1,0 +1,12 @@
+.calc_button__size {
+        /* text-align: center; */
+        /* padding: 2rem; */
+        height: 6rem;
+        width: 6rem;
+        background-color: white;
+        border-radius: 50%;
+        display: inline-block;
+}
+.calc_button__font_size{
+        font-size: 1.5rem;
+}

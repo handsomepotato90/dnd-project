@@ -1,0 +1,20 @@
+.text_area__size {
+  width: 100%;
+  height: 50%;
+  resize: none;
+  font-size: 20px;
+  
+}
+
+.die_sum__size {
+  height: 50%;
+  width: 100%;
+}
+.die_style__text {
+  text-align: center;
+  color: white;
+  font-size: 30px;
+}
+.calc_box__style_size{
+        height: 8rem;
+}

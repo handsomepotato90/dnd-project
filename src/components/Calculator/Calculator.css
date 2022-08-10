@@ -1,0 +1,9 @@
+.big_box__top_margin{
+        margin-top: 100px;
+        z-index: 99 !important;
+
+}
+.big_box__color_back {
+        background-color: #484848;
+        box-shadow: 5px 5px #888888;
+}

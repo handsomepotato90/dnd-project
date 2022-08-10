@@ -1,0 +1,16 @@
+.box_design{
+        margin: auto;
+        width: 95%;
+        height: 45rem;
+        border: 1px solid black;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: row;
+        background-color: rgb(238, 235, 231);
+}
+.first_half{
+        width: 100%;
+}
+.second_half{
+        width: 100%;
+}

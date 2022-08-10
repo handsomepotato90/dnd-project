@@ -1,0 +1,21 @@
+.arrow {
+  width: 3rem;
+  height: 3rem;
+}
+.right_arrow {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  z-index: 99 !important;
+}
+.left_arrow {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 22.5rem;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  z-index: 99 !important;
+}

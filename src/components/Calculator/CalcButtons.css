@@ -1,0 +1,10 @@
+.small_box__size{
+        width: 80%;
+        height: 65%;
+        margin: auto;
+
+}
+
+.small_box__color_back {
+        background-color: #202020;
+}

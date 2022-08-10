@@ -1,0 +1,18 @@
+.life_stiling{
+        display: flex;
+        flex-direction: column;
+        padding-left: 3rem;
+}
+.life_stiling>div{
+        display: flex;
+        flex-direction: row;
+}
+.leader{
+        padding: 0.5rem;
+        font-weight: bold;
+        font-size: 16px;
+        color: firebrick;
+}
+.numbers{
+        padding: 0.5rem;
+}

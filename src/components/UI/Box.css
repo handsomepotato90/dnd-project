@@ -1,0 +1,14 @@
+.box_bcc__color{
+        border: 1px solid black;
+        color: black;
+        
+}
+
+
+.box_size{
+        position: absolute;
+        width: 20rem;
+        height: 35rem;
+        padding:20px;
+        border-radius: 5px;
+}

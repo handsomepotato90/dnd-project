@@ -1,0 +1,14 @@
+.name_box{
+        display: flex;
+        flex-direction: column;
+}
+.name_box>div{
+        padding-top: 1rem;
+        padding-left: 3rem;
+        
+
+}
+.name_styling{
+        font-size: 28px;
+        font-weight: bold;
+}
