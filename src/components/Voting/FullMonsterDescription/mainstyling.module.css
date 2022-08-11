@@ -1,46 +1,87 @@
-.box_design{
-    margin: auto;
-    width: 70%;
-    height: 45rem;
-    border: 1px solid black;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: row;
-    background-color: rgb(238, 235, 231);
+.box_design {
+  margin: auto;
+  width: 85%;
+  height: auto;
+  border: 1px solid black;
+  border-radius: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  background-color: rgb(238, 235, 231);
 }
-.first_half{
-    width: 100%;
+.first_half {
+  width: 50%;
 }
-.second_half{
-    width: 100%;
+.second_half {
+  width: 50%;
 }
-.life_stiling{
-    display: flex;
-    flex-direction: column;
-    padding-left: 3rem;
+.second_half>img{
+height: 10rem;
+width: 5rem;
 }
-.life_stiling>div{
-    display: flex;
-    flex-direction: row;
+.picture_divide{
+  display: flex;
+  flex-direction: row;
 }
-.leader{
-    padding: 0.5rem;
-    font-weight: bold;
-    font-size: 16px;
+.life_stiling {
+  display: flex;
+  flex-direction: column;
+  padding-left: 3rem;
+}
+.life_stiling > div {
+  display: flex;
+  flex-direction: row;
+}
+.leader {
+  padding: 0.5rem;
+  font-weight: bold;
+  font-size: 16px;
+  color: firebrick;
+}
+.numbers {
+  padding: 0.5rem;
+}
+.name_box {
+  display: flex;
+  flex-direction: column;
+}
+.name_box > div {
+  padding-top: 1rem;
+  padding-left: 3rem;
+}
+.name_styling {
+  font-size: 28px;
+  font-weight: bold;
+}
+.table__styling {
+  display: flex;
+  flex-direction: row;
+  padding-left: 3rem;
+}
+
+.table__boxes {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  color: firebrick;
+  padding: 1rem;
+}
+.table__boxes > div:first-child {
+  font-weight: bold;
+}
+.skills_style{
     color: firebrick;
+    font-weight: bold;
+    padding-right: 1rem;
 }
-.numbers{
-    padding: 0.5rem;
-}
-.name_box{
+.tait_style{
     display: flex;
     flex-direction: column;
-}
-.name_box>div{
-    padding-top: 1rem;
     padding-left: 3rem;
+    padding-top: 0.5rem;;
 }
-.name_styling{
-    font-size: 28px;
+.tait_style>div:first-child{
+    
+    color: firebrick;
     font-weight: bold;
 }
