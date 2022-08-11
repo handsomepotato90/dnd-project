@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import FullMonsterDescription from "./FullMonsterDescription";
+import FullMonsterDescription from "./FullMonsterDescription/FullMonsterDescription";
 import "./MainMonsterBox.css";
 
 export default function MainMonsterBox(props) {
@@ -26,16 +26,22 @@ export default function MainMonsterBox(props) {
       statusChecker(false);
     }
   };
+  const clumpOfData = `${props.monsterStats.meta}`;
+  const splitStats = clumpOfData.split(", ");
 
+  const sizeType = splitStats[0].split(" ");
+  
+  console.log(props.monsterStats.meta)
+   
   return (
     <>
       <div className={cName}>
         <div className="main_monster__info">
           <div>{props.monsterStats.name}</div>
-          <div>{props.monsterStats.size}</div>
-          <div>{props.monsterStats.type}</div>
-          <div>{props.monsterStats.alignment}</div>
-          <div>{props.monsterStats.challenge_rating}</div>
+          <div>{sizeType[0]}</div>
+          <div>{sizeType[1]}</div>
+          <div>{splitStats[1]}</div>
+          <div>{props.monsterStats.Challenge}</div>
           {props.monsterStats.extraContent ? (
             <div>{props.monsterStats.extraContent.readMore}</div>
           ) : (

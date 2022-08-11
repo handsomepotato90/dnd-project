@@ -1,0 +1,46 @@
+.box_design{
+    margin: auto;
+    width: 70%;
+    height: 45rem;
+    border: 1px solid black;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(238, 235, 231);
+}
+.first_half{
+    width: 100%;
+}
+.second_half{
+    width: 100%;
+}
+.life_stiling{
+    display: flex;
+    flex-direction: column;
+    padding-left: 3rem;
+}
+.life_stiling>div{
+    display: flex;
+    flex-direction: row;
+}
+.leader{
+    padding: 0.5rem;
+    font-weight: bold;
+    font-size: 16px;
+    color: firebrick;
+}
+.numbers{
+    padding: 0.5rem;
+}
+.name_box{
+    display: flex;
+    flex-direction: column;
+}
+.name_box>div{
+    padding-top: 1rem;
+    padding-left: 3rem;
+}
+.name_styling{
+    font-size: 28px;
+    font-weight: bold;
+}
