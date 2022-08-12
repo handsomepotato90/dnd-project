@@ -110,8 +110,8 @@ export default function Voting() {
       readMore: "",
       positiveVotes: "",
       negativeVotes: "",
-      positive: "Voting",
-      negative: "Options",
+      text: "Vote",
+
     },
   };
   return (

@@ -1,28 +1,20 @@
 import React, { useState } from "react";
 import FullMonsterDescription from "./FullMonsterDescription/FullMonsterDescription";
 import "./MainMonsterBox.css";
+import Button from "./Button";
 
 export default function MainMonsterBox(props) {
-
   const [isClicked, statusChecker] = useState(false);
   const [clickebleText, textChanger] = useState("Read More");
 
-
   const cName = "monster_voter_style " + props.className;
-  const votingColection = {
-    positiveVotes: "0",
-    positive: "Yes",
-    negativeVotes: "0",
-    negative: "No",
-  };
-
 
   const ReadFullText = () => {
     if (clickebleText === "Read More") {
       statusChecker(true);
       textChanger("Close");
     } else {
-        textChanger("Read More");
+      textChanger("Read More");
       statusChecker(false);
     }
   };
@@ -30,9 +22,9 @@ export default function MainMonsterBox(props) {
   const splitStats = clumpOfData.split(", ");
 
   const sizeType = splitStats[0].split(" ");
-  
-  console.log(props.monsterStats.meta)
-   
+
+  console.log(props.monsterStats.meta);
+
   return (
     <>
       <div className={cName}>
@@ -50,30 +42,38 @@ export default function MainMonsterBox(props) {
             </div>
           )}
         </div>
+
         <div className="voting_booth">
           {props.monsterStats.extraContent ? (
-            <VotinBooth fillTheBoxes={props.monsterStats.extraContent} />
+            <div>{props.monsterStats.extraContent.text}</div>
           ) : (
-            <VotinBooth fillTheBoxes={votingColection} />
+            <VotinBooth name={props.monsterStats.name} />
           )}
         </div>
       </div>
-        {isClicked ? <FullMonsterDescription monsterStats={props.monsterStats} /> : null}
-      
+      {isClicked ? (
+        <FullMonsterDescription monsterStats={props.monsterStats} />
+      ) : null}
     </>
   );
 }
 const VotinBooth = (props) => {
   return (
     <>
-      {props.fillTheBoxes.positiveVotes ? (
-        <div>{props.fillTheBoxes.positiveVotes}</div>
-      ) : null}
-      <div>{props.fillTheBoxes.positive}</div>
-      {props.fillTheBoxes.positiveVotes ? (
-        <div>{props.fillTheBoxes.negativeVotes}</div>
-      ) : null}
-      <div>{props.fillTheBoxes.negative}</div>
+      <Button
+        // onClick={Voting}
+        name={props.name}
+        // voteCount={votesYes}
+        text="Yes"
+        className="green"
+      />
+      <Button
+        // onClick={Voting}
+        name={props.name}
+        // voteCount={votesNo}
+        text="No"
+        className="red"
+      />
     </>
   );
 };
