@@ -32,7 +32,7 @@ function App() {
           <Routes>
             <Route path="/" element = { <Home />}/>
             <Route path="/voting" element = { <Voting />}/>
-            {/* <Route path="/build_encounter" element = { <Build_encounter />}/> */}
+            <Route path="/build_encounter" element = { <Build_encounter />}/>
 
           </Routes>
        

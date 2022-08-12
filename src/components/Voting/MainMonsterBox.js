@@ -58,6 +58,7 @@ export default function MainMonsterBox(props) {
   );
 }
 const VotinBooth = (props) => {
+
   return (
     <>
       <Button
