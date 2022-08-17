@@ -6,6 +6,7 @@ import Voting from "./components/Voting/Voting";
 import Show from "./components/Calculator/Show";
 import Hide from "./components/Calculator/Hide";
 import Home from "./components/Home/Home";
+import BuildEncounter from "./components/BuildEncounter/BuildEncounter"
 import "./App.css"
 function App() {
   const [onscreen, statusCheck] = useState(false);
@@ -32,7 +33,7 @@ function App() {
           <Routes>
             <Route path="/" element = { <Home />}/>
             <Route path="/voting" element = { <Voting />}/>
-            <Route path="/build_encounter" element = { <Build_encounter />}/>
+            <Route path="/build_encounter" element = { <BuildEncounter />}/>
 
           </Routes>
        
