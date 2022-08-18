@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Select from "react-select";
+import styles from "./LevelOfPlayer.module.css"
 const options = [
   { value: 1, label: 1 },
   { value: 2, label: 2 },
@@ -53,7 +54,10 @@ export default function LevelOfPlayer(props) {
     changeValue(event.value);
   };
   const ThisPlayerToAdd = (event) => {
-    const    player = {currValue:{player:currValue,...encounterXpTable[currValue]}}
+    if(currValue === 0){
+      return
+    }
+    const    player = {player:currValue,...encounterXpTable[currValue]}
    props.onChange(player);
 
   };
@@ -62,7 +66,7 @@ export default function LevelOfPlayer(props) {
   return (
     <>
       <Select onChange={handleChange} isSearchable={false} options={options} />
-      <button onClick={ThisPlayerToAdd}>Add Player</button>
+      <button className={styles.add_player_btn__style} onClick={ThisPlayerToAdd}>Add Player</button>
     </>
   );
 }
