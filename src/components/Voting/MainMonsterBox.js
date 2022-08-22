@@ -42,14 +42,17 @@ export default function MainMonsterBox(props) {
             </div>
           )}
         </div>
-
-        <div className="voting_booth">
-          {props.monsterStats.extraContent ? (
-            <div>{props.monsterStats.extraContent.text}</div>
-          ) : (
-            <VotinBooth name={props.monsterStats.name} />
-          )}
-        </div>
+        {props.voting === "yes" ? (
+          <div className="voting_booth">
+            {props.monsterStats.extraContent ? (
+              <div>{props.monsterStats.extraContent.text}</div>
+            ) : (
+              <VotinBooth name={props.monsterStats.name} />
+            )}
+          </div>
+        ) : (
+          props.children
+        )}
       </div>
       {isClicked ? (
         <FullMonsterDescription monsterStats={props.monsterStats} />
@@ -58,7 +61,6 @@ export default function MainMonsterBox(props) {
   );
 }
 const VotinBooth = (props) => {
-
   return (
     <>
       <Button

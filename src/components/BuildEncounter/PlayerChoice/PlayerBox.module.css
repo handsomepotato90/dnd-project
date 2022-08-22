@@ -22,3 +22,11 @@
   display: inline-block;
   font-size: 18px;
 }
+.news_box__stayel{
+  height: 10rem;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  overflow: auto;
+
+}

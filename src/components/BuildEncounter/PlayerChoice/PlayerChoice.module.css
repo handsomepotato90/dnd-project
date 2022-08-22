@@ -1,4 +1,7 @@
 .party_setup__window{
-        width: auto;
+        width: 42rem;
         height: auto;
+        display: flex;
+        flex-direction: row;
+        margin: 0 auto;
 }

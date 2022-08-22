@@ -1,10 +1,12 @@
 import React from "react";
-import MainMonsterBox from "./MainMonsterBox";
+import MainMonsterBox from "../../Voting/MainMonsterBox";
 
-import styles from "./Voting.module.css";
+import styles from "./MonsterLibrary.module.css"
 
-export default function Voting() {
-  const monsters = [
+
+
+
+const monsters = [
     {
       name: "Aboleth",
       meta: "Large aberration, lawful evil",
@@ -102,28 +104,17 @@ export default function Voting() {
         "https://media-waterdeep.cursecdn.com/avatars/thumbnails/0/235/1000/1000/636252766618069332.jpeg",
     },
   ];
-  const defaultBoxLabels = {
-    name: "Name",
-    meta: "Size Type, Alignment",
-    Challenge: "Challenge Rating",
-    extraContent: {
-      readMore: "",
-      positiveVotes: "",
-      negativeVotes: "",
-      text: "Vote",
-
-    },
-  };
+export default function MonsterLibrary() {
   return (
     <>
-      <MainMonsterBox
-        className={styles.main_head__text_color}
-        monsterStats={defaultBoxLabels}
-        voting="yes"
-      ></MainMonsterBox>
+    {/* <input value="Search"></input> */}
       {monsters.map((monster, i) => (
-        <MainMonsterBox key={i} monsterStats={monster} voting="yes"></MainMonsterBox>
+        <MainMonsterBox key={i} monsterStats={monster}>
+
+            <button className={styles.btn_add_style}>+ ADD</button>
+        </MainMonsterBox>
       ))}
+        <button className={styles.btn_load_more}>Load More</button>
     </>
   );
 }

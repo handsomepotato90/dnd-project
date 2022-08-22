@@ -64,9 +64,9 @@ export default function LevelOfPlayer(props) {
   //   console.log(encounterXpTable[1]);
 
   return (
-    <>
-      <Select onChange={handleChange} isSearchable={false} options={options} />
+    <div className={styles.center_elements}>
+      <Select className={styles.select__style} onChange={handleChange} isSearchable={false} options={options} />
       <button className={styles.add_player_btn__style} onClick={ThisPlayerToAdd}>Add Player</button>
-    </>
+    </div>
   );
 }

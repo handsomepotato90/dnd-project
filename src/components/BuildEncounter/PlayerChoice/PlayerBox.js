@@ -1,4 +1,5 @@
 import React from "react";
+import NewsBox from "../../UI/NewsBox"
 import styles from "./PlayerBox.module.css";
 export default function PlayerBox(props) {
   const DeleteThisPlayer = (player) => {
@@ -6,7 +7,7 @@ export default function PlayerBox(props) {
 
   };
   return (
-    <>
+    <NewsBox className={styles.news_box__stayel}>
       {props.player.map((p, i) => (
         <div className={styles.box_player__style} key={i}>
           <div>Player Level:</div>
@@ -16,6 +17,6 @@ export default function PlayerBox(props) {
           </div>
         </div>
       ))}
-    </>
+    </NewsBox>
   );
 }
