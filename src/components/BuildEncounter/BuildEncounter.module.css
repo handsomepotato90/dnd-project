@@ -1,11 +1,10 @@
 .flex_box__style{
-    height: 99%;
+    height: 100%;
     display: flex;
     flex-direction: row;
-    margin-top: 2rem;
 }
 .serch_box__style{
-    height: calc(100% - 2rem);
+    height:100%;
     width: 19.4rem;
  
 }

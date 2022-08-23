@@ -1,31 +1,19 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import LevelOfPlayer from "./LevelOfPlayer";
 import PlayerBox from "./PlayerBox";
 import styles from "./PlayerChoice.module.css";
+import GroupXp from "../../store/groupXp-context";
+
+
 
 export default function PlayerChoice() {
-  let [players, newPlayers] = useState([]);
+  const xpt = useContext(GroupXp);
 
-  const getPlayer = (player) => {
-    newPlayers([...players, player]);
-  };
-  const Deleter = (del) => {
-    let pIndex = players.findIndex(function (p, index) {
-      if (p.player === del) {
-        return index;
-      }
-    });
-    if(pIndex === -1){
-      pIndex=0;
-    }
-    players.splice(pIndex, 1);
-    newPlayers([...players])
-  };
-console.log(players)
+  console.log(xpt);
   return (
     <div className={styles.party_setup__window}>
-      <LevelOfPlayer onChange={getPlayer} />
-      <PlayerBox playerRemove={Deleter} player={players} />
+      <LevelOfPlayer onChange={xpt.getPlayer} />
+      <PlayerBox playerRemove={xpt.Deleter} player={xpt.players} />
     </div>
   );
 }

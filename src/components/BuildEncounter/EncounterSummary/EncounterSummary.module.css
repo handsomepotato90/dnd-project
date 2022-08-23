@@ -1,0 +1,8 @@
+.summary_general__style{
+    width: 20.5rem;
+    height: 100%;
+    box-shadow: -3px -3px #888888 ;
+    background-color:  #fff;
+    display: flex;
+    flex-direction: column;
+}

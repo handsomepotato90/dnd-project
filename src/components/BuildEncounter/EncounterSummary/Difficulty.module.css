@@ -1,6 +1,6 @@
 .difficulty_box__style{
-    height: 15rem;
-    background-color: whitesmoke;
+
+    background-color: #fff;
     display: flex;
     flex-direction: column;
 }
@@ -8,6 +8,9 @@
     text-align: center;
     font-size: 22px;
     font-weight: bold;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    
 }
 .xp_box__style{
     display: flex;
@@ -17,4 +20,20 @@
     display: flex;
     flex-direction: column;
     width: 50%;
+}
+
+.titles__styles{
+    align-self:flex-end;
+    font-size: 16px;
+    font-weight: bold;
+    color: grey;
+}
+.monster_xp__style{
+    align-self: flex-start;
+}
+.content__styles{
+    font-size: 15px;
+    font-weight: bold;
+    color: black;
+    margin-left: 1rem;
 }
