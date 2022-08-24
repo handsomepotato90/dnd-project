@@ -8,8 +8,6 @@ import GroupXp from "../../store/groupXp-context";
 
 export default function PlayerChoice() {
   const xpt = useContext(GroupXp);
-
-  console.log(xpt);
   return (
     <div className={styles.party_setup__window}>
       <LevelOfPlayer onChange={xpt.getPlayer} />

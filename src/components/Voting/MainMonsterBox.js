@@ -23,8 +23,6 @@ export default function MainMonsterBox(props) {
 
   const sizeType = splitStats[0].split(" ");
 
-  console.log(props.monsterStats.meta);
-
   return (
     <>
       <div className={cName}>

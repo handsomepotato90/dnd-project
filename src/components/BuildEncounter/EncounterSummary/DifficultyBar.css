@@ -1,0 +1,67 @@
+.diff_bar__style {
+  background: lightgrey;
+  width: 300px;
+  height: 30px;
+  position: relative;
+  top: 10px;
+  left: 10px;
+  overflow: hidden;
+  margin: 0 auto;
+}
+.diff__style {
+  position: relative;
+  right: 290px;
+  background: darkgrey;
+  width: 300px;
+  height: 30px;
+  transition: right 3s, background 3s;
+  -webkit-transition: right 3s, background 3s;
+  -moz-transition: right 3s, background 3s;
+}
+.easy {
+  background: green;
+}
+.green_text{
+  color: green;
+}
+.easy_position{
+  right: 85%;
+}
+.medium {
+  background: aqua;
+}
+.aqua_text{
+  color: aqua;
+}
+.medium_position{
+  right: 65%;
+}
+
+.hard {
+  background: orange;
+}
+.orange_text{
+  color: orange;
+}
+.hard_position{
+  right: 30%;
+}
+.deadly {
+  background: red;
+}
+.red_text{
+  color: red;
+}
+.deadly_position{
+  right: 0%;
+}
+
+.imposible {
+  background: rgb(94, 1, 1);
+}
+.imposible_text{
+  color: rgb(94, 1, 1);
+}
+.imposible_position{
+  right: 0%;
+}

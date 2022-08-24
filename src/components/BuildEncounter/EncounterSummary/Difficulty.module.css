@@ -1,5 +1,5 @@
 .difficulty_box__style{
-
+    height: 15rem;
     background-color: #fff;
     display: flex;
     flex-direction: column;
@@ -25,11 +25,13 @@
 .titles__styles{
     align-self:flex-end;
     font-size: 16px;
+    margin-right: 2rem;
     font-weight: bold;
     color: grey;
 }
 .monster_xp__style{
     align-self: flex-start;
+    margin-left: 1rem;
 }
 .content__styles{
     font-size: 15px;
