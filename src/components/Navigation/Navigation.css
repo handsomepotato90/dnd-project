@@ -1,6 +1,7 @@
 .nav__size {
   height: 4rem;
   width: auto;
+  z-index: 1000;
 }
 .nav__bcc {
   background-color: black;

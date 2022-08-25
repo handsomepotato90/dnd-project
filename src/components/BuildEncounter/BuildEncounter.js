@@ -5,13 +5,16 @@ import EncounterSummary from "./EncounterSummary/EncounterSummary";
 import styles from "./BuildEncounter.module.css";
 import { GroupXpProvider } from "../store/groupXp-context";
 import { MonsterXpProvider } from "../store/monsterXp-context";
+import SearchWindow from "./SearchWindow/SearchWindow";
 
 export default function BuildEncounter() {
   return (
     <GroupXpProvider>
       <MonsterXpProvider>
         <div className={styles.flex_box__style}>
-          <div className={styles.serch_box__style}></div>
+          <div className={styles.serch_box__style}>
+            <SearchWindow></SearchWindow>
+          </div>
           <div>
             <PlayerChoice />
             <div className={styles.library__style}>

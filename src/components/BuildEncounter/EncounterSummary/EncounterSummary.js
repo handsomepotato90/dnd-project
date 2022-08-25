@@ -11,4 +11,3 @@ export default function EncounterSummary() {
     </div>
   );
 }
-// value = {{theChallengeLadder : { easy: 100, medium: 200 ,hard : 300, deadly : 400}}}

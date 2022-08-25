@@ -1,0 +1,27 @@
+.gerenl_scroll__style {
+  margin: 0 auto;
+  height: 5rem;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+}
+.text__style {
+  font-weight: bold;
+  margin: auto;
+}
+.search_bar__stayle {
+  font-size: 14px;
+}
+.search_btn_style {
+  background-color: #4caf50; /* Green */
+  border: none;
+  color: white;
+  width: 90%;
+  padding: 0.8rem 1.6rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 0 auto;
+  margin-top: 2rem;
+}

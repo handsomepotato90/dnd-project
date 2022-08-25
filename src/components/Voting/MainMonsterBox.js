@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import FullMonsterDescription from "./FullMonsterDescription/FullMonsterDescription";
 import "./MainMonsterBox.css";
 import Button from "./Button";
-
+// import {aberration} from "../../icons/aberration.jpg"
 export default function MainMonsterBox(props) {
   const [isClicked, statusChecker] = useState(false);
   const [clickebleText, textChanger] = useState("Read More");
@@ -22,11 +22,17 @@ export default function MainMonsterBox(props) {
   const splitStats = clumpOfData.split(", ");
 
   const sizeType = splitStats[0].split(" ");
-
+  console.log(sizeType[1]);
   return (
+    // C:\Users\Cvetan Petkov\dnd-project\dnd-project\src\icons
     <>
       <div className={cName}>
         <div className="main_monster__info">
+          {props.monsterStats.extraContent ? (
+            null
+          ) : (
+            <img src={`img/${sizeType[1]}.jpg`} alt={sizeType[1]} />
+          )}
           <div>{props.monsterStats.name}</div>
           <div>{sizeType[0]}</div>
           <div>{sizeType[1]}</div>

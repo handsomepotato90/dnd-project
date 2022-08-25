@@ -8,11 +8,12 @@ import DifficultyBar from "./DifficultyBar";
 export default function Difficulty() {
   let ctx = useContext(GroupXp);
   let mxp = useContext(MonsterXp);
-  let difficultiText = "";
+  let difficultiText = "None";
   let diff = "";
   let color = "";
   if (ctx.theChallengeLadder.easy === 0 || mxp.monsterChallengeLadder === 0) {
     diff = "";
+    difficultiText = "None";
   } else if (ctx.theChallengeLadder.easy >= mxp.monsterChallengeLadder) {
     diff = "easy easy_position";
     difficultiText = "Easy";

@@ -5,12 +5,17 @@
 }
 .serch_box__style{
     height:100%;
-    width: 19.4rem;
+    /* margin-top: 1rem; */
+    margin-left: 3rem;
+    width: 18.4rem;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
  
 }
 .library__style{
     height: 70%;
-    width: 76rem;
+    width: 71rem;
     margin-top: 1rem;
 
 
