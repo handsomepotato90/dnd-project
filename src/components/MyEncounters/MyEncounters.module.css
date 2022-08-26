@@ -1,0 +1,5 @@
+.my_encounters__style{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}

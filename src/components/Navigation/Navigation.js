@@ -12,7 +12,8 @@ const Navigation = () =>{
                         <ul className= "nav_links">
                                 <CustomLink to="/voting">Voting</CustomLink>
                                 <CustomLink to="/build_encounter">Build Encounter</CustomLink>
-                                <CustomLink to="/my_encounters">MyEncounters</CustomLink>
+                                <CustomLink to="/submit_homebrew">Submit HomeBrew</CustomLink>
+                                <CustomLink to="/my_encounters">My Encounters</CustomLink>
                                 {/* <CustomLink to="/home">home</CustomLink> */}
 
                         </ul>

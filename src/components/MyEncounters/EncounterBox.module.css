@@ -1,0 +1,25 @@
+.encounter_box__style {
+  width: 18vw;
+  height: 30vh;
+  margin-left: 3rem;
+  margin-top: 3rem;
+  background-color: white;
+ 
+}
+.encounter_name__style {
+  position: absolute;
+  z-index: 10;
+  font-size: 28px;
+  font-weight: bold;
+  color: black;
+  margin: auto;
+}
+.image__style {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  height: 100%;
+  filter: grayscale(40%);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
