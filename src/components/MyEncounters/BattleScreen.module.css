@@ -1,81 +1,104 @@
-.display__style{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-
+.display__style {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
-.encounter_box__style{
-    width: 18vw;
-    height: 30vh;
-    margin-left: 3rem;
-    margin-top: 3rem;
-    background-color: white;  
+.battle_box{
+  display: flex;
+  flex-direction: row;
 }
-.image__style{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 100%;
-    height: 100%;
-    filter: grayscale(40%);
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+.stat_battle_box{
+  width: 6rem;
+  height: 100%;
+  margin-top: 3rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+.encounter_box__style {
+  width: 15vw;
+  height: 30vh;
+  margin-left: 3rem;
+  margin-top: 3rem;
+  background-color: white;
+}
+.image__style {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  height: 100%;
+  filter: grayscale(40%);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .encounter_name__style {
-    position: absolute;
-    z-index: 10;
-    font-size: 28px;
-    font-weight: bold;
-    color: black;
-    margin: auto;
-  }
-  .stat_text__style{
-    font-size: 18px;
-    font-weight: bolder;
-    color: black;
-  }
-  .modal__style{
-    z-index: 11;
-    width: 18vw;
-    height: 30vh;
-    position: absolute;
-    background-color: black;
-    opacity: 90%;
-    display: flex;
-    flex-direction: column;
-  }
-  .resandvun_text__style{
-    font-size: 18px;
-    font-weight: bolder;
-    color: white;
-    margin: 0 auto;
-    top:2rem;
-  }
-  .condition__txt__style{
-
-    margin-left: 1rem;
-  }
-  .red_condition{
-    color:red;
-  }
-  .green_condition{
-    color:green;
-  }
-  .orange_condition{
-    color: orange;
-  }
-  .input__style{
-    width: 3vw;
-    height: 3vh;
-    text-align: center;
-  }
-  .add{
-    background-color: green;
-  }
-  .subtract{
-    background-color: red;
-  }
-  .subm_subt__style{
-    font-size: 22px;
-    width: 2vw;
-    height: 3.5vh;
-  }
+  background-color: rgba(255, 255, 255,0.2);
+  width: 15vw;
+  position: absolute;
+  z-index: 10;
+  font-size: 28px;
+  font-weight: bold;
+  color: black;
+}
+.stat_text__style {
+  font-size: 18px;
+  font-weight: bolder;
+  color: black;
+}
+.modal__style {
+  z-index: 11;
+  width: 15vw;
+  height: 30vh;
+  position: absolute;
+  background-color: black;
+  opacity: 90%;
+  display: flex;
+  flex-direction: column;
+}
+.resandvun_text__style {
+  font-size: 18px;
+  font-weight: bolder;
+  color: white;
+  margin: 0 auto;
+  top: 2rem;
+}
+.condition__txt__style {
+  margin-left: 1rem;
+}
+.red_condition {
+  color: red;
+}
+.green_condition {
+  color: green;
+}
+.orange_condition {
+  color: orange;
+}
+.input__style {
+  width: auto;
+  height: 3vh;
+  border:none;
+  text-align: center;
+}
+.add {
+  border: none;
+  background-color: green;
+}
+.subtract {
+  border: none;
+  background-color: red;
+}
+.subm_subt__style {
+  font-size: 18px;
+  font-weight: bold;
+  width: auto;
+  height: 3.5vh;
+}
+.death_modal_text___style{
+  z-index: 11;
+  font-size: 52px;
+  color: red;
+  margin: 0 auto;
+  font-weight: bold;
+  margin-top: 6rem;
+}
