@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import ImmunityesModal, { DeathModal } from "./EncounterModals";
 import HealthPool from "./EncounterUI/HealthPool";
 import Initiative from "./EncounterUI/Initiative";
@@ -10,7 +10,6 @@ export default function MonsterBattleBox(props) {
   const [isDead, setDead] = useState(false);
   const [isRead, setReading] = useState(false);
 
-
   let hp = props.stats["Hit Points"].split(" ");
   let ac = props.stats["Armor Class"].split(" ");
 
@@ -19,16 +18,19 @@ export default function MonsterBattleBox(props) {
     setIsShown(false);
   };
 
-  const renderModal =()=>{
+  const renderModal = () => {
     setReading(true);
-  }
-const removeModal = (state) =>{
-  setReading(state)
-}
+  };
+  const removeModal = (state) => {
+    setReading(state);
+  };
   return (
     <div className={styles.battle_box}>
-    {isRead && <ModalBack onClick={removeModal} monsterStats={props.stats} ></ModalBack>}
-      <div onClick={renderModal} 
+      {isRead && (
+        <ModalBack onClick={removeModal} monsterStats={props.stats}></ModalBack>
+      )}
+      <div
+        onClick={renderModal}
         className={styles.encounter_box__style}
         onMouseEnter={() => setIsShown(true)}
         onMouseLeave={() => setIsShown(false)}
@@ -37,8 +39,8 @@ const removeModal = (state) =>{
           (isShown && (
             <ImmunityesModal
               conI={props.stats["Condition Immunities"]}
-              dmgI={props.stats['Damage Immunities']}
-              dmgR={props.stats["Damage Resistance"]}
+              dmgI={props.stats["Damage Immunities"]}
+              dmgR={props.stats["Damage Resistances"]}
               dmgV={props.stats["Damage Vulnerabilities"]}
             ></ImmunityesModal>
           ))}

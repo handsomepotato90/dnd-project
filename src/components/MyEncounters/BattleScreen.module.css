@@ -56,11 +56,14 @@
   flex-direction: column;
 }
 .resandvun_text__style {
+  height: 5vh;
   font-size: 18px;
   font-weight: bolder;
   color: white;
   margin: 0 auto;
-  top: 2rem;
+  margin-top: 1vh;
+  display: flex;
+  flex-direction: column;
 }
 .condition__txt__style {
   margin-left: 1rem;
