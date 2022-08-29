@@ -6,7 +6,7 @@ import Reactions from "./Reactions"
 import StatBlock from "./StatBlock"
 export default function FullMonsterDescription(props) {
   return (
-    <div className={styles.box_design}>
+    <div onClick={() =>props.onClick(false)} className={styles.box_design}>
       <div className={styles.first_half}>
         <StatBlock monsterStats ={props.monsterStats} />
 

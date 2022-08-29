@@ -1,23 +1,20 @@
 import React, { useState } from "react";
-import FullMonsterDescription from "./FullMonsterDescription/FullMonsterDescription";
+import ModalBack from "../UI/ModalBack";
 import "./MainMonsterBox.css";
 import Button from "./Button";
 // import {aberration} from "../../icons/aberration.jpg"
 export default function MainMonsterBox(props) {
   const [isClicked, statusChecker] = useState(false);
-  const [clickebleText, textChanger] = useState("Read More");
+  // const [clickebleText, textChanger] = useState("Read More");
 
   const cName = "monster_voter_style " + props.className;
 
   const ReadFullText = () => {
-    if (clickebleText === "Read More") {
-      statusChecker(true);
-      textChanger("Close");
-    } else {
-      textChanger("Read More");
-      statusChecker(false);
-    }
+    statusChecker(true)
   };
+  const removeModal = (status) =>{
+    statusChecker(status)
+  }
   const clumpOfData = `${props.monsterStats.meta}`;
   const splitStats = clumpOfData.split(", ");
 
@@ -42,7 +39,7 @@ export default function MainMonsterBox(props) {
             <div>{props.monsterStats.extraContent.readMore}</div>
           ) : (
             <div className="read_button__style" onClick={ReadFullText}>
-              {clickebleText}
+              Read More
             </div>
           )}
         </div>
@@ -59,7 +56,7 @@ export default function MainMonsterBox(props) {
         )}
       </div>
       {isClicked ? (
-        <FullMonsterDescription monsterStats={props.monsterStats} />
+        <ModalBack onClick={removeModal} monsterStats={props.monsterStats}></ModalBack>
       ) : null}
     </>
   );
