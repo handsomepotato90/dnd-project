@@ -1,0 +1,21 @@
+.form__style{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 110rem;
+    margin: auto;
+}
+.submit_btn__style{
+    background-color: #4caf50;
+    border: none;
+    color: white;
+    padding: 20px 100px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 1px;
+    margin-left: 45%;
+    margin-bottom: 2rem;
+}

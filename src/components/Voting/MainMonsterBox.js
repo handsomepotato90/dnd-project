@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ModalBack from "../UI/ModalBack";
+import ModalMonsterText from "../UI/ModalMonsterText";
 import "./MainMonsterBox.css";
 import Button from "./Button";
 // import {aberration} from "../../icons/aberration.jpg"
@@ -56,7 +56,7 @@ export default function MainMonsterBox(props) {
         )}
       </div>
       {isClicked ? (
-        <ModalBack onClick={removeModal} monsterStats={props.monsterStats}></ModalBack>
+        <ModalMonsterText onClick={removeModal} monsterStats={props.monsterStats}></ModalMonsterText>
       ) : null}
     </>
   );

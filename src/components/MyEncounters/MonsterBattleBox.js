@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ImmunityesModal, { DeathModal } from "./EncounterModals";
 import HealthPool from "./EncounterUI/HealthPool";
 import Initiative from "./EncounterUI/Initiative";
-import ModalBack from "../UI/ModalBack";
+import ModalMonsterText from "../UI/ModalMonsterText";
 import styles from "./BattleScreen.module.css";
 
 export default function MonsterBattleBox(props) {
@@ -27,7 +27,7 @@ export default function MonsterBattleBox(props) {
   return (
     <div className={styles.battle_box}>
       {isRead && (
-        <ModalBack onClick={removeModal} monsterStats={props.stats}></ModalBack>
+        <ModalMonsterText onClick={removeModal} monsterStats={props.stats}></ModalMonsterText>
       )}
       <div
         onClick={renderModal}

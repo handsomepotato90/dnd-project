@@ -1,16 +1,9 @@
  import React from "react"
  import ReactDOM from "react-dom"
 import FullMonsterDescription from "./FullMonsterDescription/FullMonsterDescription"
- import styles from "./ModalBack.module.css"
+import BackDrop from "./BackDrop"
 
 
-
- function BackDrop(props){
-    return(
-
-        <div onClick={() =>props.onClick(false)} className={styles.modal_style}>{props.children}</div>
-    )
- }
 
  export default function ModalBack (props) {
     return(
