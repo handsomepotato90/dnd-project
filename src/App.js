@@ -20,9 +20,7 @@ function App() {
   // const url = window.location.href;
   return (
     <div className="box_divider">
-      <div>
         <Navigation />
-      </div>
       <div>
         {onscreen === true ? (
           <>

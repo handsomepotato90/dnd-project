@@ -1,4 +1,4 @@
 .box_divider{
-        display: grid;
-        grid-template-rows: 5rem auto;
+        display: flex;
+        flex-direction: column;
 }
