@@ -109,7 +109,7 @@ export default function MonsterLibrary() {
       {monsters.map((monster, i) => (
         <MainMonsterBox key={i} monsterStats={monster}>
           <button
-            className={styles.btn_add_style}
+            className={styles.btn_add__style}
             onClick={() => mxp.selectMonster(monster)}
           >
             + ADD

@@ -1,5 +1,5 @@
 .monster_voter_style {
-  width: 75%;
+  width: 90%;
   height: 3rem;
   max-height: 3rem;
   border: 1px solid black;
@@ -13,9 +13,10 @@
   margin-bottom: 0.5rem;
 }
 
-/* .monster_voter_style > div{
-        width: 100%;
-} */
+.image__style{
+  margin-left: 0;
+  float: left;
+}
 .main_monster__info {
   width: 80%;
   display: flex;

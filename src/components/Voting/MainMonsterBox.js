@@ -21,14 +21,13 @@ export default function MainMonsterBox(props) {
   const sizeType = splitStats[0].split(" ");
   console.log(sizeType[1]);
   return (
-    // C:\Users\Cvetan Petkov\dnd-project\dnd-project\src\icons
     <>
       <div className={cName}>
         <div className="main_monster__info">
           {props.monsterStats.extraContent ? (
             null
           ) : (
-            <img src={`img/${sizeType[1]}.jpg`} alt={sizeType[1]} />
+            <img className="image__style" src={`img/${sizeType[1]}.jpg`} alt={sizeType[1]} />
           )}
           <div>{props.monsterStats.name}</div>
           <div>{sizeType[0]}</div>

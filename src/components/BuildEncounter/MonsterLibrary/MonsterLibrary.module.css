@@ -1,4 +1,4 @@
-.btn_add_style {
+.btn_add__style {
   background-color: rgb(161, 161, 161);
   border: none;
   color: white;
@@ -6,12 +6,12 @@
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 20px;
   margin-left: 2rem;
   cursor: pointer;
-
+  width: 9vw;
 }
-.btn_load_more{
+.btn_load_more {
   background-color: whitesmoke;
   border: none;
   color: black;
@@ -23,5 +23,4 @@
   margin-left: 30rem;
   margin-top: 2rem;
   cursor: pointer;
-
 }
