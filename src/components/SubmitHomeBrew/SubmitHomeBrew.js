@@ -1,9 +1,8 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import styles from "./SubmitHomeBrew.module.css";
 import InputFields from "./InputFields";
 import TextArea from "./TextArea";
 import ModalSubmitSucces from "../UI/ModalSubmitSucces";
-
 
 const fields = [
   {
@@ -34,6 +33,12 @@ const fields = [
     name: "ALIGNMENT",
     input_name: "meta_alignment",
     placeholder: "-",
+    required: "",
+  },
+  {
+    name: "SPEED",
+    input_name: "Speed",
+    placeholder: "20 ft., fly 30 ft. ",
     required: "",
   },
   {
@@ -156,7 +161,18 @@ const fields = [
     placeholder: "Bludgeoning,Piercing,Fire ...",
     required: "",
   },
-  { name: "LANGUAGES", placeholder: "#", required: "" },
+  {
+    name: "CONDITION IMMUNITIES",
+    input_name: "Condition Immunities",
+    placeholder: "Charmed, Exhaustion, Frightened ...",
+    required: "",
+  },
+  {
+    name: "LANGUAGES",
+    input_name: "Languages",
+    placeholder: "-",
+    required: "",
+  },
 ];
 const textZone = [
   {
@@ -196,10 +212,8 @@ const textZone = [
   },
 ];
 
-
 export default function SubmitHomeBrew() {
-  const [isSubmited,setSubmit] = useState(false);
- 
+  const [isSubmited, setSubmit] = useState(false);
 
   let data = [{}];
   const ckEditorText = [{}];
@@ -213,9 +227,10 @@ export default function SubmitHomeBrew() {
   const fieldsChange = (name, val) => {
     data[name] = val;
   };
-const removeModal = () =>{
-  setSubmit(false);
-}
+  const removeModal = () => {
+    setSubmit(false);
+    window.location.href = "/";
+  };
   const formSubmit = (e) => {
     e.preventDefault();
     modifiers(data);
@@ -278,17 +293,16 @@ const removeModal = () =>{
     };
 
     console.log(Object.keys(objForNode).length);
-    if(Object.keys(objForNode).length >= 10 ){
-      setSubmit(true)
+    if (Object.keys(objForNode).length >= 10) {
+      setSubmit(true);
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
 
   return (
     <>
       {isSubmited && (
-        <ModalSubmitSucces
-          onClick={removeModal}
-        ></ModalSubmitSucces>
+        <ModalSubmitSucces onClick={removeModal}></ModalSubmitSucces>
       )}
       <form onSubmit={formSubmit} id="form">
         <div className={styles.form__style}>
