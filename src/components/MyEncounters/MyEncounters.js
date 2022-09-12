@@ -4,7 +4,7 @@ import styles from "./MyEncounters.module.css";
 const encounters = [
   {
     name: "Babys first fight",
-    id: "!4214@#!",
+    id: "37d7da91e7834755defe1cd9f631eac5",
     monsters: [
       {
         name: "Aboleth",
@@ -17,7 +17,7 @@ const encounters = [
 
   {
     name: "Real shit",
-    id: "!42fasfsafa",
+    id: "b8ad3db8949b002f3b83e711a4365d1f",
     monsters: [
       {
         name: "Acolyte",
