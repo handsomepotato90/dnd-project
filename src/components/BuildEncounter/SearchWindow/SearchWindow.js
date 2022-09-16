@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Select from "react-select";
 import styles from "./SearchWindow.module.css";
 import InputRange from "react-input-range";
 import "react-input-range/lib/css/index.css";
+import { useHttpClient } from "../../hooks/http-hook";
+import MonsterXp from "../../store/monsterXp-context";
 
 const monsterType = [
   { value: "aberration", label: "Aberration" },
@@ -31,28 +33,28 @@ const alignment = [
   { value: "neutral evil", label: "Neutral Evil" },
   { value: "chaotic evil", label: "Chaotic Evil" },
   { value: "unaligned", label: "Unaligned" },
-  { value: "any evil alighnment", label: "Any Evil Alighnment" },
-  { value: "any good alighnment", label: "Any Good Alighnment" },
-  { value: "any chaotic alighnment", label: "Any Vhaotic Alighnment" },
-  { value: "any lawful alighnment", label: "Any Lawful Alighnment" },
+  { value: "evil", label: "Any Evil Alighnment" },
+  { value: "good", label: "Any Good Alighnment" },
+  { value: "chaotic", label: "Any Chaotic Alighnment" },
+  { value: "lawful", label: "Any Lawful Alighnment" },
   { value: "any", label: "Any" },
 ];
 const condition = [
-  { value: "blinded", label: "Blinded" },
-  { value: "charmed", label: "Charmed" },
-  { value: "deafened", label: "Deafened" },
-  { value: "exhaustion", label: "Exhaustion" },
-  { value: "frightened", label: "Frightened" },
-  { value: "grappled", label: "Grappled" },
-  { value: "incapacitated", label: "Incapacitated" },
-  { value: "invisible", label: "Invisible" },
-  { value: "paralyzed", label: "Paralyzed" },
-  { value: "petrified", label: "Petrified" },
-  { value: "poisoned", label: "Poisoned" },
-  { value: "prone", label: "Prone" },
-  { value: "restrained", label: "Restrained" },
-  { value: "stunned", label: "Stunned" },
-  { value: "unconscious", label: "Unconscious" },
+  { value: "Blinded", label: "Blinded" },
+  { value: "Charmed", label: "Charmed" },
+  { value: "Deafened", label: "Deafened" },
+  { value: "Exhaustion", label: "Exhaustion" },
+  { value: "Frightened", label: "Frightened" },
+  { value: "Grappled", label: "Grappled" },
+  { value: "Incapacitated", label: "Incapacitated" },
+  { value: "Invisible", label: "Invisible" },
+  { value: "Paralyzed", label: "Paralyzed" },
+  { value: "Petrified", label: "Petrified" },
+  { value: "Poisoned", label: "Poisoned" },
+  { value: "Prone", label: "Prone" },
+  { value: "Restrained", label: "Restrained" },
+  { value: "Stunned", label: "Stunned" },
+  { value: "Unconscious", label: "Unconscious" },
 ];
 const damageIm = [
   { value: "bludgeoning", label: "Bludgeoning" },
@@ -71,14 +73,25 @@ const damageIm = [
   { value: "force", label: "Force" },
 ];
 const legendary = [
-  { value: "yes", label: "YES" },
-  { value: "no", label: "NO" },
+  { value: "Any", label: "Any" },
+  { value: true, label: "Yes" },
+  { value: false, label: "No" },
 ];
 export default function SearchWindow() {
   const [rating, ratingHandler] = useState({ min: 0, max: 30 });
   const [armor, armorHandler] = useState({ min: 0, max: 50 });
-  const [health, healthHandler] = useState({ min: 0, max: 2000 });
-  let [monsterTypes,setMonsterTypeState] = useState([]);
+  const [health, healthHandler] = useState({ min: 0, max: 1500 });
+  const mxp = useContext(MonsterXp);
+  const [monsterTypes, setMonsterTypeState] = useState({
+    types: [],
+    alignment: [],
+    condition: [],
+    damage: [],
+    legendary: 'Any',
+    resistance: [],
+    vulnerability: [],
+  });
+  const { sendRequest } = useHttpClient();
 
   const newRating = (value) => {
     ratingHandler({ min: value.value.min, max: value.value.max });
@@ -89,15 +102,39 @@ export default function SearchWindow() {
   const newHealth = (value) => {
     healthHandler({ min: value.value.min, max: value.value.max });
   };
-
- const getType = (event) =>{
-    monsterTypes=[];
-    for (const key in event) {
-        monsterTypes.push(event[key].value)
-        setMonsterTypeState([...monsterTypes])
+  const getType = (event, action) => {
+    if (action.name === "legendary") {
+      setMonsterTypeState({ ...monsterTypes, [action.name]: event.value });
+    } else {
+      monsterTypes[action.name] = [];
+      Object.entries(event).forEach(([key, value]) => {
+        monsterTypes[action.name].push(value.value);
+      });
+      setMonsterTypeState({
+        ...monsterTypes,
+        [action.name]: [...monsterTypes[action.name]],
+      });
     }
- }
- console.log(monsterTypes)
+  };
+  const searchDb = async () => {
+    try {
+      const resData = await sendRequest(
+        "http://localhost:5000/build_encounter",
+        "POST",
+        JSON.stringify({
+          rating,
+          armor,
+          health,
+          monsterTypes,
+        }),
+        {
+          "Content-Type": "application/json",
+        }
+      );
+      console.log(mxp.monsters);
+      mxp.setMonsters(resData);
+    } catch (err) {}
+  };
 
   return (
     <>
@@ -108,6 +145,7 @@ export default function SearchWindow() {
           isSearchable={true}
           options={monsterType}
           isMulti
+          name="types"
           onChange={getType}
         ></Select>
       </div>
@@ -118,6 +156,8 @@ export default function SearchWindow() {
           isSearchable={true}
           options={alignment}
           isMulti
+          name="alignment"
+          onChange={getType}
         ></Select>
       </div>
 
@@ -128,6 +168,8 @@ export default function SearchWindow() {
           isSearchable={true}
           options={condition}
           isMulti
+          name="condition"
+          onChange={getType}
         ></Select>
       </div>
       <div className={styles.gerenl_scroll__style}>
@@ -137,6 +179,8 @@ export default function SearchWindow() {
           isSearchable={true}
           options={damageIm}
           isMulti
+          name="damage"
+          onChange={getType}
         ></Select>
       </div>
       <div className={styles.gerenl_scroll__style}>
@@ -145,6 +189,9 @@ export default function SearchWindow() {
           className={styles.search_bar__stayle}
           isSearchable={true}
           options={legendary}
+          name="legendary"
+          defaultValue={[legendary[0]]}
+          onChange={getType}
         ></Select>
       </div>
       <div className={styles.gerenl_scroll__style}>
@@ -154,6 +201,8 @@ export default function SearchWindow() {
           isSearchable={true}
           options={damageIm}
           isMulti
+          name="resistance"
+          onChange={getType}
         ></Select>
       </div>
       <div className={styles.gerenl_scroll__style}>
@@ -163,6 +212,8 @@ export default function SearchWindow() {
           isSearchable={true}
           options={damageIm}
           isMulti
+          name="vulnerability"
+          onChange={getType}
         ></Select>
       </div>
 
@@ -190,14 +241,17 @@ export default function SearchWindow() {
         <span className={styles.text__style}>Average HP</span>
         <InputRange
           disabled={false}
-          maxValue={2000}
+          maxValue={1500}
           minValue={0}
           step={5}
           value={health}
           onChange={(value) => newHealth({ value })}
         />
       </div>
-      <button className={styles.search_btn_style}> Apply Search</button>
+      <button className={styles.search_btn_style} onClick={searchDb}>
+        {" "}
+        Apply Search
+      </button>
     </>
   );
 }

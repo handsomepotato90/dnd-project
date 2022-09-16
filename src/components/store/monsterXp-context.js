@@ -5,9 +5,12 @@ const MonsterXp = React.createContext({
   monsterChallengeLadder: 0,
   selectMonster: () => {},
   DeleteMonster:()=>{},
+  monsters:[{}],
+  setMonsters: ()=>{},
 });
 
 export const MonsterXpProvider = (props) => {
+  const [monsters, setMonsters] = useState([{}]);
   const monsterXpSum = (array) => {
     let sum = 0;
     for (const iterator of array) {
@@ -51,6 +54,9 @@ export const MonsterXpProvider = (props) => {
         monsterChallengeLadder: monsterChallengeLadder,
         selectMonster: selectMonster,
         DeleteMonster:DeleteMonster,
+        monsters: monsters,
+        setMonsters: setMonsters,
+
       }}
     >
       {" "}

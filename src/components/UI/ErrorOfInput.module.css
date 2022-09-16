@@ -1,4 +1,10 @@
 .error__style{
-    /* position: relative; */
-    background-color: red;
+    position: absolute;
+    z-index: 101;
+    width: 35vw;
+    height: 35vh;
+    background-color: white;
+    margin-left: 30%;
+    margin-top: 15%;
+    border: 1px solid black;
 }

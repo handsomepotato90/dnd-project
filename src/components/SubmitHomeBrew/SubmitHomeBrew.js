@@ -1,8 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import styles from "./SubmitHomeBrew.module.css";
 import InputFields from "./InputFields";
 import TextArea from "./TextArea";
-import ModalSubmitSucces from "../UI/ModalSubmitSucces";
+import { useHttpClient } from "../hooks/http-hook";
+import { LoginContext } from "../store/login-context";
+import ModalError from "../UI/ModalError";
+import LoadingSpinner from "../UI/LoadingSpinner";
+import { useNavigate } from "react-router-dom";
 
 const fields = [
   {
@@ -213,7 +217,9 @@ const textZone = [
 ];
 
 export default function SubmitHomeBrew() {
-  const [isSubmited, setSubmit] = useState(false);
+  const {  isLoading, error, sendRequest, clearError } = useHttpClient();
+  const navigate  = useNavigate();
+  const auth = useContext(LoginContext);
 
   let data = [{}];
   const ckEditorText = [{}];
@@ -227,10 +233,7 @@ export default function SubmitHomeBrew() {
   const fieldsChange = (name, val) => {
     data[name] = val;
   };
-  const removeModal = () => {
-    setSubmit(false);
-    window.location.href = "/";
-  };
+
   const formSubmit = (e) => {
     e.preventDefault();
     modifiers(data);
@@ -272,6 +275,20 @@ export default function SubmitHomeBrew() {
     const xp = {
       Clallenge: `${theObjToSend.Challenge} (${theObjToSend.Xp} Xp)`,
     };
+
+    const condition = {
+      "Condition Immunities": theObjToSend["Condition Immunities"] ? ([...theObjToSend["Condition Immunities"].split(/[.,#!$%&*;:{}=\-_`~()]/g).filter(elem => elem.trim())]) : null,
+    };
+    const damage = {
+      "Damage Immunities": theObjToSend["Damage Immunities"] ? ([...theObjToSend["Damage Immunities"].split(/[.,#!$%&*;:{}=\-_`~()]/g).filter(elem => elem.trim())]) : null,
+    };
+    const resist = {
+      "Damage Resistances": theObjToSend["Damage Resistances"] ? ([...theObjToSend["Damage Resistances"].split(/[.,#!$%&*;:{}=\-_`~()]/g).filter(elem => elem.trim())]) :null,
+    };
+    const vuln = {
+      "Damage Vulnerabilities": theObjToSend["Damage Vulnerabilities"] ? ([...theObjToSend["Damage Vulnerabilities"].split(/[.,#!$%&*;:{}=\-_`~()]/g).filter(elem => elem.trim())]) : null,
+    };
+    
     delete theObjToSend.meta_size;
     delete theObjToSend.meta_type;
     delete theObjToSend.meta_alignment;
@@ -290,20 +307,43 @@ export default function SubmitHomeBrew() {
       ...hp,
       ...xp,
       ...ckEditorText,
+      ...condition,
+      ...damage,
+      ...resist,
+      ...vuln,
     };
+    const submitHandler = async () => {
+      try{
+        await sendRequest(
+          "http://localhost:5000/submit_homebrew",
+          "POST",
+          JSON.stringify({
+            ...objForNode,
+            creator: auth.userId,
+          }),
+          {
+            "Content-Type": "application/json",
+          }
+        );
+        navigate('/');
+      }catch(err){
 
-    console.log(Object.keys(objForNode).length);
+      }
+      
+    };
     if (Object.keys(objForNode).length >= 10) {
-      setSubmit(true);
+      submitHandler();
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
+  };
+  const errorHandler = () => {
+    clearError(null);
   };
 
   return (
     <>
-      {isSubmited && (
-        <ModalSubmitSucces onClick={removeModal}></ModalSubmitSucces>
-      )}
+      {isLoading && <LoadingSpinner></LoadingSpinner>}
+      {error && <ModalError error={error} onClick= {errorHandler}></ModalError>}
       <form onSubmit={formSubmit} id="form">
         <div className={styles.form__style}>
           {fields.map((field, i) => (
