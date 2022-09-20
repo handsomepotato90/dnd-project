@@ -4,6 +4,8 @@ import Actions from "./Actions";
 import Legendary from "./Legendary";
 import Reactions from "./Reactions"
 import StatBlock from "./StatBlock"
+
+
 export default function FullMonsterDescription(props) {
   return (
     <div onClick={() =>props.onClick(false)} className={styles.box_design}>

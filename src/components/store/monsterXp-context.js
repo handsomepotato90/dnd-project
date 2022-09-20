@@ -5,12 +5,12 @@ const MonsterXp = React.createContext({
   monsterChallengeLadder: 0,
   selectMonster: () => {},
   DeleteMonster:()=>{},
-  monsters:[{}],
+  monsters:[],
   setMonsters: ()=>{},
 });
 
 export const MonsterXpProvider = (props) => {
-  const [monsters, setMonsters] = useState([{}]);
+  const [monsters, setMonsters] = useState([]);
   const monsterXpSum = (array) => {
     let sum = 0;
     for (const iterator of array) {
@@ -24,14 +24,14 @@ export const MonsterXpProvider = (props) => {
   let [monsterBlock, selectMonsterBlock] = useState([]);
   let monsterChallengeLadder = monsterXpSum(monsterBlock);
   const selectMonster = (monster) => {
-    let challenge = monster.Challenge.split(" (");
     selectMonsterBlock([
       ...monsterBlock,
       {
         name: monster.name,
-        type: monster.meta.split(", ")[0],
-        challenge: challenge[0],
-        xp: parseInt(challenge[1].split(" XP")[0].replace(/,/g, '')),
+        url:monster.img_url,
+        type: monster.meta.type,
+        challenge: monster.Challenge.rating,
+        xp: parseInt(monster.Challenge.xp.split(" ")[0].replace(/\(|\)|,/g, '')),
       },
     ]);
   };

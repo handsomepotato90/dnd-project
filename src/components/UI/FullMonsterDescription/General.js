@@ -22,7 +22,7 @@ export default function General(props) {
       </div>
       <div className={styles.table__styling}>
         <div className={styles.skills_style}>Challenge: </div>
-        {props.challenge}
+        {`${props.challenge.rating} ${props.challenge.xp}`}
       </div>
     </React.Fragment>
   );

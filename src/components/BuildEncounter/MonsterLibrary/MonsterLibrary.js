@@ -7,7 +7,6 @@ import { useHttpClient } from "../../hooks/http-hook";
 export default function MonsterLibrary() {
   const { sendRequest } = useHttpClient();
   const mxp = useContext(MonsterXp);
-
   useEffect(() => {
     const fetchMonsters = async () => {
       try {

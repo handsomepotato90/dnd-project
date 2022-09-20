@@ -6,6 +6,7 @@ import styles from "./BuildEncounter.module.css";
 import { GroupXpProvider } from "../store/groupXp-context";
 import { MonsterXpProvider } from "../store/monsterXp-context";
 import SearchWindow from "./SearchWindow/SearchWindow";
+import SaveEncounter from "./SaveEncounter/SaveEncounter";
 
 export default function BuildEncounter() {
   return (
@@ -16,6 +17,7 @@ export default function BuildEncounter() {
             <SearchWindow></SearchWindow>
           </div>
           <div>
+          <SaveEncounter />
             <PlayerChoice />
             <div className={styles.library__style}>
               <MonsterLibrary />

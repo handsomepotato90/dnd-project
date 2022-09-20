@@ -21,8 +21,13 @@ export default function Voting() {
   
   const defaultBoxLabels = {
     name: "Name",
-    meta: "Size Type, Alignment",
-    Challenge: "Challenge Rating",
+
+    meta: {
+      size: "Size",
+      type:"Type",
+      alignment: "Alignment", 
+    },
+    Challenge: {rating:"Challenge", xp:"Rating"},
     extraContent: {
       readMore: "",
       positiveVotes: "",

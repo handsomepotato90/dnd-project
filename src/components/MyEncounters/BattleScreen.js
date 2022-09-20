@@ -1,6 +1,7 @@
-import React from "react";
+import React,{useEffect,useState} from "react";
 import styles from "./BattleScreen.module.css";
 import MonsterBattleBox from "./MonsterBattleBox";
+import { useHttpClient } from "../hooks/http-hook";
 const fullStats = [
   {
     name: "Aboleth",
@@ -130,6 +131,21 @@ const fullStats = [
 ];
 
 export default function BattleScreen() {
+  const {sendRequest} = useHttpClient();
+  const[fullStats,setStats] = useState([]);
+  useEffect(() => {
+    const fetchMonsters = async () => {
+      try {
+        const resData = await sendRequest("http://localhost:5000/battle_scr");
+        setStats([...resData]);
+      } catch (err) {}
+
+    };
+    fetchMonsters();
+  }, [sendRequest]);
+
+
+
   return (
     <div className={styles.display__style}>
       {fullStats.map((stats, i) => (

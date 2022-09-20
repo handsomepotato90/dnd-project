@@ -5,10 +5,7 @@ import General from "./General";
 import Traits from "./Traits";
 
 
-
-
 export default function StatBlock(props) {
-    console.log(props)
   return (
     <>
       <NameAndAlignment

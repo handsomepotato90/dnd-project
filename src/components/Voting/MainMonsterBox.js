@@ -15,11 +15,7 @@ export default function MainMonsterBox(props) {
   const removeModal = (status) =>{
     statusChecker(status)
   }
-  const clumpOfData = `${props.monsterStats.meta}`;
-  const splitStats = clumpOfData.split(", ");
-
-  const sizeType = splitStats[0].split(" ");
-  console.log(sizeType[1]);
+  console.log(props.monsterStats)
   return (
     <>
       <div className={cName}>
@@ -27,13 +23,13 @@ export default function MainMonsterBox(props) {
           {props.monsterStats.extraContent ? (
             null
           ) : (
-            <img className="image__style" src={`img/${sizeType[1]}.jpg`} alt={sizeType[1]} />
+            <img className="image__style" src={`img/${props.monsterStats.meta.type}.jpg`} alt={props.monsterStats.meta.type} />
           )}
           <div>{props.monsterStats.name}</div>
-          <div>{sizeType[0]}</div>
-          <div>{sizeType[1]}</div>
-          <div>{splitStats[1]}</div>
-          <div>{props.monsterStats.Challenge}</div>
+          <div>{props.monsterStats.meta.size}</div>
+          <div>{props.monsterStats.meta.type}</div>
+          <div>{props.monsterStats.meta.alignment}</div>
+          <div>{`${props.monsterStats.Challenge.rating} ${props.monsterStats.Challenge.xp} `}</div>
           {props.monsterStats.extraContent ? (
             <div>{props.monsterStats.extraContent.readMore}</div>
           ) : (

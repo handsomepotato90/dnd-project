@@ -217,8 +217,8 @@ const textZone = [
 ];
 
 export default function SubmitHomeBrew() {
-  const {  isLoading, error, sendRequest, clearError } = useHttpClient();
-  const navigate  = useNavigate();
+  const { isLoading, error, sendRequest, clearError } = useHttpClient();
+  const navigate = useNavigate();
   const auth = useContext(LoginContext);
 
   let data = [{}];
@@ -264,31 +264,65 @@ export default function SubmitHomeBrew() {
   const objectReady = (rawObject) => {
     const theObjToSend = { ...rawObject };
     const meta = {
-      meta: `${theObjToSend.meta_size} ${theObjToSend.meta_type}, ${theObjToSend.meta_alignment}`,
+      meta: {
+        size: `${theObjToSend.meta_size}`,
+        type: `${theObjToSend.meta_type}`,
+        alignment: `${theObjToSend.meta_alignment}`,
+      },
     };
     const armorClass = {
-      "Armor Class": `${theObjToSend.armor_class} (${theObjToSend.armor_type})`,
+      "Armor Class": {
+        value:parseInt(theObjToSend.armor_class) ,
+        type: `(${theObjToSend.armor_type})`,
+      },
     };
     const hp = {
-      "Hit Points": `${theObjToSend.avrg_hp} (${theObjToSend.hp_die_count}d${theObjToSend.hp_die_value})`,
+      "Hit Points":{
+        dice: `(${theObjToSend.hp_die_count}d${theObjToSend.hp_die_value})`,
+        hp: parseInt(theObjToSend.avrg_hp),
+      },
     };
     const xp = {
-      Clallenge: `${theObjToSend.Challenge} (${theObjToSend.Xp} Xp)`,
+      Clallenge: { rating: parseInt(theObjToSend.Challenge), xp: `(${theObjToSend.Xp} Xp)` },
     };
 
     const condition = {
-      "Condition Immunities": theObjToSend["Condition Immunities"] ? ([...theObjToSend["Condition Immunities"].split(/[.,#!$%&*;:{}=\-_`~()]/g).filter(elem => elem.trim())]) : null,
+      "Condition Immunities": theObjToSend["Condition Immunities"]
+        ? [
+            ...theObjToSend["Condition Immunities"]
+              .split(/[.,#!$%&*;:{}=\-_`~()]/g)
+              .filter((elem) => elem.trim()),
+          ]
+        : null,
     };
     const damage = {
-      "Damage Immunities": theObjToSend["Damage Immunities"] ? ([...theObjToSend["Damage Immunities"].split(/[.,#!$%&*;:{}=\-_`~()]/g).filter(elem => elem.trim())]) : null,
+      "Damage Immunities": theObjToSend["Damage Immunities"]
+        ? [
+            ...theObjToSend["Damage Immunities"]
+              .split(/[.,#!$%&*;:{}=\-_`~()]/g)
+              .filter((elem) => elem.trim()),
+          ]
+        : null,
     };
     const resist = {
-      "Damage Resistances": theObjToSend["Damage Resistances"] ? ([...theObjToSend["Damage Resistances"].split(/[.,#!$%&*;:{}=\-_`~()]/g).filter(elem => elem.trim())]) :null,
+      "Damage Resistances": theObjToSend["Damage Resistances"]
+        ? [
+            ...theObjToSend["Damage Resistances"]
+              .split(/[.,#!$%&*;:{}=\-_`~()]/g)
+              .filter((elem) => elem.trim()),
+          ]
+        : null,
     };
     const vuln = {
-      "Damage Vulnerabilities": theObjToSend["Damage Vulnerabilities"] ? ([...theObjToSend["Damage Vulnerabilities"].split(/[.,#!$%&*;:{}=\-_`~()]/g).filter(elem => elem.trim())]) : null,
+      "Damage Vulnerabilities": theObjToSend["Damage Vulnerabilities"]
+        ? [
+            ...theObjToSend["Damage Vulnerabilities"]
+              .split(/[.,#!$%&*;:{}=\-_`~()]/g)
+              .filter((elem) => elem.trim()),
+          ]
+        : null,
     };
-    
+
     delete theObjToSend.meta_size;
     delete theObjToSend.meta_type;
     delete theObjToSend.meta_alignment;
@@ -313,7 +347,7 @@ export default function SubmitHomeBrew() {
       ...vuln,
     };
     const submitHandler = async () => {
-      try{
+      try {
         await sendRequest(
           "http://localhost:5000/submit_homebrew",
           "POST",
@@ -325,11 +359,8 @@ export default function SubmitHomeBrew() {
             "Content-Type": "application/json",
           }
         );
-        navigate('/');
-      }catch(err){
-
-      }
-      
+        navigate("/");
+      } catch (err) {}
     };
     if (Object.keys(objForNode).length >= 10) {
       submitHandler();
@@ -343,7 +374,7 @@ export default function SubmitHomeBrew() {
   return (
     <>
       {isLoading && <LoadingSpinner></LoadingSpinner>}
-      {error && <ModalError error={error} onClick= {errorHandler}></ModalError>}
+      {error && <ModalError error={error} onClick={errorHandler}></ModalError>}
       <form onSubmit={formSubmit} id="form">
         <div className={styles.form__style}>
           {fields.map((field, i) => (
