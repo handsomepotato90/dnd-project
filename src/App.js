@@ -40,7 +40,7 @@ function App() {
         <Route path="/build_encounter" element={<BuildEncounter />} />
         <Route path="/submit_homebrew" element={<SubmitHomeBrew />} />
         <Route path="/my_encounters" element={<MyEncounters />} />
-        <Route path="/battle_scr" element={<BattleScreen />} />
+        <Route path="/battle_scr/:id" element={<BattleScreen />} />
       </React.Fragment>
     );
   } else {

@@ -10,8 +10,8 @@ export default function MonsterBattleBox(props) {
   const [isDead, setDead] = useState(false);
   const [isRead, setReading] = useState(false);
 
-  let hp = props.stats["Hit Points"].split(" ");
-  let ac = props.stats["Armor Class"].split(" ");
+  // let hp = props.stats["Hit Points"].split(" ");
+  // let ac = props.stats["Armor Class"].split(" ");
 
   const deathTraker = (state) => {
     setDead(state);
@@ -54,9 +54,9 @@ export default function MonsterBattleBox(props) {
       <div className={styles.stat_battle_box}>
         <div>
           <span className={styles.stat_text__style}>AC:</span>
-          <span className={styles.stat_text__style}>{ac[0]}</span>
+          <span className={styles.stat_text__style}>{props.stats["Armor Class"].value}</span>
         </div>
-        <HealthPool onChange={deathTraker} hp={hp[0]}></HealthPool>
+        <HealthPool onChange={deathTraker} hp={props.stats["Hit Points"].hp}></HealthPool>
         <Initiative></Initiative>
       </div>
     </div>
