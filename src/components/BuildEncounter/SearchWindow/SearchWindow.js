@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Select from "react-select";
 import styles from "./SearchWindow.module.css";
 import InputRange from "react-input-range";
@@ -82,15 +82,7 @@ export default function SearchWindow() {
   const [armor, armorHandler] = useState({ min: 0, max: 50 });
   const [health, healthHandler] = useState({ min: 0, max: 1500 });
   const mxp = useContext(MonsterXp);
-  const [monsterTypes, setMonsterTypeState] = useState({
-    types: [],
-    alignment: [],
-    condition: [],
-    damage: [],
-    legendary: 'Any',
-    resistance: [],
-    vulnerability: [],
-  });
+ 
   const { sendRequest } = useHttpClient();
 
   const newRating = (value) => {
@@ -102,39 +94,42 @@ export default function SearchWindow() {
   const newHealth = (value) => {
     healthHandler({ min: value.value.min, max: value.value.max });
   };
+
   const getType = (event, action) => {
     if (action.name === "legendary") {
-      setMonsterTypeState({ ...monsterTypes, [action.name]: event.value });
+      mxp.setMonsterTypeState({ ...mxp.monsterTypes, [action.name]: event.value });
     } else {
-      monsterTypes[action.name] = [];
+      mxp.monsterTypes[action.name] = [];
       Object.entries(event).forEach(([key, value]) => {
-        monsterTypes[action.name].push(value.value);
+        mxp.monsterTypes[action.name].push(value.value);
       });
-      setMonsterTypeState({
-        ...monsterTypes,
-        [action.name]: [...monsterTypes[action.name]],
+      mxp.setMonsterTypeState({
+        ...mxp.monsterTypes,
+        [action.name]: [...mxp.monsterTypes[action.name]],
       });
     }
   };
-  const searchDb = async () => {
-    try {
-      const resData = await sendRequest(
-        "http://localhost:5000/build_encounter",
-        "POST",
-        JSON.stringify({
-          rating,
-          armor,
-          health,
-          monsterTypes,
-        }),
-        {
-          "Content-Type": "application/json",
-        }
-      );
-      console.log(mxp.monsters);
-      mxp.setMonsters(resData);
-    } catch (err) {}
-  };
+  useEffect(() => {
+    const searchDb = async () => {
+      try {
+        const resData = await sendRequest(
+          "http://localhost:5000/build_encounter",
+          "POST",
+          JSON.stringify({
+            rating,
+            armor,
+            health,
+            monsterTypes:mxp.monsterTypes,
+          }),
+          {
+            "Content-Type": "application/json",
+          }
+        );
+        mxp.setMonsters(resData);
+      } catch (err) {}
+    };
+    searchDb();
+  }, [sendRequest,mxp.monsterTypes, health, armor, rating]);
 
   return (
     <>
@@ -248,10 +243,10 @@ export default function SearchWindow() {
           onChange={(value) => newHealth({ value })}
         />
       </div>
-      <button className={styles.search_btn_style} onClick={searchDb}>
+      {/* <button className={styles.search_btn_style} onClick={searchDb}>
         {" "}
         Apply Search
-      </button>
+      </button> */}
     </>
   );
 }

@@ -16,7 +16,10 @@ export default function MonsterLibrary() {
     };
     fetchMonsters();
   }, [sendRequest]);
-
+  
+const loadMore = () =>{
+  mxp.setMonsterTypeState({...mxp.monsterTypes, limit: mxp.monsterTypes.limit + 10})
+}
   return (
     <>
       {/* <input value="Search"></input> */}
@@ -30,7 +33,7 @@ export default function MonsterLibrary() {
           </button>
         </MainMonsterBox>
       ))}
-      <button className={styles.btn_load_more}>Load More</button>
+      <button className={styles.btn_load_more} onClick={loadMore}>Load More</button>
     </>
   );
 }

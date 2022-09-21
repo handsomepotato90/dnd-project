@@ -7,7 +7,7 @@ import { GroupXpProvider } from "../store/groupXp-context";
 import { MonsterXpProvider } from "../store/monsterXp-context";
 import SearchWindow from "./SearchWindow/SearchWindow";
 import SaveEncounter from "./SaveEncounter/SaveEncounter";
-
+import SearchByName from "./SearchByName/SearchByName"
 export default function BuildEncounter() {
   return (
     <GroupXpProvider>
@@ -17,8 +17,9 @@ export default function BuildEncounter() {
             <SearchWindow></SearchWindow>
           </div>
           <div>
-          <SaveEncounter />
+            <SaveEncounter />
             <PlayerChoice />
+            <SearchByName />
             <div className={styles.library__style}>
               <MonsterLibrary />
             </div>

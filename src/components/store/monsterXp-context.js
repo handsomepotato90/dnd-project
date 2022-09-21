@@ -2,6 +2,8 @@ import React, { useState } from "react";
 
 const MonsterXp = React.createContext({
   monsterBlock: {},
+  monsterTypes:{},
+  setMonsterTypeState:()=>{},
   monsterChallengeLadder: 0,
   selectMonster: () => {},
   DeleteMonster:()=>{},
@@ -10,6 +12,18 @@ const MonsterXp = React.createContext({
 });
 
 export const MonsterXpProvider = (props) => {
+  const [monsterTypes, setMonsterTypeState] = useState({
+    name:'',
+    limit: 10,
+    types: [],
+    alignment: [],
+    condition: [],
+    damage: [],
+    legendary: "Any",
+    resistance: [],
+    vulnerability: [],
+  });
+
   const [monsters, setMonsters] = useState([]);
   const monsterXpSum = (array) => {
     let sum = 0;
@@ -50,6 +64,8 @@ export const MonsterXpProvider = (props) => {
   return (
     <MonsterXp.Provider
       value={{
+        monsterTypes:monsterTypes,
+        setMonsterTypeState:setMonsterTypeState,
         monsterBlock: monsterBlock,
         monsterChallengeLadder: monsterChallengeLadder,
         selectMonster: selectMonster,
