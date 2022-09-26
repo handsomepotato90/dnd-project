@@ -46,9 +46,8 @@
   color: white;
 }
 
-.green {
+.button_style {
   padding: 2rem 0 2rem 0;
-  background-color: #4caf50;
   border: none;
   color: white;
   padding: 15px 32px;
@@ -58,15 +57,12 @@
   font-size: 16px;
   cursor: pointer;
 }
+.green {
+  background-color: #4caf50;
+}
+.grey {
+  background-color: grey;
+}
 .red {
-  padding: 2rem 0 2rem 0;
   background-color: #f44336;
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  cursor: pointer;
 }

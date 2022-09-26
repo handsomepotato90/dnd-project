@@ -10,20 +10,22 @@ export default function MainMonsterBox(props) {
   const cName = "monster_voter_style " + props.className;
 
   const ReadFullText = () => {
-    statusChecker(true)
+    statusChecker(true);
   };
-  const removeModal = (status) =>{
-    statusChecker(status)
-  }
-  console.log(props.monsterStats)
+  const removeModal = (status) => {
+    statusChecker(status);
+  };
+  console.log(props.monsterStats);
   return (
     <>
       <div className={cName}>
         <div className="main_monster__info">
-          {props.monsterStats.extraContent ? (
-            null
-          ) : (
-            <img className="image__style" src={`img/${props.monsterStats.meta.type}.jpg`} alt={props.monsterStats.meta.type} />
+          {props.monsterStats.extraContent ? null : (
+            <img
+              className="image__style"
+              src={`img/${props.monsterStats.meta.type}.jpg`}
+              alt={props.monsterStats.meta.type}
+            />
           )}
           <div>{props.monsterStats.name}</div>
           <div>{props.monsterStats.meta.size}</div>
@@ -43,7 +45,11 @@ export default function MainMonsterBox(props) {
             {props.monsterStats.extraContent ? (
               <div>{props.monsterStats.extraContent.text}</div>
             ) : (
-              <VotinBooth name={props.monsterStats.name} />
+              <VotinBooth
+                votes={props.monsterStats.votes}
+                name={props.monsterStats.name}
+                id={props.monsterStats._id}
+              />
             )}
           </div>
         ) : (
@@ -51,25 +57,54 @@ export default function MainMonsterBox(props) {
         )}
       </div>
       {isClicked ? (
-        <ModalMonsterText onClick={removeModal} monsterStats={props.monsterStats}></ModalMonsterText>
+        <ModalMonsterText
+          onClick={removeModal}
+          monsterStats={props.monsterStats}
+        ></ModalMonsterText>
       ) : null}
     </>
   );
 }
 const VotinBooth = (props) => {
+  const [voteYes, setVoteYes] = useState(props.votes.yes);
+  const [voteNo, setVoteNo] = useState(props.votes.no);
+console.log(voteNo)
+  const checkRemove = (text, id) => {
+    if (text === "Yes") {
+      const votes = voteNo.indexOf(id);
+
+      if (votes > -1) {
+        voteNo.splice(votes, 1);
+        setVoteNo([...voteNo.splice(votes, 1)]);
+      }
+      setVoteYes([...voteYes, id]);
+    } else if (text === "No") {
+      const votes = voteYes.indexOf(id);
+      if (votes > -1) {
+        voteYes.splice(votes, 1);
+        setVoteYes([...voteYes.splice(votes, 1)]);
+      }
+      setVoteNo([...voteNo, id]);
+    }
+  };
+
   return (
     <>
       <Button
-        // onClick={Voting}
+        onClick={checkRemove}
         name={props.name}
-        // voteCount={votesYes}
+        votes={voteYes}
+        number = {voteYes.length}
+        id={props.id}
         text="Yes"
         className="green"
       />
       <Button
-        // onClick={Voting}
+        onClick={checkRemove}
         name={props.name}
-        // voteCount={votesNo}
+        votes={voteNo}
+        number = {voteNo.length}
+        id={props.id}
         text="No"
         className="red"
       />

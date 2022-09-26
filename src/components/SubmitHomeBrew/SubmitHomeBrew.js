@@ -283,7 +283,7 @@ export default function SubmitHomeBrew() {
       },
     };
     const xp = {
-      Clallenge: { rating: parseInt(theObjToSend.Challenge), xp: `(${theObjToSend.Xp} Xp)` },
+      Challenge: { rating: parseInt(theObjToSend.Challenge), xp: `(${theObjToSend.Xp} Xp)` },
     };
 
     const condition = {
@@ -346,6 +346,7 @@ export default function SubmitHomeBrew() {
       ...resist,
       ...vuln,
     };
+    console.log(objForNode)
     const submitHandler = async () => {
       try {
         await sendRequest(

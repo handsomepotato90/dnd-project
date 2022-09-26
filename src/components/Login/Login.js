@@ -12,7 +12,7 @@ import { LoginContext } from "../store/login-context";
 import LoadingSpinner from "../UI/LoadingSpinner";
 import ModalError from "../UI/ModalError";
 import { useHttpClient } from "../hooks/http-hook";
-
+import styles from "./Login.module.css"
 export default function Login() {
   const auth = useContext(LoginContext);
   const [isLogin, setIsLogin] = useState(true);
@@ -96,9 +96,9 @@ export default function Login() {
           onClick={errorHandler}
         ></ModalError>
       )}
-      <NewsBox>
+      <NewsBox className={styles.login_box__style}>
         {isLoading && <LoadingSpinner asOverlay />}
-        <h2>Login Required</h2>
+        <h2 className={styles.text__style}>Login Required</h2>
         <hr />
         <form onSubmit={authSubmitHandler}>
           <Input
@@ -124,7 +124,7 @@ export default function Login() {
             id="password"
             type="password"
             label="Password"
-            errorText="Please enter a valid password"
+            errorText="Password must be at least five(5) characters"
             validators={[VALIDATOR_REQUIRE(), VALIDATOR_MINLENGTH(5)]}
             onInput={inputHandler}
           ></Input>

@@ -1,0 +1,19 @@
+.button__style {
+  width: 65%;
+  cursor: pointer;
+  border: 0;
+  border-radius: 4px;
+  font-weight: 400;
+  margin: 0.5em 6em;
+  padding: 10px 0;
+  box-shadow: 0 0 20px rgba(104, 85, 224, 0.2);
+  transition: 0.4s;
+  color: #DF0000;
+  background-color: rgba(255, 255, 255, 1);
+  border: 1px solid #DF0000;
+}
+button:hover {
+  color: white;
+  box-shadow: 0 0 20px #DF0000;
+  background-color: #DF0000;
+}

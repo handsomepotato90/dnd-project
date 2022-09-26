@@ -1,7 +1,7 @@
 import React, { useReducer, useEffect } from 'react';
 
 import { validate } from '../util/validators';
-// import './Input.css';
+import styles from  './Input.module.css';
 
 const inputReducer = (state, action) => {
   switch (action.type) {
@@ -59,6 +59,7 @@ const Input = props => {
         onChange={changeHandler}
         onBlur={touchHandler}
         value={inputState.value}
+        className={styles.question}
       />
     ) : (
       <textarea
@@ -67,17 +68,15 @@ const Input = props => {
         onChange={changeHandler}
         onBlur={touchHandler}
         value={inputState.value}
+        className={styles.question}
       />
     );
 
   return (
-    <div
-      className={`form-control ${!inputState.isValid && inputState.isTouched &&
-        'form-control--invalid'}`}
-    >
+    <div>
       <label htmlFor={props.id}>{props.label}</label>
       {element}
-      {!inputState.isValid && inputState.isTouched && <p>{props.errorText}</p>}
+      {!inputState.isValid && inputState.isTouched && <p className={styles.error__style}>{props.errorText}</p>}
     </div>
   );
 };

@@ -52,7 +52,7 @@ function App() {
     >
       <div className="box_divider">
         <Navigation />
-        <div>
+
           {onscreen === true ? (
             <>
               <Calculator />
@@ -65,7 +65,6 @@ function App() {
           <Routes>
             {routes}
           </Routes>
-        </div>
       </div>
     </LoginContext.Provider>
   );

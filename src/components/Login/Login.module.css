@@ -1,0 +1,11 @@
+.login_box__style{
+    margin: 0 auto;
+    margin-top: 25vh;
+    background-color:rgba(255, 255, 255, 0.918);
+}
+.text__style{
+    margin: 0 auto;
+    font-weight: 300;
+    font-size: 1.5em;
+    color: #040404;
+}

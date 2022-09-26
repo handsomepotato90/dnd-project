@@ -1,0 +1,27 @@
+.question {
+  width: 90%;
+  padding: 8px 20px;
+  margin: 4px 20px;
+  font-size: 2ch;
+  display: inline-block;
+  border: 1px solid #040404;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+.question:focus {
+  color: black;
+  box-shadow: 0 0 20px #df0000;
+  border-color: #df0000;
+}
+.error__style {
+  font-size: 2ch;
+  color: #df0000;
+  margin: auto;
+  text-align: center;
+}
+label {
+  font-size: 2.2ch;
+  font-weight: 300;
+  margin-left: 2ch;
+  color: #040404;
+}
