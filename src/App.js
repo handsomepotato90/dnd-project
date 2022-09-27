@@ -50,7 +50,6 @@ function App() {
     <LoginContext.Provider
       value={{ isLoggedIn: isLoggedIn,userId:userId, login: login, logout: logout }}
     >
-      <div className="box_divider">
         <Navigation />
 
           {onscreen === true ? (
@@ -65,7 +64,6 @@ function App() {
           <Routes>
             {routes}
           </Routes>
-      </div>
     </LoginContext.Provider>
   );
 }

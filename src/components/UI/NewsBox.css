@@ -2,11 +2,13 @@
   border: 1px solid black;
   color: black;
   filter: grayscale(50%);
+  margin: 0 auto;
 }
 
 .news_box_size {
   width: 30rem;
-  height: auto;
+  min-height: 30%;
+  max-height: 70%;
   padding: 20px;
   border-radius: 5px;
 }

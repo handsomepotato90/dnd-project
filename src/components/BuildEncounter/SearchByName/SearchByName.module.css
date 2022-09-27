@@ -1,0 +1,20 @@
+.search_bar__size {
+  width: 35%;
+  margin-top: 1vh;
+  text-align:center
+}
+.input_size {
+  width: 30ch;
+  margin: 0 auto;
+}
+.search_button {
+  position: absolute;
+  background: transparent;
+  border: none;
+  outline: none;
+  margin-top: 1ch;
+  margin-left: 0.2ch;
+  width: 20px;
+  height: 20px;
+  object-fit: cover;
+}

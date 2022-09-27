@@ -1,17 +1,17 @@
-.question {
+input {
   width: 90%;
   padding: 8px 20px;
   margin: 4px 20px;
   font-size: 2ch;
   display: inline-block;
-  border: 1px solid #040404;
+  border: 1px solid #3c6acc;
   border-radius: 4px;
   box-sizing: border-box;
 }
-.question:focus {
+input:focus {
   color: black;
-  box-shadow: 0 0 20px #df0000;
-  border-color: #df0000;
+  box-shadow: 0 0 20px #3c6acc;
+  border-color: #3c6acc;
 }
 .error__style {
   font-size: 2ch;
@@ -23,5 +23,5 @@ label {
   font-size: 2.2ch;
   font-weight: 300;
   margin-left: 2ch;
-  color: #040404;
+  color: #3c6acc;
 }

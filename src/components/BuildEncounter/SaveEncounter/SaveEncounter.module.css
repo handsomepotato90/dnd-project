@@ -1,6 +1,21 @@
-.main_box__size{
-        width: 80%;
-        height: 8vh;
-        margin: 0 auto;
-        margin-top: 1vh;
+.main_box__size {
+  width: 70%;
+  height: 8vh;
+  margin: 0 auto;
+  margin-top: 2vh;
+}
+.input_style {
+  width: 40%;
+  margin-left: 25%;
+}
+.button_style {
+  background-color: #4caf50;
+  border: none;
+  color: white;
+  padding: 1ch 2ch;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-left: 1ch;
 }

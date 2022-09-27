@@ -105,7 +105,8 @@ export default function Login() {
             element="input"
             id="u_name"
             type="text"
-            label="Username"
+            label="Username:"
+            errorText="*Username must be at least five(5) characters"
             validators={[VALIDATOR_REQUIRE(), VALIDATOR_MINLENGTH(5)]}
             onInput={inputHandler}
           ></Input>
@@ -114,7 +115,7 @@ export default function Login() {
               element="input"
               id="email"
               type="email"
-              label="E-Mail"
+              label="E-Mail:"
               validators={[VALIDATOR_EMAIL(), VALIDATOR_REQUIRE()]}
               onInput={inputHandler}
             ></Input>
@@ -123,8 +124,8 @@ export default function Login() {
             element="input"
             id="password"
             type="password"
-            label="Password"
-            errorText="Password must be at least five(5) characters"
+            label="Password:"
+            errorText="*Password must be at least five(5) characters"
             validators={[VALIDATOR_REQUIRE(), VALIDATOR_MINLENGTH(5)]}
             onInput={inputHandler}
           ></Input>

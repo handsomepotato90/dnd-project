@@ -54,8 +54,8 @@ export default function SaveEncounter() {
       {submited && <ModalSubmitSucces onClick ={removeModal}></ModalSubmitSucces>}
 
       <div className={styles.main_box__size}>
-        <input type="text" onChange={enteringTitle}></input>
-        <button type="submit" onClick={submitToDb}>
+        <input className={styles.input_style} type="text" onChange={enteringTitle}></input>
+        <button className={styles.button_style} type="submit" onClick={submitToDb}>
           {" "}
           Save Encounter
         </button>
