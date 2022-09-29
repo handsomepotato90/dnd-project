@@ -13,9 +13,7 @@ export default function BuildEncounter() {
     <GroupXpProvider>
       <MonsterXpProvider>
         <div className={styles.flex_box__style}>
-          <div className={styles.serch_box__style}>
             <SearchWindow></SearchWindow>
-          </div>
           <div>
             <SaveEncounter />
             <PlayerChoice />

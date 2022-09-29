@@ -1,6 +1,6 @@
 .summary_general__style{
-    width: 24.5rem;
-    height: 100%;
+    width: 24rem;
+    min-height: 100%;
     background-color:  #fff;
     display: flex;
     flex-direction: column;

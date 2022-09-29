@@ -9,3 +9,11 @@ html, body, #root {
 body{
   background-color: #ebf1f5;
 }
+
+.button{
+  cursor: pointer;
+}
+.button:hover {
+  background-color: #4caf50;
+  box-shadow: 0 0 20px #4caf50;
+}

@@ -1,7 +1,7 @@
 import React from "react";
 
 
-import styles from "./mainstyling.module.css"
+import styles from "../mainstyling.module.css"
 
 
 export default function NameAndAlignment (props){

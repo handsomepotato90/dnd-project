@@ -400,7 +400,7 @@ export default function SubmitHomeBrew() {
           ))}
         </div>
 
-        <button className={styles.submit_btn__style} type="submit">
+        <button className={`${styles.submit_btn__style} button`} type="submit">
           {" "}
           Submit
         </button>

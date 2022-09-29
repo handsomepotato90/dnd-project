@@ -55,7 +55,7 @@ export default function SaveEncounter() {
 
       <div className={styles.main_box__size}>
         <input className={styles.input_style} type="text" onChange={enteringTitle}></input>
-        <button className={styles.button_style} type="submit" onClick={submitToDb}>
+        <button className={`${styles.button_style} button`} type="submit" onClick={submitToDb}>
           {" "}
           Save Encounter
         </button>

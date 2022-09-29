@@ -2,13 +2,20 @@
   background-color: rgb(161, 161, 161);
   border: none;
   color: white;
-  padding: 0.8rem 1.6rem;
+  padding: 1ch 2ch;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 20px;
   margin-left: 2rem;
   cursor: pointer;
+  box-shadow: 0 0 10px rgb(161, 161, 161);
+
+}
+.btn_add__style:hover{
+  color: white;
+  background-color: rgb(161, 161, 161);
+  box-shadow: 0 0 20px rgb(161, 161, 161);
 }
 .btn_load_more {
   background-color: whitesmoke;

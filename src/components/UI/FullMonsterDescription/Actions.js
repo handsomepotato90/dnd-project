@@ -1,20 +1,11 @@
 import React from "react";
-import { stripHtml, workebleObject } from "./functions";
-
+import styles from "./mainstyling.module.css"
 export default function Actions(props) {
-
-  const actions = workebleObject(props.actions);
-
-  
   return (
     <React.Fragment>
-      <div>ACTIONS</div>
-      {actions.map((action, i) => (
-        <div key={i}>
-          <div >{stripHtml(action.trait)}</div>
-          <div >{stripHtml(action.text)}</div>
-        </div>
-      ))}
+      <div className={styles.action__styles}>{props.name}</div>
+      <hr />
+      <div className={styles.action_text__styles} dangerouslySetInnerHTML={{ __html: props.actions }}></div>
     </React.Fragment>
   );
 }

@@ -2,10 +2,9 @@ import React, { useState } from "react";
 import ModalMonsterText from "../UI/ModalMonsterText";
 import "./MainMonsterBox.css";
 import Button from "./Button";
-// import {aberration} from "../../icons/aberration.jpg"
+
 export default function MainMonsterBox(props) {
   const [isClicked, statusChecker] = useState(false);
-  // const [clickebleText, textChanger] = useState("Read More");
 
   const cName = "monster_voter_style " + props.className;
 
@@ -15,7 +14,6 @@ export default function MainMonsterBox(props) {
   const removeModal = (status) => {
     statusChecker(status);
   };
-  console.log(props.monsterStats);
   return (
     <>
       <div className={cName}>
@@ -68,21 +66,24 @@ export default function MainMonsterBox(props) {
 const VotinBooth = (props) => {
   const [voteYes, setVoteYes] = useState(props.votes.yes);
   const [voteNo, setVoteNo] = useState(props.votes.no);
-console.log(voteNo)
   const checkRemove = (text, id) => {
     if (text === "Yes") {
+    
       const votes = voteNo.indexOf(id);
 
       if (votes > -1) {
-        voteNo.splice(votes, 1);
-        setVoteNo([...voteNo.splice(votes, 1)]);
+       voteNo.splice(votes, 1);
+        setVoteNo([...voteNo]);
       }
+
+
       setVoteYes([...voteYes, id]);
     } else if (text === "No") {
       const votes = voteYes.indexOf(id);
       if (votes > -1) {
         voteYes.splice(votes, 1);
-        setVoteYes([...voteYes.splice(votes, 1)]);
+        setVoteYes([...voteYes]);
+;
       }
       setVoteNo([...voteNo, id]);
     }
@@ -94,7 +95,7 @@ console.log(voteNo)
         onClick={checkRemove}
         name={props.name}
         votes={voteYes}
-        number = {voteYes.length}
+        number={voteYes.length}
         id={props.id}
         text="Yes"
         className="green"
@@ -103,7 +104,7 @@ console.log(voteNo)
         onClick={checkRemove}
         name={props.name}
         votes={voteNo}
-        number = {voteNo.length}
+        number={voteNo.length}
         id={props.id}
         text="No"
         className="red"

@@ -13,18 +13,16 @@
   background-color: rgb(238, 235, 231);
 }
 .first_half {
-  width: 50%;
+  width: 37%;
 }
 .second_half {
-  width: 50%;
+  width: 37%;
 }
-.second_half>img{
-height: 10rem;
-width: 5rem;
+.image_half {
+  width: 25%;
 }
-.picture_divide{
-  display: flex;
-  flex-direction: row;
+.image_half > img {
+  width: 90%;
 }
 .life_stiling {
   display: flex;
@@ -37,9 +35,7 @@ width: 5rem;
 }
 .leader {
   padding: 0.5rem;
-  font-weight: bold;
   font-size: 16px;
-  color: firebrick;
 }
 .numbers {
   padding: 0.5rem;
@@ -54,7 +50,6 @@ width: 5rem;
 }
 .name_styling {
   font-size: 28px;
-  font-weight: bold;
 }
 .table__styling {
   display: flex;
@@ -66,25 +61,30 @@ width: 5rem;
   display: flex;
   flex-direction: column;
   text-align: center;
-  color: firebrick;
   padding: 1rem;
 }
-.table__boxes > div:first-child {
-  font-weight: bold;
+.skills_style {
+  padding-right: 1rem;
 }
-.skills_style{
-    color: firebrick;
-    font-weight: bold;
-    padding-right: 1rem;
+.skills_style,
+.table__boxes,
+.name_box,
+.leader,
+.action__styles {
+  font-family: Georgia, "Times New Roman", serif;
+  color: #6d0000;
+  font-weight: 600;
 }
-.tait_style{
-    display: flex;
-    flex-direction: column;
-    padding-left: 3rem;
-    padding-top: 0.5rem;;
+.action__styles {
+  font-size: 24px;
+  margin-left: 3ch;
 }
-.tait_style>div:first-child{
-    
-    color: firebrick;
-    font-weight: bold;
+.action_text__styles{
+  width: 85%;
+  margin: auto;
+}
+hr {
+  border-top: 2px solid #6d0000;
+  width: 90%;
+  margin: 0 auto;
 }

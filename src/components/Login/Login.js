@@ -80,6 +80,7 @@ export default function Login() {
             "Content-Type": "application/json",
           }
         );
+        
         auth.login(resData.user.id);
       } catch (err) {}
     }

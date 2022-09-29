@@ -38,12 +38,21 @@
   text-align: center;
 }
 .read_button__style {
-  background-color: rgb(255, 53, 3);
-  border: 1px solid black;
+  padding: 1ch 0 1ch 0;
+  display: inline-block;
+  font-size: 16px;
+  border: none;
+  font-weight: 400;
+  background-color: #f44336;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
   border-radius: 4px;
   text-align: center;
-  padding: 0.2rem;
   color: white;
+}
+.read_button__style:hover{
+  color: white;
+  box-shadow: 0 0 20px #f44336;
+
 }
 
 .button_style {
@@ -60,9 +69,18 @@
 .green {
   background-color: #4caf50;
 }
-.grey {
-  background-color: grey;
+.green:hover {
+  background-color: #4caf50;
+  box-shadow: 0 0 20px #4caf50;
 }
+.grey {
+  background-color: rgba(128, 128, 128, 0.308);
+}
+
 .red {
   background-color: #f44336;
+}
+.red:hover{
+  background-color: #f44336;
+  box-shadow: 0 0 20px #f44336;
 }
