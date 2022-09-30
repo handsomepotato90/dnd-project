@@ -26,7 +26,6 @@ export default function MyEncounters() {
     };
     fetchMonsters();
   }, [sendRequest,login.userId]);
-console.log(encounters)
   return (
     <div className={styles.my_encounters__style}>
       {encounters.map((encounter, i) => (

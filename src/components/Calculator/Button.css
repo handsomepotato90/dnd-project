@@ -1,12 +1,15 @@
 .calc_button__size {
-        /* text-align: center; */
-        /* padding: 2rem; */
-        height: 6rem;
-        width: 6rem;
-        background-color: white;
-        border-radius: 50%;
-        display: inline-block;
+  height: 8vh;
+  background-color: #263139;
+  color: white;
+  border: none;
+  border: 1px solid #334a5a;
+  display: inline-block;
 }
-.calc_button__font_size{
-        font-size: 1.5rem;
+.calc_button__font_size {
+  font-size: 2ch;
+}
+.calc_button__size:hover {
+  background-color: #334a5a;
+  cursor: pointer;
 }

@@ -1,14 +1,15 @@
-.box_bcc__color{
-        border: 1px solid black;
-        color: black;
-        
+.box_bcc__color {
+  border: 1px solid black;
+  color: black;
 }
 
-
-.box_size{
-        position: absolute;
-        width: 20rem;
-        height: 35rem;
-        padding:20px;
-        border-radius: 5px;
+.box_size {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  position: absolute;
+  width: 15%;
+  min-height: 40%;
+  border-radius: 5px;
+  border: none;
 }

@@ -12,46 +12,44 @@ export default function Home() {
     {
       url: imageOne,
       text: "Vote on new",
-      redirect: '/voting',
+      redirect: "/voting",
       description:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
     },
     {
       url: imageTwo,
       text: "Create new Homebrew",
-      redirect: '/submit_homebrew',
+      redirect: "/submit_homebrew",
       description: "something for describing",
     },
     {
       url: imageThree,
       text: "Encounter Creator",
-      redirect: '/build_encounter',
+      redirect: "/build_encounter",
       description: "something for describing",
     },
     {
       url: imageFour,
       text: "Coming soon...",
-      redirect: '/',
+      redirect: "/",
       description: "something for describing",
     },
   ];
-  
 
   return (
     <div className="center_element">
       <div className="box_grid">
         {NewsFiller.map((news, i) => (
           <NewsBox
-              key={i}
-              className="place_holder_bcc"
-              text={news.description}
-              image={news.url}
-              url={news.redirect}
-            >
-              {" "}
-              <h1>{news.text}</h1>
-              </NewsBox>
-
+            key={i}
+            className="place_holder_bcc"
+            text={news.description}
+            image={news.url}
+            url={news.redirect}
+          >
+            {" "}
+            <h1>{news.text}</h1>
+          </NewsBox>
         ))}
       </div>
     </div>

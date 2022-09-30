@@ -1,13 +1,16 @@
 .text_area__size {
   width: 100%;
-  height: 50%;
+  height: 70%;
   resize: none;
   font-size: 20px;
-  
+  border-radius: 5px;
+  background-color: #8a8f92;
+  color: white;
+  border: none;
 }
 
 .die_sum__size {
-  height: 50%;
+  height: 30%;
   width: 100%;
 }
 .die_style__text {
@@ -15,6 +18,6 @@
   color: white;
   font-size: 30px;
 }
-.calc_box__style_size{
-        height: 8rem;
+.calc_box__style_size {
+  height: 15.5vh;
 }

@@ -13,7 +13,7 @@ export default function NewsBox(props) {
   }
 
   const redirectToDesiredPage = () =>{
-    navigate(props.url)
+   {props.image && navigate(props.url)}
   }
   return (
     <div className={cNames} style={style} onClick={redirectToDesiredPage} onMouseEnter={() => setIsShown(true)} onMouseLeave={() => setIsShown(false)}>

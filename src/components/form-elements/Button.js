@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import './Button.css';
 
 const Button = props => {
+ const cName = "button__style " + props.className;
   if (props.href) {
     return (
       <a>
@@ -23,7 +24,7 @@ const Button = props => {
   }
   return (
     <button
-      className='button__style'
+      className={cName}
       type={props.type}
       onClick={props.onClick}
       disabled={props.disabled}
