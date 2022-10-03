@@ -10,7 +10,7 @@ const Calculator = () => {
   const [calc, setCalc] = useState({
     sym: "",
     number: "",
-    sum: "",
+    sum: 0,
   });
   const performCalculation = (sym, number, result) => {
     let final;
@@ -27,14 +27,7 @@ const Calculator = () => {
     if (diceResults!== 0 && !mode) {
       setResult([...result, diceResults]);
 
-
-      //////////////////////////////this needs  work!!!!!!!!!!
-      let element = 0;
-     for (let index = 0; index < result.length; index++) {
-       element = element + result[index]*1;
-     }
-      setCalc({ ...calc, sum:element });
-      /////////////////////////////////////////////////////////
+      setCalc({ ...calc, sum: (calc.sum*1) + (diceResults*1) });
     } else if (diceResults !== 0 && mode) {
       if (diceResults === "+" || diceResults === "-") {
         setCalc({
@@ -49,11 +42,16 @@ const Calculator = () => {
         });
       } else {
         calc.sum === "" || calc.sym === ""
-          ? setCalc({ ...calc, sum: calc.sum + diceResults })
+          ? setCalc({ ...calc, sum: calc.sum + (diceResults*1) })
           : setCalc({ ...calc, number: calc.number + diceResults });
       }
     } else {
       setResult([]);
+      setCalc({
+        sym: "",
+        number: "",
+        sum: 0,
+      })
     }
   };
   console.log(calc);

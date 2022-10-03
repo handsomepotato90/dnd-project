@@ -49,7 +49,7 @@ const CalcButtons = (props) => {
       ))}
       <Button className="style" inverse onClick={switchCalculator}>
         {" "}
-        SWITCH TO {mode ? "Dice" : "Calc"}
+         {mode ? "Dice" : "Calculator"}
       </Button>
     </Box>
   );
