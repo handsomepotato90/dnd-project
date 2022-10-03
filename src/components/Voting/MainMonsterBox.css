@@ -13,7 +13,7 @@
   margin-bottom: 0.5rem;
 }
 
-.image__style{
+.image__style {
   margin-left: 0;
   float: left;
 }
@@ -49,10 +49,9 @@
   text-align: center;
   color: white;
 }
-.read_button__style:hover{
+.read_button__style:hover {
   color: white;
   box-shadow: 0 0 20px #f44336;
-
 }
 
 .button_style {
@@ -80,7 +79,35 @@
 .red {
   background-color: #f44336;
 }
-.red:hover{
+.red:hover {
   background-color: #f44336;
   box-shadow: 0 0 20px #f44336;
+}
+@media only screen and (max-width: 1400px) {
+  .monster_voter_style {
+    width: 100%;
+  }
+  .button_style {
+    font-size: 14px;
+    padding: 10px 20px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  
+  .monster_voter_style {
+    width: 100%;
+  }
+  .button_style,.read_button__style {
+    font-size: 14px;
+    padding: 5px 8px;
+  }
+  .main_monster__info{
+    font-size: 14px;
+  }
+  .main_monster__info > div {
+    min-width: 25%;
+  }
+  .voting_booth{
+    width: 30%;
+  }
 }

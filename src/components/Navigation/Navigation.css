@@ -5,7 +5,7 @@
 
 .nav__size {
   height: 5rem;
-  width: 100vw;
+  width:auto;
 }
 .nav__bcc {
   background-color: black;
@@ -38,7 +38,6 @@ nav {
   text-align: center;
   color: #df0000;
   font-size: 2ch;
-  font-weight: 400;
   width: 100%;
   padding: 1ch;
   border: 1px solid #df0000;
@@ -49,4 +48,41 @@ nav {
   color: black;
   border: 1px solid black;
   background-color: #df0000;
+}
+
+
+@media only screen and (max-width:1400px) {
+  .nav {
+    display: grid;
+    grid-template-columns: 10% 90%;
+  }
+  .logo__size {
+    width: 35%;
+  }
+  .link_style> a{
+    width: 12vw;
+    padding: 0.5ch 0;
+    font-size: 1.5ch;
+  }
+  .nav_links {
+    justify-content:right
+  }
+}
+
+@media only screen and (max-width:600px) {
+  .nav {
+    display: grid;
+    grid-template-columns: 5% 95%;
+  }
+  .logo__size {
+    width: 55%;
+  }
+  .link_style> a{
+    width: 15vw;
+    padding: 0.5ch 0;
+    font-size: 1.3ch;
+  }
+  .nav_links {
+    justify-content:right
+  }
 }

@@ -47,11 +47,11 @@ export default function SaveEncounter() {
   };
   const removeModal = () =>{
     setSubmited(false)
-    navigate("/");
+    navigate("/my_encounters");
   }
   return (
     <>
-      {submited && <ModalSubmitSucces onClick ={removeModal}></ModalSubmitSucces>}
+      {submited && <ModalSubmitSucces title="Successful submission!" text ="Your Encounter has been saved!" onClick ={removeModal}></ModalSubmitSucces>}
 
       <div className={styles.main_box__size}>
         <input className={styles.input_style} type="text" onChange={enteringTitle}></input>

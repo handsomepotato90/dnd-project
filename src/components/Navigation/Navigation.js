@@ -14,7 +14,7 @@ const Navigation = () => {
       <ul className="nav_links">
         {auth.isLoggedIn && <CustomLink to="/voting">Voting</CustomLink>}
         {auth.isLoggedIn && <CustomLink to="/build_encounter">Build Encounter</CustomLink>}
-        {auth.isLoggedIn && <CustomLink to="/submit_homebrew">Submit HomeBrew</CustomLink>}
+        {auth.isLoggedIn && <CustomLink to="/submit_homebrew">HomeBrew</CustomLink>}
         {auth.isLoggedIn && <CustomLink to="/my_encounters">My Encounters</CustomLink>}
         {auth.isLoggedIn && <CustomLink to="/" onClick={auth.logout}>Logout</CustomLink>}
 

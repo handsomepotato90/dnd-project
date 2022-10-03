@@ -2,10 +2,13 @@ import React, { useState } from "react";
 import ModalMonsterText from "../UI/ModalMonsterText";
 import "./MainMonsterBox.css";
 import Button from "./Button";
+import useWindowSize from "../hooks/screensize-hook";
 
 export default function MainMonsterBox(props) {
   const [isClicked, statusChecker] = useState(false);
 
+  const size = useWindowSize();
+  console.log(size.width)
   const cName = "monster_voter_style " + props.className;
 
   const ReadFullText = () => {
@@ -26,10 +29,12 @@ export default function MainMonsterBox(props) {
             />
           )}
           <div>{props.monsterStats.name}</div>
-          <div>{props.monsterStats.meta.size}</div>
-          <div>{props.monsterStats.meta.type}</div>
-          <div>{props.monsterStats.meta.alignment}</div>
-          <div>{`${props.monsterStats.Challenge.rating} ${props.monsterStats.Challenge.xp} `}</div>
+          {size.width > 600 && <div>{props.monsterStats.meta.size}</div>}
+          {size.width > 600 && <div>{props.monsterStats.meta.type}</div>}
+          {size.width > 600 && <div>{props.monsterStats.meta.alignment}</div>}
+          {size.width > 600 && (
+            <div>{`${props.monsterStats.Challenge.rating} ${props.monsterStats.Challenge.xp} `}</div>
+          )}
           {props.monsterStats.extraContent ? (
             <div>{props.monsterStats.extraContent.readMore}</div>
           ) : (
@@ -68,14 +73,12 @@ const VotinBooth = (props) => {
   const [voteNo, setVoteNo] = useState(props.votes.no);
   const checkRemove = (text, id) => {
     if (text === "Yes") {
-    
       const votes = voteNo.indexOf(id);
 
       if (votes > -1) {
-       voteNo.splice(votes, 1);
+        voteNo.splice(votes, 1);
         setVoteNo([...voteNo]);
       }
-
 
       setVoteYes([...voteYes, id]);
     } else if (text === "No") {
@@ -83,7 +86,6 @@ const VotinBooth = (props) => {
       if (votes > -1) {
         voteYes.splice(votes, 1);
         setVoteYes([...voteYes]);
-;
       }
       setVoteNo([...voteNo, id]);
     }

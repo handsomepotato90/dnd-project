@@ -1,17 +1,19 @@
-
-html, body, #root {
+body,
+#root {
   height: 100%;
-  top:0px;
-  right:0px;
-  bottom:0px;
-  left:0px;
-      }
-body{
+  min-height: 100vh;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+}
+body {
   background-color: #ebf1f5;
 }
 
-.button{
+.button {
   cursor: pointer;
+  border: none;
 }
 .button:hover {
   background-color: #4caf50;

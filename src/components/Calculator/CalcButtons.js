@@ -39,11 +39,12 @@ const CalcButtons = (props) => {
         mode ? "calc__style" : "dice__style"
       }`}
     >
-      {buttons.flat().map((button) => (
+      {buttons.flat().map((button,i) => (
         <DiceButton
           onTrytoRoll={returningValue}
-          key={button.id}
+          // key={button.id}
           buttonText={button}
+          key={i}
           mode={mode}
         />
       ))}
