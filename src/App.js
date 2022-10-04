@@ -22,14 +22,13 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userId, setUserId] = useState(false);
 
-
   const login = useCallback((uid) => {
     setIsLoggedIn(true);
-    setUserId(uid)
+    setUserId(uid);
   }, []);
   const logout = useCallback(() => {
     setIsLoggedIn(false);
-    setUserId(null)
+    setUserId(null);
   }, []);
   let routes;
   if (isLoggedIn) {
@@ -44,26 +43,28 @@ function App() {
       </React.Fragment>
     );
   } else {
-    routes = (<Route path="/" element={<Login />} />);
+    routes = <Route path="/" element={<Login />} />;
   }
   return (
     <LoginContext.Provider
-      value={{ isLoggedIn: isLoggedIn,userId:userId, login: login, logout: logout }}
+      value={{
+        isLoggedIn: isLoggedIn,
+        userId: userId,
+        login: login,
+        logout: logout,
+      }}
     >
-        <Navigation />
+      <Navigation />
 
-          {onscreen === true ? (
-            <>
-              <Calculator />
-              <Hide onHide={calcStatusCheck} />
-            </>
-          ) : (
-            isLoggedIn && <Show onShow={calcStatusCheck} />
-          )}
+      {onscreen === true ? (
+        <Calculator>
+          <Hide onHide={calcStatusCheck} />
+        </Calculator>
+      ) : (
+        isLoggedIn && <Show onShow={calcStatusCheck} />
+      )}
 
-          <Routes>
-            {routes}
-          </Routes>
+      <Routes>{routes}</Routes>
     </LoginContext.Provider>
   );
 }

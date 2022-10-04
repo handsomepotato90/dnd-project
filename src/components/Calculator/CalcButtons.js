@@ -3,6 +3,7 @@ import Box from "../UI/Box";
 import DiceButton from "./DiceButton";
 import Button from "../form-elements/Button";
 import "./CalcButtons.css";
+
 const values = [
   ["d4",'d6',"d8"],
   ["d10","d12","d20"],

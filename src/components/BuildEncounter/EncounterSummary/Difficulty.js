@@ -4,10 +4,12 @@ import "./DifficultyBar.css";
 import GroupXp from "../../store/groupXp-context";
 import MonsterXp from "../../store/monsterXp-context";
 import DifficultyBar from "./DifficultyBar";
+import useWindowSize from "../../hooks/screensize-hook";
 
 export default function Difficulty() {
   let ctx = useContext(GroupXp);
   let mxp = useContext(MonsterXp);
+  const size = useWindowSize();
   let difficultiText = "None";
   let diff = "";
   let color = "";
@@ -47,11 +49,11 @@ export default function Difficulty() {
 
   return (
     <div className={styles.difficulty_box__style}>
-      <div className={styles.main_text__style}>
+    {size.width > 700 &&  <div className={styles.main_text__style}>
         <span>ENCOUNTER SUMMARY</span>
-      </div>
+      </div>}
       <div className={styles.xp_box__style}>
-        <div>
+      {size.width > 700 &&   <div>
           <span
             className={`${styles.titles__styles} ${styles.monster_xp__style}`}
           >
@@ -69,35 +71,46 @@ export default function Difficulty() {
           <span className={styles.content__styles}>
             {mxp.monsterChallengeLadder} XP
           </span>
-        </div>
+        </div>}
 
         <div>
-          <span className={styles.titles__styles}>
+        {size.width > 700 &&<span className={styles.titles__styles}>
             EASY:
             <span className={styles.content__styles}>
               {ctx.theChallengeLadder.easy} XP
             </span>
-          </span>
-          <span className={styles.titles__styles}>
-            MEDIUM:
-            <span className={styles.content__styles}>
-              {ctx.theChallengeLadder.medium} XP
+          </span>}
+          {size.width > 700 && (
+            <span className={styles.titles__styles}>
+              MEDIUM:
+              <span className={styles.content__styles}>
+                {ctx.theChallengeLadder.medium} XP
+              </span>
             </span>
-          </span>
-          <span className={styles.titles__styles}>
-            HARD:
-            <span className={styles.content__styles}>
-              {ctx.theChallengeLadder.hard} XP
+          )}
+          {size.width > 700 && (
+            <span className={styles.titles__styles}>
+              HARD:
+              <span className={styles.content__styles}>
+                {ctx.theChallengeLadder.hard} XP
+              </span>
             </span>
-          </span>
-          <span className={styles.titles__styles}>
-            DEADLY:
-            <span className={styles.content__styles}>
-              {ctx.theChallengeLadder.deadly} XP
+          )}
+          {size.width > 700 && (
+            <span className={styles.titles__styles}>
+              DEADLY:
+              <span className={styles.content__styles}>
+                {ctx.theChallengeLadder.deadly} XP
+              </span>
             </span>
-          </span>
+          )}
         </div>
       </div>
+      {size.width < 700 && (
+        <p className={styles.paragraph__style}>
+          {difficultiText}: {mxp.monsterChallengeLadder}XP
+        </p>
+      )}
       <DifficultyBar className={diff}></DifficultyBar>
     </div>
   );

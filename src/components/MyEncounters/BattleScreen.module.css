@@ -102,8 +102,8 @@
   height: 3.5vh;
 }
 .death_modal_text___style {
-  z-index: 11;
-  font-size: 52px;
+  z-index: 1;
+  font-size: 6ch;
   color: #f44336;
   margin: 0 auto;
   font-weight: bold;
@@ -121,4 +121,50 @@
 .delete_btn__style:hover, .subtract:hover{
   background-color: #f44336;
   box-shadow: 0 0 20px #f44336;
+}
+@media only screen and (max-width: 1400px) {
+  .encounter_box__style {
+    width: 35vw;
+    height: 35vh;
+    background-color: white;
+    text-decoration: none;
+    text-align: center;
+  }
+  .encounter_name__style {
+    width: 35vw;
+    font-size: 2.5ch;
+    margin-left: -17.5vw;
+  }
+  .modal__style {
+    width: 35vw;
+    height: 35vh;
+  }
+  .death_modal_text___style {
+    margin-top: 5rem;
+    font-size:6ch;
+  }
+
+}
+@media only screen and (max-width: 600px) {
+  .encounter_box__style {
+    width: 50vw;
+    height: 25vh;
+    background-color: white;
+    text-decoration: none;
+    text-align: center;
+  }
+  .encounter_name__style {
+    width: 50vw;
+    font-size: 2.5ch;
+    color: #000;
+    margin-left: -25vw;
+  }
+  .modal__style {
+    width: 50vw;
+    height: 25vh;
+  }
+  .death_modal_text___style {
+    margin-top: 8vh;
+    font-size:4ch;
+  }
 }

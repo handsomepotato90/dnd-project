@@ -13,3 +13,8 @@
   background-color: #334a5a;
   cursor: pointer;
 }
+@media only screen and (max-width: 1400px) {
+}
+@media only screen and (max-width: 600px) {
+
+}

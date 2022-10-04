@@ -21,3 +21,11 @@
 .calc_box__style_size {
   height: 15.5vh;
 }
+@media only screen and (max-width: 1400px) {
+}
+@media only screen and (max-width: 600px) {
+ .calc_box__style_size {
+  height: 20vh;
+}
+
+}

@@ -7,7 +7,7 @@
 }
 .serch_box__style{
   min-height:100%;
-  width: 35vmin;
+  width: 100%;
   margin-left: 3vw;
   background-color: white;
   display: flex;
@@ -33,4 +33,17 @@
   font-size: 16px;
   margin: 0 auto;
   margin-top: 2rem;
+}
+@media only screen and (max-width: 600px) {
+
+}
+@media only screen and (max-width: 1400px) {
+  .text__style {
+    font-weight: 400;
+    font-size: 14px;
+    margin: auto;
+  }
+  .search_bar__stayle {
+    font-size: 12px;
+  }
 }

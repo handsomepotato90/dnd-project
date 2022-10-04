@@ -1,6 +1,6 @@
 .box_player__style {
   margin-top: 0.5rem;
-  width: 10rem;
+  width: 8vw;
   background-color: #585757;
   color: white;
   border-radius: 0.2rem;
@@ -20,13 +20,26 @@
   text-align: center;
   text-decoration: none;
   display: inline-block;
+  width: auto;
   font-size: 18px;
 }
 .news_box__stayel{
-  height: 10rem;
+  height: 11rem;
   display: flex;
+  padding: 1vmin;
   flex-direction: column;
   flex-wrap: wrap;
   overflow: auto;
 
+}
+@media only screen and (max-width: 600px) {
+    .box_player__style {
+      width:35vw;
+      color: white;
+      font-size: 16px;
+    }
+    .news_box__stayel{
+      height: 18vh;
+      padding: 1vmin;
+    }
 }

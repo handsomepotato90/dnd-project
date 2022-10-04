@@ -7,3 +7,16 @@
   background-color: #8a8f92;
   box-shadow: 5px 5px #88888862;
 }
+
+@media only screen and (max-width: 900px) {
+  .big_box__top_margin {
+    margin-top: 20%;
+    width:30%;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .big_box__top_margin {
+    margin-top: 37%;
+    width:50%;
+  }
+}

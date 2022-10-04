@@ -1,41 +1,70 @@
-.difficulty_box__style{
-    height: 15rem;
-    background-color: #fff;
-    display: flex;
-    flex-direction: column;
+.difficulty_box__style {
+  height: 30%;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
 }
-.main_text__style{
-    text-align: center;
-    font-size: 22px;
-    font-weight: bold;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    
+.main_text__style {
+  text-align: center;
+  font-size: 3ch;
+  font-weight: bold;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
-.xp_box__style{
-    display: flex;
-    flex-direction: row;
+.xp_box__style {
+  display: flex;
+  flex-direction: row;
 }
-.xp_box__style >div{
-    display: flex;
-    flex-direction: column;
-    width: 50%;
+.xp_box__style > div {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
 }
 
-.titles__styles{
-    align-self:flex-end;
-    font-size: 16px;
-    margin-right: 2rem;
-    font-weight: bold;
-    color: grey;
+.titles__styles {
+  align-self: flex-end;
+  font-size: 1.5ch;
+  margin-right: 1rem;
+  font-weight: bold;
+  color: grey;
 }
-.monster_xp__style{
-    align-self: flex-start;
-    margin-left: 1rem;
+.monster_xp__style {
+  align-self: flex-start;
+  margin-left: 1rem;
 }
-.content__styles{
-    font-size: 15px;
-    font-weight: bold;
-    color: black;
-    margin-left: 1rem;
+.content__styles {
+  font-size: 2ch;
+  font-weight: bold;
+  color: black;
+  margin-left: 1rem;
 }
+
+@media only screen and (max-width: 1400px) {
+  .difficulty_box__style {
+    height: 25%;
+  }
+  .main_text__style {
+    font-size: 18px;
+  }
+  .titles__styles {
+    font-size: 12px;
+    margin-left: 0;
+  }
+  .content__styles {
+    font-size: 12px;
+    margin-left: 0;
+  }
+}
+@media only screen and (max-width: 600px) {
+    .paragraph__style {
+      font-size: 1.5ch;
+      color: black;
+    }
+    .difficulty_box__style{
+      height: 5%;
+      text-align: center;
+    }
+    .main_text__style {
+      font-size: 12px;
+    }
+  }

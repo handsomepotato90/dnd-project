@@ -8,6 +8,7 @@ import { MonsterXpProvider } from "../store/monsterXp-context";
 import SearchWindow from "./SearchWindow/SearchWindow";
 import SaveEncounter from "./SaveEncounter/SaveEncounter";
 import SearchByName from "./SearchByName/SearchByName"
+
 export default function BuildEncounter() {
   return (
     <GroupXpProvider>

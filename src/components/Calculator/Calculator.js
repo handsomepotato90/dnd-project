@@ -5,7 +5,7 @@ import CalcScreen from "./CalcScreen";
 
 import "./Calculator.css";
 
-const Calculator = () => {
+const Calculator = (props) => {
   let [result, setResult] = useState([]);
   const [calc, setCalc] = useState({
     sym: "",
@@ -65,6 +65,7 @@ const Calculator = () => {
         toAdd={calc.number}
       />
       <CalcButtons onComingResults={comingResults} />
+      {props.children}
     </Box>
   );
 };

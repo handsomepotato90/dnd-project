@@ -1,8 +1,13 @@
 .party_setup__window{
-        width: 42rem;
+        width:60%;
         height: auto;
         display: flex;
         flex-direction: row;
         margin: 0 auto;
         margin-top: 2rem;
 }
+@media only screen and (max-width: 600px) {
+        .party_setup__window{
+                width:100%;
+        }
+    }

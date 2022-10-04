@@ -1,5 +1,5 @@
 .monster_box__style {
-  width: 20rem;
+  width: 100%;
   height: 5rem;
   margin: auto;
   margin-top: 2rem;
@@ -9,7 +9,7 @@
   flex-direction: row;
 }
 .generel_info__style {
-  width: 90%;
+  width: 100%;
   display: flex;
   flex-direction: row;
 }
@@ -43,9 +43,7 @@
   font-weight: bold;
   font-size: 17px;
 }
-.desc_behavior {
-  font-size: 14px;
-}
+
 .delete_this {
   margin-left: auto;
   margin-right: 0;
@@ -57,4 +55,16 @@
   text-decoration: none;
   display: inline-block;
   font-size: 18px;
+}
+
+@media only screen and (max-width: 600px) {
+  .monster_box__style {
+    height: 10vh;
+  }
+  .desc_behavior {
+    display: none;
+  }
+  .desc_text__style{
+    display: none;
+  }
 }
