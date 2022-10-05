@@ -8,7 +8,6 @@ export default function MainMonsterBox(props) {
   const [isClicked, statusChecker] = useState(false);
 
   const size = useWindowSize();
-  console.log(size.width)
   const cName = "monster_voter_style " + props.className;
 
   const ReadFullText = () => {
@@ -19,6 +18,7 @@ export default function MainMonsterBox(props) {
   };
   return (
     <>
+      
       <div className={cName}>
         <div className="main_monster__info">
           {props.monsterStats.extraContent ? null : (

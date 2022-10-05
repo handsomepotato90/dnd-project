@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    width: 110rem;
+    width: 100%;
     margin: auto;
 }
 .submit_btn__style{
@@ -18,4 +18,12 @@
     border-radius: 1px;
     margin-left: 45%;
     margin-bottom: 2rem;
+}
+@media only screen and (max-width: 600px) {
+    .submit_btn__style{
+     
+        margin-left: 25%;
+        margin-bottom: 2rem;
+    }
+
 }

@@ -1,12 +1,25 @@
-.textarea__style{
-    display: flex;
-    flex-direction: column;
-    margin-left: 1rem;
-    width: 29vw;
-    min-height: 30vh;
+.textarea__style {
+  display: flex;
+  flex-direction: column;
+  margin-left: 1rem;
+  width: 29vw;
+  min-height: 30vh;
 }
-.capytal__style{
+.capytal__style {
+  font-size: 16px;
+  font-weight: bold;
+}
+@media only screen and (max-width: 1400px) {
+    .textarea__style {
+      margin-left: 1rem;
+      width: 45%;
+      min-height: 15vh;
+    }
+  }
+@media only screen and (max-width: 600px) {
+  .textarea__style {
     margin-left: 1rem;
-    font-size: 16px;
-    font-weight: bold;
+    width: 100%;
+    min-height: 15vh;
+  }
 }
