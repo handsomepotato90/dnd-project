@@ -1,13 +1,16 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import styles from "./SubmitHomeBrew.module.css";
-import InputFields from "./InputFields";
+// import InputFields from "./InputFields";
 import TextArea from "./TextArea";
 import { useHttpClient } from "../hooks/http-hook";
 import { LoginContext } from "../store/login-context";
-import ModalError from "../UI/ModalError";
+// import ModalError from "../UI/ModalError";
 import LoadingSpinner from "../UI/LoadingSpinner";
-import { useNavigate } from "react-router-dom";
-
+// import { useNavigate } from "react-router-dom";
+import { useForm } from "../hooks/form-hook";
+import Input from "../form-elements/Input";
+import Button from "../form-elements/Button";
+import { VALIDATOR_REQUIRE, VALIDATOR_MINLENGTH } from "../util/validators";
 const fields = [
   {
     name: "MONSTER NAME",
@@ -47,7 +50,7 @@ const fields = [
   },
   {
     name: "CHALLENGE RATING",
-    input_name: "Challenge",
+    input_name: "Challenge R",
     placeholder: " # ",
     required: "required",
   },
@@ -218,175 +221,255 @@ const textZone = [
 
 export default function SubmitHomeBrew() {
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
-  const navigate = useNavigate();
+  const [ckEditorText,setckEditorText ] = useState({})
+  const [formState, inputHandler, setFormData] = useForm({}, false);
+
   const auth = useContext(LoginContext);
-
-  let data = [{}];
-  const ckEditorText = [{}];
-  let objForNode = [{}];
-  const baseModifier = -5;
-
   const textZoneChange = (text, name) => {
-    ckEditorText[name] = text;
+    setckEditorText({[ckEditorText.name]:text});
   };
-
-  const fieldsChange = (name, val) => {
-    data[name] = val;
-  };
-
-  const formSubmit = (e) => {
-    e.preventDefault();
-    modifiers(data);
-  };
-
-  const modifiers = (objectStats) => {
-    const newObject = {};
-    const stats = [
-      { score: objectStats.STR, stat: "STR" },
-      { score: objectStats.DEX, stat: "DEX" },
-      { score: objectStats.CON, stat: "CON" },
-      { score: objectStats.INT, stat: "INT" },
-      { score: objectStats.WIS, stat: "WIS" },
-      { score: objectStats.CHA, stat: "CHA" },
-    ];
-    stats.forEach((stat) => {
-      let statModifier = baseModifier + parseInt(parseInt(stat.score) / 2);
-      if (statModifier > 0) {
-        statModifier = `(+${statModifier})`;
-      } else {
-        statModifier = `(${statModifier})`;
-      }
-      newObject[`${stat.stat}_mod`] = statModifier;
-    });
-    data = { ...objectStats, ...newObject };
-    objectReady(data);
-  };
-  const objectReady = (rawObject) => {
-    const theObjToSend = { ...rawObject };
-    const meta = {
-      meta: {
-        size: `${theObjToSend.meta_size}`,
-        type: `${theObjToSend.meta_type}`,
-        alignment: `${theObjToSend.meta_alignment}`,
-      },
-    };
-    const armorClass = {
-      "Armor Class": {
-        value:parseInt(theObjToSend.armor_class) ,
-        type: `(${theObjToSend.armor_type})`,
-      },
-    };
-    const hp = {
-      "Hit Points":{
-        dice: `(${theObjToSend.hp_die_count}d${theObjToSend.hp_die_value})`,
-        hp: parseInt(theObjToSend.avrg_hp),
-      },
-    };
-    const xp = {
-      Challenge: { rating: parseInt(theObjToSend.Challenge), xp: `(${theObjToSend.Xp} Xp)` },
-    };
-
-    const condition = {
-      "Condition Immunities": theObjToSend["Condition Immunities"]
-        ? [
-            ...theObjToSend["Condition Immunities"]
-              .split(/[.,#!$%&*;:{}=\-_`~()]/g)
-              .filter((elem) => elem.trim()),
-          ]
-        : null,
-    };
-    const damage = {
-      "Damage Immunities": theObjToSend["Damage Immunities"]
-        ? [
-            ...theObjToSend["Damage Immunities"]
-              .split(/[.,#!$%&*;:{}=\-_`~()]/g)
-              .filter((elem) => elem.trim()),
-          ]
-        : null,
-    };
-    const resist = {
-      "Damage Resistances": theObjToSend["Damage Resistances"]
-        ? [
-            ...theObjToSend["Damage Resistances"]
-              .split(/[.,#!$%&*;:{}=\-_`~()]/g)
-              .filter((elem) => elem.trim()),
-          ]
-        : null,
-    };
-    const vuln = {
-      "Damage Vulnerabilities": theObjToSend["Damage Vulnerabilities"]
-        ? [
-            ...theObjToSend["Damage Vulnerabilities"]
-              .split(/[.,#!$%&*;:{}=\-_`~()]/g)
-              .filter((elem) => elem.trim()),
-          ]
-        : null,
-    };
-
-    delete theObjToSend.meta_size;
-    delete theObjToSend.meta_type;
-    delete theObjToSend.meta_alignment;
-    delete theObjToSend.armor_class;
-    delete theObjToSend.armor_type;
-    delete theObjToSend.avrg_hp;
-    delete theObjToSend.hp_die_count;
-    delete theObjToSend.hp_die_value;
-    delete theObjToSend.Challenge;
-    delete theObjToSend.Xp;
-
-    objForNode = {
-      ...theObjToSend,
-      ...meta,
-      ...armorClass,
-      ...hp,
-      ...xp,
-      ...ckEditorText,
-      ...condition,
-      ...damage,
-      ...resist,
-      ...vuln,
-    };
-    console.log(objForNode)
-    const submitHandler = async () => {
-      try {
-        await sendRequest(
-          "http://localhost:5000/submit_homebrew",
-          "POST",
-          JSON.stringify({
-            ...objForNode,
-            creator: auth.userId,
-          }),
-          {
-            "Content-Type": "application/json",
-          }
-        );
-        navigate("/");
-      } catch (err) {}
-    };
-    if (Object.keys(objForNode).length >= 10) {
-      submitHandler();
-      window.scrollTo({ top: 0, behavior: "smooth" });
+  const modifiersCalculation = (modifire) => {
+    const baseModifier = -5;
+    const statModifier = baseModifier + parseInt(parseInt(modifire) / 2);
+    if (statModifier > 0) {
+      return `(+${statModifier})`;
+    } else {
+      return `(${statModifier})`;
     }
   };
-  const errorHandler = () => {
-    clearError(null);
+
+
+  const transformToArray = (comming) =>{
+    return [...comming.split(/[.,#!$%&*;:{}=\-_`~()]/g).filter((elem) => elem.trim())]
   };
+  console.log(transformToArray('kaskljflkasjf,klasjkljag,kalsjfajklsfj'))
+
+  const submitHadler = async (event) => {
+    event.preventDefault();
+    const data = {
+      name: formState.inputs.name.value,
+      meta: {
+        size: formState.inputs.meta_size.value,
+        type: formState.inputs.meta_type.value,
+        alignment: formState.inputs.meta_alignment.value,
+      },
+      "Armor Class": {
+        value: formState.inputs.armor_class.value,
+        type: formState.inputs.armor_type.value,
+      },
+      "Hit Points": {
+        dice: `${formState.inputs.hp_die_count.value}d${formState.inputs.hp_die_value.value}`,
+        hp: formState.inputs.avrg_hp.value,
+      },
+      Speed: formState.inputs.Speed.value,
+      STR: formState.inputs.STR.value,
+      STR_mod: modifiersCalculation(formState.inputs.STR.value),
+      DEX: formState.inputs.DEX.value,
+      DEX_mod: modifiersCalculation(formState.inputs.DEX.value),
+      CON: formState.inputs.CON.value,
+      CON_mod: modifiersCalculation(formState.inputs.CON.value),
+      INT: formState.inputs.INT.value,
+      INT_mod: modifiersCalculation(formState.inputs.INT.value),
+      WIS: formState.inputs.WIS.value,
+      WIS_mod:modifiersCalculation(formState.inputs.WIS.value),
+      CHA: formState.inputs.CHA.value,
+      CHA_mod: modifiersCalculation(formState.inputs.CHA.value),
+      "Saving Throws": formState.inputs["Saving Throws"].value,
+      Skills: formState.inputs.skills.value,
+      Senses: formState.inputs.Senses.value,
+      Languages: formState.inputs.Languages.value,
+      Challenge: {
+        rating: formState.inputs["Challenge R"].value,
+        xp: formState.inputs.Xp.value,
+      },
+      Traits: ckEditorText.Traits,
+      Actions: ckEditorText.Actions,
+      "Legendary Actions": ckEditorText['Legendary Actions'],
+      img_url: formState.inputs.img_url.value,
+      "Bonus Actions": ckEditorText['Bonus Actions'],
+      Characteristics: ckEditorText.Characteristics,
+      "Condition Immunities": transformToArray(formState.inputs['Condition Immunities'].value),
+      "Damage Immunities": transformToArray(formState.inputs['Damage Immunities'].value),
+      "Damage Resistances": transformToArray(formState.inputs['Damage Resistances'].value),
+      "Damage Vulnerabilities": transformToArray(formState.inputs['Damage Vulnerabilities'].value),
+      Reactions:ckEditorText.Reactions,
+      proficiency_bonus: formState.inputs.proficiency_bonus.value,
+      creator: auth.userId,
+    }
+    try {
+      await sendRequest(
+        "http://localhost:5000/submit_homebrew",
+        "POST",
+        JSON.stringify(data,...ckEditorText),
+        {
+          "Content-Type": "application/json",
+        }
+      );
+      // auth.login(resData.user.id);
+    } catch (err) {}
+  };
+
+  // console.log(formState);
+
+  // const fieldsChange = (name, val) => {
+  //   data[name] = val;
+  // };
+
+  // // const formSubmit = (e) => {
+  // //   e.preventDefault();
+  // //   modifiers(data);
+  // // };
+
+  // // const modifiers = (objectStats) => {
+  // //   const newObject = {};
+  // //   const stats = [
+  // //     { score: objectStats.STR, stat: "STR" },
+  // //     { score: objectStats.DEX, stat: "DEX" },
+  // //     { score: objectStats.CON, stat: "CON" },
+  // //     { score: objectStats.INT, stat: "INT" },
+  // //     { score: objectStats.WIS, stat: "WIS" },
+  // //     { score: objectStats.CHA, stat: "CHA" },
+  // //   ];
+  // //   stats.forEach((stat) => {
+  // //     let statModifier = baseModifier + parseInt(parseInt(stat.score) / 2);
+  // //     if (statModifier > 0) {
+  // //       statModifier = `(+${statModifier})`;
+  // //     } else {
+  // //       statModifier = `(${statModifier})`;
+  // //     }
+  // //     newObject[`${stat.stat}_mod`] = statModifier;
+  // //   });
+  // //   data = { ...objectStats, ...newObject };
+  // //   objectReady(data);
+  // // };
+  // // const objectReady = (rawObject) => {
+  // //   const theObjToSend = { ...rawObject };
+  // //   const meta = {
+  // //     meta: {
+  // //       size: `${theObjToSend.meta_size}`,
+  // //       type: `${theObjToSend.meta_type}`,
+  // //       alignment: `${theObjToSend.meta_alignment}`,
+  // //     },
+  // //   };
+  // //   const armorClass = {
+  // //     "Armor Class": {
+  // //       value:parseInt(theObjToSend.armor_class) ,
+  // //       type: `(${theObjToSend.armor_type})`,
+  // //     },
+  // //   };
+  // //   const hp = {
+  // //     "Hit Points":{
+  // //       dice: `(${theObjToSend.hp_die_count}d${theObjToSend.hp_die_value})`,
+  // //       hp: parseInt(theObjToSend.avrg_hp),
+  // //     },
+  // //   };
+  // //   const xp = {
+  // //     Challenge: { rating: parseInt(theObjToSend['Challenge R']), xp: `(${theObjToSend.Xp} Xp)` },
+  // //   };
+
+  // //   const condition = {
+  // //     "Condition Immunities": theObjToSend["Condition Immunities"]
+  // //       ? [
+  // //           ...theObjToSend["Condition Immunities"]
+  // //             .split(/[.,#!$%&*;:{}=\-_`~()]/g)
+  // //             .filter((elem) => elem.trim()),
+  // //         ]
+  // //       : null,
+  // //   };
+  // //   const damage = {
+  // //     "Damage Immunities": theObjToSend["Damage Immunities"]
+  // //       ? [
+  // //           ...theObjToSend["Damage Immunities"]
+  // //             .split(/[.,#!$%&*;:{}=\-_`~()]/g)
+  // //             .filter((elem) => elem.trim()),
+  // //         ]
+  // //       : null,
+  // //   };
+  // //   const resist = {
+  // //     "Damage Resistances": theObjToSend["Damage Resistances"]
+  // //       ? [
+  // //           ...theObjToSend["Damage Resistances"]
+  // //             .split(/[.,#!$%&*;:{}=\-_`~()]/g)
+  // //             .filter((elem) => elem.trim()),
+  // //         ]
+  // //       : null,
+  // //   };
+  // //   const vuln = {
+  // //     "Damage Vulnerabilities": theObjToSend["Damage Vulnerabilities"]
+  // //       ? [
+  // //           ...theObjToSend["Damage Vulnerabilities"]
+  // //             .split(/[.,#!$%&*;:{}=\-_`~()]/g)
+  // //             .filter((elem) => elem.trim()),
+  // //         ]
+  // //       : null,
+  // //   };
+
+  // //   // delete theObjToSend.meta_size;
+  // //   // delete theObjToSend.meta_type;
+  // //   // delete theObjToSend.meta_alignment;
+  // //   // delete theObjToSend.armor_class;
+  // //   // delete theObjToSend.armor_type;
+  // //   // delete theObjToSend.avrg_hp;
+  // //   // delete theObjToSend.hp_die_count;
+  // //   // delete theObjToSend.hp_die_value;
+  // //   // delete theObjToSend.Challenge;
+  // //   // delete theObjToSend.Xp;
+
+  // //   setobjForNode ({
+  // //     ...theObjToSend,
+  // //     ...meta,
+  // //     ...armorClass,
+  // //     ...hp,
+  // //     ...xp,
+  // //     ...ckEditorText,
+  // //     ...condition,
+  // //     ...damage,
+  // //     ...resist,
+  // //     ...vuln,
+  // //   });
+  // //   console.log(objForNode)
+  //   const submitHandler = async () => {
+  //     try {
+  //       await sendRequest(
+  //         "http://localhost:5000/submit_homebrew",
+  //         "POST",
+  //         JSON.stringify({
+  //           ...objForNode,
+  //           creator: auth.userId,
+  //         }),
+  //         {
+  //           "Content-Type": "application/json",
+  //         }
+  //       );
+  //       navigate("/");
+  //     } catch (err) {}
+  //   };
+  //   if (Object.keys(objForNode).length >= 10) {
+  //     submitHandler();
+  //     window.scrollTo({ top: 0, behavior: "smooth" });
+  //   }
+  // };
+  // const errorHandler = () => {
+  //   clearError(null);
+  // };
 
   return (
     <>
       {isLoading && <LoadingSpinner></LoadingSpinner>}
-      {error && <ModalError error={error} onClick={errorHandler}></ModalError>}
-      <form onSubmit={formSubmit} id="form">
+      {/* {error && <ModalError error={error} onClick={errorHandler}></ModalError>} */}
+      <form id="form" onSubmit={submitHadler}>
         <div className={styles.form__style}>
           {fields.map((field, i) => (
-            <InputFields
+            <Input
               key={i}
-              name={field.name}
-              input_name={field.input_name}
-              placeholder={field.placeholder}
-              required={field.required}
-              onBlur={fieldsChange}
-            ></InputFields>
+              element="input"
+              id={field.input_name}
+              type="text"
+              label={field.name}
+              errorText="*Username must be at least five(5) characters"
+              validators={[VALIDATOR_REQUIRE(), VALIDATOR_MINLENGTH(1)]}
+              onInput={inputHandler}
+            ></Input>
           ))}
 
           {textZone.map((zone, i) => (
@@ -400,11 +483,27 @@ export default function SubmitHomeBrew() {
           ))}
         </div>
 
-        <button className={`${styles.submit_btn__style} button`} type="submit">
+        {/* <button className={`${styles.submit_btn__style} button`} type="submit">
           {" "}
           Submit
-        </button>
+        </button> */}
+        <Button
+          className={`${styles.submit_btn__style} button`}
+          type="submit"
+          disabled={!formState.isValid}
+        >
+          Submit
+        </Button>
       </form>
     </>
   );
 }
+
+//  {/* <InputFields
+//               key={i}
+//               name={field.name}
+//               input_name={field.input_name}
+//               placeholder={field.placeholder}
+//               required={field.required}
+//               onBlur={fieldsChange}
+//             ></InputFields> */}

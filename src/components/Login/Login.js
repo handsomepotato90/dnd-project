@@ -26,7 +26,7 @@ export default function Login() {
       },
       password: { value: "", isValid: false },
     },
-    false
+    true
   );
 
   const switchMode = () => {

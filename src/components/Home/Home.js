@@ -11,28 +11,28 @@ export default function Home() {
   const NewsFiller = [
     {
       url: imageOne,
-      text: "Vote on new",
+      text: "Vote on new HomeBrew",
       redirect: "/voting",
       description:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+        "Vote for the monsters you think deserve to be part of the Monster library.",
     },
     {
       url: imageTwo,
-      text: "Create new Homebrew",
+      text: "Create new HomeBrew",
       redirect: "/submit_homebrew",
-      description: "something for describing",
+      description: "Create your unique monster and let it be judged by the other users",
     },
     {
       url: imageThree,
       text: "Encounter Creator",
       redirect: "/build_encounter",
-      description: "something for describing",
+      description: "Build your encounters and ballance them to the party.",
     },
     {
       url: imageFour,
       text: "Coming soon...",
       redirect: "/",
-      description: "something for describing",
+      description: "",
     },
   ];
 
