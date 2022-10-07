@@ -1,0 +1,14 @@
+.red{
+    background-color: #f4433696;
+}
+.green{
+    background-color: #4caf4f6b;
+}
+.grey{
+    background-color: rgba(128, 128, 128, 0.397);
+}
+.legend__style{
+    width: 10px;
+    height: 10px;
+    margin-top: 1vh;
+}

@@ -25,6 +25,11 @@ const Navigation = () => {
     <CustomLink onClick={closeNav} to="/my_encounters">My Encounters</CustomLink>
   )}
   {auth.isLoggedIn && (
+    <CustomLink to="/myProfile" onClick={closeNav}>
+      My Profile
+    </CustomLink>
+  )}
+  {auth.isLoggedIn && (
     <CustomLink to="/" onClick={auth.logout}>
       Logout
     </CustomLink>

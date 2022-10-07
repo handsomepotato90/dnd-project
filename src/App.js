@@ -11,6 +11,8 @@ import MyEncounters from "./components/MyEncounters/MyEncounters";
 import BattleScreen from "./components/MyEncounters/BattleScreen";
 import SubmitHomeBrew from "./components/SubmitHomeBrew/SubmitHomeBrew";
 import Login from "./components/Login/Login";
+import MyProfile from "./components/MyProfile/MyProfile";
+
 import "./App.css";
 import { LoginContext } from "./components/store/login-context";
 function App() {
@@ -40,6 +42,8 @@ function App() {
         <Route path="/submit_homebrew" element={<SubmitHomeBrew />} />
         <Route path="/my_encounters" element={<MyEncounters />} />
         <Route path="/battle_scr/:id" element={<BattleScreen />} />
+        <Route path="/myProfile" element={<MyProfile />} />
+
       </React.Fragment>
     );
   } else {
