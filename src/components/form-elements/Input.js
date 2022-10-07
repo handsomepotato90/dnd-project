@@ -28,7 +28,6 @@ const Input = props => {
     isTouched: false,
     isValid: props.initialValid || false
   });
-
   const { id, onInput } = props;
   const { value, isValid } = inputState;
 
@@ -59,7 +58,6 @@ const Input = props => {
         onChange={changeHandler}
         onBlur={touchHandler}
         value={inputState.value}
-        className={styles.question}
       />
     ) : (
       <textarea
@@ -68,13 +66,14 @@ const Input = props => {
         onChange={changeHandler}
         onBlur={touchHandler}
         value={inputState.value}
-        className={styles.question}
+
       />
     );
-
   return (
-    <div>
-      <label htmlFor={props.id}>{props.label}</label>
+    <div className={props.placeholder && styles.input_general__style}>
+      <label htmlFor={props.id}>{props.label}{!props.notRequired&& props.placeholder && (
+            <span className={styles.required_star__style}>*</span>
+          )}</label>
       {element}
       {!inputState.isValid && inputState.isTouched && <p className={styles.error__style}>{props.errorText}</p>}
     </div>

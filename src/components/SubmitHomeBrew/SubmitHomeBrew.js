@@ -1,184 +1,162 @@
 import React, { useContext, useState } from "react";
 import styles from "./SubmitHomeBrew.module.css";
-// import InputFields from "./InputFields";
 import TextArea from "./TextArea";
 import { useHttpClient } from "../hooks/http-hook";
 import { LoginContext } from "../store/login-context";
-// import ModalError from "../UI/ModalError";
+import ModalError from "../UI/ModalError";
 import LoadingSpinner from "../UI/LoadingSpinner";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useForm } from "../hooks/form-hook";
 import Input from "../form-elements/Input";
 import Button from "../form-elements/Button";
-import { VALIDATOR_REQUIRE, VALIDATOR_MINLENGTH } from "../util/validators";
-const fields = [
+import { VALIDATOR_REQUIRE } from "../util/validators";
+const reqFields = [
   {
     name: "MONSTER NAME",
     input_name: "name",
     placeholder: "Enter monster name",
-    required: "required",
-  },
-  {
-    name: "Image",
-    input_name: "img_url",
-    placeholder: "Provide URL for image",
-    required: "",
-  },
-  {
-    name: "MONSTER TYPE",
-    input_name: "meta_type",
-    placeholder: "#",
-    required: "required",
   },
   {
     name: "SIZE",
     input_name: "meta_size",
-    placeholder: "#",
-    required: "required",
+    placeholder: "-",
+  },
+  {
+    name: "MONSTER TYPE",
+    input_name: "meta_type",
+    placeholder: "-",
   },
   {
     name: "ALIGNMENT",
     input_name: "meta_alignment",
     placeholder: "-",
-    required: "",
-  },
-  {
-    name: "SPEED",
-    input_name: "Speed",
-    placeholder: "20 ft., fly 30 ft. ",
-    required: "",
   },
   {
     name: "CHALLENGE RATING",
     input_name: "Challenge R",
     placeholder: " # ",
-    required: "required",
   },
   {
     name: "GRANTS XP",
     input_name: "Xp",
     placeholder: " # ",
-    required: "required",
   },
   {
     name: "ARMOR CLASS",
     input_name: "armor_class",
     placeholder: "#",
-    required: "required",
   },
   {
     name: "ARMOR CLASS TYPE",
     input_name: "armor_type",
     placeholder: "Natural armor,plate...",
-    required: "required",
   },
   {
     name: "PROFICIENCY BONUS",
     input_name: "proficiency_bonus",
     placeholder: "#",
-    required: "required",
   },
   {
     name: "SENSES",
     input_name: "Senses",
     placeholder: "Passive Perception 11, Darkvision 60 ft., ...",
-    required: "required",
-  },
-  {
-    name: "HIT POINT DIE COUNT",
-    input_name: "hp_die_count",
-    placeholder: "#",
-    required: "required",
-  },
-  {
-    name: "HIT POINTS DIE VALUE",
-    input_name: "hp_die_value",
-    placeholder: "#",
-    required: "required",
   },
   {
     name: "AVERAGE HIT POINTS",
     input_name: "avrg_hp",
     placeholder: "#",
-    required: "required",
+  },
+  {
+    name: "HIT POINT DIE COUNT",
+    input_name: "hp_die_count",
+    placeholder: "#",
+  },
+  {
+    name: "HIT POINTS DIE VALUE",
+    input_name: "hp_die_value",
+    placeholder: "#",
+  },
+  {
+    name: "BONUS HIT POINTS",
+    input_name: "bonus_hp",
+    placeholder: "#",
   },
   {
     name: "STR SCORE",
     input_name: "STR",
     placeholder: "#",
-    required: "required",
   },
   {
     name: "DEX SCORE",
     input_name: "DEX",
     placeholder: "#",
-    required: "required",
   },
   {
     name: "CON SCORE",
     input_name: "CON",
     placeholder: "#",
-    required: "required",
   },
   {
     name: "INT SCORE",
     input_name: "INT",
     placeholder: "#",
-    required: "required",
   },
   {
     name: "WIS SCORE",
     input_name: "WIS",
     placeholder: "#",
-    required: "required",
   },
   {
     name: "CHA SCORE",
     input_name: "CHA",
     placeholder: "#",
-    required: "required",
+  },
+];
+const fields = [
+  {
+    name: "Image",
+    input_name: "img_url",
+    placeholder: "Provide URL for image",
   },
   {
     name: "SAVING THROW PROFICIENCIES",
     input_name: "Saving Throws",
     placeholder: "STR +6 , INT +4....",
-    required: "",
   },
   {
     name: "SKILLS",
     input_name: "skills",
     placeholder: "Acrobatics +6, Deception +3, Stealth +9....",
-    required: "",
   },
   {
     name: "DAMAGE RESISTANCES",
     input_name: "Damage Resistances",
     placeholder: "Bludgeoning,Piercing,Fire ...",
-    required: "",
   },
   {
     name: "DAMAGE IMMUNITIES",
     input_name: "Damage Immunities",
     placeholder: "Bludgeoning,Piercing,Fire ...",
-    required: "",
   },
   {
     name: "DAMAGE VULNERABILITIES",
     input_name: "Damage Vulnerabilities",
     placeholder: "Bludgeoning,Piercing,Fire ...",
-    required: "",
   },
   {
     name: "CONDITION IMMUNITIES",
     input_name: "Condition Immunities",
     placeholder: "Charmed, Exhaustion, Frightened ...",
-    required: "",
   },
   {
     name: "LANGUAGES",
     input_name: "Languages",
     placeholder: "-",
-    required: "",
+  },
+  {
+    name: "SPEED",
+    input_name: "Speed",
+    placeholder: "20 ft., fly 30 ft. ",
   },
 ];
 const textZone = [
@@ -220,13 +198,16 @@ const textZone = [
 ];
 
 export default function SubmitHomeBrew() {
+  const navigate = useNavigate();
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
-  const [ckEditorText,setckEditorText ] = useState({})
-  const [formState, inputHandler, setFormData] = useForm({}, false);
-
+  const [ckEditorText, setckEditorText] = useState({});
+  const [formState, inputHandler] = useForm({}, false);
   const auth = useContext(LoginContext);
   const textZoneChange = (text, name) => {
-    setckEditorText({[ckEditorText.name]:text});
+    setckEditorText((prevState) => ({
+      ...prevState,
+      [name]: text,
+    }));
   };
   const modifiersCalculation = (modifire) => {
     const baseModifier = -5;
@@ -238,14 +219,15 @@ export default function SubmitHomeBrew() {
     }
   };
 
-
-  const transformToArray = (comming) =>{
-    return [...comming.split(/[.,#!$%&*;:{}=\-_`~()]/g).filter((elem) => elem.trim())]
+  const transformToArray = (comming) => {
+    return [
+      ...comming.split(/[.,#!$%&*;:{}=\-_`~()]/g).filter((elem) => elem.trim()),
+    ];
   };
-  console.log(transformToArray('kaskljflkasjf,klasjkljag,kalsjfajklsfj'))
 
   const submitHadler = async (event) => {
     event.preventDefault();
+    console.log(ckEditorText.Traits);
     const data = {
       name: formState.inputs.name.value,
       meta: {
@@ -258,7 +240,7 @@ export default function SubmitHomeBrew() {
         type: formState.inputs.armor_type.value,
       },
       "Hit Points": {
-        dice: `${formState.inputs.hp_die_count.value}d${formState.inputs.hp_die_value.value}`,
+        dice: `(${formState.inputs.hp_die_count.value}d${formState.inputs.hp_die_value.value} + ${formState.inputs.bonus_hp.value})`,
         hp: formState.inputs.avrg_hp.value,
       },
       Speed: formState.inputs.Speed.value,
@@ -271,7 +253,7 @@ export default function SubmitHomeBrew() {
       INT: formState.inputs.INT.value,
       INT_mod: modifiersCalculation(formState.inputs.INT.value),
       WIS: formState.inputs.WIS.value,
-      WIS_mod:modifiersCalculation(formState.inputs.WIS.value),
+      WIS_mod: modifiersCalculation(formState.inputs.WIS.value),
       CHA: formState.inputs.CHA.value,
       CHA_mod: modifiersCalculation(formState.inputs.CHA.value),
       "Saving Throws": formState.inputs["Saving Throws"].value,
@@ -280,195 +262,82 @@ export default function SubmitHomeBrew() {
       Languages: formState.inputs.Languages.value,
       Challenge: {
         rating: formState.inputs["Challenge R"].value,
-        xp: formState.inputs.Xp.value,
+        xp: `(${formState.inputs.Xp.value}XP)`,
       },
       Traits: ckEditorText.Traits,
       Actions: ckEditorText.Actions,
-      "Legendary Actions": ckEditorText['Legendary Actions'],
+      "Legendary Actions": ckEditorText["Legendary Actions"],
       img_url: formState.inputs.img_url.value,
-      "Bonus Actions": ckEditorText['Bonus Actions'],
+      "Bonus Actions": ckEditorText["Bonus Actions"],
       Characteristics: ckEditorText.Characteristics,
-      "Condition Immunities": transformToArray(formState.inputs['Condition Immunities'].value),
-      "Damage Immunities": transformToArray(formState.inputs['Damage Immunities'].value),
-      "Damage Resistances": transformToArray(formState.inputs['Damage Resistances'].value),
-      "Damage Vulnerabilities": transformToArray(formState.inputs['Damage Vulnerabilities'].value),
-      Reactions:ckEditorText.Reactions,
+      "Condition Immunities": transformToArray(
+        formState.inputs["Condition Immunities"].value
+      ),
+      "Damage Immunities": transformToArray(
+        formState.inputs["Damage Immunities"].value
+      ),
+      "Damage Resistances": transformToArray(
+        formState.inputs["Damage Resistances"].value
+      ),
+      "Damage Vulnerabilities": transformToArray(
+        formState.inputs["Damage Vulnerabilities"].value
+      ),
+      Reactions: ckEditorText.Reactions,
       proficiency_bonus: formState.inputs.proficiency_bonus.value,
       creator: auth.userId,
-    }
+    };
+    console.log(data);
     try {
       await sendRequest(
         "http://localhost:5000/submit_homebrew",
         "POST",
-        JSON.stringify(data,...ckEditorText),
+        JSON.stringify(data),
         {
           "Content-Type": "application/json",
         }
       );
-      // auth.login(resData.user.id);
-    } catch (err) {}
+      navigate("/");
+    } catch (err) {
+      console.log(err);
+    }
   };
-
-  // console.log(formState);
-
-  // const fieldsChange = (name, val) => {
-  //   data[name] = val;
-  // };
-
-  // // const formSubmit = (e) => {
-  // //   e.preventDefault();
-  // //   modifiers(data);
-  // // };
-
-  // // const modifiers = (objectStats) => {
-  // //   const newObject = {};
-  // //   const stats = [
-  // //     { score: objectStats.STR, stat: "STR" },
-  // //     { score: objectStats.DEX, stat: "DEX" },
-  // //     { score: objectStats.CON, stat: "CON" },
-  // //     { score: objectStats.INT, stat: "INT" },
-  // //     { score: objectStats.WIS, stat: "WIS" },
-  // //     { score: objectStats.CHA, stat: "CHA" },
-  // //   ];
-  // //   stats.forEach((stat) => {
-  // //     let statModifier = baseModifier + parseInt(parseInt(stat.score) / 2);
-  // //     if (statModifier > 0) {
-  // //       statModifier = `(+${statModifier})`;
-  // //     } else {
-  // //       statModifier = `(${statModifier})`;
-  // //     }
-  // //     newObject[`${stat.stat}_mod`] = statModifier;
-  // //   });
-  // //   data = { ...objectStats, ...newObject };
-  // //   objectReady(data);
-  // // };
-  // // const objectReady = (rawObject) => {
-  // //   const theObjToSend = { ...rawObject };
-  // //   const meta = {
-  // //     meta: {
-  // //       size: `${theObjToSend.meta_size}`,
-  // //       type: `${theObjToSend.meta_type}`,
-  // //       alignment: `${theObjToSend.meta_alignment}`,
-  // //     },
-  // //   };
-  // //   const armorClass = {
-  // //     "Armor Class": {
-  // //       value:parseInt(theObjToSend.armor_class) ,
-  // //       type: `(${theObjToSend.armor_type})`,
-  // //     },
-  // //   };
-  // //   const hp = {
-  // //     "Hit Points":{
-  // //       dice: `(${theObjToSend.hp_die_count}d${theObjToSend.hp_die_value})`,
-  // //       hp: parseInt(theObjToSend.avrg_hp),
-  // //     },
-  // //   };
-  // //   const xp = {
-  // //     Challenge: { rating: parseInt(theObjToSend['Challenge R']), xp: `(${theObjToSend.Xp} Xp)` },
-  // //   };
-
-  // //   const condition = {
-  // //     "Condition Immunities": theObjToSend["Condition Immunities"]
-  // //       ? [
-  // //           ...theObjToSend["Condition Immunities"]
-  // //             .split(/[.,#!$%&*;:{}=\-_`~()]/g)
-  // //             .filter((elem) => elem.trim()),
-  // //         ]
-  // //       : null,
-  // //   };
-  // //   const damage = {
-  // //     "Damage Immunities": theObjToSend["Damage Immunities"]
-  // //       ? [
-  // //           ...theObjToSend["Damage Immunities"]
-  // //             .split(/[.,#!$%&*;:{}=\-_`~()]/g)
-  // //             .filter((elem) => elem.trim()),
-  // //         ]
-  // //       : null,
-  // //   };
-  // //   const resist = {
-  // //     "Damage Resistances": theObjToSend["Damage Resistances"]
-  // //       ? [
-  // //           ...theObjToSend["Damage Resistances"]
-  // //             .split(/[.,#!$%&*;:{}=\-_`~()]/g)
-  // //             .filter((elem) => elem.trim()),
-  // //         ]
-  // //       : null,
-  // //   };
-  // //   const vuln = {
-  // //     "Damage Vulnerabilities": theObjToSend["Damage Vulnerabilities"]
-  // //       ? [
-  // //           ...theObjToSend["Damage Vulnerabilities"]
-  // //             .split(/[.,#!$%&*;:{}=\-_`~()]/g)
-  // //             .filter((elem) => elem.trim()),
-  // //         ]
-  // //       : null,
-  // //   };
-
-  // //   // delete theObjToSend.meta_size;
-  // //   // delete theObjToSend.meta_type;
-  // //   // delete theObjToSend.meta_alignment;
-  // //   // delete theObjToSend.armor_class;
-  // //   // delete theObjToSend.armor_type;
-  // //   // delete theObjToSend.avrg_hp;
-  // //   // delete theObjToSend.hp_die_count;
-  // //   // delete theObjToSend.hp_die_value;
-  // //   // delete theObjToSend.Challenge;
-  // //   // delete theObjToSend.Xp;
-
-  // //   setobjForNode ({
-  // //     ...theObjToSend,
-  // //     ...meta,
-  // //     ...armorClass,
-  // //     ...hp,
-  // //     ...xp,
-  // //     ...ckEditorText,
-  // //     ...condition,
-  // //     ...damage,
-  // //     ...resist,
-  // //     ...vuln,
-  // //   });
-  // //   console.log(objForNode)
-  //   const submitHandler = async () => {
-  //     try {
-  //       await sendRequest(
-  //         "http://localhost:5000/submit_homebrew",
-  //         "POST",
-  //         JSON.stringify({
-  //           ...objForNode,
-  //           creator: auth.userId,
-  //         }),
-  //         {
-  //           "Content-Type": "application/json",
-  //         }
-  //       );
-  //       navigate("/");
-  //     } catch (err) {}
-  //   };
-  //   if (Object.keys(objForNode).length >= 10) {
-  //     submitHandler();
-  //     window.scrollTo({ top: 0, behavior: "smooth" });
-  //   }
-  // };
-  // const errorHandler = () => {
-  //   clearError(null);
-  // };
+  const errorHandler = () => {
+    clearError(null);
+  };
 
   return (
     <>
-      {isLoading && <LoadingSpinner></LoadingSpinner>}
-      {/* {error && <ModalError error={error} onClick={errorHandler}></ModalError>} */}
+      {isLoading && <LoadingSpinner as0verlay></LoadingSpinner>}
+      {error && <ModalError error={error} onClick={errorHandler}></ModalError>}
       <form id="form" onSubmit={submitHadler}>
         <div className={styles.form__style}>
-          {fields.map((field, i) => (
+          {reqFields.map((field, i) => (
             <Input
               key={i}
               element="input"
               id={field.input_name}
               type="text"
               label={field.name}
-              errorText="*Username must be at least five(5) characters"
-              validators={[VALIDATOR_REQUIRE(), VALIDATOR_MINLENGTH(1)]}
+              errorText="*This field is NOT optional!"
+              validators={[VALIDATOR_REQUIRE()]}
               onInput={inputHandler}
+              placeholder={field.placeholder}
+              notRequired={false}
+              className="input_field__style"
+            ></Input>
+          ))}
+          {fields.map((field, i) => (
+            <Input
+              key={i}
+              element="input"
+              id={field.input_name}
+              type="text"
+              initialValid={true}
+              label={field.name}
+              onInput={inputHandler}
+              placeholder={field.placeholder}
+              validators={[]}
+              notRequired={true}
             ></Input>
           ))}
 
@@ -482,11 +351,6 @@ export default function SubmitHomeBrew() {
             ></TextArea>
           ))}
         </div>
-
-        {/* <button className={`${styles.submit_btn__style} button`} type="submit">
-          {" "}
-          Submit
-        </button> */}
         <Button
           className={`${styles.submit_btn__style} button`}
           type="submit"
@@ -498,12 +362,3 @@ export default function SubmitHomeBrew() {
     </>
   );
 }
-
-//  {/* <InputFields
-//               key={i}
-//               name={field.name}
-//               input_name={field.input_name}
-//               placeholder={field.placeholder}
-//               required={field.required}
-//               onBlur={fieldsChange}
-//             ></InputFields> */}

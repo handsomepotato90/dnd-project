@@ -14,3 +14,8 @@
   cursor: pointer;
 }
 
+@media only screen and (max-width: 600px) {
+  .calc_button__font_size {
+    font-size: 3ch;
+  }
+ }

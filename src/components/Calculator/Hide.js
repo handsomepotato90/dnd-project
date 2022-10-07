@@ -7,8 +7,8 @@ const Hide = (props) => {
     props.onHide(false);
   };
   return (
-    <SmallBox className="left_arrow" >
-      <img className="arrow" src={leftArrow} onClick={clickedFalse} alt='left arrow'></img>
+    <SmallBox onClick={clickedFalse} className="left_arrow" >
+      <img className="arrow" src={leftArrow} alt='left arrow'></img>
     </SmallBox>
   );
 };

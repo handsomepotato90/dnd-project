@@ -10,8 +10,8 @@ const Show = (props) => {
   };
 
   return (
-    <SmallBox className="right_arrow" >
-      <img className="arrow" src={rightArrow} onClick={clickedTrue} alt='right arrow'></img>
+    <SmallBox onClick={clickedTrue} className="right_arrow" >
+      <img className="arrow" src={rightArrow}  alt='right arrow'></img>
     </SmallBox>
   );
 };

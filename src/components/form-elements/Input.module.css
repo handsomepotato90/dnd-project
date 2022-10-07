@@ -25,3 +25,27 @@ label {
   margin-left: 2ch;
   color: #3c6acc;
 }
+.required_star__style {
+  font-size: 22px;
+  color: red;
+}
+
+.input_general__style {
+  width: 30%;
+  border-radius: 0;
+  margin-inline: auto;
+}
+@media only screen and (max-width: 600px) {
+  label {
+    width: 100%;
+    font-size: 2ch;
+    margin-left: 6vw;
+    color: #3c6acc;
+  }
+
+  .input_general__style {
+    width: 90%;
+    border-radius: 0;
+    margin-inline: auto;
+  }
+}
