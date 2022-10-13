@@ -31,19 +31,19 @@ export default function Edit() {
           {
             name: "SIZE",
             input_name: "meta_size",
-            placeholder: "-",
+            placeholder: "Large, Medium",
             value: resData.meta.size,
           },
           {
             name: "MONSTER TYPE",
             input_name: "meta_type",
-            placeholder: "-",
+            placeholder: "aberration, construct",
             value: resData.meta.type,
           },
           {
             name: "ALIGNMENT",
             input_name: "meta_alignment",
-            placeholder: "-",
+            placeholder: "lawful evil, chaotic evil",
             value: resData.meta.alignment,
           },
           {
@@ -197,7 +197,7 @@ export default function Edit() {
           {
             name: "LANGUAGES",
             input_name: "Languages",
-            placeholder: "-",
+            placeholder: "Deep Speech, Telepathy 120 ft.",
             value: resData.Languages,
           },
           {

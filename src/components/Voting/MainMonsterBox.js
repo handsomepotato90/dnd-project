@@ -18,7 +18,6 @@ export default function MainMonsterBox(props) {
   };
   return (
     <>
-      
       <div className={cName}>
         <div className="main_monster__info">
           {props.monsterStats.extraContent ? null : (
@@ -26,6 +25,11 @@ export default function MainMonsterBox(props) {
               className="image__style"
               src={`img/${props.monsterStats.meta.type}.jpg`}
               alt={props.monsterStats.meta.type}
+              onError={({ currentTarget }) => {
+                currentTarget.onerror = null;
+                currentTarget.src =
+                  "https://st.depositphotos.com/1167801/4561/i/950/depositphotos_45618803-stock-photo-question-mark-background.jpg";
+              }}
             />
           )}
           <div>{props.monsterStats.name}</div>
