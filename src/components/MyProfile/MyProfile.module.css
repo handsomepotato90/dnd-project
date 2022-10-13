@@ -10,5 +10,39 @@
 .legend__style{
     width: 10px;
     height: 10px;
+    margin: 0;
     margin-top: 1vh;
+    margin-left: 4vw;
+
+}
+.legend_main_box__style{
+    width: 25%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    margin-top: 3vh;
+}
+.edit_link__style{
+    text-align: center;
+    margin: auto;
+}
+.edit_button__style{
+    padding: 1ch 6ch;
+    font-size: 16px;
+    border: none;
+    font-weight: 400;
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 20%), 0 2px 5px 0 rgb(0 0 0 / 19%);
+    color: white;
+
+}
+.edit_link__style>button{
+    background-color: #4caf50;
+    border-radius: 4px;
+}
+.delete_btn__style{
+    background-color: #f44336;
+}
+.delete_btn__style:hover{
+        background-color:#f44336;
+        box-shadow: 0 0 20px #f44336;
 }

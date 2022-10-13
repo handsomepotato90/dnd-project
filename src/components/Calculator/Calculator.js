@@ -14,13 +14,11 @@ const Calculator = (props) => {
   });
   const performCalculation = (sym, number, result) => {
     let final;
-    console.log(sym);
     if (sym === "+") {
       final = result * 1 + number * 1;
     } else if (sym === "-") {
       final = result * 1 - number * 1;
     }
-    console.log(final);
     return final;
   };
   const comingResults = (diceResults, mode) => {
@@ -54,7 +52,6 @@ const Calculator = (props) => {
       })
     }
   };
-  console.log(calc);
 
   return (
     <Box className="big_box__top_margin big_box__color_back">

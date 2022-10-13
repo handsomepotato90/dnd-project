@@ -3,8 +3,14 @@ import { Link } from "react-router-dom";
 import styles from "./EncounterBox.module.css";
 
 export default function EncounterBox(props) {
+  let image_url;
+  if(props.monsters.length < 1){
+    image_url= 'https://cdn.pixabay.com/photo/2016/12/15/14/32/question-mark-background-1909040_1280.png'
+  }else{
+    image_url = props.monsters[0].img
+  }
   const style = {
-    backgroundImage:`url(${props.monsters[0].img})`,
+    backgroundImage:`url(${image_url})`,
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
   }

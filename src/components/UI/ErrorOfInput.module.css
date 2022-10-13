@@ -1,5 +1,5 @@
 .error__style {
-  position: absolute;
+  position: fixed;
   z-index: 101;
   width: 35vw;
   height: 35vh;

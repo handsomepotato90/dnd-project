@@ -2,12 +2,23 @@ import React, { useState, useEffect, useContext } from "react";
 import { useHttpClient } from "../hooks/http-hook";
 import { LoginContext } from "../store/login-context";
 import MainMonsterBox from "../Voting/MainMonsterBox";
+import LoadingSpinner from "../UI/LoadingSpinner";
 import styles from "./MyProfile.module.css";
-import Delete from "./Delete";
+import { useNavigate } from "react-router-dom";
+import Legend from "./Legend";
+import Edit from "./Edit";
+import ModalConfirmation from "../UI/ModalConfirmation";
+import ModalSubmitSucces from "../UI/ModalSubmitSucces";
+import ModalError from "../UI/ModalError";
 export default function MyProfile() {
-  const { sendRequest } = useHttpClient();
+  const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const login = useContext(LoginContext);
   const [myMonsters, setMyMonsters] = useState([]);
+  const [deleted, setDeleted] = useState(false);
+  const [clickDelete, setDeleteClick] = useState(false);
+  const [creatureToDelete, setCreatureToDelete] = useState("");
+  const navigate = useNavigate();
+
   const now = new Date().getTime();
   useEffect(() => {
     const fetchMonsters = async () => {
@@ -27,13 +38,72 @@ export default function MyProfile() {
     };
     fetchMonsters();
   }, [sendRequest, login.userId]);
-  console.log(myMonsters);
+  const errorHandler = () => {
+    clearError(null);
+  };
+  const deleteEncounter = (creatureId) => {
+    setDeleteClick(true);
+    setCreatureToDelete(creatureId);
+  };
+  const startDelete = async (answer) => {
+    if (answer === true) {
+      try {
+        setDeleteClick(false);
+        await sendRequest(
+          `http://localhost:5000/myProfile/${creatureToDelete}`,
+          "DELETE",
+          null,
+          { Authorization: "Bearer " + login.token }
+        );
+        setDeleted(true);
+      } catch (err) {}
+    } else {
+      setDeleteClick(false);
+    }
+  };
+  const removeModal = () => {
+    navigate("/");
+  };
   return (
     <>
-      <div className={`${styles.legend__style} ${styles.red}`}></div>
-      <div className={`${styles.legend__style} ${styles.green}`}></div>
-      <div className={`${styles.legend__style} ${styles.grey}`}></div>
-
+      {isLoading && <LoadingSpinner as0verlay></LoadingSpinner>}
+      {error && (
+        <ModalError
+          header="An Error Occurred"
+          error={error}
+          onClick={errorHandler}
+        ></ModalError>
+      )}
+      {clickDelete && (
+        <ModalConfirmation
+          title="Are you shure you whant to delete this Creature?"
+          onClick={startDelete}
+        ></ModalConfirmation>
+      )}
+      {deleted && (
+        <ModalSubmitSucces
+          onClick={removeModal}
+          title="Creature Deleted"
+          text="Your creature has been deleted successfully"
+        />
+      )}
+      <div className={styles.legend_main_box__style}>
+        <Legend
+          id="red"
+          className={`${styles.legend__style} ${styles.red}`}
+          text="red"
+        ></Legend>
+        <Legend
+          id="green"
+          className={`${styles.legend__style} ${styles.green}`}
+          text="green"
+        ></Legend>
+        <Legend
+          id="grey"
+          className={`${styles.legend__style} ${styles.grey}`}
+          text="grey"
+        ></Legend>
+      </div>
       {myMonsters.map((monster, i) => (
         <MainMonsterBox
           key={i}
@@ -46,7 +116,14 @@ export default function MyProfile() {
           }
           monsterStats={monster}
         >
-          <Delete id={monster._id}></Delete>
+          <Edit id={monster._id}></Edit>
+          <button
+            className={`${styles.delete_btn__style} ${styles.edit_button__style} button`}
+            onClick={() => deleteEncounter(monster._id)}
+          >
+            {" "}
+            Delete
+          </button>
         </MainMonsterBox>
       ))}
     </>

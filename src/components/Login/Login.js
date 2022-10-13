@@ -64,7 +64,7 @@ export default function Login() {
             "Content-Type": "application/json",
           }
         );
-        auth.login(resData.user.id);
+        auth.login(resData.user.id,resData.token);
       } catch (err) {}
     } else {
       try {
@@ -80,8 +80,8 @@ export default function Login() {
             "Content-Type": "application/json",
           }
         );
-        
-        auth.login(resData.user.id);
+        console.log(resData.user)
+        auth.login(resData.user._id,resData.token);
       } catch (err) {}
     }
   };
@@ -127,7 +127,7 @@ export default function Login() {
             type="password"
             label="Password:"
             errorText="*Password must be at least five(5) characters"
-            validators={[VALIDATOR_REQUIRE(), VALIDATOR_MINLENGTH(5)]}
+            validators={[VALIDATOR_REQUIRE(), VALIDATOR_MINLENGTH(6)]}
             onInput={inputHandler}
           ></Input>
           <Button type="submit" disabled={!formState.isValid}>

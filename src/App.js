@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import Navigation from "./components/Navigation/Navigation";
 import Calculator from "./components/Calculator/Calculator";
@@ -12,28 +12,19 @@ import BattleScreen from "./components/MyEncounters/BattleScreen";
 import SubmitHomeBrew from "./components/SubmitHomeBrew/SubmitHomeBrew";
 import Login from "./components/Login/Login";
 import MyProfile from "./components/MyProfile/MyProfile";
-
+import Edit from "./components/MyProfile/Edit/Edit";
+import { useAuth } from "./components/hooks/auth-hook";
 import "./App.css";
 import { LoginContext } from "./components/store/login-context";
+
 function App() {
   const [onscreen, statusCheck] = useState(false);
-
   const calcStatusCheck = (status) => {
     statusCheck(status);
   };
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userId, setUserId] = useState(false);
-
-  const login = useCallback((uid) => {
-    setIsLoggedIn(true);
-    setUserId(uid);
-  }, []);
-  const logout = useCallback(() => {
-    setIsLoggedIn(false);
-    setUserId(null);
-  }, []);
+  const { token, login, logout, userId } = useAuth();
   let routes;
-  if (isLoggedIn) {
+  if (token) {
     routes = (
       <React.Fragment>
         <Route path="/" element={<Home />} />
@@ -43,7 +34,7 @@ function App() {
         <Route path="/my_encounters" element={<MyEncounters />} />
         <Route path="/battle_scr/:id" element={<BattleScreen />} />
         <Route path="/myProfile" element={<MyProfile />} />
-
+        <Route path="/myProfile/Edit/:id" element={<Edit />} />
       </React.Fragment>
     );
   } else {
@@ -52,7 +43,8 @@ function App() {
   return (
     <LoginContext.Provider
       value={{
-        isLoggedIn: isLoggedIn,
+        isLoggedIn: !!token,
+        token: token,
         userId: userId,
         login: login,
         logout: logout,
@@ -65,7 +57,7 @@ function App() {
           <Hide onHide={calcStatusCheck} />
         </Calculator>
       ) : (
-        isLoggedIn && <Show onShow={calcStatusCheck} />
+        token && <Show onShow={calcStatusCheck} />
       )}
 
       <Routes>{routes}</Routes>

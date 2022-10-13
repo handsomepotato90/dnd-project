@@ -10,7 +10,7 @@
 }
 .modal_big_box__style {
   z-index: 3;
-  position: absolute;
+  position: fixed;
   width: 30%;
   height: 15vh;
   background-color: white;
