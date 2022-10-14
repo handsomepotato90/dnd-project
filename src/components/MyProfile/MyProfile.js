@@ -17,6 +17,7 @@ export default function MyProfile() {
   const [deleted, setDeleted] = useState(false);
   const [clickDelete, setDeleteClick] = useState(false);
   const [creatureToDelete, setCreatureToDelete] = useState("");
+  const [limit,setLimit] = useState(20);
   const navigate = useNavigate();
 
   const now = new Date().getTime();
@@ -28,6 +29,7 @@ export default function MyProfile() {
           "POST",
           JSON.stringify({
             user: login.userId,
+            limit:limit,
           }),
           {
             "Content-Type": "application/json",
@@ -37,7 +39,7 @@ export default function MyProfile() {
       } catch (err) {}
     };
     fetchMonsters();
-  }, [sendRequest, login.userId]);
+  }, [sendRequest, login.userId,limit]);
   const errorHandler = () => {
     clearError(null);
   };
@@ -64,6 +66,9 @@ export default function MyProfile() {
   const removeModal = () => {
     navigate("/");
   };
+  const loadMore = () =>{
+    setLimit(limit+10)
+  }
   return (
     <>
       {isLoading && <LoadingSpinner as0verlay></LoadingSpinner>}
@@ -91,17 +96,17 @@ export default function MyProfile() {
         <Legend
           id="red"
           className={`${styles.legend__style} ${styles.red}`}
-          text="red"
+          text="Rejected by the community. Some edits might be in order."
         ></Legend>
         <Legend
           id="green"
           className={`${styles.legend__style} ${styles.green}`}
-          text="green"
+          text="Accepted by the community."
         ></Legend>
         <Legend
           id="grey"
           className={`${styles.legend__style} ${styles.grey}`}
-          text="grey"
+          text="Ongoing voting"
         ></Legend>
       </div>
       {myMonsters.map((monster, i) => (
@@ -126,6 +131,7 @@ export default function MyProfile() {
           </button>
         </MainMonsterBox>
       ))}
+      <button className={`${styles.btn_load_more} button`} onClick={loadMore}>Load More</button>
     </>
   );
 }

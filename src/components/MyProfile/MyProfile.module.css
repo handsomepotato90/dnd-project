@@ -1,48 +1,73 @@
-.red{
-    background-color: #f4433696;
+.red {
+  background-color: #f4433696;
 }
-.green{
-    background-color: #4caf4f6b;
+.green {
+  background-color: #4caf4f6b;
 }
-.grey{
-    background-color: rgba(128, 128, 128, 0.397);
+.grey {
+  background-color: rgba(128, 128, 128, 0.397);
 }
-.legend__style{
-    width: 10px;
-    height: 10px;
-    margin: 0;
-    margin-top: 1vh;
-    margin-left: 4vw;
-
+.legend__style {
+  width: 2ch;
+  height: 2ch;
+  margin-top: 0.5vh;
 }
-.legend_main_box__style{
-    width: 25%;
-    margin: auto;
-    display: flex;
-    flex-direction: row;
-    margin-top: 3vh;
+.legend_single_box {
+  display: flex;
+  flex-direction: row;
+  margin-left: 1vw;
 }
-.edit_link__style{
-    text-align: center;
-    margin: auto;
+.legend_main_box__style {
+  width: 30%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  margin-top: 3vh;
 }
-.edit_button__style{
-    padding: 1ch 6ch;
-    font-size: 16px;
-    border: none;
-    font-weight: 400;
-    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 20%), 0 2px 5px 0 rgb(0 0 0 / 19%);
-    color: white;
-
+.edit_link__style {
+  text-align: center;
+  margin: auto;
 }
-.edit_link__style>button{
-    background-color: #4caf50;
-    border-radius: 4px;
+.edit_button__style {
+  padding: 1ch 6ch;
+  font-size: 16px;
+  border: none;
+  font-weight: 400;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 20%), 0 2px 5px 0 rgb(0 0 0 / 19%);
+  color: white;
 }
-.delete_btn__style{
-    background-color: #f44336;
+.edit_link__style > button {
+  background-color: #4caf50;
+  border-radius: 4px;
+  margin: 0vw 2vw;
 }
-.delete_btn__style:hover{
-        background-color:#f44336;
-        box-shadow: 0 0 20px #f44336;
+.delete_btn__style {
+  background-color: #f44336;
+}
+.delete_btn__style:hover {
+  background-color: #f44336;
+  box-shadow: 0 0 20px #f44336;
+}
+.btn_load_more {
+  background-color: whitesmoke;
+  border: none;
+  color: black;
+  padding: 1rem 6rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-left: 40%;
+  margin-top: 2rem;
+  cursor: pointer;
+}
+@media only screen and (max-width: 600px) {
+  .edit_button__style {
+    padding: 1ch 3ch;
+    font-size: 14px;
+  }
+  .btn_load_more {
+    margin-left: 30%;
+    padding: 1rem 3rem;
+  }
 }
