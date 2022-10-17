@@ -61,6 +61,12 @@
   margin-top: 2rem;
   cursor: pointer;
 }
+.search_bar__style{
+  margin: auto;
+  margin-left: 5%;
+  width: 25%;
+
+}
 @media only screen and (max-width: 600px) {
   .edit_button__style {
     padding: 1ch 3ch;

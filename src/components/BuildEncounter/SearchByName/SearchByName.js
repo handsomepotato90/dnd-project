@@ -8,7 +8,6 @@ export default function SearchByName() {
   let timer;
 
   const nameSearch = (event) => {
-    console.log(event);
     if (timer) {
       clearTimeout(timer);
     }

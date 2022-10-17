@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PlayerChoice from "./PlayerChoice/PlayerChoice";
 import MonsterLibrary from "./MonsterLibrary/MonsterLibrary";
 import EncounterSummary from "./EncounterSummary/EncounterSummary";
@@ -7,24 +7,71 @@ import { GroupXpProvider } from "../store/groupXp-context";
 import { MonsterXpProvider } from "../store/monsterXp-context";
 import SearchWindow from "./SearchWindow/SearchWindow";
 import SaveEncounter from "./SaveEncounter/SaveEncounter";
-import SearchByName from "./SearchByName/SearchByName"
-
+import SearchByName from "./SearchByName/SearchByName";
+import NavigationDrawer from "../UI/NavigationDrawer";
 export default function BuildEncounter() {
+  const [searchClick, setSearchClick] = useState(false);
+  const [playerClick, setPlayerClick] = useState(false);
+  const [difficultyClick, setDifficultyClick] = useState(false);
+
+  const openSearch = () => {
+    setSearchClick(true);
+  };
+  const closeSearch = () => {
+    setSearchClick(false);
+  };
+  const openPlayer = () => {
+    setPlayerClick(true);
+  };
+  const closePlayer = () => {
+    setPlayerClick(false);
+  };
+  const openDifficulty = () => {
+    setDifficultyClick(true);
+  };
+  const closeDifficulty = () => {
+    setDifficultyClick(false);
+  };
   return (
     <GroupXpProvider>
       <MonsterXpProvider>
+        {searchClick && (
+          <NavigationDrawer className={styles.drawer__style} onClick={closeSearch}>
+            <SearchWindow />
+          </NavigationDrawer>
+        )}
+        {playerClick && (
+          <NavigationDrawer className={styles.drawer__style} onClick={closePlayer}>
+            <PlayerChoice />
+          </NavigationDrawer>
+        )}
+        {difficultyClick && (
+          <NavigationDrawer className={styles.drawer__style} onClick={closeDifficulty}>
+            <EncounterSummary></EncounterSummary>
+          </NavigationDrawer>
+        )}
         <div className={styles.flex_box__style}>
+          <div className={styles.serch_box__style}>
             <SearchWindow></SearchWindow>
+          </div>
           <div>
             <SaveEncounter />
-            <PlayerChoice />
+
+            <div className={styles.party_setup__window}>
+              <PlayerChoice />
+            </div>
+            <div className={styles.mobile_minimal__vue}>
+              <button className={styles.drawer_opener__style} onClick={openSearch}>Search</button>
+              <button className={styles.drawer_opener__style}  onClick={openPlayer}>Players</button>
+              <button  className={styles.drawer_opener__style} onClick={openDifficulty}>Difficulty</button>
+            </div>
             <SearchByName />
             <div className={styles.library__style}>
               <MonsterLibrary />
             </div>
           </div>
           <div
-            className={`${styles.serch_box__style} ${styles.encounter__style}`}
+            className={`${styles.summary_general__style} ${styles.encounter__style}`}
           >
             <EncounterSummary></EncounterSummary>
           </div>

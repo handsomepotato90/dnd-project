@@ -54,17 +54,14 @@
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 18px;
+  font-size:2ch;
 }
 
 @media only screen and (max-width: 600px) {
   .monster_box__style {
     height: 10vh;
   }
-  .desc_behavior {
-    display: none;
-  }
-  .desc_text__style{
-    display: none;
+  .delete_this{
+    font-size: 3ch;
   }
 }

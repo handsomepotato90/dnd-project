@@ -1,3 +1,4 @@
+
 .gerenl_scroll__style {
   margin: 0 auto;
   height: 5rem;
@@ -5,15 +6,7 @@
   display: flex;
   flex-direction: column;
 }
-.serch_box__style{
-  min-height:100%;
-  width: 100%;
-  margin-left: 3vw;
-  background-color: white;
-  display: flex;
-  flex-direction: column;
 
-}
 .text__style {
   font-weight: bold;
   margin: auto;
@@ -35,7 +28,9 @@
   margin-top: 2rem;
 }
 @media only screen and (max-width: 600px) {
-
+  .text__style {
+  color: #fff;
+  }
 }
 @media only screen and (max-width: 1400px) {
   .text__style {

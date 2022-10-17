@@ -1,8 +1,8 @@
 .box_player__style {
   margin-top: 0.5rem;
   width: 8vw;
-  background-color: #585757;
-  color: white;
+  background-color: #fdfafa;
+  color: #000;
   border-radius: 0.2rem;
   display: flex;
   flex-direction: row;
@@ -23,23 +23,26 @@
   width: auto;
   font-size: 18px;
 }
-.news_box__stayel{
+.news_box__stayel {
   height: 11rem;
   display: flex;
   padding: 1vmin;
   flex-direction: column;
   flex-wrap: wrap;
   overflow: auto;
-
 }
 @media only screen and (max-width: 600px) {
-    .box_player__style {
-      width:35vw;
-      color: white;
-      font-size: 16px;
-    }
-    .news_box__stayel{
-      height: 18vh;
-      padding: 1vmin;
-    }
+  .box_player__style {
+    display: flex;
+    flex-direction: row;
+    background-color: #000;
+    color: #fff;
+    width: auto;
+  }
+  .news_box__stayel {
+    background-color: #fff;
+    margin: auto;
+    height: 20rem;
+    z-index: -1;
+  }
 }

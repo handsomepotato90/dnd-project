@@ -104,8 +104,12 @@
   .main_monster__info{
     font-size: 14px;
   }
-  .main_monster__info > div {
-    min-width: 25%;
+  .main_monster__info > .monster_name__style {
+    min-width:40%;
+  }
+  .main_monster__info >.read_button__style{
+    min-width:20%;
+
   }
   .voting_booth{
     width: 30%;

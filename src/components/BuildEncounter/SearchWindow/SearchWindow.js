@@ -136,118 +136,117 @@ export default function SearchWindow() {
 
   return (
     <>
-      <div className={styles.serch_box__style}>
-        <div className={styles.gerenl_scroll__style}>
-          <span className={styles.text__style}>Monster Type</span>
-          <Select
-            className={styles.search_bar__stayle}
-            isSearchable={true}
-            options={monsterType}
-            isMulti
-            name="types"
-            onChange={getType}
-          ></Select>
-        </div>
-        <div className={styles.gerenl_scroll__style}>
-          <span className={styles.text__style}>Alignment</span>
-          <Select
-            className={styles.search_bar__stayle}
-            isSearchable={true}
-            options={alignment}
-            isMulti
-            name="alignment"
-            onChange={getType}
-          ></Select>
-        </div>
-
-        <div className={styles.gerenl_scroll__style}>
-          <span className={styles.text__style}>Condition Immunity</span>
-          <Select
-            className={styles.search_bar__stayle}
-            isSearchable={true}
-            options={condition}
-            isMulti
-            name="condition"
-            onChange={getType}
-          ></Select>
-        </div>
-        <div className={styles.gerenl_scroll__style}>
-          <span className={styles.text__style}>Damage Immunity</span>
-          <Select
-            className={styles.search_bar__stayle}
-            isSearchable={true}
-            options={damageIm}
-            isMulti
-            name="damage"
-            onChange={getType}
-          ></Select>
-        </div>
-        <div className={styles.gerenl_scroll__style}>
-          <span className={styles.text__style}>Is Legendary</span>
-          <Select
-            className={styles.search_bar__stayle}
-            isSearchable={true}
-            options={legendary}
-            name="legendary"
-            defaultValue={[legendary[0]]}
-            onChange={getType}
-          ></Select>
-        </div>
-        <div className={styles.gerenl_scroll__style}>
-          <span className={styles.text__style}>Resistance</span>
-          <Select
-            className={styles.search_bar__stayle}
-            isSearchable={true}
-            options={damageIm}
-            isMulti
-            name="resistance"
-            onChange={getType}
-          ></Select>
-        </div>
-        <div className={styles.gerenl_scroll__style}>
-          <span className={styles.text__style}>Vulnerability</span>
-          <Select
-            className={styles.search_bar__stayle}
-            isSearchable={true}
-            options={damageIm}
-            isMulti
-            name="vulnerability"
-            onChange={getType}
-          ></Select>
-        </div>
-
-        <div className={styles.gerenl_scroll__style}>
-          <span className={styles.text__style}>Challenge Rating</span>
-          <InputRange
-            disabled={false}
-            maxValue={30}
-            minValue={0}
-            value={rating}
-            onChange={(value) => newRating({ value })}
-          />
-        </div>
-        <div className={styles.gerenl_scroll__style}>
-          <span className={styles.text__style}>Armor Class</span>
-          <InputRange
-            disabled={false}
-            maxValue={50}
-            minValue={0}
-            value={armor}
-            onChange={(value) => newArmor({ value })}
-          />
-        </div>
-        <div className={styles.gerenl_scroll__style}>
-          <span className={styles.text__style}>Average HP</span>
-          <InputRange
-            disabled={false}
-            maxValue={1500}
-            minValue={0}
-            step={5}
-            value={health}
-            onChange={(value) => newHealth({ value })}
-          />
-        </div>
+      <div className={styles.gerenl_scroll__style}>
+        <span className={styles.text__style}>Monster Type</span>
+        <Select
+          className={styles.search_bar__stayle}
+          isSearchable={true}
+          options={monsterType}
+          isMulti
+          name="types"
+          onChange={getType}
+        ></Select>
       </div>
+      <div className={styles.gerenl_scroll__style}>
+        <span className={styles.text__style}>Alignment</span>
+        <Select
+          className={styles.search_bar__stayle}
+          isSearchable={true}
+          options={alignment}
+          isMulti
+          name="alignment"
+          onChange={getType}
+        ></Select>
+      </div>
+
+      <div className={styles.gerenl_scroll__style}>
+        <span className={styles.text__style}>Condition Immunity</span>
+        <Select
+          className={styles.search_bar__stayle}
+          isSearchable={true}
+          options={condition}
+          isMulti
+          name="condition"
+          onChange={getType}
+        ></Select>
+      </div>
+      <div className={styles.gerenl_scroll__style}>
+        <span className={styles.text__style}>Damage Immunity</span>
+        <Select
+          className={styles.search_bar__stayle}
+          isSearchable={true}
+          options={damageIm}
+          isMulti
+          name="damage"
+          onChange={getType}
+        ></Select>
+      </div>
+      <div className={styles.gerenl_scroll__style}>
+        <span className={styles.text__style}>Is Legendary</span>
+        <Select
+          className={styles.search_bar__stayle}
+          isSearchable={true}
+          options={legendary}
+          name="legendary"
+          defaultValue={[legendary[0]]}
+          onChange={getType}
+        ></Select>
+      </div>
+      <div className={styles.gerenl_scroll__style}>
+        <span className={styles.text__style}>Resistance</span>
+        <Select
+          className={styles.search_bar__stayle}
+          isSearchable={true}
+          options={damageIm}
+          isMulti
+          name="resistance"
+          onChange={getType}
+        ></Select>
+      </div>
+      <div className={styles.gerenl_scroll__style}>
+        <span className={styles.text__style}>Vulnerability</span>
+        <Select
+          className={styles.search_bar__stayle}
+          isSearchable={true}
+          options={damageIm}
+          isMulti
+          name="vulnerability"
+          onChange={getType}
+        ></Select>
+      </div>
+
+      <div className={styles.gerenl_scroll__style}>
+        <span className={styles.text__style}>Challenge Rating</span>
+        <InputRange
+          disabled={false}
+          maxValue={30}
+          minValue={0}
+          value={rating}
+          onChange={(value) => newRating({ value })}
+        />
+      </div>
+      <div className={styles.gerenl_scroll__style}>
+        <span className={styles.text__style}>Armor Class</span>
+        <InputRange
+          disabled={false}
+          maxValue={50}
+          minValue={0}
+          value={armor}
+          onChange={(value) => newArmor({ value })}
+        />
+      </div>
+      <div className={styles.gerenl_scroll__style}>
+        <span className={styles.text__style}>Average HP</span>
+        <InputRange
+          disabled={false}
+          maxValue={1500}
+          minValue={0}
+          step={5}
+          value={health}
+          onChange={(value) => newHealth({ value })}
+        />
+      </div>
+
       {/* <button className={styles.search_btn_style} onClick={searchDb}>
         {" "}
         Apply Search

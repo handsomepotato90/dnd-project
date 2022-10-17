@@ -1,5 +1,4 @@
 .difficulty_box__style {
-  height: 30%;
   background-color: #fff;
   display: flex;
   flex-direction: column;
@@ -56,15 +55,18 @@
   }
 }
 @media only screen and (max-width: 600px) {
-    .paragraph__style {
-      font-size: 1.5ch;
-      color: black;
-    }
-    .difficulty_box__style{
-      height: 5%;
-      text-align: center;
-    }
-    .main_text__style {
-      font-size: 12px;
-    }
+  .difficulty_box__style {
+    height: 30%;
   }
+  .main_text__style {
+    font-size: 3ch;
+  }
+  .titles__styles {
+    font-size: 1.5ch;
+
+  }
+  .content__styles {
+    font-size: 1.8ch;
+
+  }
+}

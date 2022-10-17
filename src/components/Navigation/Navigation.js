@@ -39,7 +39,7 @@ const Navigation = () => {
       <Link to="/">
         <img className="logo__size" src={Logo} alt="logo"></img>
       </Link>
-      {auth.isLoggedIn && burger && <NavigationDrawer onClick={closeNav} >{content}</NavigationDrawer>}
+      {auth.isLoggedIn && burger && <NavigationDrawer className='burger__style' onClick={closeNav} >{content}</NavigationDrawer>}
       <ul className="nav_links">
         {content}
       </ul>

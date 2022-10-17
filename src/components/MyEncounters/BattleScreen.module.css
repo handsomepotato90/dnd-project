@@ -111,11 +111,15 @@
 }
 .delete_btn__holder{
   text-align: center;
+  border: none;
 }
 .delete_btn__style {
   margin-top: 5vh;
   background-color: #f44336;
   padding: 1.5vh 6vw;
+  color: #fff;
+  border: none;
+  font-size: 2ch;
 }
 
 .delete_btn__style:hover, .subtract:hover{

@@ -10,17 +10,16 @@
   margin-left: 2rem;
   cursor: pointer;
   box-shadow: 0 0 10px rgb(161, 161, 161);
-
 }
-.btn_add__style:hover{
+.btn_add__style:hover {
   color: white;
   background-color: rgb(161, 161, 161);
   box-shadow: 0 0 20px rgb(161, 161, 161);
 }
 .btn_load_more {
-  background-color: whitesmoke;
+  background-color: #4caf50;
+  color: #fff;
   border: none;
-  color: black;
   padding: 1rem 6rem;
   text-align: center;
   text-decoration: none;
@@ -29,4 +28,15 @@
   margin-left: 30%;
   margin-top: 2rem;
   cursor: pointer;
+}
+@media only screen and (max-width: 600px) {
+  .btn_load_more {
+    margin-left: 15%;
+    margin-top: 2rem;
+  }
+  .btn_add__style {
+    font-size: 1.5ch;
+    margin-left: 0rem;
+    padding: 0.5ch 2.5ch;
+  }
 }

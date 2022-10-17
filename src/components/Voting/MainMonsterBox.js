@@ -32,7 +32,7 @@ export default function MainMonsterBox(props) {
               }}
             />
           )}
-          <div>{props.monsterStats.name}</div>
+          <div className="monster_name__style">{props.monsterStats.name}</div>
           {size.width > 600 && <div>{props.monsterStats.meta.size}</div>}
           {size.width > 600 && <div>{props.monsterStats.meta.type}</div>}
           {size.width > 600 && <div>{props.monsterStats.meta.alignment}</div>}

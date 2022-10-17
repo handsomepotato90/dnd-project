@@ -13,13 +13,14 @@ import ModalError from "../UI/ModalError";
 export default function MyProfile() {
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const login = useContext(LoginContext);
+  const [searchCondition,setSearchCondition] = useState("")
   const [myMonsters, setMyMonsters] = useState([]);
   const [deleted, setDeleted] = useState(false);
   const [clickDelete, setDeleteClick] = useState(false);
   const [creatureToDelete, setCreatureToDelete] = useState("");
   const [limit,setLimit] = useState(20);
   const navigate = useNavigate();
-
+  let timer;
   const now = new Date().getTime();
   useEffect(() => {
     const fetchMonsters = async () => {
@@ -30,6 +31,7 @@ export default function MyProfile() {
           JSON.stringify({
             user: login.userId,
             limit:limit,
+            name:searchCondition,
           }),
           {
             "Content-Type": "application/json",
@@ -39,7 +41,18 @@ export default function MyProfile() {
       } catch (err) {}
     };
     fetchMonsters();
-  }, [sendRequest, login.userId,limit]);
+  }, [sendRequest, login.userId,limit,searchCondition]);
+
+
+  const nameSearch = (event) => {
+    if (timer) {
+      clearTimeout(timer);
+    }
+    timer = setTimeout(function () {
+        setSearchCondition(event.target.value)
+    }, 1000);
+  };
+
   const errorHandler = () => {
     clearError(null);
   };
@@ -109,6 +122,7 @@ export default function MyProfile() {
           text="Ongoing voting"
         ></Legend>
       </div>
+      <input className={styles.search_bar__style} onKeyUp={nameSearch} placeholder="Search"></input>
       {myMonsters.map((monster, i) => (
         <MainMonsterBox
           key={i}

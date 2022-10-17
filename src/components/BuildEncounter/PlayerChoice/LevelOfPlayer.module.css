@@ -18,11 +18,8 @@
   transform: translateY(2rem);
 }
 @media only screen and (max-width: 600px) {
-  .add_player_btn__style {
-    padding: 1ch;
-    font-size: 12px;
-  }
   .select__style {
-    width: 8ch;
+    width: 20ch;
+    margin-bottom: 0.5rem;
   }
 }
