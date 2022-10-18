@@ -7,7 +7,7 @@ export default function ImmunityesModal(props) {
       <div className={styles.resandvun_text__style}>
         <span className={styles.red_condition}>Damage Immunity: </span>
         <span
-          className={`${styles.condition__txt__style} ${styles.red_condition}`}
+          className={`${styles.condition__txt__style}`}
         >
           {props.dmgI}
         </span>
@@ -15,7 +15,7 @@ export default function ImmunityesModal(props) {
       <div className={styles.resandvun_text__style}>
         <span className={styles.red_condition}>Condition Immunity:</span>
         <span
-          className={`${styles.condition__txt__style} ${styles.red_condition}`}
+          className={`${styles.condition__txt__style} `}
         >
           {props.conI}
         </span>
@@ -23,7 +23,7 @@ export default function ImmunityesModal(props) {
       <div className={styles.resandvun_text__style}>
         <span className={styles.orange_condition}>Damage Resistance:</span>
         <span
-          className={`${styles.condition__txt__style} ${styles.orange_condition}`}
+          className={`${styles.condition__txt__style} `}
         >
           {props.dmgR}
         </span>
@@ -31,7 +31,7 @@ export default function ImmunityesModal(props) {
       <div className={styles.resandvun_text__style}>
         <span className={styles.green_condition}>Damage Vulnerability:</span>
         <span
-          className={`${styles.condition__txt__style} ${styles.green_condition}`}
+          className={`${styles.condition__txt__style} `}
         >
           {props.dmgV}
         </span>
