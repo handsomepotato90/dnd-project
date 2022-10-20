@@ -19,7 +19,7 @@ export default function Button(props) {
 
       try {
         await sendRequest(
-          "http://localhost:5000/voting",
+          process.env.REACT_APP_BACKEND_URL + "/voting",
           "POST",
           JSON.stringify({
             id: props.id,

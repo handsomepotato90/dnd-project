@@ -19,7 +19,7 @@ export default function Edit() {
 
       try {
         const resData = await sendRequest(
-          `http://localhost:5000/myProfile/Edit/${url[1]}`
+          process.env.REACT_APP_BACKEND_URL + `/myProfile/Edit/${url[1]}`
         );
         setMonsterForEdit([
           {
@@ -252,7 +252,7 @@ export default function Edit() {
         notReq={fields}
         text={textZone}
         type="PATCH"
-        url={`http://localhost:5000/myProfile/Edit/${url[1]}`}
+        url={`/myProfile/Edit/${url[1]}`}
       ></HomeBrewSave>
     </>
   );

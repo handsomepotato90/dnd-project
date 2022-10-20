@@ -191,7 +191,7 @@ export default function SubmitHomeBrew() {
 
   return (
     <>
-      <HomeBrewSave valid={false} required={reqFields} notReq={fields} text={textZone} type="POST" url="http://localhost:5000/submit_homebrew"></HomeBrewSave>
+      <HomeBrewSave valid={false} required={reqFields} notReq={fields} text={textZone} type="POST" url="/submit_homebrew"></HomeBrewSave>
     </>
   );
 }

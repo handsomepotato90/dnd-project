@@ -103,7 +103,7 @@ export default function HomeBrewSave(props) {
     };
     try {
       await sendRequest(
-        `${props.url}`,
+        process.env.REACT_APP_BACKEND_URL + `${props.url}`,
         props.type,
         JSON.stringify(data),
         {

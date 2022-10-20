@@ -21,7 +21,7 @@ export default function InputFields(props) {
       console.log(inputRef.current.value);
       try {
         const second = await sendRequest(
-          "http://localhost:5000/submit_homebrew/check_name",
+          process.env.REACT_APP_BACKEND_URL + "/submit_homebrew/check_name",
           "POST",
           JSON.stringify({
             name: inputRef.current.value.trim(),

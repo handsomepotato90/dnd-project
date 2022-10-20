@@ -26,7 +26,7 @@ export default function MyProfile() {
     const fetchMonsters = async () => {
       try {
         const resData = await sendRequest(
-          "http://localhost:5000/myProfile",
+          process.env.REACT_APP_BACKEND_URL + "/myProfile",
           "POST",
           JSON.stringify({
             user: login.userId,
@@ -65,7 +65,7 @@ export default function MyProfile() {
       try {
         setDeleteClick(false);
         await sendRequest(
-          `http://localhost:5000/myProfile/${creatureToDelete}`,
+          process.env.REACT_APP_BACKEND_URL + `/myProfile/${creatureToDelete}`,
           "DELETE",
           null,
           { Authorization: "Bearer " + login.token }

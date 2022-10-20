@@ -10,7 +10,7 @@ export default function MonsterLibrary() {
   useEffect(() => {
     const fetchMonsters = async () => {
       try {
-        const resData = await sendRequest("http://localhost:5000/build_encounter");
+        const resData = await sendRequest(process.env.REACT_APP_BACKEND_URL + "/build_encounter");
         mxp.setMonsters([...resData]);
       } catch (err) {}
     };

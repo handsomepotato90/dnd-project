@@ -21,7 +21,7 @@ export default function BattleScreen() {
     const fetchMonsters = async () => {
       try {
         const resData = await sendRequest(
-          `http://localhost:5000/battle_scr/${url[1]}`
+          process.env.REACT_APP_BACKEND_URL + `/battle_scr/${url[1]}`
         );
         const control = [];
         resData.forEach((element) => {
@@ -41,7 +41,7 @@ export default function BattleScreen() {
       try {
         setDeleteClick(false);
         await sendRequest(
-          `http://localhost:5000/battle_scr/${url[1]}`,
+          process.env.REACT_APP_BACKEND_URL + `/battle_scr/${url[1]}`,
           "DELETE",
           null,
           { Authorization: "Bearer " + auth.token }

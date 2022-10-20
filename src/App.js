@@ -1,21 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 import Navigation from "./components/Navigation/Navigation";
 import Calculator from "./components/Calculator/Calculator";
-import Voting from "./components/Voting/Voting";
 import Show from "./components/Calculator/Show";
 import Hide from "./components/Calculator/Hide";
-import Home from "./components/Home/Home";
-import BuildEncounter from "./components/BuildEncounter/BuildEncounter";
-import MyEncounters from "./components/MyEncounters/MyEncounters";
-import BattleScreen from "./components/MyEncounters/BattleScreen";
-import SubmitHomeBrew from "./components/SubmitHomeBrew/SubmitHomeBrew";
 import Login from "./components/Login/Login";
-import MyProfile from "./components/MyProfile/MyProfile";
-import Edit from "./components/MyProfile/Edit/Edit";
 import { useAuth } from "./components/hooks/auth-hook";
 import "./App.css";
 import { LoginContext } from "./components/store/login-context";
+import LoadingSpinner from "./components/UI/LoadingSpinner";
+
+const BuildEncounter = React.lazy(() =>
+  import("./components/BuildEncounter/BuildEncounter")
+);
+const MyEncounters = React.lazy(() =>
+  import("./components/MyEncounters/MyEncounters")
+);
+const BattleScreen = React.lazy(() =>
+  import("./components/MyEncounters/BattleScreen")
+);
+const SubmitHomeBrew = React.lazy(() =>
+  import("./components/SubmitHomeBrew/SubmitHomeBrew")
+);
+const MyProfile = React.lazy(() => import("./components/MyProfile/MyProfile"));
+const Edit = React.lazy(() => import("./components/MyProfile/Edit/Edit"));
+const Home = React.lazy(() => import("./components/Home/Home"));
+const Voting = React.lazy(() => import("./components/Voting/Voting"));
 
 function App() {
   const [onscreen, statusCheck] = useState(false);
@@ -60,7 +70,15 @@ function App() {
         token && <Show onShow={calcStatusCheck} />
       )}
 
-      <Routes>{routes}</Routes>
+      <Suspense
+        fallback={
+          <div className="center">
+            <LoadingSpinner />
+          </div>
+        }
+      >
+        <Routes>{routes}</Routes>
+      </Suspense>
     </LoginContext.Provider>
   );
 }

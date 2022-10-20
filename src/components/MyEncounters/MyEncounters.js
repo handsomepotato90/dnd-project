@@ -12,7 +12,7 @@ export default function MyEncounters() {
     const fetchMonsters = async () => {
       try {
        const resData = await sendRequest(
-          "http://localhost:5000/my_encounters",
+        process.env.REACT_APP_BACKEND_URL + "/my_encounters",
           "POST",
           JSON.stringify({
            user: login.userId

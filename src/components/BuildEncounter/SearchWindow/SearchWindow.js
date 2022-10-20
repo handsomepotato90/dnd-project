@@ -116,7 +116,7 @@ export default function SearchWindow() {
     const searchDb = async () => {
       try {
         const resData = await sendRequest(
-          "http://localhost:5000/build_encounter",
+          process.env.REACT_APP_BACKEND_URL + "/build_encounter",
           "POST",
           JSON.stringify({
             rating,
@@ -246,11 +246,6 @@ export default function SearchWindow() {
           onChange={(value) => newHealth({ value })}
         />
       </div>
-
-      {/* <button className={styles.search_btn_style} onClick={searchDb}>
-        {" "}
-        Apply Search
-      </button> */}
     </>
   );
 }

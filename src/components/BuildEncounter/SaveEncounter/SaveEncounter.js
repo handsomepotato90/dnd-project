@@ -40,7 +40,7 @@ export default function SaveEncounter() {
     }
     try {
       await sendRequest(
-        "http://localhost:5000/build_encounter/submit_new_enc",
+        process.env.REACT_APP_BACKEND_URL + "/build_encounter/submit_new_enc",
         "POST",
         JSON.stringify(encounter),
         {

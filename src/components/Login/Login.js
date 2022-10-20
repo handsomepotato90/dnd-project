@@ -54,7 +54,7 @@ export default function Login() {
     if (isLogin) {
       try {
       const resData =  await sendRequest(
-          "http://localhost:5000/login",
+        process.env.REACT_APP_BACKEND_URL + "/login",
           "POST",
           JSON.stringify({
             name: formState.inputs.u_name.value,
@@ -69,7 +69,7 @@ export default function Login() {
     } else {
       try {
         const resData = await sendRequest(
-          "http://localhost:5000/signup",
+          process.env.REACT_APP_BACKEND_URL + "/signup",
           "POST",
           JSON.stringify({
             name: formState.inputs.u_name.value,

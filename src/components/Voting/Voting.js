@@ -10,7 +10,7 @@ export default function Voting() {
   useEffect(() => {
     const fetchMonsters = async () => {
       try {
-        const resData = await sendRequest("http://localhost:5000/voting");
+        const resData = await sendRequest(process.env.REACT_APP_BACKEND_URL + "/voting");
         setMonsters([...resData]);
       } catch (err) {}
     };
