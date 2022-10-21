@@ -18,6 +18,7 @@ export default function MyEncounters() {
            user: login.userId
            } ),
           {
+            
             "Content-Type": "application/json",
           }
         );
