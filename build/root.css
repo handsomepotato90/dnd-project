@@ -1,0 +1,18 @@
+body,
+#root {
+  height: 100%;
+  min-height: 100vh;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  background-color: #c0dbec75;
+}
+.button {
+  cursor: pointer;
+  border: none;
+}
+.button:hover {
+  background-color: #4caf50;
+  box-shadow: 0 0 20px #4caf50;
+}
