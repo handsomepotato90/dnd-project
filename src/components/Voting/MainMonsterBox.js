@@ -23,7 +23,7 @@ export default function MainMonsterBox(props) {
           {props.monsterStats.extraContent ? null : (
             <img
               className="image__style"
-              src={`img/${props.monsterStats.meta.type}.jpg`}
+              src={`img/${props.monsterStats.meta.type.toLowerCase()}.jpg`}
               alt={props.monsterStats.meta.type}
               onError={({ currentTarget }) => {
                 currentTarget.onerror = null;

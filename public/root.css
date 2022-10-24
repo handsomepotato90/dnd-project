@@ -1,3 +1,7 @@
+body {
+  margin: 0 auto !important;
+  float: none !important;
+}
 body,
 #root {
   height: 100%;
@@ -7,6 +11,7 @@ body,
   bottom: 0px;
   left: 0px;
   background-color: #c0dbec75;
+  max-width: 1920px;
 }
 .button {
   cursor: pointer;

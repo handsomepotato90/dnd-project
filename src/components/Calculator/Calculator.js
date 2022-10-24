@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Box from "../UI/Box";
 import CalcButtons from "./CalcButtons";
 import CalcScreen from "./CalcScreen";
-
 import "./Calculator.css";
 
 const Calculator = (props) => {
@@ -22,10 +21,10 @@ const Calculator = (props) => {
     return final;
   };
   const comingResults = (diceResults, mode) => {
-    if (diceResults!== 0 && !mode) {
+    if (diceResults !== 0 && !mode) {
       setResult([...result, diceResults]);
 
-      setCalc({ ...calc, sum: (calc.sum*1) + (diceResults*1) });
+      setCalc({ ...calc, sum: calc.sum * 1 + diceResults * 1 });
     } else if (diceResults !== 0 && mode) {
       if (diceResults === "+" || diceResults === "-") {
         setCalc({
@@ -40,7 +39,7 @@ const Calculator = (props) => {
         });
       } else {
         calc.sum === "" || calc.sym === ""
-          ? setCalc({ ...calc, sum: calc.sum + (diceResults*1) })
+          ? setCalc({ ...calc, sum: calc.sum + diceResults * 1 })
           : setCalc({ ...calc, number: calc.number + diceResults });
       }
     } else {
@@ -49,7 +48,7 @@ const Calculator = (props) => {
         sym: "",
         number: "",
         sum: 0,
-      })
+      });
     }
   };
 

@@ -10,6 +10,7 @@ import "./App.css";
 import { LoginContext } from "./components/store/login-context";
 import LoadingSpinner from "./components/UI/LoadingSpinner";
 
+
 const BuildEncounter = React.lazy(() =>
   import("./components/BuildEncounter/BuildEncounter")
 );
