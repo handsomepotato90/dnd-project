@@ -10,9 +10,6 @@ export default function MonsterBattleBox(props) {
   const [isDead, setDead] = useState(false);
   const [isRead, setReading] = useState(false);
 
-  // let hp = props.stats["Hit Points"].split(" ");
-  // let ac = props.stats["Armor Class"].split(" ");
-
   const deathTraker = (state) => {
     setDead(state);
     setIsShown(false);
@@ -27,7 +24,10 @@ export default function MonsterBattleBox(props) {
   return (
     <div className={styles.battle_box}>
       {isRead && (
-        <ModalMonsterText onClick={removeModal} monsterStats={props.stats}></ModalMonsterText>
+        <ModalMonsterText
+          onClick={removeModal}
+          monsterStats={props.stats}
+        ></ModalMonsterText>
       )}
       <div
         onClick={renderModal}
@@ -54,9 +54,14 @@ export default function MonsterBattleBox(props) {
       <div className={styles.stat_battle_box}>
         <div>
           <span className={styles.stat_text__style}>AC:</span>
-          <span className={styles.stat_text__style}>{props.stats["Armor Class"].value}</span>
+          <span className={styles.stat_text__style}>
+            {props.stats["Armor Class"].value}
+          </span>
         </div>
-        <HealthPool onChange={deathTraker} hp={props.stats["Hit Points"].hp}></HealthPool>
+        <HealthPool
+          onChange={deathTraker}
+          hp={props.stats["Hit Points"].hp}
+        ></HealthPool>
         <Initiative></Initiative>
       </div>
     </div>

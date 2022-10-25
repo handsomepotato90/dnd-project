@@ -21,14 +21,15 @@ const CalcButtons = (props) => {
   const [buttons, setButtons] = useState(values);
   
 
-  const returningValue = (rolledValue) => {
-    props.onComingResults(rolledValue,mode);
+  const returningValue = (rolledValue,dice) => {
+    props.onComingResults(rolledValue,dice,mode);
   };
 
   const switchCalculator = () => {
     if (!mode) {
       setButtons([...calculatorButtons]);
     } else {
+      returningValue("=")
       setButtons([...values]);
     }
     setMode((prevMode) => !prevMode);

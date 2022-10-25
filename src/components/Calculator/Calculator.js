@@ -5,6 +5,7 @@ import CalcScreen from "./CalcScreen";
 import "./Calculator.css";
 
 const Calculator = (props) => {
+  let [numbersAndDice, setNumbersAndDice] = useState([]);
   let [result, setResult] = useState([]);
   const [calc, setCalc] = useState({
     sym: "",
@@ -20,18 +21,46 @@ const Calculator = (props) => {
     }
     return final;
   };
-  const comingResults = (diceResults, mode) => {
-    if (diceResults !== 0 && !mode) {
+  const comingResults = (diceResults, dice, mode) => {
+    if (
+      (numbersAndDice[numbersAndDice.length - 1] === "+" ||
+        numbersAndDice[numbersAndDice.length - 1] === "-") &&
+      (diceResults === "+" || diceResults === "-")
+    ) {
+      setNumbersAndDice([...numbersAndDice.pop()]);
+    }
+    if (diceResults !== 0 && diceResults !== "=") {
+      setNumbersAndDice([...numbersAndDice, dice]);
+    }
+    if (diceResults !== 0 && diceResults !== "=" && !mode) {
       setResult([...result, diceResults]);
 
       setCalc({ ...calc, sum: calc.sum * 1 + diceResults * 1 });
     } else if (diceResults !== 0 && mode) {
-      if (diceResults === "+" || diceResults === "-") {
+      if ((diceResults === "+" || diceResults === "-") && calc.number ==='') {
         setCalc({
           ...calc,
           sym: diceResults,
         });
-      } else if (diceResults === "=") {
+        return;
+      } 
+      if ((diceResults === "+" || diceResults === "-") && calc.number !=='' && calc.sym !=='') {
+        setCalc({
+          sym: diceResults,
+          number: "",
+          sum: performCalculation(calc.sym, calc.number, calc.sum),
+        });
+        return;
+      } 
+      if (diceResults === "=" && calc.number ==='') {
+        setCalc({
+          sym: "",
+          number: "",
+          sum: calc.sum,
+        });
+        return;
+      }
+      if (diceResults === "=" && calc.number !=='') {
         setCalc({
           sym: "",
           number: "",
@@ -44,6 +73,7 @@ const Calculator = (props) => {
       }
     } else {
       setResult([]);
+      setNumbersAndDice([]);
       setCalc({
         sym: "",
         number: "",
@@ -56,7 +86,7 @@ const Calculator = (props) => {
     <Box className="big_box__top_margin big_box__color_back">
       <CalcScreen
         resultsSender={calc.sum}
-        allNumbers={result}
+        allNumbers={numbersAndDice}
         symbol={calc.sym}
         toAdd={calc.number}
       />

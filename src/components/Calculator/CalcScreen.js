@@ -8,7 +8,7 @@ const CalcScreen = (props) => {
       <textarea
         className="text_area__size"
         readOnly
-        value={props.allNumbers}
+        value={props.allNumbers.join()}
       ></textarea>
 
       <div className="die_sum__size die_style__text">{props.resultsSender}{props.symbol}{props.toAdd}</div>

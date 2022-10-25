@@ -15,26 +15,26 @@ const DiceButton = (props) => {
       if (event.target.innerText !== "C") {
         const buttonValue = event.target.innerText.split("d");
         let result = rollDice(buttonValue[1]);
-        props.onTrytoRoll(result);
+        props.onTrytoRoll(result,`${result}(${event.target.innerText})`);
       } else {
         props.onTrytoRoll(0);
       }
     } else {
       switch (event.target.innerHTML) {
         case "C":
-          props.onTrytoRoll(0);
+          props.onTrytoRoll(0,0);
           break;
         case "+":
-          props.onTrytoRoll("+");
+          props.onTrytoRoll("+","+");
           break;
         case "-":
-          props.onTrytoRoll("-");
+          props.onTrytoRoll("-","-");
           break;
         case "=":
-          props.onTrytoRoll("=");
+          props.onTrytoRoll("=",'');
           break;
         default:
-          props.onTrytoRoll(event.target.innerHTML);
+          props.onTrytoRoll(event.target.innerHTML,event.target.innerHTML);
       }
     }
   };

@@ -4,10 +4,14 @@ import Actions from "./Actions";
 import StatBlock from "./StatBlock/StatBlock";
 import Border from "../Border";
 export default function FullMonsterDescription(props) {
-  console.log(props);
+  const stopClick=()=>{
+    if(window.getSelection().type !== "Range"){
+      props.onClick(false)
+    }
+  }
   return (
     <>
-      <div onClick={() => props.onClick(false)} className={styles.box_design}>
+      <div onClick={stopClick} className={styles.box_design}>
         <Border />
         <div className={styles.first_half}>
           <StatBlock monsterStats={props.monsterStats} />
