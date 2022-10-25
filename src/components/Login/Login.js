@@ -108,7 +108,7 @@ export default function Login() {
             type="text"
             label="Username:"
             errorText="*Username must be at least five(5) characters"
-            validators={[VALIDATOR_REQUIRE(), VALIDATOR_MINLENGTH(5)]}
+            validators={[VALIDATOR_REQUIRE(), VALIDATOR_MINLENGTH(3)]}
             onInput={inputHandler}
           ></Input>
           {!isLogin && (
