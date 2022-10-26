@@ -2,21 +2,25 @@
   width: auto;
   position: relative;
   border: none;
+  height: 150%;
   border-radius: 0 0 5px 5px;
 }
-.dice__style{
+.dice__style {
   display: grid;
   grid-template-columns: 33% 33% 34%;
+  height: 24vh;
 }
-.calc__style{
+.calc__style {
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;
+  column-gap: 0;
+  height: 24vh;
 }
 
 .small_box__color_back {
   background-color: #263139;
 }
-.style{
+.style {
   width: 100%;
   margin: 0;
 }
