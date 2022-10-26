@@ -3,6 +3,7 @@ import EncounterBox from "./EncounterBox";
 import styles from "./MyEncounters.module.css";
 import { useHttpClient } from "../hooks/http-hook";
 import { LoginContext } from "../store/login-context";
+import EmptyPage from "../UI/EmptyPage";
 
 export default function MyEncounters() {
   const { sendRequest } = useHttpClient();
@@ -29,6 +30,7 @@ export default function MyEncounters() {
   }, [sendRequest,login.userId]);
   return (
     <div className={styles.my_encounters__style}>
+    {encounters.length < 1 && <EmptyPage message="You have no encounters created."></EmptyPage>}
       {encounters.map((encounter, i) => (
         <EncounterBox
           key={i}

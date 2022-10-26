@@ -10,15 +10,16 @@ import Edit from "./Edit";
 import ModalConfirmation from "../UI/ModalConfirmation";
 import ModalSubmitSucces from "../UI/ModalSubmitSucces";
 import ModalError from "../UI/ModalError";
+import EmptyPage from "../UI/EmptyPage";
 export default function MyProfile() {
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const login = useContext(LoginContext);
-  const [searchCondition,setSearchCondition] = useState("")
+  const [searchCondition, setSearchCondition] = useState("");
   const [myMonsters, setMyMonsters] = useState([]);
   const [deleted, setDeleted] = useState(false);
   const [clickDelete, setDeleteClick] = useState(false);
   const [creatureToDelete, setCreatureToDelete] = useState("");
-  const [limit,setLimit] = useState(20);
+  const [limit, setLimit] = useState(20);
   const navigate = useNavigate();
   let timer;
   const now = new Date().getTime();
@@ -30,8 +31,8 @@ export default function MyProfile() {
           "POST",
           JSON.stringify({
             user: login.userId,
-            limit:limit,
-            name:searchCondition,
+            limit: limit,
+            name: searchCondition,
           }),
           {
             "Content-Type": "application/json",
@@ -41,15 +42,14 @@ export default function MyProfile() {
       } catch (err) {}
     };
     fetchMonsters();
-  }, [sendRequest, login.userId,limit,searchCondition]);
-
+  }, [sendRequest, login.userId, limit, searchCondition]);
 
   const nameSearch = (event) => {
     if (timer) {
       clearTimeout(timer);
     }
     timer = setTimeout(function () {
-        setSearchCondition(event.target.value)
+      setSearchCondition(event.target.value);
     }, 1000);
   };
 
@@ -79,9 +79,9 @@ export default function MyProfile() {
   const removeModal = () => {
     navigate("/");
   };
-  const loadMore = () =>{
-    setLimit(limit+10)
-  }
+  const loadMore = () => {
+    setLimit(limit + 10);
+  };
   return (
     <>
       {isLoading && <LoadingSpinner as0verlay></LoadingSpinner>}
@@ -121,8 +121,18 @@ export default function MyProfile() {
           className={`${styles.legend__style} ${styles.grey}`}
           text="Ongoing voting"
         ></Legend>
+        {myMonsters.length < 1 && (
+          <EmptyPage message="You haven't created any creatures yet."></EmptyPage>
+        )}
       </div>
-      <input className={styles.search_bar__style} onKeyUp={nameSearch} placeholder="Search"></input>
+      {myMonsters.length > 10 && (
+        <input
+          className={styles.search_bar__style}
+          onKeyUp={nameSearch}
+          placeholder="Search"
+        ></input>
+      )}
+
       {myMonsters.map((monster, i) => (
         <MainMonsterBox
           key={i}
@@ -145,7 +155,11 @@ export default function MyProfile() {
           </button>
         </MainMonsterBox>
       ))}
-      <button className={`${styles.btn_load_more} button`} onClick={loadMore}>Load More</button>
+      {myMonsters.length > 10 && (
+        <button className={`${styles.btn_load_more} button`} onClick={loadMore}>
+          Load More
+        </button>
+      )}
     </>
   );
 }

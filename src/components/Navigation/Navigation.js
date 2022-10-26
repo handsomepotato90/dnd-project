@@ -43,11 +43,11 @@ const Navigation = () => {
       <ul className="nav_links">
         {content}
       </ul>
-      <div id="container" onClick={openNav}>
+      {auth.isLoggedIn && <div id="container" onClick={openNav}>
         <div className="bar1"></div>
         <div className="bar2"></div>
         <div className="bar3"></div>
-      </div>
+      </div>}
     </nav>
   );
 };

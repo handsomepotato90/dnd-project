@@ -80,7 +80,6 @@ export default function Login() {
             "Content-Type": "application/json",
           }
         );
-        console.log(resData.user)
         auth.login(resData.user._id,resData.token);
       } catch (err) {}
     }

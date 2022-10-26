@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import MainMonsterBox from "./MainMonsterBox";
 import { useHttpClient } from "../hooks/http-hook";
 import styles from "./Voting.module.css";
+import EmptyPage from "../UI/EmptyPage";
 
 export default function Voting() {
   const [monsters, setMonsters] = useState([]);
@@ -42,6 +43,7 @@ export default function Voting() {
         monsterStats={defaultBoxLabels}
         voting="yes"
       ></MainMonsterBox>
+      {monsters.length < 1 && <EmptyPage message="There are no new submitted cretures at this time."></EmptyPage>}
       {monsters.map((monster, i) => (
         <MainMonsterBox
           key={i}
