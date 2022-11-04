@@ -107,7 +107,6 @@ export default function Login() {
     setChecked(!checked);
   };
   const responseFacebook = async (response) => {
-    console.log(response);
     try {
       const resData = await sendRequest(
         process.env.REACT_APP_BACKEND_URL + "/facebook",
@@ -145,7 +144,6 @@ export default function Login() {
   };
   const onFailure = (response) => {
     alert(response);
-    console.log(response);
   };
   return (
     <React.Fragment>
