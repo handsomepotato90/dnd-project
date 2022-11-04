@@ -8,7 +8,7 @@ const SmallBox = (props) =>{
         }
         const cNames =  "small_box__color " + props.className;
         return (
-                <div onClick={giveFeedback} className={cNames}>
+                <div onClick={giveFeedback} onTouchStart={giveFeedback} className={cNames}>
                 {props.children}
                 </div>
         )

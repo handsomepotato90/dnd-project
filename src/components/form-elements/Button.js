@@ -28,6 +28,7 @@ const Button = props => {
       type={props.type}
       onClick={props.onClick}
       disabled={props.disabled}
+      onTouchStart={props.onClick}
     >
       {props.children}
     </button>
