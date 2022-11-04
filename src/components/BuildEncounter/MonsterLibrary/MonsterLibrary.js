@@ -33,6 +33,7 @@ const loadMore = () =>{
           </button>
         </MainMonsterBox>
       ))}
+
       <button className={`${styles.btn_load_more} button`} onClick={loadMore}>Load More</button>
     </>
   );

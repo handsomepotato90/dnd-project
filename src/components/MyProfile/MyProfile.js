@@ -156,9 +156,16 @@ export default function MyProfile() {
         </MainMonsterBox>
       ))}
       {myMonsters.length > 10 && (
+        <>
+        <section>
+          <a href="/myProfile/?page=1">1</a>
+          <a href="/myProfile/?page=2">2</a>
+          <a href="/myProfile/?page=3">3</a>
+        </section>
         <button className={`${styles.btn_load_more} button`} onClick={loadMore}>
           Load More
         </button>
+        </>
       )}
     </>
   );

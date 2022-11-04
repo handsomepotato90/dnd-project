@@ -1,6 +1,6 @@
 .big_box__top_margin {
   z-index: 1;
-  position: absolute;
+  position: fixed;
   max-height:100%;
 }
 .big_box__color_back {

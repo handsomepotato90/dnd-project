@@ -44,13 +44,12 @@ const CalcButtons = (props) => {
       {buttons.flat().map((button,i) => (
         <DiceButton
           onTrytoRoll={returningValue}
-          // key={button.id}
           buttonText={button}
           key={i}
           mode={mode}
         />
       ))}
-      <Button className="style" inverse onClick={switchCalculator}>
+      <Button className="style" inverse onClick={switchCalculator} onTouchStart={switchCalculator}>
         {" "}
          {mode ? "Dice" : "Calculator"}
       </Button>

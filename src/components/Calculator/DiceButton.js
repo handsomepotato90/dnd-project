@@ -10,7 +10,6 @@ const DiceButton = (props) => {
   };
 
   const calculateDiceRoll = (event) => {
-    // console.log(parseInt(event.target.innerText))
     if (!props.mode) {
       if (event.target.innerText !== "C") {
         const buttonValue = event.target.innerText.split("d");
@@ -42,6 +41,7 @@ const DiceButton = (props) => {
   return (
     <button
       onClick={calculateDiceRoll}
+      onTouchStart={calculateDiceRoll}
       className="calc_button__size calc_button__font_size"
       value={props.button}
     >

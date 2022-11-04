@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import './Button.css';
 
 const Button = props => {
- const cName = "button__style " + props.className;
+ const cName = "button__style button_colors " + props.className;
   if (props.href) {
     return (
       <a>

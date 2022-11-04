@@ -4,10 +4,13 @@
   border: 0;
   border-radius: 4px;
   font-weight: 400;
-  margin: 0.5em 6em;
+  margin: 0.5em 5rem;
   padding: 10px 0;
-  box-shadow: 0 0 20px rgba(104, 85, 224, 0.2);
   transition: 0.4s;
+ 
+}
+.button_colors{
+  box-shadow: 0 0 20px rgba(104, 85, 224, 0.2);
   color: #3c6acc;
   background-color: rgba(255, 255, 255, 1);
   border: 1px solid #3c6acc;

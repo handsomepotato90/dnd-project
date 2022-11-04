@@ -65,7 +65,7 @@ function App() {
 
       {onscreen === true ? (
         <Calculator>
-          <Hide onHide={calcStatusCheck} />
+          <Hide onHide={calcStatusCheck} onTouchStart={calcStatusCheck} />
         </Calculator>
       ) : (
         token && <Show onShow={calcStatusCheck} />

@@ -5,9 +5,11 @@ import './arrows.css';
 const Hide = (props) => {
   const clickedFalse = () => {
     props.onHide(false);
+    props.onTouchStart(false);
+
   };
   return (
-    <SmallBox onClick={clickedFalse} className="left_arrow" >
+    <SmallBox onClick={clickedFalse} onTouchStart={clickedFalse} className="left_arrow" >
       <img className="arrow" src={leftArrow} alt='left arrow'></img>
     </SmallBox>
   );
