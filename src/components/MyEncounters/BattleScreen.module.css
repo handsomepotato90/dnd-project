@@ -10,7 +10,7 @@
 .stat_battle_box {
   width: 6rem;
   height: 100%;
-  margin-top: 3rem;
+  margin-top: 5rem;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -81,6 +81,7 @@
   height: 3vh;
   border: none;
   text-align: center;
+  padding: 8px 10px;
 }
 .add {
   border: none;
