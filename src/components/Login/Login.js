@@ -142,9 +142,6 @@ export default function Login() {
       auth.login(resData.user.id, resData.token);
     } catch (err) {}
   };
-  const onFailure = (response) => {
-    alert(response);
-  };
   return (
     <React.Fragment>
       {error && (
@@ -227,7 +224,6 @@ export default function Login() {
               </button>
             )}
             onSuccess={googleResponce}
-            onFailure={onFailure}
             cookiePolicy={"single_host_origin"}
           />
         </div>

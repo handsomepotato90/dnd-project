@@ -1,7 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import HomeBrewSave from "../../SubmitHomeBrew/HomeBrewSave";
 import { useHttpClient } from "../../hooks/http-hook";
 import LoadingSpinner from "../../UI/LoadingSpinner";
+import { LoginContext } from "../../store/login-context";
 
 export default function Edit() {
   const { isLoading, sendRequest } = useHttpClient();
@@ -9,17 +10,20 @@ export default function Edit() {
   const [fields, setFields] = useState([]);
   const [textZone,setTextZone] = useState([]);
   const url = window.location.href.split("Edit/");
-
+  const auth = useContext(LoginContext);
   const removeBrakets = (string) => {
     return string.split("(")[1].split(")")[0];
   };
-  console.log();
+  console.log(process.env.REACT_APP_BACKEND_URL + `/myProfile/Edit/${url[1]}`);
   useEffect(() => {
     const fetchMonsters = async () => {
 
       try {
         const resData = await sendRequest(
-          process.env.REACT_APP_BACKEND_URL + `/myProfile/Edit/${url[1]}`
+          process.env.REACT_APP_BACKEND_URL + `/myProfile/Edit/${url[1]}`,
+          "GET",
+          null,
+          { Authorization: "Bearer " + auth.token }
         );
         setMonsterForEdit([
           {

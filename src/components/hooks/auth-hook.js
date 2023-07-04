@@ -61,7 +61,6 @@ export const useAuth = () => {
 
   useEffect(() => {
     const storedData = JSON.parse(localStorage.getItem("userData"));
-    console.log(remember && remember !== "undefined" && !storedData)
     const rememberUser = async () => {
       if (remember && remember !== "undefined" && !storedData) {
         try {
