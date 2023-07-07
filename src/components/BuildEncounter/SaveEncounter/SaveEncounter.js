@@ -3,6 +3,7 @@ import styles from "./SaveEncounter.module.css";
 import { useHttpClient } from "../../hooks/http-hook";
 import { LoginContext } from "../../store/login-context";
 import MonsterXp from "../../store/monsterXp-context";
+import GroupXp from "../../store/groupXp-context";
 import ModalSubmitSucces from "../../UI/ModalSubmitSucces";
 import { useNavigate } from "react-router-dom";
 import ModalError from "../../UI/ModalError";
@@ -15,6 +16,8 @@ export default function SaveEncounter() {
   const navigate = useNavigate();
   const login = useContext(LoginContext);
   const mxp = useContext(MonsterXp);
+  const gxp = useContext(GroupXp);
+
 
   const enteringTitle = (event) => {
     setTitle(event.target.value);
@@ -24,16 +27,28 @@ export default function SaveEncounter() {
   const submitToDb = async (event) => {
     event.preventDefault();
     const encounter = {
+      numberAndLevelOfPlayers:[],
       enc_name: title.trim(),
       creator: login.userId,
       monsters: [],
     };
+
+    gxp.players.forEach((element) =>{
+      encounter.numberAndLevelOfPlayers.push({
+        player:element.player,
+      });
+    })
+
     mxp.monsterBlock.forEach((element) => {
       encounter.monsters.push({
         name: element.name,
         img: element.url,
       });
     });
+
+    console.log(encounter)
+
+
     if (encounter.monsters.length < 1) {
       setError(true);
       return;

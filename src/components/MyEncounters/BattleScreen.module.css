@@ -8,9 +8,9 @@
   flex-direction: row;
 }
 .stat_battle_box {
-  width: 6rem;
+  width: 6vw;
   height: 100%;
-  margin-top: 5rem;
+  margin-top: 3rem;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -18,8 +18,8 @@
 .encounter_box__style {
   width: 15vw;
   height: 30vh;
-  margin-left: 3rem;
-  margin-top: 3rem;
+  margin-left: 2rem;
+  margin-top: 2rem;
   background-color: white;
 }
 .image__style {
@@ -41,9 +41,14 @@
   color: black;
 }
 .stat_text__style {
+  text-align: center;
   font-size: 18px;
-  font-weight: bolder;
+  font-weight: bold;
   color: black;
+}
+.health__styling{
+  font-weight: bold;
+  margin: 5px;
 }
 .modal__style {
   z-index: 2;
@@ -82,6 +87,7 @@
   border: none;
   text-align: center;
   padding: 8px 10px;
+  margin-right: 0;
 }
 .add {
   border: none;
@@ -100,6 +106,7 @@
   font-weight: bold;
   width: auto;
   height: 3.5vh;
+  margin-left: 1vw;
 }
 .death_modal_text___style {
   z-index: 1;
@@ -126,6 +133,18 @@
   background-color: #f44336;
   box-shadow: 0 0 20px #f44336;
 }
+.pc_name_style{
+  color: white;
+  margin: 0;
+  outline: #000;
+}
+.pc_name_style:focus{
+  color: white;
+}
+.pc_level__style{
+  margin-top: 2.5vw;
+  color: aliceblue;
+}
 @media only screen and (max-width: 1400px) {
   .encounter_box__style {
     width: 35vw;
@@ -134,10 +153,14 @@
     text-decoration: none;
     text-align: center;
   }
-  .encounter_name__style {
+  .encounter_name__style ,.pc_level__style {
     width: 35vw;
     font-size: 2.5ch;
     margin-left: -17.5vw;
+  }
+  .pc_level__style{
+    margin-top: 3vw;
+    margin-left: 0.1vw;
   }
   .modal__style {
     width: 35vw;
@@ -157,11 +180,15 @@
     text-decoration: none;
     text-align: center;
   }
-  .encounter_name__style {
+  .encounter_name__style{
     width: 50vw;
     font-size: 2.5ch;
     color: #000;
     margin-left: -25vw;
+  }
+  .pc_level__style{
+    margin-top: 7.5vw;
+    margin-left: 0.1vw;
   }
   .modal__style {
     width: 50vw;

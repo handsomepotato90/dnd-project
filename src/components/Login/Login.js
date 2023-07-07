@@ -96,7 +96,7 @@ export default function Login() {
             "Content-Type": "application/json",
           }
         );
-        auth.login(resData.user._id, resData.token);
+        auth.login(resData.user, resData.token);
       } catch (err) {}
     }
   };

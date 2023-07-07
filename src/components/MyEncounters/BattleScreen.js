@@ -13,6 +13,7 @@ export default function BattleScreen() {
   const auth = useContext(LoginContext);
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const [fullStats, setStats] = useState([]);
+  const [players, setPleyers] = useState([]);
   const [deleted, setDeleted] = useState(false);
   const [clickDelete, setDeleteClick] = useState(false);
   const url = window.location.href.split("battle_scr/");
@@ -24,10 +25,13 @@ export default function BattleScreen() {
           process.env.REACT_APP_BACKEND_URL + `/battle_scr/${url[1]}`
         );
         const control = [];
-        resData.forEach((element) => {
+        resData.monsters.forEach((element) => {
           control.push(...element);
+          
           setStats([...control]);
         });
+
+        setPleyers(resData.players)
       } catch (err) {}
     };
     fetchMonsters();
@@ -60,6 +64,8 @@ export default function BattleScreen() {
   const errorHandler = () => {
     clearError(null);
   };
+  console.log(fullStats)
+  console.log(players)
   return (
     <>
       {clickDelete && (
@@ -86,6 +92,10 @@ export default function BattleScreen() {
       <div className={styles.display__style}>
         {fullStats.map((stats, i) => (
           <MonsterBattleBox key={i} stats={stats}></MonsterBattleBox>
+        ))}
+
+        {players.map((player, i) => (
+          <MonsterBattleBox key={i} players={player}></MonsterBattleBox>
         ))}
       </div>
       <div className={styles.delete_btn__holder}>

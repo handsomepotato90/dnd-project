@@ -28,6 +28,7 @@ export default function MyEncounters() {
     };
     fetchMonsters();
   }, [sendRequest,login.userId]);
+  console.log(encounters)
   return (
     <div className={styles.my_encounters__style}>
     {encounters.length < 1 && <EmptyPage message="You have no encounters created."></EmptyPage>}
@@ -36,6 +37,7 @@ export default function MyEncounters() {
           key={i}
           name={encounter.enc_name}
           monsters={encounter.monsters}
+          players={encounter.players}
           id={encounter._id}
         ></EncounterBox>
       ))}
