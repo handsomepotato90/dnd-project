@@ -6,7 +6,7 @@ import MonsterXp from "../../store/monsterXp-context";
 export default function SelectedMonsters() {
   let mtxp = useContext(MonsterXp);
   return (
-    <div className={styles.general__style}>
+    <div className={`black__background ${styles.general__style}`}>
       {mtxp.monsterBlock.map((monster, i) => (
         <Monster key={i} monster={monster}></Monster>
       ))}

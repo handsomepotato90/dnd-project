@@ -134,17 +134,48 @@ export default function SearchWindow() {
     searchDb();
   }, [sendRequest, mxp.monsterTypes, health, armor, rating]);
 
+  const customStyles = {
+    control: (base, state) => ({
+      ...base,
+      backgroundColor: "#151516",
+    }),
+    option: (provided,state) => ({
+      ...provided,
+      color:  state.isFocused ? 'white' : 'black'
+    }),
+    menu: (base) => ({
+      ...base,
+      borderRadius: 0,
+      marginTop: 0,
+    }),
+    menuList: (base) => ({
+      ...base,
+      padding: 0,
+    }),
+  };
+
   return (
     <>
       <div className={styles.gerenl_scroll__style}>
         <span className={styles.text__style}>Monster Type</span>
         <Select
           className={styles.search_bar__stayle}
+          backgroundColor="black"
           isSearchable={true}
           options={monsterType}
           isMulti
           name="types"
           onChange={getType}
+          styles={customStyles}
+          theme={(theme) => ({
+            ...theme,
+            borderRadius: 0,
+            colors: {
+              ...theme.colors,
+              primary25: "#999",
+
+            },
+          })}
         ></Select>
       </div>
       <div className={styles.gerenl_scroll__style}>
@@ -156,6 +187,7 @@ export default function SearchWindow() {
           isMulti
           name="alignment"
           onChange={getType}
+          styles={customStyles}
         ></Select>
       </div>
 
@@ -168,6 +200,7 @@ export default function SearchWindow() {
           isMulti
           name="condition"
           onChange={getType}
+          styles={customStyles}
         ></Select>
       </div>
       <div className={styles.gerenl_scroll__style}>
@@ -179,6 +212,7 @@ export default function SearchWindow() {
           isMulti
           name="damage"
           onChange={getType}
+          styles={customStyles}
         ></Select>
       </div>
       <div className={styles.gerenl_scroll__style}>
@@ -190,6 +224,7 @@ export default function SearchWindow() {
           name="legendary"
           defaultValue={[legendary[0]]}
           onChange={getType}
+          styles={customStyles}
         ></Select>
       </div>
       <div className={styles.gerenl_scroll__style}>
@@ -201,6 +236,7 @@ export default function SearchWindow() {
           isMulti
           name="resistance"
           onChange={getType}
+          styles={customStyles}
         ></Select>
       </div>
       <div className={styles.gerenl_scroll__style}>
@@ -212,6 +248,7 @@ export default function SearchWindow() {
           isMulti
           name="vulnerability"
           onChange={getType}
+          styles={customStyles}
         ></Select>
       </div>
 

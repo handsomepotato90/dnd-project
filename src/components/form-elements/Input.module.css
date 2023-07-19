@@ -1,6 +1,6 @@
 input {
   width: 90%;
-  padding: 8px 20px;
+  padding: 8px 1px;
   margin: 4px 20px;
   font-size: 2ch;
   display: inline-block;
@@ -9,7 +9,6 @@ input {
   box-sizing: border-box;
 }
 input:focus {
-  color: black;
   box-shadow: 0 0 20px #3c6acc;
   border-color: #3c6acc;
 }

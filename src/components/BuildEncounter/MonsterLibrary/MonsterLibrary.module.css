@@ -1,19 +1,18 @@
 .btn_add__style {
-  background-color: rgb(161, 161, 161);
+  background-color: #4caf50;
   border: none;
+  border-radius: 40px 10px 0 0;
   color: white;
   padding: 1ch 2ch;
-  text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 2ch;
-  margin-left: 2rem;
+  font-size: 1.5ch;
   cursor: pointer;
   box-shadow: 0 0 10px rgb(161, 161, 161);
 }
 .btn_add__style:hover {
   color: white;
-  background-color: rgb(161, 161, 161);
+  background-color: #89e08c;
   box-shadow: 0 0 20px rgb(161, 161, 161);
 }
 .btn_load_more {
@@ -29,11 +28,18 @@
   margin-top: 2rem;
   cursor: pointer;
 }
+.name_plate__style {
+  background-color: #151617;
+  border: none;
+  border-radius: 10px 30px 0 0;
+  color: white;
+  font-weight: bold;
+  padding: 0.5ch 1.5ch 0.5ch 1.5ch;
+  font-size: 1.6ch;
+  float: left;
+}
 @media only screen and (max-width: 600px) {
-  .btn_load_more {
-    margin-left: 15%;
-    margin-top: 2rem;
-  }
+  
   .btn_add__style {
     font-size: 1.5ch;
     margin-left: 0rem;

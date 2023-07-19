@@ -46,7 +46,7 @@ export default function Difficulty() {
   }
 
   return (
-    <div className={styles.difficulty_box__style}>
+    <div className={`black__background ${styles.difficulty_box__style}`}>
       <div className={styles.main_text__style}>
         <span>ENCOUNTER SUMMARY</span>
       </div>

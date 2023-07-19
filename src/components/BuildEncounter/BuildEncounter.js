@@ -1,18 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import PlayerChoice from "./PlayerChoice/PlayerChoice";
 import MonsterLibrary from "./MonsterLibrary/MonsterLibrary";
 import EncounterSummary from "./EncounterSummary/EncounterSummary";
-import styles from "./BuildEncounter.module.css";
 import { GroupXpProvider } from "../store/groupXp-context";
 import { MonsterXpProvider } from "../store/monsterXp-context";
 import SearchWindow from "./SearchWindow/SearchWindow";
 import SaveEncounter from "./SaveEncounter/SaveEncounter";
 import SearchByName from "./SearchByName/SearchByName";
 import NavigationDrawer from "../UI/NavigationDrawer";
+import LoadMoreButton from "./MonsterLibrary/LoadMoreButton";
+
+
+import styles from "./BuildEncounter.module.css";
+
 export default function BuildEncounter() {
   const [searchClick, setSearchClick] = useState(false);
   const [playerClick, setPlayerClick] = useState(false);
   const [difficultyClick, setDifficultyClick] = useState(false);
+
+
+ 
 
   const openSearch = () => {
     setSearchClick(true);
@@ -36,22 +43,31 @@ export default function BuildEncounter() {
     <GroupXpProvider>
       <MonsterXpProvider>
         {searchClick && (
-          <NavigationDrawer className={styles.drawer__style} onClick={closeSearch}>
+          <NavigationDrawer
+            className={styles.drawer__style}
+            onClick={closeSearch}
+          >
             <SearchWindow />
           </NavigationDrawer>
         )}
         {playerClick && (
-          <NavigationDrawer className={styles.drawer__style} onClick={closePlayer}>
+          <NavigationDrawer
+            className={styles.drawer__style}
+            onClick={closePlayer}
+          >
             <PlayerChoice />
           </NavigationDrawer>
         )}
         {difficultyClick && (
-          <NavigationDrawer className={styles.drawer__style} onClick={closeDifficulty}>
+          <NavigationDrawer
+            className={styles.drawer__style}
+            onClick={closeDifficulty}
+          >
             <EncounterSummary></EncounterSummary>
           </NavigationDrawer>
         )}
         <div className={styles.flex_box__style}>
-          <div className={styles.serch_box__style}>
+          <div className={`black__background ${styles.serch_box__style}`}>
             <SearchWindow></SearchWindow>
           </div>
           <div>
@@ -61,14 +77,30 @@ export default function BuildEncounter() {
               <PlayerChoice />
             </div>
             <div className={styles.mobile_minimal__vue}>
-              <button className={styles.drawer_opener__style} onClick={openSearch}>Search</button>
-              <button className={styles.drawer_opener__style}  onClick={openPlayer}>Players</button>
-              <button  className={styles.drawer_opener__style} onClick={openDifficulty}>Difficulty</button>
+              <button
+                className={styles.drawer_opener__style}
+                onClick={openSearch}
+              >
+                Search
+              </button>
+              <button
+                className={styles.drawer_opener__style}
+                onClick={openPlayer}
+              >
+                Players
+              </button>
+              <button
+                className={styles.drawer_opener__style}
+                onClick={openDifficulty}
+              >
+                Difficulty
+              </button>
             </div>
             <SearchByName />
             <div className={styles.library__style}>
               <MonsterLibrary />
             </div>
+            <LoadMoreButton></LoadMoreButton>
           </div>
           <div
             className={`${styles.summary_general__style} ${styles.encounter__style}`}

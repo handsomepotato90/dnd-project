@@ -9,7 +9,7 @@ export default function TextArea(props) {
   return (
     <div className={styles.textarea__style}>
       <span className={styles.capytal__style}>{props.name}</span>
-      <CKEditor className={styles.textarea_box__style}
+      <CKEditor className={`${styles.textarea_box__style}, black`}
         editor={ClassicEditor}
         config={{
           toolbar: [

@@ -10,12 +10,45 @@ body,
   right: 0px;
   bottom: 0px;
   left: 0px;
-  background-color: #c0dbec75;
+  background: linear-gradient(
+    135deg,
+    rgba(21, 22, 23, 1),
+    rgba(19, 19, 19, 0.9),
+    rgba(17, 17, 17, 0.8),
+    rgba(15, 15, 15, 0.7),
+    rgba(13, 13, 13, 0.6),
+    rgba(11, 11, 11, 0.5),
+    rgba(13, 13, 13, 0.6),
+    rgba(15, 15, 15, 0.7),
+    rgba(17, 17, 17, 0.8),
+    rgba(19, 19, 19, 0.9),
+    rgba(21, 22, 23, 1)
+  );
   max-width: 1920px;
 }
 .button {
   cursor: pointer;
   border: none;
+}
+.black__color {
+  color: #090a0a;
+}
+.black__background {
+  background-color: #090a0a;
+}
+span {
+  color : #999999;
+}
+input{
+  background-color:rgba(13, 13, 13, 0.6);
+  color:#B2C7E3;
+}
+input:focus{
+  color:#B2C7E3
+}
+::placeholder { 
+  color: #849dbb;
+  opacity: 1; 
 }
 .button:hover {
   background-color: #4caf50;

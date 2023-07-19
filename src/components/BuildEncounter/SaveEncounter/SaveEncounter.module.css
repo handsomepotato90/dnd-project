@@ -1,19 +1,17 @@
 .main_box__size {
   width: 70%;
-  height: 5%;
   margin: 0 auto;
   margin-top: 2vh;
 }
 .input_style {
   width: 40%;
-  height: 70%;
   margin-left: 25%;
 }
 .button_style {
   background-color: #4caf50;
   border: none;
   color: white;
-  height: 70%;
+  padding: 1ch;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -28,7 +26,7 @@
   }
   .input_style {
     width: 45%;
-    margin: 0 ;
+    margin: 0;
     margin-left: 5%;
   }
   .button_style {

@@ -48,7 +48,7 @@ export default function StatBlock(props) {
       />
       {props.monsterStats.Traits && <Actions name='Traits' actions={props.monsterStats.Traits} />}
       {props.monsterStats['Bonus Actions'] && <Actions name='Bonus Actions' actions={props.monsterStats['Bonus Actions']} />}
-      {props.monsterStats.Reactions && <Actions name='Reactions' actions={props.monsterStats.Reactions} />}
+      {/* {props.monsterStats.Reactions && <Actions name='Reactions' actions={props.monsterStats.Reactions} />} */}
     </>
   );
 }

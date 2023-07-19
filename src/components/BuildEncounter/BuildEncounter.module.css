@@ -4,12 +4,29 @@
 }
 .flex_box__style {
   width: 100%;
-  display: flex;
-  flex-direction: row;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 15% 64% 21%;
 }
 
 .library__style {
-  width: 60vw;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: auto;
+}
+.btn_load_more {
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  padding: 1rem 6rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-left: 40%;
+  margin-top: 2rem;
+  cursor: pointer;
 }
 .encounter__style {
   display: flex;
@@ -18,16 +35,11 @@
 }
 .serch_box__style{
   max-height:100%;
-  width: 100%;
-  margin-left: 3vw;
-  background-color: white;
   display: flex;
   flex-direction: column;
 }
 .summary_general__style{
-  width: 100%;
   min-height: 100%;
-  background-color:  #fff;
   display: flex;
   flex-direction: column;
 }

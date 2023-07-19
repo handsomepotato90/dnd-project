@@ -1,9 +1,6 @@
 import React, { useState, Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 import Navigation from "./components/Navigation/Navigation";
-import Calculator from "./components/Calculator/Calculator";
-import Show from "./components/Calculator/Show";
-import Hide from "./components/Calculator/Hide";
 import Login from "./components/Login/Login";
 import { useAuth } from "./components/hooks/auth-hook";
 import "./App.css";
@@ -29,10 +26,7 @@ const Home = React.lazy(() => import("./components/Home/Home"));
 const Voting = React.lazy(() => import("./components/Voting/Voting"));
 
 function App() {
-  const [onscreen, statusCheck] = useState(false);
-  const calcStatusCheck = (status) => {
-    statusCheck(status);
-  };
+
   const { token, login, logout, userId } = useAuth();
   let routes;
   if (token) {
@@ -62,14 +56,6 @@ function App() {
       }}
     >
       <Navigation />
-
-      {onscreen === true ? (
-        <Calculator>
-          <Hide onHide={calcStatusCheck} onTouchStart={calcStatusCheck} />
-        </Calculator>
-      ) : (
-        token && <Show onShow={calcStatusCheck} />
-      )}
 
       <Suspense
         fallback={

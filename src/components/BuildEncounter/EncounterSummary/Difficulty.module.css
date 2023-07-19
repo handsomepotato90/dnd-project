@@ -1,5 +1,4 @@
 .difficulty_box__style {
-  background-color: #fff;
   display: flex;
   flex-direction: column;
 }
@@ -34,7 +33,7 @@
 .content__styles {
   font-size: 2ch;
   font-weight: bold;
-  color: black;
+  color: white;
   margin-left: 1rem;
 }
 
