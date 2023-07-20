@@ -11,7 +11,7 @@ export default function LoadMoreButton(props) {
     console.log(mxp.monsterTypes);
     mxp.setMonsterTypeState({
       ...mxp.monsterTypes,
-      limit: mxp.monsterTypes.limit + 10,
+      limit: mxp.monsterTypes.limit + 12,
     });
   };
 

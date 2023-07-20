@@ -55,6 +55,10 @@
   display: none;
 }
 @media only screen and (max-width: 600px) {
+  
+  .flex_box__style{
+    display: block;
+  }
   .party_setup__window{
     width:100%;
 }

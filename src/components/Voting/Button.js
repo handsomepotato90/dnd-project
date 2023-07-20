@@ -1,16 +1,19 @@
 import React, { useContext } from "react";
 import { LoginContext } from "../store/login-context";
 import { useHttpClient } from "../hooks/http-hook";
+
+
 import "./MainMonsterBox.css";
+import styles from "./Voting.module.css"
 
 export default function Button(props) {
   const login = useContext(LoginContext);
-  // console.log(props.votes);
 
   const { sendRequest } = useHttpClient();
-  const color = props.votes.indexOf(login.userId) > -1 ? "grey" : props.className;
+  const color =
+    props.votes.indexOf(login.userId) > -1 ? "grey" : props.className;
 
-  const cName = "button_style " + color;
+  const cName = color;
 
   const Vote = async () => {
     if (props.votes.indexOf(login.userId) > -1) {
@@ -36,9 +39,9 @@ export default function Button(props) {
 
   return (
     <React.Fragment>
-      <div>{props.number}</div>
-      <button onClick={Vote} className={cName}>
-        {props.text}
+      <button onClick={Vote} style={{float: `${props.styleFloat}`, borderRadius: `${props.styleRadius}`}} className={`${styles.btn_add__style} ${cName}`}>
+       
+        <div>  {props.text}: {props.number}</div>
       </button>
     </React.Fragment>
   );

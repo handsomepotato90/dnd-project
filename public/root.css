@@ -36,6 +36,12 @@ body,
 .black__background {
   background-color: #090a0a;
 }
+.login_black__background {
+  background-color: #CCC;
+}
+.button__colors{
+  background-color: #CCC;
+}
 span {
   color : #999999;
 }
@@ -49,6 +55,9 @@ input:focus{
 ::placeholder { 
   color: #849dbb;
   opacity: 1; 
+}
+h1,h2,h3,h4,h5,h6{
+  color: #1F2C3D;
 }
 .button:hover {
   background-color: #4caf50;

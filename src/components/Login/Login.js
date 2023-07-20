@@ -151,7 +151,7 @@ export default function Login() {
           onClick={errorHandler}
         ></ModalError>
       )}
-      <NewsBox className={styles.login_box__style}>
+      <NewsBox className={`login_black__background ${styles.login_box__style}`}>
         {isLoading && <LoadingSpinner asOverlay />}
         <h2 className={styles.text__style}>Login Required</h2>
         <hr />

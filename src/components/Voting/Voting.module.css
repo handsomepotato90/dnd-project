@@ -1,7 +1,31 @@
-.main_head__text_color{
-        background-color: aliceblue;
-        font-weight: bold;
-        font-size: 18px;
-        margin-bottom: 0.5rem;
-        box-shadow: 0px 0px;
+.voting_main_box__style {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.main_head__text_color {
+  background-color: aliceblue;
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 0.5rem;
+  box-shadow: 0px 0px;
+}
+
+.btn_add__style {
+  border: none;
+  color: white;
+  padding: 1.5ch 6ch;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1.5ch;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgb(161, 161, 161);
+}
+.name_plate__style {
+  text-align: center;
+  background-color: #151617;
+  border-radius: 5px 5px 0px 0px;
+  color: white;
+  object-fit: cover;
+  font-size: clamp(1ch, 1.8ch, 2ch);
 }

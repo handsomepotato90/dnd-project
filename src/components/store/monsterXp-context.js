@@ -14,7 +14,7 @@ const MonsterXp = React.createContext({
 export const MonsterXpProvider = (props) => {
   const [monsterTypes, setMonsterTypeState] = useState({
     name:'',
-    limit: 10,
+    limit: 12,
     types: [],
     alignment: [],
     condition: [],
@@ -50,8 +50,9 @@ export const MonsterXpProvider = (props) => {
     ]);
   };
   const DeleteMonster = (del) => {
+
     let mIndex = monsterBlock.findIndex(function (m, index) {
-      if (m.player === del) {
+      if (m.name === del) {
         return index;
       }
     });

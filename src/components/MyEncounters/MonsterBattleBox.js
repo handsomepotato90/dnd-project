@@ -33,7 +33,6 @@ export default function MonsterBattleBox(props) {
     setReading(state);
   };
   return (
-
     <div className={styles.battle_box}>
       {!props.pleyers && isRead && (
         <ModalMonsterText
@@ -44,11 +43,9 @@ export default function MonsterBattleBox(props) {
 
       {!props.players ? (
         <div style={{ textAlign: "right" }}>
-            {/*######################## MONSTER NAME ####################### */}
-          {/* <span className={styles.encounter_name__style}>
-            {props.stats.name}
-          </span> */}
-            {props.children}
+          {/*######################## MONSTER NAME ####################### */}
+          { props.voting ? props.children[0] : props.children}
+
           <div
             onClick={renderModal}
             className={`${styles.encounter_box__style} `}
@@ -65,15 +62,19 @@ export default function MonsterBattleBox(props) {
                   dmgV={props.stats["Damage Vulnerabilities"]}
                 ></ImmunityesModal>
               ) : (
-                isShown && props.modalStats && <StatsModal stats = {props.stats}></StatsModal>
+                isShown &&
+                props.modalStats && (
+                  <StatsModal stats={props.stats}></StatsModal>
+                )
               ))}
-        
+
             <img
               className={styles.image__style}
               src={props.stats.img_url}
               alt="monster"
             ></img>
           </div>
+          {props.voting ? props.children[1] : null}
         </div>
       ) : (
         //PC battle box

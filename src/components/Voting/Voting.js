@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import MainMonsterBox from "./MainMonsterBox";
 import { useHttpClient } from "../hooks/http-hook";
 import styles from "./Voting.module.css";
 import EmptyPage from "../UI/EmptyPage";
+import MonsterBattleBox from "../MyEncounters/MonsterBattleBox";
+import VotingBooth from "./VotingBooth";
 
 export default function Voting() {
   const [monsters, setMonsters] = useState([]);
@@ -11,46 +12,41 @@ export default function Voting() {
   useEffect(() => {
     const fetchMonsters = async () => {
       try {
-        const resData = await sendRequest(process.env.REACT_APP_BACKEND_URL + "/voting");
+        const resData = await sendRequest(
+          process.env.REACT_APP_BACKEND_URL + "/voting"
+        );
         setMonsters([...resData]);
       } catch (err) {}
     };
-    fetchMonsters()
-  },[sendRequest]);
+    fetchMonsters();
+  }, [sendRequest]);
 
-
-  
-  const defaultBoxLabels = {
-    name: "Name",
-
-    meta: {
-      size: "Size",
-      type:"Type",
-      alignment: "Alignment", 
-    },
-    Challenge: {rating:"Challenge", xp:"Rating"},
-    extraContent: {
-      readMore: "",
-      positiveVotes: "",
-      negativeVotes: "",
-      text: "Vote",
-    },
-  };
   return (
-    <>
-      <MainMonsterBox
-        className={styles.main_head__text_color}
-        monsterStats={defaultBoxLabels}
-        voting="yes"
-      ></MainMonsterBox>
-      {monsters.length < 1 && <EmptyPage message="There are no new submitted cretures at this time."></EmptyPage>}
+    <div className={styles.voting_main_box__style}>
+      {monsters.length < 1 && (
+        <EmptyPage message="There are no new submitted cretures at this time."></EmptyPage>
+      )}
       {monsters.map((monster, i) => (
-        <MainMonsterBox
-          key={i}
-          monsterStats={monster}
-          voting="yes"
-        ></MainMonsterBox>
+          <MonsterBattleBox
+            key={i}
+            voting={true}
+            library={true}
+            stats={monster}
+            modalStats={true}
+            width="14vw"
+            height="28vh"
+          >
+            <div className={styles.name_plate__style}>
+              <span>{monster.name}</span>
+            </div>
+            <VotingBooth
+              votes={monster.votes}
+              name={monster.name}
+              id={monster._id}
+            ></VotingBooth>
+          </MonsterBattleBox>
+
       ))}
-    </>
+    </div>
   );
 }

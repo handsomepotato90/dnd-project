@@ -10,17 +10,17 @@ import SearchByName from "./SearchByName/SearchByName";
 import NavigationDrawer from "../UI/NavigationDrawer";
 import LoadMoreButton from "./MonsterLibrary/LoadMoreButton";
 
-
 import styles from "./BuildEncounter.module.css";
 
 export default function BuildEncounter() {
   const [searchClick, setSearchClick] = useState(false);
   const [playerClick, setPlayerClick] = useState(false);
+  const [playerBoxOpen, setPlayerBoxOpen] = useState(false);
   const [difficultyClick, setDifficultyClick] = useState(false);
 
-
- 
-
+  const switchPlayerBoxNorlamView = () => {
+    setPlayerBoxOpen((current) => !current);
+  };
   const openSearch = () => {
     setSearchClick(true);
   };
@@ -72,10 +72,17 @@ export default function BuildEncounter() {
           </div>
           <div>
             <SaveEncounter />
-
-            <div className={styles.party_setup__window}>
-              <PlayerChoice />
-            </div>
+            <button
+              className={`${styles.btn_load_more} button`}
+              onClick={switchPlayerBoxNorlamView}
+            >
+             Add Players
+            </button>
+            {playerBoxOpen && (
+              <div className={styles.party_setup__window}>
+                <PlayerChoice />
+              </div>
+            )}
             <div className={styles.mobile_minimal__vue}>
               <button
                 className={styles.drawer_opener__style}
