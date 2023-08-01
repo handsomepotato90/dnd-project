@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import PlayerChoice from "./PlayerChoice/PlayerChoice";
 import MonsterLibrary from "./MonsterLibrary/MonsterLibrary";
 import EncounterSummary from "./EncounterSummary/EncounterSummary";
@@ -73,10 +73,10 @@ export default function BuildEncounter() {
           <div>
             <SaveEncounter />
             <button
-              className={`${styles.btn_load_more} button`}
+              className={`${styles.btn_load_more} ${styles.big_player__box} button `}
               onClick={switchPlayerBoxNorlamView}
             >
-             Add Players
+              Add Players
             </button>
             {playerBoxOpen && (
               <div className={styles.party_setup__window}>

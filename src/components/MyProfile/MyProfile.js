@@ -1,16 +1,14 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useHttpClient } from "../hooks/http-hook";
 import { LoginContext } from "../store/login-context";
-import MainMonsterBox from "../Voting/MainMonsterBox";
 import LoadingSpinner from "../UI/LoadingSpinner";
 import styles from "./MyProfile.module.css";
 import { useNavigate } from "react-router-dom";
-import Legend from "./Legend";
 import Edit from "./Edit";
 import ModalConfirmation from "../UI/ModalConfirmation";
 import ModalSubmitSucces from "../UI/ModalSubmitSucces";
 import ModalError from "../UI/ModalError";
-import EmptyPage from "../UI/EmptyPage";
+import MonsterBattleBox from "../MyEncounters/MonsterBattleBox";
 export default function MyProfile() {
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const login = useContext(LoginContext);
@@ -105,7 +103,8 @@ export default function MyProfile() {
           text="Your creature has been deleted successfully"
         />
       )}
-      <div className={styles.legend_main_box__style}>
+      
+      {/* <div className={styles.legend_main_box__style}>
         <Legend
           id="red"
           className={`${styles.legend__style} ${styles.red}`}
@@ -124,47 +123,70 @@ export default function MyProfile() {
         {myMonsters.length < 1 && (
           <EmptyPage message="You haven't created any creatures yet."></EmptyPage>
         )}
-      </div>
-      {myMonsters.length > 10 && (
+      </div> */}
+      {/* {myMonsters.length > 1 && ( */}
+
         <input
           className={styles.search_bar__style}
           onKeyUp={nameSearch}
           placeholder="Search"
         ></input>
-      )}
-
-      {myMonsters.map((monster, i) => (
-        <MainMonsterBox
-          key={i}
-          className={
-            monster.timeforvoting > now
-              ? styles.grey
-              : monster.votes.number > 0 || monster.votes.number === undefined
-              ? styles.green
-              : styles.red
-          }
-          monsterStats={monster}
-        >
-          <Edit id={monster._id}></Edit>
-          <button
-            className={`${styles.delete_btn__style} ${styles.edit_button__style} button`}
-            onClick={() => deleteEncounter(monster._id)}
+      {/* )} */}
+      <div className={styles.monster_holder__style}>
+        {myMonsters.map((monster, i) => (
+          <MonsterBattleBox
+            key={i}
+            childrenTopAndBottom={true}
+            battleSideBar={false}
+            stats={monster}
+            modalStats={true}
+            width="250px"
+            height="250px"
           >
-            {" "}
-            Delete
-          </button>
-        </MainMonsterBox>
-      ))}
+            <span
+              className={
+                `${monster.timeforvoting > now
+                  ? styles.grey
+                  : monster.votes.number > 0 ||
+                    monster.votes.number === undefined
+                  ? styles.green
+                  : styles.red} 
+                  ${styles.voting_status__style}`
+              }
+            >
+             { monster.timeforvoting > now
+                  ? "Ongoing"
+                  : monster.votes.number > 0 ||
+                    monster.votes.number === undefined
+                  ? "Accepted"
+                  : "Rejected"}
+            </span>
+            <div>
+              <Edit id={monster._id}></Edit>
+              <button
+                className={`${styles.delete_btn__style} ${styles.edit_button__style} button`}
+                onClick={() => deleteEncounter(monster._id)}
+              >
+                {" "}
+                Delete
+              </button>
+            </div>
+          </MonsterBattleBox>
+        ))}
+      </div>
       {myMonsters.length > 10 && (
         <>
-        <section>
-          <a href="/myProfile/?page=1">1</a>
-          <a href="/myProfile/?page=2">2</a>
-          <a href="/myProfile/?page=3">3</a>
-        </section>
-        <button className={`${styles.btn_load_more} button`} onClick={loadMore}>
-          Load More
-        </button>
+          <section>
+            <a href="/myProfile/?page=1">1</a>
+            <a href="/myProfile/?page=2">2</a>
+            <a href="/myProfile/?page=3">3</a>
+          </section>
+          <button
+            className={`${styles.btn_load_more} button`}
+            onClick={loadMore}
+          >
+            Load More
+          </button>
         </>
       )}
     </>

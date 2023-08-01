@@ -1,11 +1,16 @@
+.monster_holder__style{
+  margin-top: 5vh;
+  display: flex;
+  flex-wrap: wrap;
+}
 .red {
-  background-color: #f4433696;
+  background-color: #f44336;
 }
 .green {
-  background-color: #4caf4f6b;
+  background-color: #00ff08c7;
 }
 .grey {
-  background-color: rgba(128, 128, 128, 0.397);
+  background-color: #cccccc9f;
 }
 .legend__style {
   width: 2ch;
@@ -29,7 +34,7 @@
   margin: auto;
 }
 .edit_button__style {
-  padding: 1ch 6ch;
+  padding: 1ch 4.5ch;
   font-size: 16px;
   border: none;
   font-weight: 400;
@@ -39,7 +44,7 @@
 .edit_link__style > button {
   background-color: #4caf50;
   border-radius: 4px;
-  margin: 0vw 2vw;
+  float: left;
 }
 .delete_btn__style {
   background-color: #f44336;
@@ -62,9 +67,14 @@
   cursor: pointer;
 }
 .search_bar__style{
-  margin: auto;
+  margin-top: 5vh;
   margin-left: 5%;
   width: 25%;
+}
+.voting_status__style{
+ font-size: 18px;
+ padding: 5px 20px 0px 20px;
+ color:white;
 }
 @media only screen and (max-width: 600px) {
   .edit_button__style {

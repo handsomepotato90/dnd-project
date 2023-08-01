@@ -1,5 +1,4 @@
 import React, { useContext, useEffect } from "react";
-import MainMonsterBox from "../../Voting/MainMonsterBox";
 import MonsterXp from "../../store/monsterXp-context";
 import { useHttpClient } from "../../hooks/http-hook";
 import MonsterBattleBox from "../../MyEncounters/MonsterBattleBox";
@@ -27,12 +26,12 @@ export default function MonsterLibrary(props) {
       {mxp.monsters.map((monster, i) => (
         <MonsterBattleBox
           key={i}
-          voting={false}
-          library={true}
+          childrenTopAndBottom={false}
+          childrenOnlyOnTop={false}
           stats={monster}
           modalStats={true}
-          width="14vw"
-          height="28vh"
+          width="250px"
+          height="250px"
         >
           <span className={styles.name_plate__style}>{monster.name}</span>
           <button

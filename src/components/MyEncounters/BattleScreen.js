@@ -27,11 +27,11 @@ export default function BattleScreen() {
         const control = [];
         resData.monsters.forEach((element) => {
           control.push(...element);
-          
+
           setStats([...control]);
         });
 
-        setPleyers(resData.players)
+        setPleyers(resData.players);
       } catch (err) {}
     };
     fetchMonsters();
@@ -64,8 +64,8 @@ export default function BattleScreen() {
   const errorHandler = () => {
     clearError(null);
   };
-  console.log(fullStats)
-  console.log(players)
+  console.log(fullStats);
+  console.log(players);
   return (
     <>
       {clickDelete && (
@@ -91,11 +91,23 @@ export default function BattleScreen() {
       {isLoading && <LoadingSpinner asOverlay></LoadingSpinner>}
       <div className={styles.display__style}>
         {fullStats.map((stats, i) => (
-          <MonsterBattleBox key={i} stats={stats}></MonsterBattleBox>
+          <MonsterBattleBox
+            key={i}
+            stats={stats}
+            width="250px"
+            height="250px"
+            battleSideBar={true}
+          ></MonsterBattleBox>
         ))}
 
         {players.map((player, i) => (
-          <MonsterBattleBox key={i} players={player}></MonsterBattleBox>
+          <MonsterBattleBox
+            key={i}
+            players={player}
+            width="250px"
+            height="250px"
+            battleSideBar={true}
+          ></MonsterBattleBox>
         ))}
       </div>
       <div className={styles.delete_btn__holder}>

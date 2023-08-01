@@ -3,6 +3,8 @@ import ImmunityesModal, { DeathModal, StatsModal } from "./EncounterModals";
 import HealthPool from "./EncounterUI/HealthPool";
 import Initiative from "./EncounterUI/Initiative";
 import ModalMonsterText from "../UI/ModalMonsterText";
+import ImageComponent from "../UI/ImageComponent";
+
 import styles from "./BattleScreen.module.css";
 
 export default function MonsterBattleBox(props) {
@@ -44,7 +46,7 @@ export default function MonsterBattleBox(props) {
       {!props.players ? (
         <div style={{ textAlign: "right" }}>
           {/*######################## MONSTER NAME ####################### */}
-          { props.voting ? props.children[0] : props.children}
+          {props.childrenTopAndBottom ? props.children[0] : props.children}
 
           <div
             onClick={renderModal}
@@ -53,9 +55,16 @@ export default function MonsterBattleBox(props) {
             onMouseEnter={() => setIsShown(true)}
             onMouseLeave={() => setIsShown(false)}
           >
-            {(isDead && <DeathModal></DeathModal>) ||
+            {(isDead && (
+              <DeathModal
+                width={props.width}
+                height={props.height}
+              ></DeathModal>
+            )) ||
               (isShown && !props.modalStats ? (
                 <ImmunityesModal
+                  width={props.width}
+                  height={props.height}
                   conI={props.stats["Condition Immunities"]}
                   dmgI={props.stats["Damage Immunities"]}
                   dmgR={props.stats["Damage Resistances"]}
@@ -64,44 +73,55 @@ export default function MonsterBattleBox(props) {
               ) : (
                 isShown &&
                 props.modalStats && (
-                  <StatsModal stats={props.stats}></StatsModal>
+                  <StatsModal
+                    stats={props.stats}
+                    width={props.width}
+                    height={props.height}
+                  ></StatsModal>
                 )
               ))}
-
-            <img
-              className={styles.image__style}
+            <ImageComponent
+              size="large"
               src={props.stats.img_url}
               alt="monster"
-            ></img>
+            ></ImageComponent>
           </div>
-          {props.voting ? props.children[1] : null}
+          {props.childrenTopAndBottom ? props.children[1] : null}
         </div>
       ) : (
         //PC battle box
-        <div className={styles.encounter_box__style}>
-          {isDead && <DeathModal></DeathModal>}
-          {
-            <input
-              placeholder=" PC NAME"
-              className={`${styles.encounter_name__style}  ${styles.pc_name_style}`}
-            ></input>
-          }
-          <h2
-            className={`${styles.encounter_name__style}  ${styles.pc_level__style}`}
+        <div
+          className={styles.encounter_box__style}
+          style={{ width: `${props.width}`, height: `${props.height}` }}
+        >
+          {isDead && (
+            <DeathModal width={props.width} height={props.height}></DeathModal>
+          )}
+
+          <div
+            className={styles.content_pc__style}
+            style={{ width: `${props.width}`, height: `${props.height}` }}
           >
-            Level: <span>{props.players.level}</span>
-          </h2>
+            <input
+              className={styles.input_pc__style}
+              placeholder=" PC NAME"
+            ></input>
+            <span></span>
+            <span className={styles.level__style}>
+              Level:{props.players.level}
+            </span>
+          </div>
 
           {
-            <img
-              className={styles.image__style}
+            <ImageComponent
+              size="large"
               src="https://doubleproficiency.com/wp-content/uploads/2018/02/mega-fantasy-avatar-kronis.png"
               alt="player"
-            ></img>
+            ></ImageComponent>
           }
         </div>
       )}
-      {props.library || (
+      {!props.battleSideBar || (
         <div className={styles.stat_battle_box}>
           <div>
             <span className={styles.stat_text__style}>AC: </span>

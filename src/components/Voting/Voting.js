@@ -29,12 +29,12 @@ export default function Voting() {
       {monsters.map((monster, i) => (
           <MonsterBattleBox
             key={i}
-            voting={true}
-            library={true}
+            childrenTopAndBottom={true}
+            battleSideBar={false}
             stats={monster}
             modalStats={true}
-            width="14vw"
-            height="28vh"
+            width="250px"
+            height="250px"
           >
             <div className={styles.name_plate__style}>
               <span>{monster.name}</span>

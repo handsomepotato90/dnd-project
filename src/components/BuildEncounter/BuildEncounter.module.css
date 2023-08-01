@@ -16,6 +16,7 @@
   width: auto;
 }
 .btn_load_more {
+  display: block;
   background-color: #4caf50;
   color: #fff;
   border: none;
@@ -58,6 +59,9 @@
   
   .flex_box__style{
     display: block;
+  }
+  .big_player__box{
+    display: none;
   }
   .party_setup__window{
     width:100%;

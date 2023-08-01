@@ -1,17 +1,25 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import styles from "./Monster.module.css";
 import MonsterXp from "../../store/monsterXp-context";
-
+import ImageComponent from "../../UI/ImageComponent";
 export default function Monster(props) {
-  const mds = useContext(MonsterXp)
-  const deleteThisMonster = ()=>{
-    mds.DeleteMonster(props.monster.name)
-  }
+  const mds = useContext(MonsterXp);
+  const deleteThisMonster = () => {
+    mds.DeleteMonster(props.monster.name);
+  };
+  console.log(props);
   return (
     <div className={styles.monster_box__style}>
       <div className={styles.generel_info__style}>
+        <ImageComponent
+          size='small'
+          src={props.monster.url}
+          alt="monster"
+        ></ImageComponent>
         <div className={styles.first_info_box}>
-          <span className={`${styles.monster_name__style}`}>{props.monster.name}</span>
+          <span className={`${styles.monster_name__style}`}>
+            {props.monster.name}
+          </span>
           <span className={styles.desc_behavior}>{props.monster.type}</span>
         </div>
         <div className={styles.second_info_box}>
@@ -24,7 +32,9 @@ export default function Monster(props) {
         </div>
       </div>
       <div>
-        <button className={styles.delete_this} onClick={deleteThisMonster}>X</button>
+        <button className={styles.delete_this} onClick={deleteThisMonster}>
+          X
+        </button>
       </div>
     </div>
   );

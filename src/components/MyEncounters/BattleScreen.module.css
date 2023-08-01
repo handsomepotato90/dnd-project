@@ -8,15 +8,15 @@
   flex-direction: row;
   margin-left: 1.5rem;
   margin-top: 1rem;
-
 }
 .stat_battle_box {
-  width: 6vw;
-  height: 100%;
-  margin-top: 3rem;
+  width: 90px;
+  padding: 5px;
   text-align: center;
   display: flex;
   flex-direction: column;
+  background-color: #ccc;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .encounter_box__style {
   background-color: white;
@@ -33,8 +33,8 @@
 .encounter_name__style {
   text-align: center;
   background-color: rgba(255, 255, 255, 0.2);
-  z-index: 1;
-  font-size: 2.5ch;
+  /* z-index: 1; */
+  margin: 0;
   font-weight: bold;
   color: black;
 }
@@ -50,13 +50,11 @@
 }
 .modal__style {
   z-index: 1;
-  width: 14vw;
-  height: 28vh;
   position: absolute;
   background-color: black;
   opacity: 90%;
 }
-.detail__style > span{
+.detail__style > span {
   padding: 1vh;
   width: auto;
   margin-top: 4px;
@@ -64,14 +62,14 @@
   background-color: white;
   text-align: right;
   font-weight: bold;
-  color:#f44336;
+  color: #f44336;
 }
-.detail__style > span > span{
+.detail__style > span > span {
   float: left;
   font-weight: bold;
-  color:#151617;
+  color: #151617;
 }
-.detail__style{
+.detail__style {
   display: flex;
   flex-direction: column;
 }
@@ -121,7 +119,6 @@
   font-weight: bold;
   width: auto;
   height: 3.5vh;
-  margin-left: 1vw;
 }
 .death_modal_text___style {
   z-index: 1;
@@ -149,40 +146,36 @@
   background-color: #f44336;
   box-shadow: 0 0 20px #f44336;
 }
-.pc_name_style {
+.content_pc__style {
+  z-index: 1;
+  position: absolute;
+  display: grid;
+  grid-template-rows: 20% 50% 20%;
   color: white;
-  margin: 0;
-  outline: #000;
 }
-.pc_name_style:focus {
+.input_pc__style {
+  background-color: #15161769;
+  width: 100%;
+  border: none;
   color: white;
+  font-weight: bold;
+  font-size: 24px;
+  float: left;
+  text-align: center;
 }
-.pc_level__style {
-  margin-top: 2.5vw;
-  color: aliceblue;
+.level__style{
+  text-align: center;
+  font-size: 32px;
+  color: #f3f4f5;
+  font-weight: bolder;
 }
 @media only screen and (max-width: 1400px) {
   .encounter_box__style {
-    width: 29vw;
-    height: 29vh;
     background-color: white;
     text-decoration: none;
     text-align: center;
   }
   .encounter_name__style,
-  .pc_level__style {
-    width: 29vw;
-    font-size: 2.5ch;
-    margin-left: -14.5vw;
-  }
-  .pc_level__style {
-    margin-top: 3vw;
-    margin-left: 0.1vw;
-  }
-  .modal__style {
-    width: 29vw;
-    height: 29vh;
-  }
   .death_modal_text___style {
     margin-top: 5rem;
     font-size: 6ch;
@@ -190,8 +183,6 @@
 }
 @media only screen and (max-width: 600px) {
   .encounter_box__style {
-    width: 25vw;
-    height: 25vh;
     background-color: white;
     text-decoration: none;
     text-align: center;
@@ -205,10 +196,6 @@
   .pc_level__style {
     margin-top: 7.5vw;
     margin-left: 0.1vw;
-  }
-  .modal__style {
-    width: 25vw;
-    height: 25vh;
   }
   .death_modal_text___style {
     margin-top: 8vh;
