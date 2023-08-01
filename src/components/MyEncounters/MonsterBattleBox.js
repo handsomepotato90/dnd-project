@@ -7,6 +7,23 @@ import ImageComponent from "../UI/ImageComponent";
 
 import styles from "./BattleScreen.module.css";
 
+//if you are providing 2 children elements (boolean):
+// childrenTopAndBottom={false}
+//
+// If you need the side bar with the stats and health calculations (boolean):
+// battleSideBar={false}
+//
+//creature object you need to provide 
+// stats={monster}
+//
+//Modal with the stats of the creature (Name,AC, etc.) 
+// modalStats={true}
+//
+//Size for the element
+// width="250px"
+// height="250px"
+
+
 export default function MonsterBattleBox(props) {
   const [isShown, setIsShown] = useState(false);
   const [isDead, setDead] = useState(false);

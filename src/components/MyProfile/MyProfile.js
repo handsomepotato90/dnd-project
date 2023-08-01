@@ -146,11 +146,11 @@ export default function MyProfile() {
             <span
               className={
                 `${monster.timeforvoting > now
-                  ? styles.grey
+                  ? "grey"
                   : monster.votes.number > 0 ||
                     monster.votes.number === undefined
-                  ? styles.green
-                  : styles.red} 
+                  ? "green"
+                  : "red"} 
                   ${styles.voting_status__style}`
               }
             >

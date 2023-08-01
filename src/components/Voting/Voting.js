@@ -4,6 +4,7 @@ import styles from "./Voting.module.css";
 import EmptyPage from "../UI/EmptyPage";
 import MonsterBattleBox from "../MyEncounters/MonsterBattleBox";
 import VotingBooth from "./VotingBooth";
+import Countdown from "react-countdown";
 
 export default function Voting() {
   const [monsters, setMonsters] = useState([]);
@@ -20,7 +21,7 @@ export default function Voting() {
     };
     fetchMonsters();
   }, [sendRequest]);
-
+  console.log(monsters)
   return (
     <div className={styles.voting_main_box__style}>
       {monsters.length < 1 && (
@@ -37,7 +38,8 @@ export default function Voting() {
             height="250px"
           >
             <div className={styles.name_plate__style}>
-              <span>{monster.name}</span>
+              <span className={styles.name_plate}>{monster.name}</span>
+              <Countdown className={`${styles.clock__style} ${monster.timeforvoting < 86400 ? "red_text" : "green_text" }`} date={monster.timeforvoting}></Countdown>
             </div>
             <VotingBooth
               votes={monster.votes}

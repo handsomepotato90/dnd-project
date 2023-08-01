@@ -27,7 +27,7 @@ export default function MonsterLibrary(props) {
         <MonsterBattleBox
           key={i}
           childrenTopAndBottom={false}
-          childrenOnlyOnTop={false}
+          battleSideBar={false}
           stats={monster}
           modalStats={true}
           width="250px"

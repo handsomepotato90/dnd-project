@@ -29,3 +29,11 @@
   object-fit: cover;
   font-size: clamp(1ch, 1.8ch, 2ch);
 }
+.clock__style{
+  font-size: 20px;
+  margin-left: 85px;
+}
+.name_plate {
+  font-size: 18px;
+  float: left;
+}

@@ -3,15 +3,6 @@
   display: flex;
   flex-wrap: wrap;
 }
-.red {
-  background-color: #f44336;
-}
-.green {
-  background-color: #00ff08c7;
-}
-.grey {
-  background-color: #cccccc9f;
-}
 .legend__style {
   width: 2ch;
   height: 2ch;
