@@ -17,7 +17,7 @@ export default function Monster(props) {
           alt="monster"
         ></ImageComponent>
         <div className={styles.first_info_box}>
-          <span className={`${styles.monster_name__style}`}>
+          <span className={`${styles.monster_name__style} overflowing`}>
             {props.monster.name}
           </span>
           <span className={styles.desc_behavior}>{props.monster.type}</span>

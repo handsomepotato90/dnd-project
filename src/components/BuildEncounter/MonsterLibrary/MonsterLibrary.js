@@ -33,7 +33,7 @@ export default function MonsterLibrary(props) {
           width="250px"
           height="250px"
         >
-          <span className={styles.name_plate__style}>{monster.name}</span>
+          <span className={`${styles.name_plate__style} overflowing`}>{monster.name}</span>
           <button
             className={styles.btn_add__style}
             onClick={() => mxp.selectMonster(monster)}

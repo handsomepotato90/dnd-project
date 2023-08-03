@@ -76,7 +76,7 @@ export default function BuildEncounter() {
               className={`${styles.btn_load_more} ${styles.big_player__box} button `}
               onClick={switchPlayerBoxNorlamView}
             >
-              Add Players
+             {playerBoxOpen ? `Close` :`Open`} Player Management
             </button>
             {playerBoxOpen && (
               <div className={styles.party_setup__window}>

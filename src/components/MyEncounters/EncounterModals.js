@@ -33,7 +33,7 @@ export function StatsModal(props) {
       style={{ width: `${props.width}`, height: `${props.height}` }}
     >
       <div class={styles.detail__style}>
-        <span>
+        <span className="overflowing">
           <span>Name: </span>
           {props.stats.name}
         </span>
@@ -45,7 +45,7 @@ export function StatsModal(props) {
           <span>Type: </span>
           {props.stats.meta.type}
         </span>
-        <span>
+        <span className="overflowing">
           <span>Alignment: </span>
           {props.stats.meta.alignment}
         </span>

@@ -38,7 +38,7 @@ export default function Voting() {
             height="250px"
           >
             <div className={styles.name_plate__style}>
-              <span className={styles.name_plate}>{monster.name}</span>
+              <span className={`${styles.name_plate} overflowing`}>{monster.name}</span>
               <Countdown className={`${styles.clock__style} ${monster.timeforvoting < 86400 ? "red_text" : "green_text" }`} date={monster.timeforvoting}></Countdown>
             </div>
             <VotingBooth

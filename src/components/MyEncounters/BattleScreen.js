@@ -8,14 +8,14 @@ import ModalSubmitSucces from "../UI/ModalSubmitSucces";
 import { useNavigate } from "react-router-dom";
 import ModalError from "../UI/ModalError";
 import ModalConfirmation from "../UI/ModalConfirmation";
+import Initiative from "./EncounterUI/Initiative";
 
 export default function BattleScreen() {
   const auth = useContext(LoginContext);
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
-  const [fullStats, setStats] = useState([]);
-  const [players, setPleyers] = useState([]);
   const [deleted, setDeleted] = useState(false);
   const [clickDelete, setDeleteClick] = useState(false);
+  const [all, setAll] = useState([]);
   const url = window.location.href.split("battle_scr/");
   const navigate = useNavigate();
   useEffect(() => {
@@ -27,11 +27,12 @@ export default function BattleScreen() {
         const control = [];
         resData.monsters.forEach((element) => {
           control.push(...element);
-
-          setStats([...control]);
         });
-
-        setPleyers(resData.players);
+        const allParticipents = [...control, ...resData.players];
+        for (let index = 0; index < allParticipents.length; index++) {
+          allParticipents[index].initiative = 0;
+        }
+        setAll([...allParticipents]);
       } catch (err) {}
     };
     fetchMonsters();
@@ -40,6 +41,7 @@ export default function BattleScreen() {
   const deleteEncounter = () => {
     setDeleteClick(true);
   };
+
   const startDelete = async (answer) => {
     if (answer === true) {
       try {
@@ -64,8 +66,6 @@ export default function BattleScreen() {
   const errorHandler = () => {
     clearError(null);
   };
-  console.log(fullStats);
-  console.log(players);
   return (
     <>
       {clickDelete && (
@@ -90,20 +90,10 @@ export default function BattleScreen() {
       )}
       {isLoading && <LoadingSpinner asOverlay></LoadingSpinner>}
       <div className={styles.display__style}>
-        {fullStats.map((stats, i) => (
+        {all.map((stats, i) => (
           <MonsterBattleBox
             key={i}
             stats={stats}
-            width="250px"
-            height="250px"
-            battleSideBar={true}
-          ></MonsterBattleBox>
-        ))}
-
-        {players.map((player, i) => (
-          <MonsterBattleBox
-            key={i}
-            players={player}
             width="250px"
             height="250px"
             battleSideBar={true}

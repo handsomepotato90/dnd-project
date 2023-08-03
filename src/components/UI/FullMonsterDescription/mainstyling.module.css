@@ -1,6 +1,6 @@
 .box_design {
   z-index: 3;
-  position: absolute;
+  position: fixed;
   margin-left: 5vw;
   margin-top: 10vh;
   width: 85%;

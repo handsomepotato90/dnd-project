@@ -15,11 +15,56 @@
   text-align: center;
   display: flex;
   flex-direction: column;
-  background-color: #ccc;
+  background-color: #f5f8fa;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.stat_battle_box > div {
+  margin-top: 15px;
+}
+.button__style {
+  align-items: center;
+  -webkit-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  background: #fff;
+  border: 1px solid #d8e1e8;
+  border-radius: 3px;
+  color: #1b9af0 !important;
+  cursor: pointer;
+  display: inline-flex;
+  height: 40px;
+  justify-content: center;
+  padding: 0 16px;
 }
 .encounter_box__style {
   background-color: white;
+}
+.disabled_button {
+  background: #ced9e0 !important;
+  color: #738694 !important;
+  cursor: auto !important;
+  opacity: 1 !important;
+}
+.heal_button {
+  background-color: #00c797;
+  border: none;
+  color: #fff !important;
+  order: -1;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  transition: -webkit-transform 0.1s;
+  transition: transform 0.1s;
+  transition: transform 0.1s, -webkit-transform 0.1s;
+}
+.damage_button {
+  background-color: #bc0f0f;
+  border: none;
+  color: #fff !important;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  transition: -webkit-transform 0.1s;
+  transition: transform 0.1s;
+  transition: transform 0.1s, -webkit-transform 0.1s;
 }
 .image__style {
   display: block;
@@ -33,20 +78,24 @@
 .encounter_name__style {
   text-align: center;
   background-color: rgba(255, 255, 255, 0.2);
-  /* z-index: 1; */
   margin: 0;
   font-weight: bold;
   color: black;
 }
-.stat_text__style {
-  text-align: center;
-  font-size: 18px;
-  font-weight: bold;
-  color: black;
+.text__style {
+  font-family: Roboto, Open Sans, Helvetica, sans-serif !important;
+  font-size: 14px;
+  font-weight: 700;
+  justify-content: center;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 .health__styling {
-  font-weight: bold;
-  margin: 5px;
+  padding: 10px;
+  background-color: #d8e1e8;
+  border-radius: 5px;
+  display: grid;
+  grid-template-rows: 50% auto;
 }
 .modal__style {
   z-index: 1;
@@ -94,30 +143,47 @@
 .orange_condition {
   color: orange;
 }
+.input__wraper {
+  background-color: #f5f8fa;
+  border: 2px solid #f5f8fa;
+  border-radius: 8px;
+  padding: 8px 12px;
+  position: relative;
+}
+.input__wraper:after {
+  border-top: 1px solid #84878a;
+  bottom: 6px;
+  content: "";
+  display: block;
+  height: 0;
+  left: 50%;
+  position: absolute;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  width: calc(100% - 24px);
+}
 .input__style {
-  width: auto;
-  height: 3vh;
-  border: none;
+  outline: none;
+  width: 150px;
+  -webkit-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  -moz-appearance: textfield;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: #30404d;
+  font-size: 18px;
+  letter-spacing: 1px;
+  max-width: 100%;
+  padding: 0 !important;
   text-align: center;
-  padding: 8px 10px;
-  margin-right: 0;
 }
-.add {
-  border: none;
-  background-color: #4caf50;
-}
-.subtract {
-  border: none;
-  background-color: #f44336;
-}
-.add:hover {
-  background-color: #4caf50;
-  box-shadow: 0 0 20px #4caf50;
-}
+
 .subm_subt__style {
   font-size: 18px;
   font-weight: bold;
-  width: auto;
+  width: 100px;
   height: 3.5vh;
 }
 .death_modal_text___style {
@@ -140,9 +206,7 @@
   border: none;
   font-size: 2ch;
 }
-
-.delete_btn__style:hover,
-.subtract:hover {
+.delete_btn__style:hover{
   background-color: #f44336;
   box-shadow: 0 0 20px #f44336;
 }
@@ -163,7 +227,7 @@
   float: left;
   text-align: center;
 }
-.level__style{
+.level__style {
   text-align: center;
   font-size: 32px;
   color: #f3f4f5;

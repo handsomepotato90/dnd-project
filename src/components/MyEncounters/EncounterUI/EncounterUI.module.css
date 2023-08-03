@@ -1,0 +1,11 @@
+.auto_roll_button__style {
+  margin-top: 2px;
+  color: #3c6acc;
+  cursor: pointer;
+  font-weight: bold;
+}
+.auto_roll_button__style:hover {
+  background-color: #b3b0b0;
+  border-radius: 3px;
+  border: 1px solid #3c6acc;
+}

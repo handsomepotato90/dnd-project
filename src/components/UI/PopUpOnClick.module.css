@@ -1,0 +1,30 @@
+.popup__flyout {
+  border-radius: 3px;
+  box-shadow: 0 -2px 6px rgba(218, 227, 235, 0.5);
+  padding: 16px;
+  z-index: 99999 !important;
+  background-color: #fff;
+  border: 1px solid #d8e1e8;
+  margin-left: 100px;
+}
+.popup__style {
+  display: flex;
+  flex-direction: column;
+  max-height: 90vh;
+  max-width: 90vw;
+  position: fixed;
+}
+.arrow__wrapper {
+  position: absolute;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.arrow__style {
+  height: 16px;
+  width: 16px;
+  position: absolute;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  border: 1px solid #d8e1e8;
+}

@@ -13,16 +13,15 @@ import styles from "./BattleScreen.module.css";
 // If you need the side bar with the stats and health calculations (boolean):
 // battleSideBar={false}
 //
-//creature object you need to provide 
+//creature object you need to provide
 // stats={monster}
 //
-//Modal with the stats of the creature (Name,AC, etc.) 
+//Modal with the stats of the creature (Name,AC, etc.)
 // modalStats={true}
 //
 //Size for the element
 // width="250px"
 // height="250px"
-
 
 export default function MonsterBattleBox(props) {
   const [isShown, setIsShown] = useState(false);
@@ -31,9 +30,9 @@ export default function MonsterBattleBox(props) {
   const [playerArmorClass, setPlayerArmorClass] = useState(true);
   const [playerGivenAc, setPlayerGivenAc] = useState(0);
 
-  const openInputToGiveAc = () => {
-    setPlayerArmorClass(false);
-  };
+  // const openInputToGiveAc = () => {
+  //   setPlayerArmorClass(false);
+  // };
   const rememberAcValue = () => {
     setPlayerArmorClass(true);
   };
@@ -53,14 +52,14 @@ export default function MonsterBattleBox(props) {
   };
   return (
     <div className={styles.battle_box}>
-      {!props.pleyers && isRead && (
+      {!props.stats.level && isRead && (
         <ModalMonsterText
           onClick={removeModal}
           monsterStats={props.stats}
         ></ModalMonsterText>
       )}
 
-      {!props.players ? (
+      {!props.stats.level ? (
         <div style={{ textAlign: "right" }}>
           {/*######################## MONSTER NAME ####################### */}
           {props.childrenTopAndBottom ? props.children[0] : props.children}
@@ -125,7 +124,7 @@ export default function MonsterBattleBox(props) {
             ></input>
             <span></span>
             <span className={styles.level__style}>
-              Level:{props.players.level}
+              Level:{props.stats.level}
             </span>
           </div>
 
@@ -141,42 +140,38 @@ export default function MonsterBattleBox(props) {
       {!props.battleSideBar || (
         <div className={styles.stat_battle_box}>
           <div>
-            <span className={styles.stat_text__style}>AC: </span>
-            {!props.players ? (
-              <span className={styles.stat_text__style}>
-                {props.stats["Armor Class"].value}
-              </span>
-            ) : playerArmorClass ? (
-              <span
-                onClick={openInputToGiveAc}
-                className={styles.stat_text__style}
-              >
-                {playerGivenAc}
-              </span>
-            ) : (
-              <input
-                autoFocus={true}
-                onChange={giveArmorClass}
-                onBlur={rememberAcValue}
-                className={styles.stat_text__style}
-                value={playerGivenAc}
-              ></input>
-            )}
+            <span className={`${styles.text__style} ${styles.health__styling}`}>AC: {!props.stats.level && props.stats["Armor Class"].value } </span>
+            {props.stats.level &&
+            
+              <div className={styles.input__wraper}>
+                <input
+                  autoFocus={true}
+                  onChange={giveArmorClass}
+                  onBlur={rememberAcValue}
+                  className={`${styles.input__style}`}
+                  value={playerGivenAc}
+                ></input>
+              </div>
+            }
           </div>
-          {!props.players ? (
-            <HealthPool
-              onChange={deathTraker}
-              hp={props.stats["Hit Points"].hp}
-            ></HealthPool>
+          {!props.stats.level ? (
+            <>
+              <HealthPool
+                onChange={deathTraker}
+                hp={props.stats["Hit Points"].hp}
+              ></HealthPool>
+              <Initiative initiative= {props.stats.initiative} dexMod={props.stats.DEX_mod}></Initiative>
+            </>
           ) : (
-            <HealthPool
-              onChange={deathTraker}
-              player="player"
-              hp={0}
-            ></HealthPool>
+            <>
+              <HealthPool
+                onChange={deathTraker}
+                player="player"
+                hp={0}
+              ></HealthPool>
+              <Initiative initiative= {props.stats.initiative}></Initiative>
+            </>
           )}
-
-          <Initiative></Initiative>
         </div>
       )}
     </div>

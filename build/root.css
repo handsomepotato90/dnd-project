@@ -1,9 +1,12 @@
-body {
+body,#root {
+  display: block;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   margin: 0 auto !important;
   float: none !important;
-}
-body,
-#root {
   height: 100%;
   min-height: 100vh;
   top: 0px;
@@ -24,8 +27,14 @@ body,
     rgba(19, 19, 19, 0.9),
     rgba(21, 22, 23, 1)
   );
+
   max-width: 1920px;
 }
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
 .button {
   cursor: pointer;
   border: none;
@@ -37,27 +46,32 @@ body,
   background-color: #090a0a;
 }
 .login_black__background {
-  background-color: #CCC;
+  background-color: #ccc;
 }
-.button__colors{
-  background-color: #CCC;
+.button__colors {
+  background-color: #ccc;
 }
 span {
-  color : #999999;
+  color: #738694;
 }
-input{
-  background-color:rgba(13, 13, 13, 0.6);
-  color:#B2C7E3;
+input {
+  background-color: rgba(13, 13, 13, 0.6);
+  color: #b2c7e3;
 }
-input:focus{
-  color:#B2C7E3
+input:focus {
+  color: #b2c7e3;
 }
-::placeholder { 
+::placeholder {
   color: #849dbb;
-  opacity: 1; 
+  opacity: 1;
 }
-h1,h2,h3,h4,h5,h6{
-  color: #1F2C3D;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #1f2c3d;
 }
 .button:hover {
   background-color: #4caf50;
@@ -72,12 +86,17 @@ h1,h2,h3,h4,h5,h6{
 .grey {
   background-color: #cccccc9f;
 }
-.red_text{
+.red_text {
   color: #f44336;
 }
-.green_text{
+.green_text {
   color: #00ff08c7;
 }
-.grey_text{
+.grey_text {
   color: #cccccc9f;
+}
+.overflowing {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }

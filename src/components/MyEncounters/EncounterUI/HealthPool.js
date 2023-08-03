@@ -1,36 +1,34 @@
 import React, { useState } from "react";
+import PopUpOnClick from "../../UI/PopUpOnClick";
 import styles from "../BattleScreen.module.css";
 
 export default function HealthPool(props) {
   const [health, healthHandler] = useState(props.hp);
   const [calculate, calculateHanler] = useState(0);
-  const [playerMaxHp,setPcMaxHealth] = useState(props.hp)
-  const [clikedPlayerMaxHealtInput,setCliket] = useState(false)
+  const [playerMaxHp, setPcMaxHealth] = useState(props.hp);
+  const [clikedPlayerMaxHealtInput, setCliket] = useState(false);
 
-  const hpTarget = !props.player ? props.hp : playerMaxHp
+  const hpTarget = !props.player ? props.hp : playerMaxHp;
 
-  const givePlayerHp = () =>{
-    setCliket(true)
-  }
-  const setPcHp = () =>{
-    setCliket(false)
-  }
-  const givePlayerHealth = (event) =>{
-    healthHandler(event.target.value)
-    setPcMaxHealth(event.target.value)
-  }
+  const givePlayerHp = () => {
+    setCliket(true);
+  };
+  const setPcHp = (value) => {
+    setCliket(value);
+  };
+  const givePlayerHealth = (event) => {
+    healthHandler(event.target.value);
+    setPcMaxHealth(event.target.value);
+  };
 
   const calculateThis = (event) => {
     calculateHanler(event.target.value);
   };
   const addNow = () => {
-    console.log(health)
-    console.log(calculate)
     healthHandler(parseInt(health) + parseInt(calculate));
-    console.log(health)
 
     if (parseInt(health) + parseInt(calculate) > hpTarget) {
-      healthHandler(hpTarget)
+      healthHandler(hpTarget);
     }
     calculateHanler(0);
   };
@@ -44,29 +42,64 @@ export default function HealthPool(props) {
   };
   return (
     <>
-      <div className={styles.health__styling}>
-        <span className={`${styles.stat_text__style}}`}>HP: </span>
-        {(<span className={styles.stat_text__style}>{`${health} / `}</span>)} 
-       {(!clikedPlayerMaxHealtInput ? <span onClick={props.player && givePlayerHp } className={styles.stat_text__style}>{hpTarget}</span> : <input autoFocus="true" onBlur={setPcHp} onChange={givePlayerHealth} value={playerMaxHp}></input>)}
+      <div
+        className={`${styles.text__style} ${styles.health__styling}`}
+        onClick={givePlayerHp}
+      >
+        <span>HP: </span>
+        {
+          <span>
+            {`${health} / `}
+            <span>{hpTarget}</span>
+          </span>
+        }
       </div>
       {/* <div> */}
-        <button
-          onClick={addNow}
-          className={`${styles.subm_subt__style} ${styles.add}`}
-        >
-          Heal
-        </button>
-        <input
-          onChange={calculateThis}
-          className={`${styles.stat_text__style} ${styles.input__style}`}
-          value={calculate}
-        ></input>
-        <button
-          onClick={subtractNow}
-          className={`${styles.subm_subt__style} ${styles.subtract}`}
-        >
-          Damage
-        </button>
+      {clikedPlayerMaxHealtInput && (
+        <PopUpOnClick onBlur={setPcHp}>
+          <button
+            onClick={addNow}
+            disabled={calculate === 0 ? true : false}
+            className={`${styles.button__style} ${styles.text__style} ${
+              calculate === 0 ? `${styles.disabled_button}` : styles.heal_button
+            }`}
+          >
+            Heal
+          </button>
+          <div className={styles.input__wraper}>
+            <input
+              onChange={calculateThis}
+              className={` ${styles.input__style}`}
+              value={calculate}
+            ></input>
+          </div>
+          <button
+            onClick={subtractNow}
+            disabled={calculate === 0 ? true : false}
+            className={`${styles.button__style} ${styles.text__style} ${
+              calculate === 0
+                ? `${styles.disabled_button}`
+                : styles.damage_button
+            }`}
+          >
+            Damage
+          </button>
+
+          {props.player && (
+            <>
+              <span className={`${styles.text__style}`}>MAX HP OVERRIDE</span>
+              <div className={styles.input__wraper}>
+                <input
+                  onChange={givePlayerHealth}
+                  value={playerMaxHp}
+                  className={`${styles.input__style}`}
+                ></input>
+              </div>
+            </>
+          )}
+        </PopUpOnClick>
+      )}
+
       {/* </div> */}
     </>
   );
