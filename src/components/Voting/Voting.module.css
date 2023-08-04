@@ -1,8 +1,3 @@
-.voting_main_box__style {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
 .main_head__text_color {
   background-color: aliceblue;
   font-weight: bold;

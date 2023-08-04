@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useHttpClient } from "../hooks/http-hook";
-import styles from "./Voting.module.css";
 import EmptyPage from "../UI/EmptyPage";
 import MonsterBattleBox from "../MyEncounters/MonsterBattleBox";
 import VotingBooth from "./VotingBooth";
 import Countdown from "react-countdown";
+import ConteinerBox from "../UI/ConteinerBox";
+
+import styles from "./Voting.module.css";
 
 export default function Voting() {
   const [monsters, setMonsters] = useState([]);
@@ -21,9 +23,8 @@ export default function Voting() {
     };
     fetchMonsters();
   }, [sendRequest]);
-  console.log(monsters)
   return (
-    <div className={styles.voting_main_box__style}>
+    <ConteinerBox>
       {monsters.length < 1 && (
         <EmptyPage message="There are no new submitted cretures at this time."></EmptyPage>
       )}
@@ -49,6 +50,6 @@ export default function Voting() {
           </MonsterBattleBox>
 
       ))}
-    </div>
+    </ConteinerBox>
   );
 }

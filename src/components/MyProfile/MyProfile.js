@@ -2,13 +2,16 @@ import React, { useState, useEffect, useContext } from "react";
 import { useHttpClient } from "../hooks/http-hook";
 import { LoginContext } from "../store/login-context";
 import LoadingSpinner from "../UI/LoadingSpinner";
-import styles from "./MyProfile.module.css";
 import { useNavigate } from "react-router-dom";
 import Edit from "./Edit";
 import ModalConfirmation from "../UI/ModalConfirmation";
 import ModalSubmitSucces from "../UI/ModalSubmitSucces";
 import ModalError from "../UI/ModalError";
 import MonsterBattleBox from "../MyEncounters/MonsterBattleBox";
+import ConteinerBox from "../UI/ConteinerBox";
+
+import styles from "./MyProfile.module.css";
+
 export default function MyProfile() {
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const login = useContext(LoginContext);
@@ -103,28 +106,6 @@ export default function MyProfile() {
           text="Your creature has been deleted successfully"
         />
       )}
-      
-      {/* <div className={styles.legend_main_box__style}>
-        <Legend
-          id="red"
-          className={`${styles.legend__style} ${styles.red}`}
-          text="Rejected by the community. Some edits might be in order."
-        ></Legend>
-        <Legend
-          id="green"
-          className={`${styles.legend__style} ${styles.green}`}
-          text="Accepted by the community."
-        ></Legend>
-        <Legend
-          id="grey"
-          className={`${styles.legend__style} ${styles.grey}`}
-          text="Ongoing voting"
-        ></Legend>
-        {myMonsters.length < 1 && (
-          <EmptyPage message="You haven't created any creatures yet."></EmptyPage>
-        )}
-      </div> */}
-      {/* {myMonsters.length > 1 && ( */}
 
         <input
           className={styles.search_bar__style}
@@ -132,7 +113,7 @@ export default function MyProfile() {
           placeholder="Search"
         ></input>
       {/* )} */}
-      <div className={styles.monster_holder__style}>
+      <ConteinerBox>
         {myMonsters.map((monster, i) => (
           <MonsterBattleBox
             key={i}
@@ -173,7 +154,7 @@ export default function MyProfile() {
             </div>
           </MonsterBattleBox>
         ))}
-      </div>
+      </ConteinerBox>
       {myMonsters.length > 10 && (
         <>
           <section>

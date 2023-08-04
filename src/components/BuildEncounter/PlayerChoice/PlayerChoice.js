@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import LevelOfPlayer from "./LevelOfPlayer";
 import PlayerBox from "./PlayerBox";
 import GroupXp from "../../store/groupXp-context";
-
+import ConteinerBox from "../../UI/ConteinerBox";
 export default function PlayerChoice() {
   const xpt = useContext(GroupXp);
   return (

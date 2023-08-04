@@ -1,6 +1,6 @@
 .diff_bar__style {
   background: lightgrey;
-  width: 20vw;
+  width: 350px;
   height: 2vw;
   position: relative;
   top: 3vh;
@@ -10,9 +10,9 @@
 }
 .diff__style {
   position: relative;
-  right: 19.5vw;
+  right: 330px;
   background: darkgrey;
-  width: 20vw;
+  width: 350px;
   height: 2vw;
   transition: right 3s, background 3s;
   -webkit-transition: right 3s, background 3s;

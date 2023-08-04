@@ -66,7 +66,7 @@ export default function LevelOfPlayer(props) {
   return (
     <div className={styles.center_elements}>
       <Select className={styles.select__style} onChange={handleChange} isSearchable={false} options={options} />
-      <button className={`${styles.add_player_btn__style} button`} onClick={ThisPlayerToAdd}>Add Player</button>
+      <button className={`${styles.add_player_btn__style} button green `} onClick={ThisPlayerToAdd}>Add Player</button>
     </div>
   );
 }

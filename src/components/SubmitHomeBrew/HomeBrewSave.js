@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 import { useForm } from "../hooks/form-hook";
 import Button from "../form-elements/Button";
 import styles from "./SubmitHomeBrew.module.css";
-
+import ConteinerBox from "../UI/ConteinerBox";
 
 export default function HomeBrewSave(props) {
   const navigate = useNavigate();
@@ -107,13 +107,12 @@ export default function HomeBrewSave(props) {
         props.type,
         JSON.stringify(data),
         {
-          Authorization: 'Bearer ' + auth.token,
+          Authorization: "Bearer " + auth.token,
           "Content-Type": "application/json",
         }
       );
-      navigate( props.type ==="POST" ? "/voting" : "/myProfile");
-    } catch (err) {
-    }
+      navigate(props.type === "POST" ? "/voting" : "/myProfile");
+    } catch (err) {}
   };
   const errorHandler = () => {
     clearError(null);
@@ -123,7 +122,7 @@ export default function HomeBrewSave(props) {
       {isLoading && <LoadingSpinner as0verlay></LoadingSpinner>}
       {error && <ModalError error={error} onClick={errorHandler}></ModalError>}
       <form id="form" onSubmit={submitHadler}>
-        <div className={styles.form__style}>
+        <ConteinerBox>
           {props.required.map((field, i) => (
             <Input
               key={i}
@@ -156,7 +155,9 @@ export default function HomeBrewSave(props) {
               notRequired={true}
             ></Input>
           ))}
-
+        </ConteinerBox>
+        <ConteinerBox>
+          {" "}
           {props.text.map((zone, i) => (
             <TextArea
               onChange={textZoneChange}
@@ -166,9 +167,14 @@ export default function HomeBrewSave(props) {
               placeholder={zone.placeholder}
             ></TextArea>
           ))}
-        </div>
-         <Button
-          className={!formState.isValid ?`${styles.submit_btn__style_disabled}`:`${styles.submit_btn__style_enabled} button`}
+        </ConteinerBox>
+
+        <Button
+          className={
+            !formState.isValid
+              ? `${styles.submit_btn__style_disabled}`
+              : `${styles.submit_btn__style_enabled} button`
+          }
           type="submit"
           disabled={!formState.isValid}
         >

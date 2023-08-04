@@ -60,7 +60,7 @@ export default function HealthPool(props) {
           <button
             onClick={addNow}
             disabled={calculate === 0 ? true : false}
-            className={`${styles.button__style} ${styles.text__style} ${
+            className={`button ${styles.text__style} ${
               calculate === 0 ? `${styles.disabled_button}` : styles.heal_button
             }`}
           >
@@ -76,7 +76,7 @@ export default function HealthPool(props) {
           <button
             onClick={subtractNow}
             disabled={calculate === 0 ? true : false}
-            className={`${styles.button__style} ${styles.text__style} ${
+            className={`button ${styles.text__style} ${
               calculate === 0
                 ? `${styles.disabled_button}`
                 : styles.damage_button

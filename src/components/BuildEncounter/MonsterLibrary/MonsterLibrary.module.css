@@ -15,18 +15,14 @@
   background-color: #89e08c;
   box-shadow: 0 0 20px rgb(161, 161, 161);
 }
-.btn_load_more {
-  background-color: #4caf50;
-  color: #fff;
-  border: none;
-  padding: 1rem 6rem;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin-left: 40%;
-  margin-top: 2rem;
-  cursor: pointer;
+.centering {
+  color: white;
+  font-size: 18px;
+  margin: 0 auto;
+  display: block;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding: 10px 120px;
 }
 .name_plate__style {
   background-color: #151617;
@@ -41,7 +37,6 @@
   float: left;
 }
 @media only screen and (max-width: 600px) {
-  
   .btn_add__style {
     font-size: 1.5ch;
     margin-left: 0rem;

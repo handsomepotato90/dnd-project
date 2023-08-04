@@ -1,12 +1,6 @@
-.add_player_btn__style {
-  background-color: #4caf50; /* Green */
-  border: none;
-  color: white;
-  padding: 1ch 3ch;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
+.add_player_btn__style{
+  color:white;
+  font-size: 18px;
 }
 .select__style {
   width: 15ch;
@@ -16,6 +10,7 @@
   margin: 0 auto;
   -ms-transform: translateY(2rem);
   transform: translateY(2rem);
+  text-align: center;
 }
 @media only screen and (max-width: 600px) {
   .select__style {

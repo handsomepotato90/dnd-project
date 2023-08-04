@@ -1,11 +1,13 @@
 .box_player__style {
   margin-top: 0.5rem;
-  width: 8vw;
+  width: 150px;
+  height: 50px;
   background-color: #fdfafa;
   color: #000;
   border-radius: 0.2rem;
   display: flex;
   flex-direction: row;
+  
 }
 .box_player__style > div {
   padding: 0.5rem 0.5rem;
@@ -27,9 +29,10 @@
   height: 11rem;
   display: flex;
   padding: 1vmin;
-  flex-direction: column;
-  flex-wrap: wrap;
+  flex-direction: row;
   overflow: auto;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 @media only screen and (max-width: 600px) {
   .box_player__style {

@@ -9,6 +9,7 @@ import SaveEncounter from "./SaveEncounter/SaveEncounter";
 import SearchByName from "./SearchByName/SearchByName";
 import NavigationDrawer from "../UI/NavigationDrawer";
 import LoadMoreButton from "./MonsterLibrary/LoadMoreButton";
+import ConteinerBox from "../UI/ConteinerBox";
 
 import styles from "./BuildEncounter.module.css";
 
@@ -71,18 +72,23 @@ export default function BuildEncounter() {
             <SearchWindow></SearchWindow>
           </div>
           <div>
-            <SaveEncounter />
-            <button
-              className={`${styles.btn_load_more} ${styles.big_player__box} button `}
-              onClick={switchPlayerBoxNorlamView}
-            >
-             {playerBoxOpen ? `Close` :`Open`} Player Management
-            </button>
-            {playerBoxOpen && (
-              <div className={styles.party_setup__window}>
-                <PlayerChoice />
-              </div>
-            )}
+            <ConteinerBox>
+              <SaveEncounter />
+              <button
+                className={`${styles.btn__style__custom} button ${
+                  playerBoxOpen ? "red" : "green"
+                }`}
+                onClick={switchPlayerBoxNorlamView}
+              >
+                {playerBoxOpen ? `Close` : `Open`} Player Management
+              </button>
+              {playerBoxOpen && (
+                <div className={styles.party_setup__window}>
+                  <PlayerChoice />
+                </div>
+              )}
+            </ConteinerBox>
+
             <div className={styles.mobile_minimal__vue}>
               <button
                 className={styles.drawer_opener__style}
@@ -104,9 +110,9 @@ export default function BuildEncounter() {
               </button>
             </div>
             <SearchByName />
-            <div className={styles.library__style}>
+            <ConteinerBox>
               <MonsterLibrary />
-            </div>
+            </ConteinerBox>
             <LoadMoreButton></LoadMoreButton>
           </div>
           <div

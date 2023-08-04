@@ -1,7 +1,7 @@
 import React,{useContext} from "react";
 import MonsterXp from "../../store/monsterXp-context";
-import styles from "../BuildEncounter.module.css";
 
+import style from "./MonsterLibrary.module.css"
 
 export default function LoadMoreButton(props) {
   const mxp = useContext(MonsterXp);
@@ -16,7 +16,7 @@ export default function LoadMoreButton(props) {
   };
 
   return (
-    <button className={`${styles.btn_load_more} button`} onClick={loadMore}>
+    <button className={`${style.centering} green button`} onClick={loadMore}>
       Load More
     </button>
   );

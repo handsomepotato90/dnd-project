@@ -2,17 +2,18 @@ import React, { useContext } from "react";
 import styles from "./Monster.module.css";
 import MonsterXp from "../../store/monsterXp-context";
 import ImageComponent from "../../UI/ImageComponent";
+
 export default function Monster(props) {
   const mds = useContext(MonsterXp);
   const deleteThisMonster = () => {
     mds.DeleteMonster(props.monster.name);
   };
-  console.log(props);
+
   return (
     <div className={styles.monster_box__style}>
       <div className={styles.generel_info__style}>
         <ImageComponent
-          size='small'
+          size="small"
           src={props.monster.url}
           alt="monster"
         ></ImageComponent>

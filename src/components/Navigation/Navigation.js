@@ -36,7 +36,7 @@ const Navigation = () => {
             Image={Dice}
             height="40"
             color="red"
-            width="90"
+            width="70"
           ></SvgComponent>
         </CustomButton>
       )}
@@ -46,7 +46,7 @@ const Navigation = () => {
             Image={Dice}
             height="40"
             color="red"
-            width="90"
+            width="70"
           ></SvgComponent>
         </CustomButton>
       )}
@@ -56,7 +56,7 @@ const Navigation = () => {
             Image={Vote}
             height="40"
             color="red"
-            width="90"
+            width="70"
           ></SvgComponent>
         </CustomLink>
       )}
@@ -67,7 +67,7 @@ const Navigation = () => {
             Image={Build}
             height="40"
             color="red"
-            width="90"
+            width="70"
           ></SvgComponent>
         </CustomLink>
       )}
@@ -77,7 +77,7 @@ const Navigation = () => {
             Image={Brew}
             height="40"
             color="red"
-            width="90"
+            width="70"
           ></SvgComponent>
         </CustomLink>
       )}
@@ -87,7 +87,7 @@ const Navigation = () => {
             Image={Encounter}
             height="50"
             color="red"
-            width="90"
+            width="70"
           ></SvgComponent>
         </CustomLink>
       )}
@@ -97,7 +97,7 @@ const Navigation = () => {
             Image={Profile}
             height="40"
             color="red"
-            width="90"
+            width="70"
           ></SvgComponent>
         </CustomLink>
       )}
@@ -107,7 +107,7 @@ const Navigation = () => {
             Image={Logout}
             height="40"
             color="red"
-            width="90"
+            width="70"
           ></SvgComponent>
         </CustomLink>
       )}

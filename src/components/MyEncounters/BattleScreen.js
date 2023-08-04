@@ -8,6 +8,7 @@ import ModalSubmitSucces from "../UI/ModalSubmitSucces";
 import { useNavigate } from "react-router-dom";
 import ModalError from "../UI/ModalError";
 import ModalConfirmation from "../UI/ModalConfirmation";
+import ConteinerBox from "../UI/ConteinerBox";
 import Initiative from "./EncounterUI/Initiative";
 
 export default function BattleScreen() {
@@ -89,7 +90,7 @@ export default function BattleScreen() {
         />
       )}
       {isLoading && <LoadingSpinner asOverlay></LoadingSpinner>}
-      <div className={styles.display__style}>
+      <ConteinerBox>
         {all.map((stats, i) => (
           <MonsterBattleBox
             key={i}
@@ -99,7 +100,7 @@ export default function BattleScreen() {
             battleSideBar={true}
           ></MonsterBattleBox>
         ))}
-      </div>
+      </ConteinerBox>
       <div className={styles.delete_btn__holder}>
         <button
           className={`${styles.delete_btn__style} button`}

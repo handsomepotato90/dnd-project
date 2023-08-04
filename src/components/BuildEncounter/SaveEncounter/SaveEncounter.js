@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import styles from "./SaveEncounter.module.css";
+
 import { useHttpClient } from "../../hooks/http-hook";
 import { LoginContext } from "../../store/login-context";
 import MonsterXp from "../../store/monsterXp-context";
@@ -83,14 +84,14 @@ export default function SaveEncounter() {
         ></ModalSubmitSucces>
       )}
       {error && <ModalError header='Incomplete encounter' error="It seems you haven't selected eny creatures for your encounter. Plese use the +ADD button to add creatures to your encounter. " onClick={errorHandler}></ModalError>}
-      <div className={styles.main_box__size}>
+      <div className>
         <input
-          className={styles.input_style}
+          className = {styles.input__style__custom}
           type="text"
           onChange={enteringTitle}
         ></input>
         <button
-          className={`${styles.button_style} button`}
+          className={`${styles.button__style}  button green `}
           type="submit"
           onClick={submitToDb}
         >
