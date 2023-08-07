@@ -11,7 +11,7 @@ import styles from "./Voting.module.css";
 export default function Voting() {
   const [monsters, setMonsters] = useState([]);
   const { sendRequest } = useHttpClient();
-
+  const currentDate = new Date().getTime();
   useEffect(() => {
     const fetchMonsters = async () => {
       try {
@@ -29,26 +29,34 @@ export default function Voting() {
         <EmptyPage message="There are no new submitted cretures at this time."></EmptyPage>
       )}
       {monsters.map((monster, i) => (
-          <MonsterBattleBox
-            key={i}
-            childrenTopAndBottom={true}
-            battleSideBar={false}
-            stats={monster}
-            modalStats={true}
-            width="250px"
-            height="250px"
-          >
-            <div className={styles.name_plate__style}>
-              <span className={`${styles.name_plate} overflowing`}>{monster.name}</span>
-              <Countdown className={`${styles.clock__style} ${monster.timeforvoting < 86400 ? "red_text" : "green_text" }`} date={monster.timeforvoting}></Countdown>
-            </div>
-            <VotingBooth
-              votes={monster.votes}
-              name={monster.name}
-              id={monster._id}
-            ></VotingBooth>
-          </MonsterBattleBox>
-
+        <MonsterBattleBox
+          key={i}
+          childrenTopAndBottom={true}
+          battleSideBar={false}
+          stats={monster}
+          modalStats={true}
+          width="250px"
+          height="250px"
+        >
+          <div className={styles.name_plate__style}>
+            <span className={`${styles.name_plate} overflowing`}>
+              {monster.name}
+            </span>
+            <Countdown
+              className={`${styles.clock__style} ${
+                (monster.timeforvoting - currentDate) / 1000 < 86400
+                  ? "red_text"
+                  : "green_text"
+              }`}
+              date={monster.timeforvoting}
+            ></Countdown>
+          </div>
+          <VotingBooth
+            votes={monster.votes}
+            name={monster.name}
+            id={monster._id}
+          ></VotingBooth>
+        </MonsterBattleBox>
       ))}
     </ConteinerBox>
   );

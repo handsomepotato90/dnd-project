@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext} from "react";
 import Select from "react-select";
 import styles from "./SearchWindow.module.css";
 import InputRange from "react-input-range";
@@ -112,27 +112,32 @@ export default function SearchWindow() {
       });
     }
   };
-  useEffect(() => {
-    const searchDb = async () => {
-      try {
-        const resData = await sendRequest(
-          process.env.REACT_APP_BACKEND_URL + "/build_encounter",
-          "POST",
-          JSON.stringify({
-            rating,
-            armor,
-            health,
-            monsterTypes: mxp.monsterTypes,
-          }),
-          {
-            "Content-Type": "application/json",
-          }
-        );
-        mxp.setMonsters(resData);
-      } catch (err) {}
-    };
-    searchDb();
-  }, [sendRequest, mxp.monsterTypes, health, armor, rating]);
+
+
+
+ const searchDatabase =async () => {
+  try {
+    const resData = await sendRequest(
+      process.env.REACT_APP_BACKEND_URL + "/build_encounter",
+      "POST",
+      JSON.stringify({
+        rating,
+        armor,
+        health,
+        monsterTypes: mxp.monsterTypes,
+      }),
+      {
+        "Content-Type": "application/json",
+      }
+    );
+    mxp.setMonsters(resData);
+  } catch (err) {}
+ }
+  
+    
+    
+  
+
 
   const customStyles = {
     control: (base, state) => ({
@@ -157,6 +162,7 @@ export default function SearchWindow() {
   return (
     <>
       <div className={styles.gerenl_scroll__style}>
+        
         <span className={styles.text__style}>Monster Type</span>
         <Select
           className={styles.search_bar__stayle}
@@ -283,6 +289,7 @@ export default function SearchWindow() {
           onChange={(value) => newHealth({ value })}
         />
       </div>
+      <button className={`${styles.search_btn_style} button green`} onClick={searchDatabase}> Search </button>
     </>
   );
 }

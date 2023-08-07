@@ -32,7 +32,7 @@ export function StatsModal(props) {
       className={styles.modal__style}
       style={{ width: `${props.width}`, height: `${props.height}` }}
     >
-      <div class={styles.detail__style}>
+      <div className={styles.detail__style}>
         <span className="overflowing">
           <span>Name: </span>
           {props.stats.name}
