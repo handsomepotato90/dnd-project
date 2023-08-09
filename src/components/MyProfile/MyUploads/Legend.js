@@ -1,4 +1,4 @@
-import styles from "./MyProfile.module.css";
+import styles from "./MyUploads.module.css";
 export default function Legend(props) {
   return (
     <div className={styles.legend_single_box}>

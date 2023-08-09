@@ -1,0 +1,29 @@
+.users_holding_div__style {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  background-color: #d8e1e8;
+  border-radius: 5px;
+  margin-top: 5px;
+  margin-left: 5px;
+  width: 49%;
+
+  justify-content: space-between;
+}
+.users_name__style {
+  padding: 10px;
+  font-size: 18px;
+  font-weight: bold;
+}
+.users_send_request__style {
+  border: none;
+  box-shadow: 2px 3px #8888886c;
+}
+.message__style {
+  position: absolute;
+}
+.decision_box__style {
+  display: flex;
+  flex-wrap: nowrap;
+}

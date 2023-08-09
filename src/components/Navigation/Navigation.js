@@ -11,8 +11,9 @@ import Profile from "../../icons/Profile.svg";
 import Logout from "../../icons/Logout.svg";
 import NavigationDrawer from "../UI/NavigationDrawer";
 import Dice from "../../icons/d20.svg";
-import "./Navigation.css";
+import NavigatorBack from "./NavigatorBack";
 import Calculator from "../Calculator/Calculator";
+import "./Navigation.css";
 
 const Navigation = () => {
   const auth = useContext(LoginContext);
@@ -51,71 +52,83 @@ const Navigation = () => {
         </CustomButton>
       )}
       {auth.isLoggedIn && (
-        <CustomLink description="Voting" onClick={closeNav} to="/voting">
-          <SvgComponent
-            Image={Vote}
-            height="40"
-            color="red"
-            width="70"
-          ></SvgComponent>
+        <CustomLink description="Voting" onClick={closeNav}>
+          <Links to="/voting">
+            <SvgComponent
+              Image={Vote}
+              height="40"
+              color="red"
+              width="70"
+            ></SvgComponent>
+          </Links>
         </CustomLink>
       )}
       {/* {auth.isLoggedIn && <VoteSvgComponent></VoteSvgComponent>} */}
       {auth.isLoggedIn && (
-        <CustomLink description="Build Encounter" onClick={closeNav} to="/build_encounter">
-          <SvgComponent
-            Image={Build}
-            height="40"
-            color="red"
-            width="70"
-          ></SvgComponent>
+        <CustomLink description="Build Encounter" onClick={closeNav}>
+          <Links to="/build_encounter">
+            <SvgComponent
+              Image={Build}
+              height="40"
+              color="red"
+              width="70"
+            ></SvgComponent>
+          </Links>
         </CustomLink>
       )}
       {auth.isLoggedIn && (
-        <CustomLink description="Homebrew" onClick={closeNav} to="/submit_homebrew">
-          <SvgComponent
-            Image={Brew}
-            height="40"
-            color="red"
-            width="70"
-          ></SvgComponent>
+        <CustomLink description="Homebrew" onClick={closeNav}>
+          <Links to="/submit_homebrew">
+            <SvgComponent
+              Image={Brew}
+              height="40"
+              color="red"
+              width="70"
+            ></SvgComponent>
+          </Links>
         </CustomLink>
       )}
       {auth.isLoggedIn && (
-        <CustomLink description="Encounters" onClick={closeNav} to="/my_encounters">
-          <SvgComponent
-            Image={Encounter}
-            height="50"
-            color="red"
-            width="70"
-          ></SvgComponent>
+        <CustomLink description="Encounters" onClick={closeNav}>
+          <Links to="/my_encounters">
+            <SvgComponent
+              Image={Encounter}
+              height="50"
+              color="red"
+              width="70"
+            ></SvgComponent>
+          </Links>
         </CustomLink>
       )}
       {auth.isLoggedIn && (
-        <CustomLink description="My Profile" to="/myProfile" onClick={closeNav}>
-          <SvgComponent
-            Image={Profile}
-            height="40"
-            color="red"
-            width="70"
-          ></SvgComponent>
+        <CustomLink description="My Profile" onClick={closeNav}>
+          <Links to="/myProfile">
+            <SvgComponent
+              Image={Profile}
+              height="40"
+              color="red"
+              width="70"
+            ></SvgComponent>
+          </Links>
         </CustomLink>
       )}
       {auth.isLoggedIn && (
-        <CustomLink description="Logout" to="/" onClick={auth.logout}>
-          <SvgComponent
-            Image={Logout}
-            height="40"
-            color="red"
-            width="70"
-          ></SvgComponent>
+        <CustomLink description="Logout" onClick={auth.logout}>
+          <Links to="/">
+            <SvgComponent
+              Image={Logout}
+              height="40"
+              color="red"
+              width="70"
+            ></SvgComponent>
+          </Links>
         </CustomLink>
       )}
     </>
   );
 
   return (
-    <nav className="nav__size nav__bcc">
+    <NavigatorBack>
       <Link to="/">
         <img className="logo__size" src={Logo} alt="logo"></img>
       </Link>
@@ -135,11 +148,18 @@ const Navigation = () => {
           <div className="bar3"></div>
         </div>
       )}
-    </nav>
+    </NavigatorBack>
   );
 };
-
-const CustomLink = ({ to, children, ...props }) => {
+export const Links = ({ to, children, ...props }) => {
+  return (
+    <Link to={to} {...props}>
+      {" "}
+      {children}
+    </Link>
+  );
+};
+export const CustomLink = (props) => {
   const [hover, setHover] = useState(false);
 
   const onHover = () => {
@@ -149,13 +169,13 @@ const CustomLink = ({ to, children, ...props }) => {
     setHover(false);
   };
   return (
-    <li onMouseEnter={onHover} onMouseLeave={onLeave} onClick={() => props.onClick(false)}>
-         
-      <Link to={to} {...props}>
-        {" "}
-        {children}
-      </Link>
-      {hover && <span className="hover__text">{props.description}</span>}  
+    <li
+      onMouseEnter={onHover}
+      onMouseLeave={onLeave}
+      onClick={() => props.onClick(false)}
+    >
+      {props.children}
+      {hover && <span className="hover__text">{props.description}</span>}
     </li>
   );
 };
@@ -172,7 +192,7 @@ export const SvgComponent = (props) => {
     ></ReactSVG>
   );
 };
-const CustomButton = ({ to, children, ...props }) => {
+export const CustomButton = ({ to, children, ...props }) => {
   return (
     <div className="link_style" onClick={() => props.onClick(props.action)}>
       {children}

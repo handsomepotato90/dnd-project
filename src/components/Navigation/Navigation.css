@@ -1,8 +1,9 @@
 .nav__size {
   width: auto;
+  list-style-type: none;
+  height: 50px;
 }
 .nav__bcc {
-  background-color: black;
   position: relative;
   box-shadow: 0 0 25px 0 black;
 }
@@ -31,6 +32,13 @@ nav {
   grid-template-columns: 30% 70%;
   align-items: center;
   box-sizing: border-box;
+}
+.nav_flexbox{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  gap:40px;
 }
 .nav_links {
   display: flex;

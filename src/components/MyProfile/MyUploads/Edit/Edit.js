@@ -1,8 +1,8 @@
 import { useState, useEffect, useContext } from "react";
-import HomeBrewSave from "../../SubmitHomeBrew/HomeBrewSave";
-import { useHttpClient } from "../../hooks/http-hook";
-import LoadingSpinner from "../../UI/LoadingSpinner";
-import { LoginContext } from "../../store/login-context";
+import HomeBrewSave from "../../../SubmitHomeBrew/HomeBrewSave";
+import { useHttpClient } from "../../../hooks/http-hook";
+import LoadingSpinner from "../../../UI/LoadingSpinner";
+import { LoginContext } from "../../../store/login-context";
 
 export default function Edit() {
   const { isLoading, sendRequest } = useHttpClient();
@@ -14,13 +14,13 @@ export default function Edit() {
   const removeBrakets = (string) => {
     return string.split("(")[1].split(")")[0];
   };
-  console.log(process.env.REACT_APP_BACKEND_URL + `/myProfile/Edit/${url[1]}`);
+  console.log(process.env.REACT_APP_BACKEND_URL + `/myProfile/MyUploads/Edit/${url[1]}`);
   useEffect(() => {
     const fetchMonsters = async () => {
 
       try {
         const resData = await sendRequest(
-          process.env.REACT_APP_BACKEND_URL + `/myProfile/Edit/${url[1]}`,
+          process.env.REACT_APP_BACKEND_URL + `/myProfile/MyUploads/Edit/${url[1]}`,
           "GET",
           null,
           { Authorization: "Bearer " + auth.token }
@@ -256,7 +256,7 @@ export default function Edit() {
         notReq={fields}
         text={textZone}
         type="PATCH"
-        url={`/myProfile/Edit/${url[1]}`}
+        url={`/myProfile/MyUploads/Edit/${url[1]}`}
       ></HomeBrewSave>
     </>
   );

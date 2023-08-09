@@ -6,9 +6,12 @@
 }
 
 .news_box_size {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
   width: 500px;
   min-height: 200px;
-  max-height: 250px;
+  max-height: 550px;
   padding: 20px;
   border-radius: 5px;
 }

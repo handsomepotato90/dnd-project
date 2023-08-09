@@ -21,9 +21,12 @@ const SubmitHomeBrew = React.lazy(() =>
   import("./components/SubmitHomeBrew/SubmitHomeBrew")
 );
 const MyProfile = React.lazy(() => import("./components/MyProfile/MyProfile"));
-const Edit = React.lazy(() => import("./components/MyProfile/Edit/Edit"));
+const MyUploads = React.lazy(() => import("./components/MyProfile/MyUploads/MyUploads"));
+const Friends = React.lazy(() => import("./components/MyProfile/Friends/Friends"));
+const Edit = React.lazy(() => import("./components/MyProfile/MyUploads/Edit/Edit"));
 const Home = React.lazy(() => import("./components/Home/Home"));
 const Voting = React.lazy(() => import("./components/Voting/Voting"));
+
 
 function App() {
 
@@ -38,8 +41,11 @@ function App() {
         <Route path="/submit_homebrew" element={<SubmitHomeBrew />} />
         <Route path="/my_encounters" element={<MyEncounters />} />
         <Route path="/battle_scr/:id" element={<BattleScreen />} />
+        <Route path="/myProfile/MyUploads" element={<MyUploads />} />
+        <Route path="/myProfile/MyUploads/Edit/:id" element={<Edit />} />
+        <Route path="/myProfile/Friends" element={<Friends />} />
         <Route path="/myProfile" element={<MyProfile />} />
-        <Route path="/myProfile/Edit/:id" element={<Edit />} />
+
       </React.Fragment>
     );
   } else {
