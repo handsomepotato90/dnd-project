@@ -1,36 +1,38 @@
-import { useState, useContext, useRef } from "react";
+import { useState, useRef } from "react";
 import NewsBox from "../../../UI/NewsBox";
 import { useHttpClient } from "../../../hooks/http-hook";
 import MatchingUsers from "./MatchingUsers";
 
-export default function SendFriendRequest() {
-  const { isLoading, error, sendRequest, clearError } = useHttpClient();
+export default function SendFriendRequest(props) {
+  const { sendRequest } = useHttpClient();
   const [foundUsers, setfoundUsers] = useState([]);
   const text = useRef();
   let timer;
 
   const nameSearch = (event) => {
-    if (timer) {
-      clearTimeout(timer);
+    if (text.current.value.trim() !== "") {
+      if (timer) {
+        clearTimeout(timer);
+      }
+      timer = setTimeout(async function () {
+        try {
+          const resData = await sendRequest(
+            process.env.REACT_APP_BACKEND_URL +
+              "/myProfile/Friends/search_users",
+            "POST",
+            JSON.stringify({
+              user: text.current.value,
+              myId: props.ids,
+            }),
+            {
+              "Content-Type": "application/json",
+            }
+          );
+          setfoundUsers([...resData]);
+        } catch (err) {}
+      }, 1000);
     }
-    timer = setTimeout(async function () {
-      console.log(text.current.value);
-      try {
-        const resData = await sendRequest(
-          process.env.REACT_APP_BACKEND_URL + "/myProfile/Friends/search_users",
-          "POST",
-          JSON.stringify({
-            user: text.current.value,
-          }),
-          {
-            "Content-Type": "application/json",
-          }
-        );
-        setfoundUsers(...resData);
-      } catch (err) {}
-    }, 1000);
   };
-  console.log(foundUsers);
   return (
     <div>
       <input
@@ -42,7 +44,11 @@ export default function SendFriendRequest() {
 
       <NewsBox>
         {foundUsers.map((user, i) => (
-          <MatchingUsers key={i} name={user.name}></MatchingUsers>
+          <MatchingUsers
+            key={i}
+            ids={props.ids}
+            name={user.name}
+          ></MatchingUsers>
         ))}
       </NewsBox>
     </div>

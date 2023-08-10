@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import NewsBox from "../../../UI/NewsBox";
 import UserHolderBox from "../UserHolderBox";
 import { SvgComponent } from "../../../Navigation/Navigation";
@@ -8,17 +8,17 @@ import styles from "../Friends.module.css";
 import { useHttpClient } from "../../../hooks/http-hook";
 
 export default function FriendRequest(props) {
-  const { isLoading, error, sendRequest, clearError } = useHttpClient();
-  const [foundUsers, setfoundUsers] = useState([
-    {
-      name: "Ivan",
-    },
-    {
-      name: "ge0rg1",
-    },
-  ]);
+  const { sendRequest } = useHttpClient();
+  const [foundUsers, setfoundUsers] = useState([]);
 
-  const decision = async (res, name) => {
+  useEffect(() => {
+    if (props.requests) {
+      setfoundUsers(props.requests);
+    }
+  }, [props.requests]);
+
+  const decision = async (res, name,id) => {
+    setfoundUsers(foundUsers.filter((foundUsers) => foundUsers.name !== name));
     try {
       const resData = await sendRequest(
         process.env.REACT_APP_BACKEND_URL + "/myProfile/Friends/res_friend",
@@ -26,6 +26,8 @@ export default function FriendRequest(props) {
         JSON.stringify({
           decision: res,
           name: name,
+          user: id,
+          myId: props.ids,
         }),
         {
           "Content-Type": "application/json",
@@ -33,7 +35,7 @@ export default function FriendRequest(props) {
       );
     } catch (err) {}
 
-    setfoundUsers(foundUsers.filter((foundUsers) => foundUsers.name !== name));
+    
   };
   return (
     <div>
@@ -42,14 +44,14 @@ export default function FriendRequest(props) {
         {foundUsers.map((req, i) => (
           <UserHolderBox key={i} name={req.name}>
             <div className={`${styles.decision_box__style}`}>
-              <div onClick={() => decision("accept", req.name)}>
+              <div onClick={() => decision("accept", req.name, req._id)}>
                 <SvgComponent
                   Image={Accept}
                   height="45"
                   width="40"
                 ></SvgComponent>
               </div>
-              <div onClick={() => decision("reject", req.name)}>
+              <div onClick={() => decision("reject", req.name,req._id)}>
                 <SvgComponent
                   Image={Reject}
                   height="45"

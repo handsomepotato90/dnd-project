@@ -22,7 +22,7 @@ div > h1 {
 .place_holder_bcc {
   color: white;
   width: 80%;
-  height: 100%;
+  height: 250px;
   filter: grayscale(100%);
 }
 

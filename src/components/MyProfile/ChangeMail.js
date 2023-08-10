@@ -1,18 +1,13 @@
-import { useState, useEffect } from "react";
 import NewsBox from "../UI/NewsBox";
 import Input from "../form-elements/Input";
 import { useForm } from "../hooks/form-hook";
-import {
-  VALIDATOR_REQUIRE,
-  VALIDATOR_MINLENGTH,
-  VALIDATOR_EMAIL,
-} from "../util/validators";
+import { VALIDATOR_REQUIRE, VALIDATOR_EMAIL } from "../util/validators";
 import Button from "../form-elements/Button";
 import { useHttpClient } from "../hooks/http-hook";
 
 export default function ChangeMail(props) {
-  const { isLoading, error, sendRequest, clearError } = useHttpClient();
-  const [formState, inputHandler, setFormData] = useForm(
+  const { sendRequest } = useHttpClient();
+  const [formState, inputHandler] = useForm(
     {
       email: { value: "", isValid: false },
     },
@@ -21,11 +16,11 @@ export default function ChangeMail(props) {
 
   const authSubmitHandler = async (event) => {
     event.preventDefault();
-   
+
     try {
       const resData = await sendRequest(
         process.env.REACT_APP_BACKEND_URL + "/change_mail",
-        "PATCH",
+        "POST",
         JSON.stringify({
           email: formState.inputs.email.value,
         }),

@@ -1,19 +1,14 @@
-import { useState, useEffect } from "react";
 import NewsBox from "../UI/NewsBox";
 import Input from "../form-elements/Input";
 import Button from "../form-elements/Button";
 import { useForm } from "../hooks/form-hook";
-import {
-  VALIDATOR_REQUIRE,
-  VALIDATOR_MINLENGTH,
-  VALIDATOR_EMAIL,
-} from "../util/validators";
+import { VALIDATOR_REQUIRE, VALIDATOR_MINLENGTH } from "../util/validators";
 
 import { useHttpClient } from "../hooks/http-hook";
 
 export default function ChangeUserName(props) {
-  const { isLoading, error, sendRequest, clearError } = useHttpClient();
-  const [formState, inputHandler, setFormData] = useForm(
+  const { sendRequest } = useHttpClient();
+  const [formState, inputHandler] = useForm(
     {
       u_name: { value: "", isValid: false },
     },
@@ -21,13 +16,13 @@ export default function ChangeUserName(props) {
   );
   const submitUserNameChange = async (event) => {
     event.preventDefault();
-    console.log(formState.inputs.u_name.value);
     try {
       const resData = await sendRequest(
-        process.env.REACT_APP_BACKEND_URL + "/change_username",
-        "PATCH",
+        process.env.REACT_APP_BACKEND_URL + "/myProfile/change_username",
+        "POST",
         JSON.stringify({
           name: formState.inputs.u_name.value,
+          uId: props.ids,
         }),
         {
           "Content-Type": "application/json",

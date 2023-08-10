@@ -1,5 +1,4 @@
 import { useState } from "react";
-import styles from "../Friends.module.css";
 import { SvgComponent } from "../../../Navigation/Navigation";
 import Add from "../../../../icons/Add_user.svg";
 import add_ready from "../../../../icons/add_ready.svg";
@@ -11,7 +10,7 @@ export default function MatchingUsers(props) {
   const [hover, setHover] = useState(false);
   const [requestSent, setRequestSent] = useState(false);
 
-  const { isLoading, error, sendRequest, clearError } = useHttpClient();
+  const { sendRequest} = useHttpClient();
 
   const requestFriend = async () => {
     try {
@@ -20,6 +19,7 @@ export default function MatchingUsers(props) {
         "POST",
         JSON.stringify({
           name: props.name,
+          myId: props.ids,
         }),
         {
           "Content-Type": "application/json",
@@ -27,6 +27,7 @@ export default function MatchingUsers(props) {
       );
     } catch (err) {}
     setRequestSent(true);
+
   };
   const onHover = () => {
     setHover(true);
