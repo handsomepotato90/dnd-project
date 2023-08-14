@@ -17,7 +17,8 @@ export const useHttpClient = () => {
           method,
           body,
           headers,
-          credentials: "include",
+          // credentials: "include",
+          credentials: "same-origin",
           signal: httpAbortCtrl.signal,
         });
         const resData = await response.json();

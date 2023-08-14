@@ -17,6 +17,10 @@ import { ReactComponent as ReactLogo } from "../../icons/btn_google_light_normal
 import { GoogleLogin } from "react-google-login";
 import { gapi } from "gapi-script";
 import styles from "./Login.module.css";
+// import { GoogleOAuthProvider } from "@react-oauth/google";
+// import GoogleLoginX from "./GoogleLoginX";
+
+
 export default function Login() {
   const auth = useContext(LoginContext);
   const [isLogin, setIsLogin] = useState(true);
@@ -212,6 +216,10 @@ export default function Login() {
             callback={responseFacebook}
             fields="name,email"
           />
+          {/* <GoogleOAuthProvider clientId="935993487799-3sfsjrrfjh8qol2fe65pjjt3ik0tcpqn.apps.googleusercontent.com">
+            <GoogleLoginX />
+          </GoogleOAuthProvider> */}
+
           <GoogleLogin
             clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
             render={(renderProps) => (
