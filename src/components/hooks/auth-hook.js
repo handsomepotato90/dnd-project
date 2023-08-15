@@ -2,6 +2,7 @@ import { useState, useCallback, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useHttpClient } from "../hooks/http-hook";
 import Cookies from "js-cookie";
+
 let logoutTimer;
 export const useAuth = () => {
   const [token, setToken] = useState(null);
@@ -10,12 +11,13 @@ export const useAuth = () => {
   const [tokenExpirationDate, setTokenExpirationDate] = useState();
   const navigate = useNavigate();
   const remember = Cookies.get("rmTOKEN");
+
   const login = useCallback((uid, token, expirationDate) => {
     setToken(token);
     setUserId(uid);
     const tokenExpiration =
       expirationDate ||
-      new Date(new Date().getTime() + 1000 * 60 * 60 * 24 * 7 );
+      new Date(new Date().getTime() + 1000 * 60 * 60 * 24 * 7);
     setTokenExpirationDate(tokenExpiration);
     localStorage.setItem(
       "userData",
@@ -27,12 +29,52 @@ export const useAuth = () => {
     );
   }, []);
   const logout = useCallback(() => {
+
     setToken(null);
     setUserId(null);
     localStorage.removeItem("userData");
-    Cookies.remove('rmTOKEN') 
+    localStorage.removeItem("googleData");
+    Cookies.remove("rmTOKEN");
     navigate("/");
   }, []);
+
+  const googleAuth = useCallback((date, token, google = true) => {
+    localStorage.setItem(
+      "googleData",
+      JSON.stringify({
+        expiry_date: date,
+        refresh_token: token,
+        google: google,
+      })
+    );
+  }, []);
+
+  useEffect(() => {
+    const googleRefresh = async () => {
+      const googleData = JSON.parse(localStorage.getItem("googleData"));
+
+      if (googleData?.expiry_date < new Date().getTime()) {
+        try {
+          const resData = await sendRequest(
+            process.env.REACT_APP_BACKEND_URL + "/refresh-google-token",
+            "POST",
+            JSON.stringify({ token: googleData.refresh_token }),
+            {
+              "Content-Type": "application/json",
+            }
+          );
+          googleAuth(
+            resData.google_auth.expiry_date,
+            resData.google_auth.refresh_token
+          );
+          login(resData.user._id, resData.token);
+        } catch (err) {}
+      }
+    };
+
+    googleRefresh();
+  }, [sendRequest, googleAuth, login]);
+
   useEffect(() => {
     if (token && tokenExpirationDate) {
       const remainingTime =
@@ -46,6 +88,7 @@ export const useAuth = () => {
 
   useEffect(() => {
     const storedData = JSON.parse(localStorage.getItem("userData"));
+
     if (
       storedData &&
       storedData.token &&
@@ -79,5 +122,5 @@ export const useAuth = () => {
     rememberUser();
   }, [sendRequest, remember, login]);
 
-  return { token, login, logout, userId };
+  return { token, login, logout, userId, googleAuth };
 };

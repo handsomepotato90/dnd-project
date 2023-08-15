@@ -40,6 +40,7 @@ export default function BuildEncounter() {
   const closeDifficulty = () => {
     setDifficultyClick(false);
   };
+
   return (
     <GroupXpProvider>
       <MonsterXpProvider>
@@ -75,9 +76,8 @@ export default function BuildEncounter() {
             <ConteinerBox>
               <SaveEncounter />
               <button
-                className={`${styles.btn__style__custom} button ${
-                  playerBoxOpen ? "red" : "green"
-                }`}
+                className={`${styles.btn__style__custom} button 
+                ${playerBoxOpen ? "red" : "green"}`}
                 onClick={switchPlayerBoxNorlamView}
               >
                 {playerBoxOpen ? `Close` : `Open`} Player Management

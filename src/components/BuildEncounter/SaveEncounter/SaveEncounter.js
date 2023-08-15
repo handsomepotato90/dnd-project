@@ -84,7 +84,7 @@ export default function SaveEncounter() {
         ></ModalSubmitSucces>
       )}
       {error && <ModalError header='Incomplete encounter' error="It seems you haven't selected eny creatures for your encounter. Plese use the +ADD button to add creatures to your encounter. " onClick={errorHandler}></ModalError>}
-      <div className>
+      <div >
         <input
           className = {styles.input__style__custom}
           type="text"

@@ -12,14 +12,11 @@ import { LoginContext } from "../store/login-context";
 import LoadingSpinner from "../UI/LoadingSpinner";
 import ModalError from "../UI/ModalError";
 import { useHttpClient } from "../hooks/http-hook";
-import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
-import { ReactComponent as ReactLogo } from "../../icons/btn_google_light_normal_ios.svg";
-import { GoogleLogin } from "react-google-login";
+import FacebookLogin from "./FacebookLogin";
 import { gapi } from "gapi-script";
 import styles from "./Login.module.css";
-// import { GoogleOAuthProvider } from "@react-oauth/google";
-// import GoogleLoginX from "./GoogleLoginX";
-
+import { GoogleOAuthProvider } from "@react-oauth/google";
+import GoogleLoginX from "./GoogleLoginX";
 
 export default function Login() {
   const auth = useContext(LoginContext);
@@ -110,42 +107,7 @@ export default function Login() {
   const handleChange = () => {
     setChecked(!checked);
   };
-  const responseFacebook = async (response) => {
-    try {
-      const resData = await sendRequest(
-        process.env.REACT_APP_BACKEND_URL + "/facebook",
-        "POST",
-        JSON.stringify({
-          name: response.name,
-          email: response.email,
-          password: response.userID,
-          graphDomain: response.graphDomain,
-          remember: true,
-        }),
-        {
-          "Content-Type": "application/json",
-        }
-      );
-      auth.login(resData.user.id, resData.token);
-    } catch (err) {}
-  };
-  const googleResponce = async (response) => {
-    try {
-      const resData = await sendRequest(
-        process.env.REACT_APP_BACKEND_URL + "/google",
-        "POST",
-        JSON.stringify({
-          googleToken: response.tokenId,
-          password: response.googleId,
-          remember: true,
-        }),
-        {
-          "Content-Type": "application/json",
-        }
-      );
-      auth.login(resData.user.id, resData.token);
-    } catch (err) {}
-  };
+
   return (
     <React.Fragment>
       {error && (
@@ -202,38 +164,11 @@ export default function Login() {
         </form>
         <div>
           <FacebookLogin
-            appId="1099793780705999"
-            render={(renderProps) => (
-              <button
-                className={`button__style ${styles.facebook__style} `}
-                onClick={renderProps.onClick}
-              >
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Facebook_f_logo_%282019%29.svg/64px-Facebook_f_logo_%282019%29.svg.png"></img>
-                <span>{`${isLogin ? `LOGIN` : `SIGNUP`} WITH FACEBOOK`}</span>
-              </button>
-            )}
-            size="small"
-            callback={responseFacebook}
-            fields="name,email"
-          />
-          {/* <GoogleOAuthProvider clientId="935993487799-3sfsjrrfjh8qol2fe65pjjt3ik0tcpqn.apps.googleusercontent.com">
-            <GoogleLoginX />
-          </GoogleOAuthProvider> */}
-
-          <GoogleLogin
-            clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
-            render={(renderProps) => (
-              <button
-                className={`button__style ${styles.google__style} `}
-                onClick={renderProps.onClick}
-              >
-                <ReactLogo />{" "}
-                <span>{`${isLogin ? `LOGIN` : `SIGNUP`} WITH GOOGLE`}</span>
-              </button>
-            )}
-            onSuccess={googleResponce}
-            cookiePolicy={"single_host_origin"}
-          />
+            buttonText={`${isLogin ? `LOGIN` : `SIGNUP`}`}
+          ></FacebookLogin>
+          <GoogleOAuthProvider clientId="935993487799-3sfsjrrfjh8qol2fe65pjjt3ik0tcpqn.apps.googleusercontent.com">
+            <GoogleLoginX buttonText={`${isLogin ? `LOGIN` : `SIGNUP`}`} />
+          </GoogleOAuthProvider>
         </div>
         <Button inverse onClick={switchMode}>
           {" "}
@@ -243,4 +178,3 @@ export default function Login() {
     </React.Fragment>
   );
 }
-//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

@@ -101,7 +101,7 @@ const Navigation = () => {
           ></SvgComponent>
         </CustomLink>
       )}
-      {auth.isLoggedIn && (
+      {auth.isLoggedIn &&  (
         <CustomLink description="Logout" to="/" onClick={auth.logout}>
           <SvgComponent
             Image={Logout}

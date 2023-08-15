@@ -1,4 +1,4 @@
-import React, { useState, Suspense } from "react";
+import React, { Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 import Navigation from "./components/Navigation/Navigation";
 import Login from "./components/Login/Login";
@@ -27,7 +27,7 @@ const Voting = React.lazy(() => import("./components/Voting/Voting"));
 
 function App() {
 
-  const { token, login, logout, userId } = useAuth();
+  const { token, login, logout, userId,googleAuth, google } = useAuth();
   let routes;
   if (token) {
     routes = (
@@ -38,8 +38,8 @@ function App() {
         <Route path="/submit_homebrew" element={<SubmitHomeBrew />} />
         <Route path="/my_encounters" element={<MyEncounters />} />
         <Route path="/battle_scr/:id" element={<BattleScreen />} />
-        <Route path="/myProfile" element={<MyProfile />} />
-        <Route path="/myProfile/Edit/:id" element={<Edit />} />
+        {/* <Route path="/myProfile" element={<MyProfile />} />
+        <Route path="/myProfile/Edit/:id" element={<Edit />} /> */}
       </React.Fragment>
     );
   } else {
@@ -51,8 +51,10 @@ function App() {
         isLoggedIn: !!token,
         token: token,
         userId: userId,
+        google:google,
         login: login,
         logout: logout,
+        googleAuth:googleAuth,
       }}
     >
       <Navigation />
