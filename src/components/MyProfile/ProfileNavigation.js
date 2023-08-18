@@ -16,6 +16,9 @@ export default function ProfileNavigation() {
       <Links to="/myProfile/Sessions">
         <li>Sessions</li>
       </Links>
+      <Links to="/myProfile/Sessions/AllSessions">
+        <li>All Sessions</li>
+      </Links>
     </NavigatorBack>
   );
 }

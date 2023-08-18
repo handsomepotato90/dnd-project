@@ -79,6 +79,7 @@ export default function Login() {
             "Content-Type": "application/json",
           }
         );
+        console.log(resData)
         auth.login(resData.user.id, resData.token);
       } catch (err) {}
     } else {
