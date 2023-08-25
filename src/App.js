@@ -27,7 +27,7 @@ const Voting = React.lazy(() => import("./components/Voting/Voting"));
 
 function App() {
 
-  const { token, login, logout, userId } = useAuth();
+  const { token, login, logout, userId ,username } = useAuth();
   let routes;
   if (token) {
     routes = (
@@ -51,6 +51,7 @@ function App() {
         isLoggedIn: !!token,
         token: token,
         userId: userId,
+        username:username,
         login: login,
         logout: logout,
       }}

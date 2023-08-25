@@ -1,11 +1,24 @@
-import React, { useState, useEffect, useCallback, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useHttpClient } from "../../hooks/http-hook";
 import { LoginContext } from "../../store/login-context";
+import ConteinerBox from "../../UI/ConteinerBox";
+import SessionComponent from "./sessionUi/SessionComponent";
+import ModalError from "../../UI/ModalError";
+import LoadingSpinner from "../../UI/LoadingSpinner";
+import { useNavigate } from "react-router-dom";
 
 export default function SessionVotingForFreeDays() {
-  const { sendRequest } = useHttpClient();
+  const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const auth = useContext(LoginContext);
-
+  const [resData, setResData] = useState([]);
+  const [selectedByUser, setSelectedByUser] = useState([]);
+  const [selectedDatesFromDungonMaster, setSelectedDatesFromDungonMaster] =
+    useState([]);
+  const navigate = useNavigate();
+  const now = new Date().getTime();
+  const errorHandler = () => {
+    clearError(null);
+  };
   const url = window.location.href.split("AllSessions/");
   useEffect(() => {
     const fetchFriends = async () => {
@@ -17,33 +30,71 @@ export default function SessionVotingForFreeDays() {
           null,
           { Authorization: "Bearer " + auth.token }
         );
-        console.log(resData);
+        setResData(resData);
+        setSelectedDatesFromDungonMaster([...resData.dates]);
+        if (resData.status === "scheduled") {
+          setSelectedDatesFromDungonMaster([...resData.scheduledFor]);
+        }
+        for (let index = 0; index < resData.votes.length; index++) {
+          const el = resData.votes[index];
+          if (resData.votes[index].user === auth.userId) {
+            let date = [];
+
+            console.log(el.dates);
+            for (let index = 0; index < el.dates.length; index++) {
+              const element = el.dates[index];
+              date.push(new Date(element));
+            }
+            setSelectedByUser([...date]);
+          }
+        }
       } catch (err) {}
     };
     fetchFriends();
-  }, [sendRequest]);
-  const selectedDatesFromDungonMaster = [
-    1692306000000, 1692392400000, 1692997200000, 1692910800000, 1692824400000,
-    1692219600000,
-  ];
-
-  const toTimeStamp = (time) => {
-    let timestamp = [];
-    for (let index = 0; index < time.length; index++) {
-      timestamp.push(new Date(time[index]).getTime());
+  }, []);
+  const submitVote = async (value) => {
+    if (resData.timeforvoting < now) {
+      console.log("voting finished");
+      return;
     }
-    return timestamp;
+    try {
+      await sendRequest(
+        process.env.REACT_APP_BACKEND_URL +
+          `/myProfile/Sessions/AllSessions/${url[1]}`,
+        "PATCH",
+        JSON.stringify({
+          dates: value,
+          username: auth.username,
+          id: auth.userId,
+          calendarId: url[1],
+        }),
+        {
+          Authorization: "Bearer " + auth.token,
+          "Content-Type": "application/json",
+        }
+      );
+      navigate(`/myProfile/Sessions/AllSessions/${url[1]}`);
+    } catch (err) {}
   };
 
-  const timeStamp = toTimeStamp(selectedDatesFromDungonMaster);
-
-  //   console.log(timeStamp);
-  const isDisabled = useCallback((date) => {
-    if (timeStamp.includes(date.getTime())) {
-      return false;
-    } else {
-      return true;
-    }
-  }, []);
-  return;
+  return (
+    <ConteinerBox>
+      {isLoading && <LoadingSpinner as0verlay></LoadingSpinner>}
+      {error && (
+        <ModalError
+          header="An Error Occurred"
+          error={error}
+          onClick={errorHandler}
+        ></ModalError>
+      )}
+      <SessionComponent
+        resData={resData}
+        selectedDatesFromDungonMaster={selectedDatesFromDungonMaster}
+        userAlreadySelectedDates={selectedByUser}
+        url={url[1]}
+        calendarButtonText={"Submit"}
+        onClickSubmit={submitVote}
+      ></SessionComponent>
+    </ConteinerBox>
+  );
 }

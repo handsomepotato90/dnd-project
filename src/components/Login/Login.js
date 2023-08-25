@@ -80,7 +80,7 @@ export default function Login() {
           }
         );
         console.log(resData)
-        auth.login(resData.user.id, resData.token);
+        auth.login(resData.user.id,resData.user.name, resData.token);
       } catch (err) {}
     } else {
       try {

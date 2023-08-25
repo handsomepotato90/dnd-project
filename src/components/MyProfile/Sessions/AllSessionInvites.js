@@ -1,14 +1,21 @@
-import React, { useState, useEffect, useCallback, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useHttpClient } from "../../hooks/http-hook";
 import { LoginContext } from "../../store/login-context";
-import { Link } from "react-router-dom";
 import ConteinerBox from "../../UI/ConteinerBox";
+import AllSessionsBoxes from "./sessionUi/AllSessionsBoxes";
+import ModalError from "../../UI/ModalError";
+import LoadingSpinner from "../../UI/LoadingSpinner";
+
+import styles from "./Sessions.module.css";
 
 export default function AllSessionInvites(props) {
   const [sessionInfo, setSessionInfo] = useState([]);
-  const { sendRequest } = useHttpClient();
+  const [mySessions, setMySessions] = useState([]);
+  const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const context = useContext(LoginContext);
-
+  const errorHandler = () => {
+    clearError(null);
+  };
   useEffect(() => {
     const fetchFriends = async () => {
       try {
@@ -22,19 +29,40 @@ export default function AllSessionInvites(props) {
             "Content-Type": "application/json",
           }
         );
-        setSessionInfo([...resData]);
+        setMySessions([...resData.mysessions]);
+        setSessionInfo([...resData.sessions]);
       } catch (err) {}
     };
 
     fetchFriends();
   }, [sendRequest]);
+  return (
+    <div className={styles.all_sessions__style}>
+      {isLoading && <LoadingSpinner as0verlay></LoadingSpinner>}
+      {error && (
+        <ModalError
+          header="An Error Occurred"
+          error={error}
+          onClick={errorHandler}
+        ></ModalError>
+      )}
+      <ConteinerBox fromStart={true}>
+        <span className={styles.box_name__style}>Sessions Started by you</span>
+        <AllSessionsBoxes
+          destination={"MySessions"}
+          className={"red"}
+          sessionInfo={mySessions}
+        ></AllSessionsBoxes>
+      </ConteinerBox>
 
-  return sessionInfo.map((el, i) => (
-    <ConteinerBox>
-      <Link key={i} to={`/myProfile/Sessions/AllSessions/${el._id}`}>
-        <span>{el.title}</span>
-        <span>{el.creatorName}</span>
-      </Link>
-    </ConteinerBox>
-  ));
+      <ConteinerBox fromStart={true}>
+        <span className={styles.box_name__style}>Invites</span>
+        <AllSessionsBoxes
+          destination={"AllSessions"}
+          className={"green"}
+          sessionInfo={sessionInfo}
+        ></AllSessionsBoxes>
+      </ConteinerBox>
+    </div>
+  );
 }

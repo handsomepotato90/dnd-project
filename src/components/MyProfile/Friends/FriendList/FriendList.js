@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import NewsBox from "../../../UI/NewsBox";
 import UserHolderBox from "../UserHolderBox";
 
+import styles from "../Friends.module.css";
 export default function FriendList(props) {
   const [foundUsers, setfoundUsers] = useState([]);
   useEffect(() => {
@@ -39,8 +40,8 @@ export default function FriendList(props) {
 
   return (
     <div>
-      <span>{props.title}</span>
-      <NewsBox>
+      <span className={styles.span_title__style}>{props.title}</span>
+      <NewsBox className={props.className}>
         {foundUsers.map((user, i) => (
           <UserHolderBox
             key={i}

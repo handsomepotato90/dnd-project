@@ -6,22 +6,26 @@ let logoutTimer;
 export const useAuth = () => {
   const [token, setToken] = useState(null);
   const [userId, setUserId] = useState(false);
+  const [username, setUsername] = useState(false);
   const { sendRequest } = useHttpClient();
   const [tokenExpirationDate, setTokenExpirationDate] = useState();
   const navigate = useNavigate();
   const remember = Cookies.get("rmTOKEN");
-  const login = useCallback((uid, token, expirationDate) => {
+  const login = useCallback((uid, uname, token, expirationDate) => {
     setToken(token);
     setUserId(uid);
+    setUsername(uname);
+
     const tokenExpiration =
       expirationDate ||
-      new Date(new Date().getTime() + 1000 * 60 * 60 * 24 * 7 );
+      new Date(new Date().getTime() + 1000 * 60 * 60 * 24 * 7);
     setTokenExpirationDate(tokenExpiration);
     localStorage.setItem(
       "userData",
       JSON.stringify({
         userId: uid,
         token: token,
+        username: uname,
         expiration: tokenExpiration.toISOString(),
       })
     );
@@ -30,7 +34,7 @@ export const useAuth = () => {
     setToken(null);
     setUserId(null);
     localStorage.removeItem("userData");
-    Cookies.remove('rmTOKEN') 
+    Cookies.remove("rmTOKEN");
     navigate("/");
   }, []);
   useEffect(() => {
@@ -53,6 +57,7 @@ export const useAuth = () => {
     ) {
       login(
         storedData.userId,
+        storedData.username,
         storedData.token,
         new Date(storedData.expiration)
       );
@@ -72,12 +77,12 @@ export const useAuth = () => {
               "Content-Type": "application/json",
             }
           );
-          login(resData.user._id, resData.token);
+          login(resData.user._id, resData.user.name, resData.token);
         } catch (err) {}
       }
     };
     rememberUser();
   }, [sendRequest, remember, login]);
 
-  return { token, login, logout, userId };
+  return { token, login, logout, userId, username };
 };

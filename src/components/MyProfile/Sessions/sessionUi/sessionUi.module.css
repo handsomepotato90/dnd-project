@@ -1,0 +1,98 @@
+.session_all__style {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 340px;
+  height: 200px;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 5px;
+}
+.user_session__style {
+  border: 1px solid grey;
+  box-shadow: 0 0 10px grey;
+}
+.user_session__style:hover {
+  box-shadow: 0 0 20px grey;
+}
+.invited_session__style {
+  border: 1px solid #4caf50;
+  box-shadow: 0 0 10px #4caf50;
+}
+.invited_session__style:hover {
+  box-shadow: 0 0 20px #4caf50;
+}
+.scheduled_session__style {
+  border: 1px solid red;
+  box-shadow: 0 0 10px red;
+}
+.scheduled_session__style:hover {
+  box-shadow: 0 0 20px red;
+}
+.text__inside__style {
+  text-align: center;
+  width: 100%;
+  font-size: 20px;
+}
+.info_about_session__style {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.countdown__style {
+  padding: 10px;
+  font-size: 32px;
+}
+.organiser__span__style {
+  padding: 10px;
+  width: 90%;
+  font-size: 21px;
+  border-radius: 5px;
+}
+.comment__input__style {
+  display: flex;
+  flex-direction: row;
+}
+.general_comment__style {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  width: 100%;
+}
+.username__style {
+  font-size: 14px;
+}
+.text__style {
+  font-size: 18px;
+  padding: 5px 15px;
+}
+.sameuser__style {
+  text-align: right;
+}
+.general_style {
+  margin-top: 10px;
+}
+
+.sameuser__bcccolor__style {
+  float: right;
+  background-color: #1877f2;
+  border-radius: 5px;
+  width: auto;
+}
+.diffuser__style {
+  text-align: start;
+}
+.diffuser__bcccolor__style {
+  float: left;
+  background-color: #898f9c;
+  border-radius: 5px;
+  width: auto;
+}
+.schedule_buttons__style {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.schedule_buttons__style > button {
+  width: 45%;
+}

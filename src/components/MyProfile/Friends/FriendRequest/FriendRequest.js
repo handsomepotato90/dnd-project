@@ -1,4 +1,4 @@
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import NewsBox from "../../../UI/NewsBox";
 import UserHolderBox from "../UserHolderBox";
 import { SvgComponent } from "../../../Navigation/Navigation";
@@ -17,7 +17,7 @@ export default function FriendRequest(props) {
     }
   }, [props.requests]);
 
-  const decision = async (res, name,id) => {
+  const decision = async (res, name, id) => {
     setfoundUsers(foundUsers.filter((foundUsers) => foundUsers.name !== name));
     try {
       const resData = await sendRequest(
@@ -34,8 +34,6 @@ export default function FriendRequest(props) {
         }
       );
     } catch (err) {}
-
-    
   };
   return (
     <div>
@@ -44,20 +42,8 @@ export default function FriendRequest(props) {
         {foundUsers.map((req, i) => (
           <UserHolderBox key={i} name={req.name}>
             <div className={`${styles.decision_box__style}`}>
-              <div onClick={() => decision("accept", req.name, req._id)}>
-                <SvgComponent
-                  Image={Accept}
-                  height="45"
-                  width="40"
-                ></SvgComponent>
-              </div>
-              <div onClick={() => decision("reject", req.name,req._id)}>
-                <SvgComponent
-                  Image={Reject}
-                  height="45"
-                  width="40"
-                ></SvgComponent>
-              </div>
+              <div onClick={() => decision("accept", req.name, req._id)}></div>
+              <div onClick={() => decision("reject", req.name, req._id)}></div>
             </div>
           </UserHolderBox>
         ))}

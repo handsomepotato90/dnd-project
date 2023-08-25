@@ -10,7 +10,7 @@ export default function MatchingUsers(props) {
   const [hover, setHover] = useState(false);
   const [requestSent, setRequestSent] = useState(false);
 
-  const { sendRequest} = useHttpClient();
+  const { sendRequest } = useHttpClient();
 
   const requestFriend = async () => {
     try {
@@ -26,9 +26,10 @@ export default function MatchingUsers(props) {
         }
       );
     } catch (err) {}
-    setRequestSent(true);
 
+    setRequestSent(true);
   };
+  console.log(requestSent);
   const onHover = () => {
     setHover(true);
   };
@@ -37,7 +38,7 @@ export default function MatchingUsers(props) {
   };
 
   return (
-    <UserHolderBox name={props.name}>
+    <UserHolderBox sendReq={true} name={props.name}>
       <div
         onMouseEnter={onHover}
         onMouseLeave={onLeave}

@@ -17,6 +17,9 @@ const AllSessions = React.lazy(() =>
 const VotingForFreeDay = React.lazy(() =>
   import("./Sessions/SessionVotingForFreeDays")
 );
+const MySessions = React.lazy(() =>
+  import("./Sessions/MySessions")
+);
 const Friends = React.lazy(() =>
   import("./Friends/Friends")
 );
@@ -33,6 +36,7 @@ export default function MyProfile() {
       <Route path="/Sessions" element={<Sessions />} />
       <Route path="/Sessions/AllSessions" element={<AllSessions />} />
       <Route path="/Sessions/AllSessions/:id" element={<VotingForFreeDay />} />
+      <Route path="/Sessions/MySessions/:id" element={<MySessions />} />
       <Route path="/" element={<MyProfiles />} />
     </React.Fragment>
   );
