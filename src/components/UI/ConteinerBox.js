@@ -5,7 +5,7 @@ export default function ConteinerBox(props) {
     <div
       className={`${styles.container_box__style} ${
         props.fromStart && styles.fromStart
-      }`}
+      } ${props.fromEnd && styles.fromEnd}`}
     >
       {props.children}
     </div>

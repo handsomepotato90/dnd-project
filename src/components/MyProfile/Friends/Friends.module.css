@@ -1,16 +1,18 @@
 .users_holding_div__style {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   margin: 0 auto;
   background-color: #d8e1e8;
   border-radius: 5px;
   margin-top: 5px;
   margin-left: 5px;
   width: 49%;
-
+  justify-content: space-between;
+  align-items: center;
   justify-content: space-between;
 }
+
 .users_name__style {
   padding: 10px;
   font-size: 18px;
@@ -27,7 +29,25 @@
   display: flex;
   flex-wrap: nowrap;
 }
+.space_between {
+  justify-content: space-between;
+}
 .span_title__style {
   font-size: 22px;
   color: white;
+}
+.searchbox__style {
+  display: grid;
+  grid-template-columns: 30% auto;
+  padding: 20px;
+}
+.searchbox__style > input {
+  width: 100%;
+}
+.buttons__style {
+  width: 40px;
+  margin-right: 5px;
+}
+.buttons__style:hover {
+  box-shadow: 0 0 20px #ffffff;
 }

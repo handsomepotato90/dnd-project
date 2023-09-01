@@ -16,7 +16,7 @@ export default function MySessions() {
   const [intentionSubmitVote, setIntentionSubmitVote] = useState(false);
   const [dateerror, setdateerror] = useState(false);
   const [userInfoToSubmit, setUserInfoToSubmit] = useState([]);
-
+  const [hourforSession, setHoursforSession] = useState();
   const navigate = useNavigate();
 
   const url = window.location.href.split("MySessions/");
@@ -77,6 +77,7 @@ export default function MySessions() {
             dates: userInfoToSubmit,
             status: "SCHEDULED",
             username: auth.username,
+            hours: hourforSession,
             id: auth.userId,
             calendarId: url[1],
           }),
@@ -90,9 +91,10 @@ export default function MySessions() {
     }
     setIntentionSubmitVote(false);
   };
-  const chechUserIntention = (info) => {
+  const chechUserIntention = (info, hours) => {
     setIntentionSubmitVote(true);
     setUserInfoToSubmit([...info]);
+    setHoursforSession(hours);
   };
   return (
     <ConteinerBox>

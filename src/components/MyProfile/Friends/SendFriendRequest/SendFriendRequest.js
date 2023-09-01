@@ -3,6 +3,8 @@ import NewsBox from "../../../UI/NewsBox";
 import { useHttpClient } from "../../../hooks/http-hook";
 import MatchingUsers from "./MatchingUsers";
 
+import styles from "../Friends.module.css";
+
 export default function SendFriendRequest(props) {
   const { sendRequest } = useHttpClient();
   const [foundUsers, setfoundUsers] = useState([]);
@@ -35,12 +37,15 @@ export default function SendFriendRequest(props) {
   };
   return (
     <div>
-      <input
-        placeholder="Search"
-        type="text"
-        ref={text}
-        onKeyUp={nameSearch}
-      ></input>
+      <div className={styles.searchbox__style}>
+        <span className={styles.span_title__style}> {props.title}</span>
+        <input
+          placeholder="Search"
+          type="text"
+          ref={text}
+          onKeyUp={nameSearch}
+        ></input>
+      </div>
 
       <NewsBox>
         {foundUsers.map((user, i) => (

@@ -22,6 +22,7 @@ export default function UserHolderBox(props) {
           ></SvgComponent>
         </div>
       )}
+      {props.invites && props.children}
       {props.add && (
         <div onClick={onReturnUserInformation}>
           <SvgComponent

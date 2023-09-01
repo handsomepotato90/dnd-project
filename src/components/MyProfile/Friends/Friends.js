@@ -9,6 +9,7 @@ import { LoginContext } from "../../store/login-context";
 export default function Friends() {
   const { sendRequest } = useHttpClient();
   const [friends, setFriends] = useState([]);
+  const [openInvites, setopenInvites] = useState(false);
   const context = useContext(LoginContext);
   // console.log(friends);
   useEffect(() => {
@@ -30,12 +31,35 @@ export default function Friends() {
 
     fetchMonsters();
   }, [sendRequest]);
-
+  console.log(friends);
   return (
-    <ConteinerBox>
-      <SendFriendRequest ids={context.userId}></SendFriendRequest>
-      <FriendRequest ids={context.userId} requests={friends[0]}></FriendRequest>
-      <FriendList friends={friends[1]}></FriendList>
+    <ConteinerBox fromEnd={true}>
+      <SendFriendRequest
+        ids={context.userId}
+        title={"Search users :"}
+      ></SendFriendRequest>
+
+      <FriendList friends={friends[1]} title={"My Friends"}></FriendList>
+      {openInvites && (
+        <div>
+          <FriendRequest
+            ids={context.userId}
+            requests={friends[0]}
+            title={"Friend Invites"}
+          >
+            <button className="button" onClick={() => setopenInvites(false)}>
+              Close Requests
+            </button>
+          </FriendRequest>
+        </div>
+      )}
+      {!openInvites && (
+        <div className="button" onClick={() => setopenInvites(true)}>
+          {" "}
+          Invites
+          <span>({friends.length !== 0 ? friends[0].length : 0})</span>
+        </div>
+      )}
     </ConteinerBox>
   );
 }

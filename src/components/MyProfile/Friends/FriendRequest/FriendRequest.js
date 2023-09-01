@@ -37,13 +37,42 @@ export default function FriendRequest(props) {
   };
   return (
     <div>
-      <span>Friend Request</span>
+      <div className={`${styles.decision_box__style} ${styles.space_between}`}>
+        <span className={styles.span_title__style}>{props.title}</span>
+        {props.children}
+      </div>
+
       <NewsBox>
         {foundUsers.map((req, i) => (
-          <UserHolderBox key={i} name={req.name}>
+          <UserHolderBox invites={true} key={i} name={req.name}>
             <div className={`${styles.decision_box__style}`}>
-              <div onClick={() => decision("accept", req.name, req._id)}></div>
-              <div onClick={() => decision("reject", req.name, req._id)}></div>
+              {/* <SvgComponent Image={Accept} height="40" color="red" width="70"> */}
+              <button
+                className={`button ${styles.buttons__style}`}
+                onClick={() => decision("accept", req.name, req._id)}
+              >
+                <SvgComponent
+                  Image={Accept}
+                  height="40"
+                  color="red"
+                  width="70"
+                ></SvgComponent>{" "}
+              </button>
+              {/* </SvgComponent> */}
+              {/* <SvgComponent Image={Reject} height="40" color="red" width="70"> */}
+              <button
+                className={`button ${styles.buttons__style}`}
+                onClick={() => decision("reject", req.name, req._id)}
+              >
+                {" "}
+                <SvgComponent
+                  Image={Reject}
+                  height="40"
+                  color="red"
+                  width="70"
+                ></SvgComponent>
+              </button>
+              {/* </SvgComponent> */}
             </div>
           </UserHolderBox>
         ))}

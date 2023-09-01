@@ -5,16 +5,24 @@ import ChangeUserName from "./ChangeUserName";
 import ChangeMail from "./ChangeMail";
 import { LoginContext } from "../store/login-context";
 
-
+import "./MyProfile.css";
 
 export default function MyProfileGeneral() {
   const context = useContext(LoginContext);
 
   return (
-    <ConteinerBox>
-      <ChangeUserName ids ={context.userId}><h3>Change Username</h3></ChangeUserName>
-      <ChangePassword ids ={context}><h3>Change Password</h3></ChangePassword>
-      <ChangeMail ids ={context.userId}><h3>Change E-Mail</h3></ChangeMail>
+    <ConteinerBox >
+      <ChangeUserName uname={context.username} ids={context.userId}>
+        <span className="text_box__style">Change Username</span>
+      </ChangeUserName>
+      <ChangePassword ids={context}>
+        <span className="text_box__style">Change Password</span>
+      </ChangePassword>
+      <ChangeMail ids={context.userId}>
+        <span className="text_box__style">
+          Change E-Mail <span className="red_text">(Coming soon)</span>
+        </span>
+      </ChangeMail>
     </ConteinerBox>
   );
 }

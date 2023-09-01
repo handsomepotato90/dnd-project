@@ -2,11 +2,15 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  padding: 20px;
+  margin: 0 auto;
+  padding: 5px;
   gap: 20px;
   justify-content: center;
 }
 .fromStart {
   justify-content: flex-start;
   align-content: flex-start;
+}
+.fromEnd {
+  align-items: flex-end;
 }

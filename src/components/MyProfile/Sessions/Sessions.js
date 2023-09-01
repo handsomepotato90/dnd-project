@@ -35,6 +35,7 @@ export default function Sessions() {
   const [hoursChosen, setHoursForVoting] = useState();
   const [friends, setFriends] = useState([]);
   const [friendsForThisSession, setFriendsForThisSession] = useState([]);
+  const [friendsToSave, setFriendsToSave] = useState([]);
   const [titleForSession, setTitleForSession] = useState("");
   const [readyToSubmit, setReadyToSubmit] = useState(false);
   const navigate = useNavigate();
@@ -87,6 +88,7 @@ export default function Sessions() {
         ...friendsForThisSession,
         { name: user, _id: id },
       ]);
+      setFriendsToSave([...friendsToSave, id]);
     }
   };
 
@@ -97,7 +99,6 @@ export default function Sessions() {
   }, []);
 
   const sendDates = async (answer) => {
-    console.log(answer);
     if (answer === true) {
       try {
         setReadyToSubmit(false);
@@ -113,7 +114,7 @@ export default function Sessions() {
             hoursForVoting: hoursChosen,
             dates: value,
             userId: context.userId,
-            invitedFriends: friendsForThisSession,
+            invitedFriends: friendsToSave,
           }),
           {
             "Content-Type": "application/json",

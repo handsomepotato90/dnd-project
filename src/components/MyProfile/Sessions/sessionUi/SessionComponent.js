@@ -6,11 +6,39 @@ import { Calendar } from "@natscale/react-calendar";
 import Countdown from "react-countdown";
 import ModalError from "../../../UI/ModalError";
 import LoadingSpinner from "../../../UI/LoadingSpinner";
-import { useNavigate } from "react-router-dom";
 import ModalConfirmation from "../../../UI/ModalConfirmation";
+import { useNavigate } from "react-router-dom";
+import Select from "react-select";
 
 import styles from "./sessionUi.module.css";
 import "@natscale/react-calendar/dist/main.css";
+
+const hours = [
+  { value: 1, label: "1:00" },
+  { value: 2, label: "2:00" },
+  { value: 3, label: "3:00" },
+  { value: 4, label: "4:00" },
+  { value: 5, label: "5:00" },
+  { value: 6, label: "6:00" },
+  { value: 7, label: "7:00" },
+  { value: 8, label: "8:00" },
+  { value: 9, label: "9:00" },
+  { value: 10, label: "10:00" },
+  { value: 11, label: "11:00" },
+  { value: 12, label: "12:00" },
+  { value: 13, label: "13:00" },
+  { value: 14, label: "14:00" },
+  { value: 15, label: "15:00" },
+  { value: 16, label: "16:00" },
+  { value: 17, label: "17:00" },
+  { value: 18, label: "18:00" },
+  { value: 19, label: "19:00" },
+  { value: 20, label: "20:00" },
+  { value: 21, label: "21:00" },
+  { value: 22, label: "22:00" },
+  { value: 23, label: "23:00" },
+  { value: 24, label: "24:00" },
+];
 
 export default function SessionComponent(props) {
   const [value, setValue] = useState([]);
@@ -18,6 +46,7 @@ export default function SessionComponent(props) {
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const [intentionForClosing, setIntentionForClosing] = useState(false);
   const [intentionForDelete, setIntentionForDelete] = useState(false);
+  const [scheduledHours, setScheduledHour] = useState();
   const auth = useContext(LoginContext);
   const navigate = useNavigate();
 
@@ -60,7 +89,7 @@ export default function SessionComponent(props) {
     }
   };
   const submitVote = () => {
-    props.onClickSubmit(value);
+    props.onClickSubmit(value, scheduledHours);
   };
   const submitComment = async () => {
     if (ckEditorText.trim() === "") {
@@ -152,6 +181,9 @@ export default function SessionComponent(props) {
   const checkIntentionForDelete = () => {
     setIntentionForDelete(true);
   };
+  const scheduledHour = (value) => {
+    setScheduledHour(value.value);
+  };
   return (
     <>
       {isLoading && <LoadingSpinner as0verlay></LoadingSpinner>}
@@ -207,20 +239,31 @@ export default function SessionComponent(props) {
           <div className={`${styles.schedule_buttons__style}`}>
             {props.resData.status === "SCHEDULED" ||
             props.resData.status === "CLOSED" ? null : (
-              <button className="button" onClick={submitVote}>
+              <button style={{width:"38%"}} className="button" onClick={submitVote}>
                 {" "}
                 {props.calendarButtonText}
               </button>
             )}
-
+            {props.canCloseSession &&
+              props.resData.status !== "SCHEDULED" &&
+              props.resData.status !== "CLOSED" && (
+                <Select
+                  //  className={styles.search_bar__stayle}
+                  options={hours}
+                  name="hours"
+                  onChange={scheduledHour}
+                  menuPlacement={"auto"}
+                  // onSelection={addUser}
+                ></Select>
+              )}
             {props.canCloseSession &&
               (props.resData.status === "CLOSED" ? (
-                <button className="button" onClick={checkIntentionForDelete}>
+                <button style={{width:"38%"}} className="button" onClick={checkIntentionForDelete}>
                   {" "}
                   Delete Session
                 </button>
               ) : (
-                <button className="button" onClick={checkIntentionForClosing}>
+                <button style={{width:"38%"}} className="button" onClick={checkIntentionForClosing}>
                   {" "}
                   Close Session
                 </button>

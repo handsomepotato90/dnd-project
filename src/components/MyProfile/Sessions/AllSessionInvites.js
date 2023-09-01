@@ -38,7 +38,6 @@ export default function AllSessionInvites(props) {
   }, [sendRequest]);
   return (
     <div className={styles.all_sessions__style}>
-      {isLoading && <LoadingSpinner as0verlay></LoadingSpinner>}
       {error && (
         <ModalError
           header="An Error Occurred"
@@ -63,6 +62,7 @@ export default function AllSessionInvites(props) {
           sessionInfo={sessionInfo}
         ></AllSessionsBoxes>
       </ConteinerBox>
+      {isLoading && <LoadingSpinner as0verlay></LoadingSpinner>}
     </div>
   );
 }

@@ -47,7 +47,7 @@ export default function AllSessionsBoxes(props) {
               {el.scheduledFor.length > 0 && (
                 <span>
                   {" FOR: "}
-                  {new Date(el.scheduledFor).getDate()} /
+                  {new Date(el.scheduledFor).getDate()}/
                   {new Date(el.scheduledFor).getMonth() + 1}
                 </span>
               )}
