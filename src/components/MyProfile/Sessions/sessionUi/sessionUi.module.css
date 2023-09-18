@@ -53,6 +53,7 @@
   display: flex;
   flex-direction: row;
 }
+
 .general_comment__style {
   display: flex;
   flex-direction: column;
@@ -65,6 +66,7 @@
 .text__style {
   font-size: 18px;
   padding: 5px 15px;
+  overflow: hidden;
 }
 .sameuser__style {
   text-align: right;
@@ -95,4 +97,20 @@
 }
 .schedule_buttons__style > button {
   width: 45%;
+}
+@media only screen and (max-width: 600px) {
+  .text__style {
+    max-width: 90%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .comment__input__style {
+    max-width: 90%;
+    margin: 0 auto;
+  }
+  .comment__big_box_holder {
+    width: 100%;
+    margin: 0 auto;
+  }
 }

@@ -5,7 +5,7 @@ import FriendRequest from "./FriendRequest/FriendRequest";
 import FriendList from "./FriendList/FriendList";
 import { useHttpClient } from "../../hooks/http-hook";
 import { LoginContext } from "../../store/login-context";
-
+import styles from "./Friends.module.css";
 export default function Friends() {
   const { sendRequest } = useHttpClient();
   const [friends, setFriends] = useState([]);
@@ -36,12 +36,13 @@ export default function Friends() {
     <ConteinerBox fromEnd={true}>
       <SendFriendRequest
         ids={context.userId}
-        title={"Search users :"}
+        title={"Users :"}
       ></SendFriendRequest>
-
-      <FriendList friends={friends[1]} title={"My Friends"}></FriendList>
+      <div className={styles.size}>
+        <FriendList friends={friends[1]} title={"My Friends"}></FriendList>
+      </div>
       {openInvites && (
-        <div>
+        <div className={styles.size}>
           <FriendRequest
             ids={context.userId}
             requests={friends[0]}

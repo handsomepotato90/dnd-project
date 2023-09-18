@@ -151,7 +151,7 @@ export default function Sessions() {
           placeholder="Here goes the Session title"
         ></input>
         <div className={styles.check_box__style}>
-          <span>My Role:</span>
+          <span>Role:</span>
           <label>
             <input type="checkbox" checked={dm} onChange={dmChecked}></input>
             DM
@@ -175,7 +175,7 @@ export default function Sessions() {
         <Calendar
           isDisabled={isDisabled}
           useDarkMode={true}
-          size={500}
+          size={480}
           fontSize={18}
           value={value}
           isMultiSelector={true}

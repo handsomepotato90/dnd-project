@@ -38,7 +38,7 @@
 }
 .searchbox__style {
   display: grid;
-  grid-template-columns: 30% auto;
+  grid-template-columns: 22% auto;
   padding: 20px;
 }
 .searchbox__style > input {
@@ -50,4 +50,22 @@
 }
 .buttons__style:hover {
   box-shadow: 0 0 20px #ffffff;
+}
+@media only screen and (max-width: 600px) {
+  .users_holding_div__style {
+    width: auto;
+  }
+  .size {
+    /* padding: 20px; */
+    width: 500px;
+  }
+  .users_name__style {
+    font-size: 20px;
+    width: 150px;
+    text-align: center;
+  }
+  .span_title__style {
+    margin-left: 20px;
+    font-size: 22px;
+  }
 }

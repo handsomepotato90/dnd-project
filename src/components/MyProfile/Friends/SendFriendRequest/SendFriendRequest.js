@@ -36,7 +36,7 @@ export default function SendFriendRequest(props) {
     }
   };
   return (
-    <div>
+    <div className={styles.size}>
       <div className={styles.searchbox__style}>
         <span className={styles.span_title__style}> {props.title}</span>
         <input

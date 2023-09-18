@@ -18,20 +18,6 @@ export default function FriendList(props) {
 
     if (props.remove) {
       props.onSelection(user, id);
-      // let users=[];
-      // for (let index = 0; index < foundUsers.length; index++) {
-      // if(foundUsers[index]._id !== id){
-      //   users.push(foundUsers[index])
-      // }
-      // setfoundUsers([...users])
-      // }
-      // const indexOfRemovedUser = props.friends.findIndex(
-      //   (element) => element._id === id
-      // );
-      // console.log(indexOfRemovedUser);
-      // if (indexOfRemovedUser > -1) {
-      //   setfoundUsers([...props.friends.splice(indexOfRemovedUser, 1)]);
-      // }
     }
     if (props.add) {
       props.onSelection(user, id);
@@ -39,10 +25,10 @@ export default function FriendList(props) {
   };
 
   return (
-    <div>
-      
+    // <div>
+    <>
       <span className={styles.span_title__style}>{props.title}</span>
-      <NewsBox className={props.className}>
+      <NewsBox>
         {foundUsers.map((user, i) => (
           <UserHolderBox
             key={i}
@@ -56,6 +42,8 @@ export default function FriendList(props) {
           </UserHolderBox>
         ))}
       </NewsBox>
-    </div>
+    </>
+
+    // </div>
   );
 }

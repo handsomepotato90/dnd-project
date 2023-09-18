@@ -22,8 +22,7 @@ export default function WsComments(props) {
   const client = new W3CWebSocket(`ws://localhost:5000/${ws_url[6]}`);
 
   useEffect(() => {
-    client.onopen = () => {
-    };
+    client.onopen = () => {};
     client.onmessage = (e) => {
       if (typeof e.data === "string") {
         const data = JSON.parse(e.data);
@@ -31,8 +30,7 @@ export default function WsComments(props) {
       }
     };
 
-    client.onerror = function () {
-    };
+    client.onerror = function () {};
   }, [client.onmessage, wsMessage]);
 
   //   #######################################################################################################
@@ -70,7 +68,7 @@ export default function WsComments(props) {
     setckEditorText(event.target.value);
   };
   return (
-    <div>
+    <div className={`${styles.comment__big_box_holder} `}>
       <Comments
         className={"black__background overflow flex_nowrap"}
         thisUser={auth.username}

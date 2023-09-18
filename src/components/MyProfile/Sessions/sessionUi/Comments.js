@@ -12,7 +12,6 @@ export default function Comments(props) {
   useEffect(() => {
     setStateComents([...props.comments, ...props.wscomments]);
   }, [props]);
-  console.log(stateComents);
   return (
     <NewsBox className={props.className}>
       {stateComents &&
