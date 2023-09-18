@@ -1,5 +1,5 @@
 import NewsBox from "../../../UI/NewsBox";
-import React, { useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 import styles from "./sessionUi.module.css";
 export default function Comments(props) {
@@ -8,11 +8,15 @@ export default function Comments(props) {
     useEffect(() => elementRef.current.scrollIntoView());
     return <div ref={elementRef} />;
   };
-  console.log(props.comments);
+  const [stateComents, setStateComents] = useState([]);
+  useEffect(() => {
+    setStateComents([...props.comments, ...props.wscomments]);
+  }, [props]);
+  console.log(stateComents);
   return (
     <NewsBox className={props.className}>
-      {props.comments &&
-        props.comments.map((el, i) => (
+      {stateComents &&
+        stateComents.map((el, i) => (
           <div
             key={i}
             className={`${styles.general_style} ${
@@ -39,6 +43,7 @@ export default function Comments(props) {
             ></span>
           </div>
         ))}
+
       <AlwaysScrollToBottom></AlwaysScrollToBottom>
     </NewsBox>
   );

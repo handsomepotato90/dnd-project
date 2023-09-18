@@ -1,19 +1,23 @@
-.box_design {
+.big_box {
   z-index: 3;
   position: fixed;
   margin-left: 5vw;
-  margin-top: 10vh;
+  margin-top: 5vh;
   width: 85%;
-  height: auto;
+}
+.box_design {
   display: flex;
+  max-height: 750px;
   flex-wrap: wrap;
   flex-direction: row;
   background-color: rgb(238, 235, 231);
   background-image: url("https://i.stack.imgur.com/kb0Zm.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+  overflow-y: scroll;
 }
-.first_half, .second_half {
+.first_half,
+.second_half {
   width: 37%;
   margin-top: 1vh;
   margin-bottom: 1vh;
@@ -80,7 +84,7 @@
   font-size: 24px;
   margin-left: 3ch;
 }
-.action_text__styles{
+.action_text__styles {
   width: 85%;
   margin: auto;
 }
@@ -92,7 +96,7 @@ hr {
 @media only screen and (max-width: 1400px) {
   .table__styling {
     padding-left: 1rem;
-  }  
+  }
   .table__boxes {
     padding: 0.3rem;
     font-weight: 400;
@@ -110,14 +114,15 @@ hr {
   .table__styling {
     display: flex;
     flex-direction: row;
-    padding-left:2rem;
+    padding-left: 2rem;
   }
-  
+
   .table__boxes {
     font-weight: 600;
-    padding: .5rem;
+    padding: 0.5rem;
   }
-  .first_half,.second_half {
+  .first_half,
+  .second_half {
     width: 100%;
   }
   .image_half {
@@ -125,5 +130,4 @@ hr {
     width: 100%;
     text-align: center;
   }
-
 }

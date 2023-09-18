@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { useHttpClient } from "../../../hooks/http-hook";
 import { LoginContext } from "../../../store/login-context";
-import Comments from "./Comments";
+import WsComments from "./WsComments";
 import { Calendar } from "@natscale/react-calendar";
 import Countdown from "react-countdown";
 import ModalError from "../../../UI/ModalError";
@@ -42,21 +42,16 @@ const hours = [
 
 export default function SessionComponent(props) {
   const [value, setValue] = useState([]);
-  const [ckEditorText, setckEditorText] = useState("");
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const [intentionForClosing, setIntentionForClosing] = useState(false);
   const [intentionForDelete, setIntentionForDelete] = useState(false);
   const [scheduledHours, setScheduledHour] = useState();
+
   const auth = useContext(LoginContext);
   const navigate = useNavigate();
 
-  const url = window.location.href.split("/Sessions");
-
   const errorHandler = () => {
     clearError(null);
-  };
-  const textZoneChange = (event) => {
-    setckEditorText(event.target.value);
   };
 
   useEffect(() => {
@@ -67,6 +62,7 @@ export default function SessionComponent(props) {
       setValue(props.userAlreadySelectedDates);
     }
   }, [props.userAlreadySelectedDates]);
+
   const toTimeStamp = (time) => {
     let timestamp = [];
     for (let index = 0; index < time.length; index++) {
@@ -91,44 +87,7 @@ export default function SessionComponent(props) {
   const submitVote = () => {
     props.onClickSubmit(value, scheduledHours);
   };
-  const submitComment = async () => {
-    if (ckEditorText.trim() === "") {
-      return;
-    }
-    if (props.resData.comments === undefined) {
-      props.resData["comments"] = [
-        {
-          comment: ckEditorText,
-          username: auth.username,
-        },
-      ];
-    } else {
-      props.resData.comments.push({
-        comment: ckEditorText,
-        username: auth.username,
-      });
-    }
 
-    try {
-      await sendRequest(
-        process.env.REACT_APP_BACKEND_URL +
-          `/myProfile/Sessions/AllSessions/comment`,
-        "POST",
-        JSON.stringify({
-          title: ckEditorText,
-          username: auth.username,
-          id: auth.userId,
-          calendarId: props.url,
-        }),
-        {
-          Authorization: "Bearer " + auth.token,
-          "Content-Type": "application/json",
-        }
-      );
-      setckEditorText("");
-      navigate(`/myProfile/Sessions${url[1]}`);
-    } catch (err) {}
-  };
   const closeSession = async (answer) => {
     if (answer === false) {
       setIntentionForClosing(false);
@@ -239,7 +198,11 @@ export default function SessionComponent(props) {
           <div className={`${styles.schedule_buttons__style}`}>
             {props.resData.status === "SCHEDULED" ||
             props.resData.status === "CLOSED" ? null : (
-              <button style={{width:"38%"}} className="button" onClick={submitVote}>
+              <button
+                style={{ width: "38%" }}
+                className="button"
+                onClick={submitVote}
+              >
                 {" "}
                 {props.calendarButtonText}
               </button>
@@ -258,12 +221,20 @@ export default function SessionComponent(props) {
               )}
             {props.canCloseSession &&
               (props.resData.status === "CLOSED" ? (
-                <button style={{width:"38%"}} className="button" onClick={checkIntentionForDelete}>
+                <button
+                  style={{ width: "38%" }}
+                  className="button"
+                  onClick={checkIntentionForDelete}
+                >
                   {" "}
                   Delete Session
                 </button>
               ) : (
-                <button style={{width:"38%"}} className="button" onClick={checkIntentionForClosing}>
+                <button
+                  style={{ width: "38%" }}
+                  className="button"
+                  onClick={checkIntentionForClosing}
+                >
                   {" "}
                   Close Session
                 </button>
@@ -272,25 +243,7 @@ export default function SessionComponent(props) {
         </div>
       </div>
 
-      <div>
-        <Comments
-          className={"black__background overflow flex_nowrap"}
-          thisUser={auth.username}
-          comments={props.resData.comments}
-        ></Comments>
-
-        <div className={`${styles.comment__input__style} `}>
-          <input
-            onChange={textZoneChange}
-            placeholder="Aa"
-            value={ckEditorText}
-          ></input>
-          <button className="button" onClick={submitComment}>
-            {" "}
-            Comment
-          </button>
-        </div>
-      </div>
+      <WsComments dbComments={props.resData.comments || []}></WsComments>
     </>
   );
 }

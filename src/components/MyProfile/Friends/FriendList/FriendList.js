@@ -40,6 +40,7 @@ export default function FriendList(props) {
 
   return (
     <div>
+      
       <span className={styles.span_title__style}>{props.title}</span>
       <NewsBox className={props.className}>
         {foundUsers.map((user, i) => (
