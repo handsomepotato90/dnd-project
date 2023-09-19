@@ -1,4 +1,10 @@
-import React, { useState, useEffect, useCallback, useContext } from "react";
+import React, {
+  useState,
+  useRef,
+  useEffect,
+  useCallback,
+  useContext,
+} from "react";
 import { Calendar } from "@natscale/react-calendar";
 import FriendList from "../Friends/FriendList/FriendList";
 import ConteinerBox from "../../UI/ConteinerBox";
@@ -9,6 +15,7 @@ import ModalError from "../../UI/ModalError";
 import LoadingSpinner from "../../UI/LoadingSpinner";
 import ModalConfirmation from "../../UI/ModalConfirmation";
 import { useNavigate } from "react-router-dom";
+import useWindowSize from "../../hooks/screensize-hook";
 
 import styles from "./Sessions.module.css";
 import "@natscale/react-calendar/dist/main.css";
@@ -38,10 +45,26 @@ export default function Sessions() {
   const [friendsToSave, setFriendsToSave] = useState([]);
   const [titleForSession, setTitleForSession] = useState("");
   const [readyToSubmit, setReadyToSubmit] = useState(false);
+  const size = useWindowSize();
+  const calendarSize = useRef(0);
   const navigate = useNavigate();
   const errorHandler = () => {
     clearError(null);
   };
+  useEffect(() => {
+    if (size.width > 1024) {
+      calendarSize.current = 480;
+      return;
+    }
+    if (size.width < 1024) {
+      calendarSize.current = 390;
+      return;
+    }
+    if (size.width < 420) {
+      calendarSize.current = 340;
+      return;
+    }
+  }, [size.width]);
   useEffect(() => {
     const fetchFriends = async () => {
       try {
@@ -175,7 +198,7 @@ export default function Sessions() {
         <Calendar
           isDisabled={isDisabled}
           useDarkMode={true}
-          size={480}
+          size={calendarSize.current}
           fontSize={18}
           value={value}
           isMultiSelector={true}

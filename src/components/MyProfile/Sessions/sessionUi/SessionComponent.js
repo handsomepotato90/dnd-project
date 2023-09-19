@@ -185,7 +185,7 @@ export default function SessionComponent(props) {
           <Calendar
             isDisabled={isDisabled}
             useDarkMode={true}
-            size={500}
+            size={390}
             fontSize={18}
             value={
               props.resData.status === "SCHEDULED"
