@@ -80,7 +80,7 @@ export default function Login() {
             "Content-Type": "application/json",
           }
         );
-        auth.login(resData.user.id,resData.user.name, resData.token);
+        auth.login(resData.user.id, resData.user.name, resData.token);
       } catch (err) {}
     } else {
       try {
@@ -97,7 +97,7 @@ export default function Login() {
             "Content-Type": "application/json",
           }
         );
-        auth.login(resData.user, resData.token);
+        auth.login(resData.user.id, resData.user.name, resData.token);
       } catch (err) {}
     }
   };
