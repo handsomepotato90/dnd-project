@@ -21,13 +21,14 @@ const SubmitHomeBrew = React.lazy(() =>
   import("./components/SubmitHomeBrew/SubmitHomeBrew")
 );
 const MyProfile = React.lazy(() => import("./components/MyProfile/MyProfile"));
-const Edit = React.lazy(() => import("./components/MyProfile/Edit/Edit"));
 const Home = React.lazy(() => import("./components/Home/Home"));
 const Voting = React.lazy(() => import("./components/Voting/Voting"));
 
+
 function App() {
 
-  const { token, login, logout, userId,googleAuth, google } = useAuth();
+  const { token, login, logout, userId,googleAuth, google,username } = useAuth();
+  // const { token, login, logout, userId ,username } = useAuth();
   let routes;
   if (token) {
     routes = (
@@ -38,8 +39,8 @@ function App() {
         <Route path="/submit_homebrew" element={<SubmitHomeBrew />} />
         <Route path="/my_encounters" element={<MyEncounters />} />
         <Route path="/battle_scr/:id" element={<BattleScreen />} />
-        {/* <Route path="/myProfile" element={<MyProfile />} />
-        <Route path="/myProfile/Edit/:id" element={<Edit />} /> */}
+        <Route path="/myProfile/*" element={<MyProfile />} />
+
       </React.Fragment>
     );
   } else {
@@ -52,6 +53,7 @@ function App() {
         token: token,
         userId: userId,
         google:google,
+        username:username,
         login: login,
         logout: logout,
         googleAuth:googleAuth,

@@ -47,7 +47,6 @@ export default function SaveEncounter() {
       });
     });
 
-    console.log(encounter)
 
 
     if (encounter.monsters.length < 1) {

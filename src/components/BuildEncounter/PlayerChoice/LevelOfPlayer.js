@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Select from "react-select";
-import styles from "./LevelOfPlayer.module.css"
+import styles from "./LevelOfPlayer.module.css";
 const options = [
   { value: 1, label: "Level: 1" },
   { value: 2, label: "Level: 2" },
@@ -47,26 +47,33 @@ const encounterXpTable = [
   { easy: 2800, medium: 5700, hard: 8500, deadly: 12700 },
 ];
 export default function LevelOfPlayer(props) {
- 
   let [currValue, changeValue] = useState(0);
 
   const handleChange = (event) => {
     changeValue(event.value);
   };
   const ThisPlayerToAdd = (event) => {
-    if(currValue === 0){
-      return
+    if (currValue === 0) {
+      return;
     }
-    const    player = {player:currValue,...encounterXpTable[currValue]}
-   props.onChange(player);
-
+    const player = { player: currValue, ...encounterXpTable[currValue] };
+    props.onChange(player);
   };
-  //   console.log(encounterXpTable[1]);
 
   return (
     <div className={styles.center_elements}>
-      <Select className={styles.select__style} onChange={handleChange} isSearchable={false} options={options} />
-      <button className={`${styles.add_player_btn__style} button green `} onClick={ThisPlayerToAdd}>Add Player</button>
+      <Select
+        className={styles.select__style}
+        onChange={handleChange}
+        isSearchable={false}
+        options={options}
+      />
+      <button
+        className={`${styles.add_player_btn__style} button green `}
+        onClick={ThisPlayerToAdd}
+      >
+        Add Player
+      </button>
     </div>
   );
 }

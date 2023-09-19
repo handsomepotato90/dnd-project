@@ -18,7 +18,6 @@ export default function InputFields(props) {
 
   const nameChecker = async () => {
     if (props.input_name === "name" && inputRef.current.value.trim()) {
-      console.log(inputRef.current.value);
       try {
         const second = await sendRequest(
           process.env.REACT_APP_BACKEND_URL + "/submit_homebrew/check_name",

@@ -9,7 +9,6 @@ import { useNavigate } from "react-router-dom";
 import ModalError from "../UI/ModalError";
 import ModalConfirmation from "../UI/ModalConfirmation";
 import ConteinerBox from "../UI/ConteinerBox";
-import Initiative from "./EncounterUI/Initiative";
 
 export default function BattleScreen() {
   const auth = useContext(LoginContext);

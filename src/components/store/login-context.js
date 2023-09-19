@@ -5,6 +5,7 @@ export const LoginContext = createContext({
   userId:null,
   token:null,
   google:false,
+  username:null,
   login: () => {},
   logout: () => {},
   googleAuth:()=>{},
