@@ -35,7 +35,10 @@ export default function MySessions() {
             `/myProfile/Sessions/MySessions/${url[1]}`,
           "GET",
           null,
-          { Authorization: "Bearer " + auth.token }
+          {
+            Authorization: "Bearer " + auth.token,
+            "Content-Type": "application/json",
+          }
         );
         setResData(resData);
         let pushToThisArray = [];

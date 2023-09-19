@@ -70,7 +70,7 @@ export const useAuth = () => {
             resData.google_auth.expiry_date,
             resData.google_auth.refresh_token
           );
-          login(resData.user._id, resData.token);
+          login(resData.user._id, resData.user.name, resData.token);
         } catch (err) {}
       }
     };

@@ -28,7 +28,10 @@ export default function SessionVotingForFreeDays() {
             `/myProfile/Sessions/AllSessions/${url[1]}`,
           "GET",
           null,
-          { Authorization: "Bearer " + auth.token }
+          {
+            Authorization: "Bearer " + auth.token,
+            "Content-Type": "application/json",
+          }
         );
         setResData(resData);
         setSelectedDatesFromDungonMaster([...resData.dates]);
@@ -40,7 +43,6 @@ export default function SessionVotingForFreeDays() {
           if (resData.votes[index].user === auth.userId) {
             let date = [];
 
-  
             for (let index = 0; index < el.dates.length; index++) {
               const element = el.dates[index];
               date.push(new Date(element));
@@ -54,7 +56,6 @@ export default function SessionVotingForFreeDays() {
   }, []);
   const submitVote = async (value) => {
     if (resData.timeforvoting < now) {
-
       return;
     }
     try {

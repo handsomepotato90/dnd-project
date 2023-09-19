@@ -14,8 +14,7 @@ export default function Edit() {
   const removeBrakets = (string) => {
     return string.split("(")[1].split(")")[0];
   };
-  console.log(url);
-  console.log(auth);
+
   useEffect(() => {
     const fetchMonsters = async () => {
       try {
@@ -24,7 +23,10 @@ export default function Edit() {
             `/myProfile/MyUploads/Edit/${url[1]}`,
           "GET",
           null,
-          { Authorization: "Bearer " + auth.token }
+          {
+            Authorization: "Bearer " + auth.token,
+            "Content-Type": "application/json",
+          }
         );
         setMonsterForEdit([
           {
@@ -258,8 +260,6 @@ export default function Edit() {
     };
     fetchMonsters();
   }, [sendRequest, auth.token]);
-  console.log(reqFields);
-  console.log(url[1]);
 
   return (
     <>

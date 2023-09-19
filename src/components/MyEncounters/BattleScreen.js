@@ -50,7 +50,10 @@ export default function BattleScreen() {
           process.env.REACT_APP_BACKEND_URL + `/battle_scr/${url[1]}`,
           "DELETE",
           null,
-          { Authorization: "Bearer " + auth.token }
+          {
+            Authorization: "Bearer " + auth.token,
+            "Content-Type": "application/json",
+          }
         );
         setDeleted(true);
       } catch (err) {}
