@@ -8,19 +8,20 @@ export default function Edit() {
   const { isLoading, sendRequest } = useHttpClient();
   const [reqFields, setMonsterForEdit] = useState([]);
   const [fields, setFields] = useState([]);
-  const [textZone,setTextZone] = useState([]);
+  const [textZone, setTextZone] = useState([]);
   const url = window.location.href.split("Edit/");
   const auth = useContext(LoginContext);
   const removeBrakets = (string) => {
     return string.split("(")[1].split(")")[0];
   };
-
+  console.log(url);
+  console.log(auth);
   useEffect(() => {
     const fetchMonsters = async () => {
-
       try {
         const resData = await sendRequest(
-          process.env.REACT_APP_BACKEND_URL + `/myProfile/MyUploads/Edit/${url[1]}`,
+          process.env.REACT_APP_BACKEND_URL +
+            `/myProfile/MyUploads/Edit/${url[1]}`,
           "GET",
           null,
           { Authorization: "Bearer " + auth.token }
@@ -60,7 +61,9 @@ export default function Edit() {
             name: "GRANTS XP",
             input_name: "Xp",
             placeholder: " # ",
-            value: removeBrakets(resData.Challenge.xp).toLowerCase().split("xp")[0],
+            value: removeBrakets(resData.Challenge.xp)
+              .toLowerCase()
+              .split("xp")[0],
           },
           {
             name: "ARMOR CLASS",
@@ -162,41 +165,49 @@ export default function Edit() {
             name: "SAVING THROW PROFICIENCIES",
             input_name: "Saving Throws",
             placeholder: "STR +6 , INT +4....",
-            value: resData['Saving Throws'],
-
+            value: resData["Saving Throws"],
           },
           {
             name: "SKILLS",
             input_name: "skills",
             placeholder: "Acrobatics +6, Deception +3, Stealth +9....",
             value: resData.Skills,
-
           },
           {
             name: "DAMAGE RESISTANCES",
             input_name: "Damage Resistances",
             placeholder: "Bludgeoning,Piercing,Fire ...",
-            value:resData['Damage Resistances'] === null? "": resData['Damage Resistances'].join(),
-
+            value:
+              resData["Damage Resistances"] === null
+                ? ""
+                : resData["Damage Resistances"].join(),
           },
           {
             name: "DAMAGE IMMUNITIES",
             input_name: "Damage Immunities",
             placeholder: "Bludgeoning,Piercing,Fire ...",
-            value:resData['Damage Immunities'] === null? "": resData['Damage Immunities'].join(),
-
+            value:
+              resData["Damage Immunities"] === null
+                ? ""
+                : resData["Damage Immunities"].join(),
           },
           {
             name: "DAMAGE VULNERABILITIES",
             input_name: "Damage Vulnerabilities",
             placeholder: "Bludgeoning,Piercing,Fire ...",
-            value:resData['Damage Vulnerabilities'] === null? "": resData['Damage Vulnerabilities'].join(),
+            value:
+              resData["Damage Vulnerabilities"] === null
+                ? ""
+                : resData["Damage Vulnerabilities"].join(),
           },
           {
             name: "CONDITION IMMUNITIES",
             input_name: "Condition Immunities",
             placeholder: "Charmed, Exhaustion, Frightened ...",
-            value:resData['Condition Immunities'] === null? "": resData['Condition Immunities'].join(),
+            value:
+              resData["Condition Immunities"] === null
+                ? ""
+                : resData["Condition Immunities"].join(),
           },
           {
             name: "LANGUAGES",
@@ -209,43 +220,46 @@ export default function Edit() {
             input_name: "Speed",
             placeholder: "20 ft., fly 30 ft. ",
             value: resData.Speed,
-
           },
         ]);
-        setTextZone([{
+        setTextZone([
+          {
             name: "SPECIAL TRAITS DESCRIPTION",
             input_name: "Traits",
-            placeholder:resData.Traits,
+            placeholder: resData.Traits,
           },
           {
             name: "ACTIONS DESCRIPTION",
             input_name: "Actions",
-            placeholder:resData.Actions,
+            placeholder: resData.Actions,
           },
           {
             name: "REACTIONS DESCRIPTION",
             input_name: "Reactions",
-            placeholder:resData.Reactions,
+            placeholder: resData.Reactions,
           },
           {
             name: "MONSTER CHARACTERISTICS DESCRIPTION",
             input_name: "Characteristics",
-            placeholder:  resData.Characteristics,
+            placeholder: resData.Characteristics,
           },
           {
             name: "BONUS ACTIONS DESCRIPTION",
             input_name: "Bonus Actions",
-            placeholder:  resData["Bonus Actions"],
+            placeholder: resData["Bonus Actions"],
           },
           {
             name: "LEGENDARY ACTIONS DESCRIPTION",
             input_name: "Legendary Actions",
-            placeholder:  resData["Legendary Actions"],
-          },])
+            placeholder: resData["Legendary Actions"],
+          },
+        ]);
       } catch (err) {}
     };
     fetchMonsters();
-  }, [sendRequest]);
+  }, [sendRequest, auth.token]);
+  console.log(reqFields);
+  console.log(url[1]);
 
   return (
     <>
