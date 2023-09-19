@@ -24,7 +24,8 @@ export default function GoogleLoginX(props) {
           //  mode:"no-cors"
         }
       );
-      auth.login(tokens.user.id, tokens.token);
+
+      auth.login(tokens.user.id, tokens.user.name, tokens.token);
       auth.googleAuth(
         tokens.google_auth.expiry_date,
         tokens.google_auth.refresh_token,
