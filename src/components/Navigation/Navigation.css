@@ -11,7 +11,7 @@
   width: 18%;
   height: auto;
 }
-.hover__text{
+.hover__text {
   z-index: 100;
   margin-top: 1vh;
   border-radius: 5px;
@@ -20,26 +20,39 @@
   position: absolute;
   color: Black;
 }
-li{
+li {
   height: 40px;
 }
-li:hover{
+li:hover {
   background-color: rgb(46, 44, 44);
   border-radius: 5px;
-  border-bottom: 4px solid #4b4783;;
+  border-bottom: 4px solid #4b4783;
 }
+.my_profile__style {
+  padding-top: 10px;
+  width: 200px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.my_profile__style > span {
+  color: #f44336;
+  font-size: 16px;
+}
+
 nav {
   display: grid;
   grid-template-columns: 30% 70%;
   align-items: center;
   box-sizing: border-box;
 }
-.nav_flexbox{
+.nav_flexbox {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: center;
-  gap:15px;
+  gap: 15px;
 }
 .nav_links {
   display: flex;
@@ -76,14 +89,13 @@ nav {
   margin: 6px 0;
   transition: 0.4s;
 }
-.svg__style{
+.svg__style {
   height: auto;
   width: 60px;
   float: left;
 }
 
 @media only screen and (max-width: 1400px) {
- 
   .nav {
     display: grid;
     grid-template-columns: 10% 90%;
@@ -108,7 +120,7 @@ nav {
   .logo__size {
     width: 90%;
   }
-  .link_style{
+  .link_style {
     text-align: center;
     width: 100%;
   }
@@ -117,10 +129,9 @@ nav {
     padding: 1ch 2ch;
     font-size: 1.5ch;
   }
-  #container{
+  #container {
     display: block;
     width: 10%;
     margin-left: 70%;
   }
- 
 }

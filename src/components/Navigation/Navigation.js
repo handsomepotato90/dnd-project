@@ -7,7 +7,7 @@ import Encounter from "../../icons/encounter.svg";
 import Vote from "../../icons/Vote.svg";
 import Brew from "../../icons/Brew.svg";
 import Build from "../../icons/Build.svg";
-import Profile from "../../icons/Profile.svg";
+// import Profile from "../../icons/Profile.svg";
 import Logout from "../../icons/Logout.svg";
 import NavigationDrawer from "../UI/NavigationDrawer";
 import Dice from "../../icons/d20.svg";
@@ -103,16 +103,19 @@ const Navigation = () => {
       {auth.isLoggedIn && (
         <CustomLink description="My Profile" onClick={closeNav}>
           <Links to="/myProfile">
-            <SvgComponent
+            {/* <SvgComponent
               Image={Profile}
               height="40"
               color="red"
               width="70"
-            ></SvgComponent>
+            ></SvgComponent> */}
+            <div className="my_profile__style">
+              <span>{auth.username}</span>
+            </div>
           </Links>
         </CustomLink>
       )}
-      {auth.isLoggedIn &&  (
+      {auth.isLoggedIn && (
         <CustomLink description="Logout" to="/" onClick={auth.logout}>
           <SvgComponent
             Image={Logout}

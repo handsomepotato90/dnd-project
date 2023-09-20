@@ -1,9 +1,12 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./NewsBox.css";
 
 export default function NewsBox(props) {
   const cNames = "news_box_bcc__color news_box_size " + props.className;
   const [isShown, setIsShown] = useState(false);
+  const navigate = useNavigate();
+
   const style = {
     backgroundImage: `url(${props.image})`,
     backgroundSize: "cover",
@@ -11,7 +14,9 @@ export default function NewsBox(props) {
   };
 
   const redirectToDesiredPage = () => {
-    //  {props.image && navigate(props.url)}
+    {
+      props.image && navigate(props.url);
+    }
   };
   return (
     <div

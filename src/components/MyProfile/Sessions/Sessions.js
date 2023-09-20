@@ -1,10 +1,4 @@
-import React, {
-  useState,
-  useRef,
-  useEffect,
-  useCallback,
-  useContext,
-} from "react";
+import React, { useState, useEffect, useCallback, useContext } from "react";
 import { Calendar } from "@natscale/react-calendar";
 import FriendList from "../Friends/FriendList/FriendList";
 import ConteinerBox from "../../UI/ConteinerBox";
@@ -46,23 +40,23 @@ export default function Sessions() {
   const [titleForSession, setTitleForSession] = useState("");
   const [readyToSubmit, setReadyToSubmit] = useState(false);
   const size = useWindowSize();
-  const calendarSize = useRef(0);
+  const [calendarSize, setCalendarsize] = useState(0);
   const navigate = useNavigate();
   const errorHandler = () => {
     clearError(null);
   };
   useEffect(() => {
-    if (size.width > 1024) {
-      calendarSize.current = 480;
-      return;
+    if (size.width > 1920) {
+      setCalendarsize(540);
     }
-    if (size.width < 1024) {
-      calendarSize.current = 390;
-      return;
+    if (size.width > 1024 && size.width < 1920) {
+      setCalendarsize(480);
+    }
+    if (size.width < 1024 && size.width > 420) {
+      setCalendarsize(390);
     }
     if (size.width < 420) {
-      calendarSize.current = 340;
-      return;
+      setCalendarsize(340);
     }
   }, [size.width]);
   useEffect(() => {
@@ -198,7 +192,7 @@ export default function Sessions() {
         <Calendar
           isDisabled={isDisabled}
           useDarkMode={true}
-          size={calendarSize.current}
+          size={calendarSize}
           fontSize={18}
           value={value}
           isMultiSelector={true}

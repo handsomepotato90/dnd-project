@@ -20,7 +20,8 @@ export default function Home() {
       url: imageTwo,
       text: "Create new HomeBrew",
       redirect: "/submit_homebrew",
-      description: "Create your unique monster and let it be judged by the other users",
+      description:
+        "Create your unique monster and let it be judged by the other users",
     },
     {
       url: imageThree,
@@ -30,9 +31,10 @@ export default function Home() {
     },
     {
       url: imageFour,
-      text: "Coming soon...",
-      redirect: "/",
-      description: "",
+      text: "Organise a Session.",
+      redirect: "/myProfile/Sessions",
+      description:
+        "Organise a session. Invite your Friends and vote on the day for your upcoming session.",
     },
   ];
 
