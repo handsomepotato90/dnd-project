@@ -110,6 +110,9 @@ nav {
 }
 
 @media only screen and (max-width: 600px) {
+  .center_burger_link {
+    margin: 0 auto;
+  }
   .nav_links {
     display: none;
   }
