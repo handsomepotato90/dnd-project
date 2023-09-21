@@ -1,9 +1,9 @@
 .big_box {
   z-index: 3;
   position: fixed;
-  margin-left: 5vw;
+  margin: 0 auto;
   margin-top: 5vh;
-  width: 85%;
+  width: 100%;
 }
 .box_design {
   display: flex;
@@ -129,5 +129,22 @@ hr {
     margin-top: 2vh;
     width: 100%;
     text-align: center;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .table__styling {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-left: 0rem;
+  }
+  .table__boxes {
+    width: 80px;
+    font-size: 18px;
+    padding: 0.5rem;
+  }
+  .life_stiling {
+    padding: 0;
   }
 }

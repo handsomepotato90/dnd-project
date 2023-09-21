@@ -47,7 +47,7 @@ export default function SendFriendRequest(props) {
         ></input>
       </div>
 
-      <NewsBox>
+      <NewsBox className={props.overflow}>
         {foundUsers.map((user, i) => (
           <MatchingUsers
             key={i}

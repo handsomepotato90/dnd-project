@@ -9,6 +9,7 @@ import LoadingSpinner from "../../../UI/LoadingSpinner";
 import ModalConfirmation from "../../../UI/ModalConfirmation";
 import { useNavigate } from "react-router-dom";
 import Select from "react-select";
+import CalendarReSize from "./CalendarReSize";
 
 import styles from "./sessionUi.module.css";
 import "@natscale/react-calendar/dist/main.css";
@@ -46,7 +47,7 @@ export default function SessionComponent(props) {
   const [intentionForClosing, setIntentionForClosing] = useState(false);
   const [intentionForDelete, setIntentionForDelete] = useState(false);
   const [scheduledHours, setScheduledHour] = useState();
-
+  const size = CalendarReSize();
   const auth = useContext(LoginContext);
   const navigate = useNavigate();
 
@@ -185,7 +186,7 @@ export default function SessionComponent(props) {
           <Calendar
             isDisabled={isDisabled}
             useDarkMode={true}
-            size={390}
+            size={size}
             fontSize={18}
             value={
               props.resData.status === "SCHEDULED"

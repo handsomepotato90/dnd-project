@@ -35,11 +35,16 @@ export default function Friends() {
   return (
     <ConteinerBox fromEnd={true}>
       <SendFriendRequest
+        overflow={"overflow"}
         ids={context.userId}
         title={"Users :"}
       ></SendFriendRequest>
       <div className={styles.size}>
-        <FriendList friends={friends[1]} title={"My Friends"}></FriendList>
+        <FriendList
+          overflow={"overflow"}
+          friends={friends[1]}
+          title={"My Friends"}
+        ></FriendList>
       </div>
       {openInvites && (
         <div className={styles.size}>

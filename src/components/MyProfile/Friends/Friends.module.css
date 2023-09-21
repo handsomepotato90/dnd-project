@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  margin: 0 auto;
+  /* margin: 0 auto; */
   background-color: #d8e1e8;
   border-radius: 5px;
   margin-top: 5px;
@@ -51,21 +51,25 @@
 .buttons__style:hover {
   box-shadow: 0 0 20px #ffffff;
 }
+
 @media only screen and (max-width: 600px) {
   .users_holding_div__style {
     width: auto;
   }
   .size {
-    /* padding: 20px; */
     width: 500px;
+  }
+  .searchbox__style {
+    padding: 10px;
+  }
+  .span_title__style {
+    font-size: 18px;
+    color: white;
   }
   .users_name__style {
     font-size: 20px;
-    width: 150px;
+    width: 200px;
+    margin: 0 auto;
     text-align: center;
-  }
-  .span_title__style {
-    margin-left: 20px;
-    font-size: 22px;
   }
 }

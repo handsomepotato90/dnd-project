@@ -51,4 +51,7 @@
   .all_sessions__style {
     display: block;
   }
+  .upload_button__style {
+    width: 100%;
+  }
 }

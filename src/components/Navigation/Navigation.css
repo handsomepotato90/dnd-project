@@ -1,5 +1,5 @@
 .nav__size {
-  width: auto;
+  width: 100%;
   list-style-type: none;
   height: 50px;
 }
@@ -21,6 +21,7 @@
   color: Black;
 }
 li {
+  /* width: 100px; */
   height: 40px;
 }
 li:hover {
@@ -30,7 +31,7 @@ li:hover {
 }
 .my_profile__style {
   padding-top: 10px;
-  width: 200px;
+  width: auto;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -43,7 +44,7 @@ li:hover {
 
 nav {
   display: grid;
-  grid-template-columns: 30% 70%;
+  grid-template-columns: 30% 25% 5% auto;
   align-items: center;
   box-sizing: border-box;
 }
@@ -58,12 +59,11 @@ nav {
   display: flex;
   flex-direction: row;
   margin: 0 auto;
-  padding: 0 auto;
   list-style-type: none;
-  text-align: left;
 }
 .link_style {
   display: inline;
+  cursor: pointer;
 }
 .link_style > a {
   display: inline-block;
@@ -89,16 +89,10 @@ nav {
   margin: 6px 0;
   transition: 0.4s;
 }
-.svg__style {
-  height: auto;
-  width: 60px;
-  float: left;
-}
 
 @media only screen and (max-width: 1400px) {
   .nav {
-    display: grid;
-    grid-template-columns: 10% 90%;
+    grid-template-columns: 30% 10% 5% auto;
   }
   .logo__size {
     width: 35%;
@@ -108,8 +102,10 @@ nav {
     padding: 0.5ch 0;
     font-size: 1.5ch;
   }
-  .nav_links {
-    justify-content: right;
+}
+@media only screen and (max-width: 1000px) {
+  .nav {
+    grid-template-columns: 20% 5% 5% auto;
   }
 }
 

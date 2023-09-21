@@ -7,7 +7,7 @@ import Encounter from "../../icons/encounter.svg";
 import Vote from "../../icons/Vote.svg";
 import Brew from "../../icons/Brew.svg";
 import Build from "../../icons/Build.svg";
-// import Profile from "../../icons/Profile.svg";
+import Profile from "../../icons/Profile.svg";
 import Logout from "../../icons/Logout.svg";
 import NavigationDrawer from "../UI/NavigationDrawer";
 import Dice from "../../icons/d20.svg";
@@ -31,26 +31,6 @@ const Navigation = () => {
   };
   const content = (
     <>
-      {auth.isLoggedIn && onScreen && (
-        <CustomButton onClick={calcStatusCheck} action={false}>
-          <SvgComponent
-            Image={Dice}
-            height="40"
-            color="red"
-            width="70"
-          ></SvgComponent>
-        </CustomButton>
-      )}
-      {auth.isLoggedIn && !onScreen && (
-        <CustomButton onClick={calcStatusCheck} action={true}>
-          <SvgComponent
-            Image={Dice}
-            height="40"
-            color="red"
-            width="70"
-          ></SvgComponent>
-        </CustomButton>
-      )}
       {auth.isLoggedIn && (
         <CustomLink description="Voting" onClick={closeNav}>
           <Links to="/voting">
@@ -103,15 +83,19 @@ const Navigation = () => {
       {auth.isLoggedIn && (
         <CustomLink description="My Profile" onClick={closeNav}>
           <Links to="/myProfile">
-            {/* <SvgComponent
-              Image={Profile}
-              height="40"
-              color="red"
-              width="70"
-            ></SvgComponent> */}
-            <div className="my_profile__style">
-              <span>{auth.username}</span>
-            </div>
+            {burger && (
+              <SvgComponent
+                Image={Profile}
+                height="40"
+                color="red"
+                width="70"
+              ></SvgComponent>
+            )}
+            {!burger && (
+              <div className="my_profile__style">
+                <span>{auth.username}</span>
+              </div>
+            )}
           </Links>
         </CustomLink>
       )}
@@ -133,15 +117,33 @@ const Navigation = () => {
       <Link to="/">
         <img className="logo__size" src={Logo} alt="logo"></img>
       </Link>
+      {auth.isLoggedIn && onScreen && (
+        <CustomButton onClick={calcStatusCheck} action={false}>
+          <SvgComponent
+            Image={Dice}
+            height="40"
+            color="red"
+            width="70"
+          ></SvgComponent>
+        </CustomButton>
+      )}
+      {auth.isLoggedIn && !onScreen && (
+        <CustomButton onClick={calcStatusCheck} action={true}>
+          <SvgComponent
+            Image={Dice}
+            height="40"
+            color="red"
+            width="70"
+          ></SvgComponent>
+        </CustomButton>
+      )}
       {auth.isLoggedIn && burger && (
         <NavigationDrawer className="burger__style" onClick={closeNav}>
           {content}
         </NavigationDrawer>
       )}
-      <ul className="nav_links">
-        {content}
-        {onScreen && <Calculator />}
-      </ul>
+      <ul className="nav_links">{content}</ul>
+      <ul> {onScreen && <Calculator />}</ul>
       {auth.isLoggedIn && (
         <div id="container" onClick={openNav}>
           <div className="bar1"></div>

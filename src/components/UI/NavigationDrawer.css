@@ -1,18 +1,17 @@
 .burger__style {
-  background-color:  rgba(8, 8, 8, 0.918);
-  margin: auto;
+  background-color: rgb(8, 8, 8);
   z-index: 3;
-  width:100%;
+  width: 30%;
   height: 100%;
   position: fixed;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  row-gap: 8vh;
-  text-align: center;
+  row-gap: 11vh;
+  margin-left: 70%;
 }
-.close_btn__style{
-  width: 30%;
+.close_btn__style {
+  width: 100%;
   padding: 0.7ch 0ch;
   margin-left: auto;
   background-color: #f44336;

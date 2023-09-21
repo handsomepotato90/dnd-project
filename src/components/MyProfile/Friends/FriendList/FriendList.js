@@ -24,7 +24,7 @@ export default function FriendList(props) {
     // <div>
     <>
       <span className={styles.span_title__style}>{props.title}</span>
-      <NewsBox>
+      <NewsBox className={props.overflow}>
         {foundUsers.map((user, i) => (
           <UserHolderBox
             key={i}
