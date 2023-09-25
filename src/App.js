@@ -7,7 +7,6 @@ import "./App.css";
 import { LoginContext } from "./components/store/login-context";
 import LoadingSpinner from "./components/UI/LoadingSpinner";
 
-
 const BuildEncounter = React.lazy(() =>
   import("./components/BuildEncounter/BuildEncounter")
 );
@@ -24,10 +23,9 @@ const MyProfile = React.lazy(() => import("./components/MyProfile/MyProfile"));
 const Home = React.lazy(() => import("./components/Home/Home"));
 const Voting = React.lazy(() => import("./components/Voting/Voting"));
 
-
 function App() {
-
-  const { token, login, logout, userId,googleAuth, google,username } = useAuth();
+  const { token, login, logout, userId, googleAuth, google, username } =
+    useAuth();
   // const { token, login, logout, userId ,username } = useAuth();
   let routes;
   if (token) {
@@ -40,7 +38,6 @@ function App() {
         <Route path="/my_encounters" element={<MyEncounters />} />
         <Route path="/battle_scr/:id" element={<BattleScreen />} />
         <Route path="/myProfile/*" element={<MyProfile />} />
-
       </React.Fragment>
     );
   } else {
@@ -52,11 +49,11 @@ function App() {
         isLoggedIn: !!token,
         token: token,
         userId: userId,
-        google:google,
-        username:username,
+        google: google,
+        username: username,
         login: login,
         logout: logout,
-        googleAuth:googleAuth,
+        googleAuth: googleAuth,
       }}
     >
       <Navigation />

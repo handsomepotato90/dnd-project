@@ -6,12 +6,14 @@ import SessionComponent from "./sessionUi/SessionComponent";
 import ModalError from "../../UI/ModalError";
 import LoadingSpinner from "../../UI/LoadingSpinner";
 import { useNavigate } from "react-router-dom";
+import ModalConfirmation from "../../UI/ModalConfirmation";
 
 export default function SessionVotingForFreeDays() {
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const auth = useContext(LoginContext);
   const [resData, setResData] = useState([]);
   const [selectedByUser, setSelectedByUser] = useState([]);
+  const [intentionSubmitVote, setIntentionSubmitVote] = useState(false);
   const [selectedDatesFromDungonMaster, setSelectedDatesFromDungonMaster] =
     useState([]);
   const navigate = useNavigate();
@@ -74,8 +76,11 @@ export default function SessionVotingForFreeDays() {
           "Content-Type": "application/json",
         }
       );
-      navigate(`/myProfile/Sessions/AllSessions/${url[1]}`);
     } catch (err) {}
+    window.location.reload();
+  };
+  const chechUserIntention = (info, hours) => {
+    setIntentionSubmitVote(true);
   };
 
   return (
@@ -88,13 +93,19 @@ export default function SessionVotingForFreeDays() {
           onClick={errorHandler}
         ></ModalError>
       )}
+      {intentionSubmitVote && (
+        <ModalConfirmation
+          title="Are you shure about the date you put in ? There is no turning back."
+          onClick={submitVote}
+        ></ModalConfirmation>
+      )}
       <SessionComponent
         resData={resData}
         selectedDatesFromDungonMaster={selectedDatesFromDungonMaster}
         userAlreadySelectedDates={selectedByUser}
         url={url[1]}
         calendarButtonText={"Submit"}
-        onClickSubmit={submitVote}
+        onClickSubmit={chechUserIntention}
       ></SessionComponent>
     </ConteinerBox>
   );
