@@ -8,8 +8,8 @@
   box-shadow: 0 0 25px 0 black;
 }
 .logo__size {
-  width: 18%;
-  height: auto;
+  width: 110px;
+  height: 50px;
 }
 .hover__text {
   z-index: 100;
@@ -44,7 +44,7 @@ li:hover {
 
 nav {
   display: grid;
-  grid-template-columns: 30% 25% 5% auto;
+  grid-template-columns: 30% 5% 25% auto;
   align-items: center;
   box-sizing: border-box;
 }
@@ -94,18 +94,16 @@ nav {
   .nav {
     grid-template-columns: 30% 10% 5% auto;
   }
-  .logo__size {
-    width: 35%;
-  }
+
   .link_style > a {
     width: 100%;
     padding: 0.5ch 0;
     font-size: 1.5ch;
   }
 }
-@media only screen and (max-width: 1000px) {
-  .nav {
-    grid-template-columns: 20% 5% 5% auto;
+@media only screen and (max-width: 1024px) {
+  nav {
+    grid-template-columns: 25% 5% 0% auto;
   }
 }
 

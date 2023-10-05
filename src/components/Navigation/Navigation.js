@@ -11,6 +11,7 @@ import Profile from "../../icons/Profile.svg";
 import Logout from "../../icons/Logout.svg";
 import NavigationDrawer from "../UI/NavigationDrawer";
 import Dice from "../../icons/d20.svg";
+import CalculatorImage from "../UI/CalculatorRotation/CalculatorImage";
 import NavigatorBack from "./NavigatorBack";
 import Calculator from "../Calculator/Calculator";
 import "./Navigation.css";
@@ -119,31 +120,27 @@ const Navigation = () => {
       </Link>
       {auth.isLoggedIn && onScreen && (
         <CustomButton onClick={calcStatusCheck} action={false}>
-          <SvgComponent
-            Image={Dice}
-            height="40"
-            color="red"
-            width="70"
-          ></SvgComponent>
+          <CalculatorImage></CalculatorImage>
         </CustomButton>
       )}
       {auth.isLoggedIn && !onScreen && (
         <CustomButton onClick={calcStatusCheck} action={true}>
-          <SvgComponent
-            Image={Dice}
-            height="40"
-            color="red"
-            width="70"
-          ></SvgComponent>
+          <CalculatorImage></CalculatorImage>
         </CustomButton>
       )}
+      {auth.isLoggedIn && <div></div>}
       {auth.isLoggedIn && burger && (
         <NavigationDrawer className="burger__style" onClick={closeNav}>
           {content}
         </NavigationDrawer>
       )}
       <ul className="nav_links">{content}</ul>
-      <ul> {onScreen && <Calculator />}</ul>
+      {onScreen && (
+        <ul>
+          {" "}
+          <Calculator />
+        </ul>
+      )}
       {auth.isLoggedIn && (
         <div id="container" onClick={openNav}>
           <div className="bar1"></div>
