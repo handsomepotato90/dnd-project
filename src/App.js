@@ -22,6 +22,8 @@ const SubmitHomeBrew = React.lazy(() =>
 const MyProfile = React.lazy(() => import("./components/MyProfile/MyProfile"));
 const Home = React.lazy(() => import("./components/Home/Home"));
 const Voting = React.lazy(() => import("./components/Voting/Voting"));
+const Page404 = React.lazy(() => import("./components/UI/Page404/Page404"));
+
 
 function App() {
   const { token, login, logout, userId, googleAuth, google, username } =
@@ -38,6 +40,7 @@ function App() {
         <Route path="/my_encounters" element={<MyEncounters />} />
         <Route path="/battle_scr/:id" element={<BattleScreen />} />
         <Route path="/myProfile/*" element={<MyProfile />} />
+        <Route path="*" element={<Page404 />} />
       </React.Fragment>
     );
   } else {

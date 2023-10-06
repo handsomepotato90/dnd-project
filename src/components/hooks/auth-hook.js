@@ -105,11 +105,23 @@ export const useAuth = () => {
       );
     }
   }, [login]);
+  useEffect(() => {
+    const storedData = JSON.parse(localStorage.getItem("userData"));
+
+    if (
+      storedData &&
+      storedData.token &&
+      new Date(storedData.expiration) < new Date()
+    ) {
+      logout()
+    }
+  }, [logout]);
 
   useEffect(() => {
     const storedData = JSON.parse(localStorage.getItem("userData"));
     const rememberUser = async () => {
       if (remember && remember !== "undefined" && !storedData) {
+        console.log("here")
         try {
           const resData = await sendRequest(
             process.env.REACT_APP_BACKEND_URL + "/remember",
@@ -124,7 +136,10 @@ export const useAuth = () => {
       }
     };
     rememberUser();
-  }, [sendRequest, remember, login]);
+  });
+
+ 
 
   return { token, login, logout, userId, googleAuth, username };
+
 };

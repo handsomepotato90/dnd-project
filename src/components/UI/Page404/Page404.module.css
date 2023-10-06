@@ -1,0 +1,28 @@
+.error_page__main_div {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.error_code_code,
+.error_code_message,
+.error_code_text,
+.return_button {
+  margin: 0 auto;
+}
+.error_code_code,
+.error_code_message {
+  text-shadow: rgb(177, 175, 175) 0px 5px 10px;
+}
+.error_code_code {
+  font-size: 100px;
+}
+.error_code_text {
+  padding: 30px;
+  color: white;
+}
+.return_button {
+  cursor: pointer;
+  padding: 10px 15px;
+}
