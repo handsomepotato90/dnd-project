@@ -1,0 +1,19 @@
+.min_max_general {
+  display: flex;
+  flex-direction: column;
+}
+.min_max_general > span:first-child {
+  font-size: 22px;
+  color: white;
+}
+.result_general {
+  font-size: 80px;
+}
+.result_general > span {
+  float: right;
+  color: green;
+}
+.toBeCalculated_style{
+    height: 100px;
+    font-size: 20px;
+}

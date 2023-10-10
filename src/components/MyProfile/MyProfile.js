@@ -3,6 +3,7 @@ import React, { Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 import LoadingSpinner from "../UI/LoadingSpinner";
 import "./MyProfile.css";
+import Page404 from "../UI/Page404/Page404";
 
 const MyProfiles = React.lazy(() => import("./MyProfileGeneral"));
 const MyUploads = React.lazy(() =>
@@ -38,6 +39,8 @@ export default function MyProfile() {
       <Route path="/Sessions/AllSessions/:id" element={<VotingForFreeDay />} />
       <Route path="/Sessions/MySessions/:id" element={<MySessions />} />
       <Route path="/" element={<MyProfiles />} />
+      <Route path="*" element={<Page404 />} />
+
     </React.Fragment>
   );
   return (

@@ -1,0 +1,24 @@
+.calculator_main__div {
+  background-color: rgb(15, 19, 39);
+  display: grid;
+  grid-template-rows: 40% 5% auto;
+  padding: 10px;
+}
+.calculator_load {
+  position: absolute;
+  z-index: 100000;
+  display: grid;
+  grid-template-columns: 70% auto;
+  width: 500px;
+  min-height: 300px;
+  height: 600px;
+}
+@media only screen and (max-width: 600px) {
+  .calculator_main__div {
+    position: fixed;
+    width: 95%;
+    margin: 5% auto;
+    left: 0;
+    right: 0;
+  }
+}

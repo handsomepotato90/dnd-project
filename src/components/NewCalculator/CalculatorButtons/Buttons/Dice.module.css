@@ -1,0 +1,30 @@
+.d_twenty__container {
+  width: 100%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 5px;
+}
+.d_twenty__container > div:first-child {
+  grid-row: span 2;
+  width: 50px;
+}
+.stadard_die__keybord {
+  width: 100%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 5px;
+  margin-top: 5px;
+
+}
+.stadard_die__keybord > div:first-child,
+.stadard_die__keybord > div:last-child {
+  grid-column: span 3;
+}
+.stadard_die__keybord > div:first-child {
+  border-color: red;
+}
+.stadard_die__keybord > div:last-child {
+  border-color: green;
+}

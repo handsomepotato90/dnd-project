@@ -1,0 +1,8 @@
+.screen_general_view {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding: 10px;
+}
+.screen_general_view > div:first-child {
+  grid-column: span 2;
+}

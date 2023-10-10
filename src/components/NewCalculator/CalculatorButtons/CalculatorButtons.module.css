@@ -1,0 +1,6 @@
+.calculator_buttons__general_div {
+  width: 100%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-rows: 30% auto;
+}

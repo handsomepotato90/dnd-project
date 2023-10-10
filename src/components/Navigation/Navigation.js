@@ -13,7 +13,7 @@ import NavigationDrawer from "../UI/NavigationDrawer";
 import Dice from "../../icons/d20.svg";
 import CalculatorImage from "../UI/CalculatorRotation/CalculatorImage";
 import NavigatorBack from "./NavigatorBack";
-import Calculator from "../Calculator/Calculator";
+import Calculator from "../NewCalculator/Calculator";
 import "./Navigation.css";
 
 const Navigation = () => {
