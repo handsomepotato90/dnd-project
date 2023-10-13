@@ -10,6 +10,7 @@
 }
 .load_presets {
   display: flex;
+  z-index: 10001;
   flex-direction: column;
   background-color: rgb(15, 19, 39);
 }
