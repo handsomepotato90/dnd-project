@@ -24,10 +24,17 @@ const Home = React.lazy(() => import("./components/Home/Home"));
 const Voting = React.lazy(() => import("./components/Voting/Voting"));
 const Page404 = React.lazy(() => import("./components/UI/Page404/Page404"));
 
-
 function App() {
-  const { token, login, logout, userId, googleAuth, google, username } =
-    useAuth();
+  const {
+    token,
+    login,
+    logout,
+    userId,
+    googleAuth,
+    google,
+    username,
+    dieFormulas,
+  } = useAuth();
   // const { token, login, logout, userId ,username } = useAuth();
   let routes;
   if (token) {
@@ -54,6 +61,7 @@ function App() {
         userId: userId,
         google: google,
         username: username,
+        dieFormulas: dieFormulas,
         login: login,
         logout: logout,
         googleAuth: googleAuth,

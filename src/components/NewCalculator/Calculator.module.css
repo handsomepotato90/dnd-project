@@ -13,6 +13,13 @@
   min-height: 300px;
   height: 600px;
 }
+.preset_button {
+  width: 30px;
+}
+.preset_bar {
+  display: grid;
+  grid-template-rows: 5% 95%;
+}
 @media only screen and (max-width: 600px) {
   .calculator_main__div {
     position: fixed;

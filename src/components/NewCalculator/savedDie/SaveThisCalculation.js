@@ -6,7 +6,7 @@ import { useHttpClient } from "../../hooks/http-hook";
 import styles from "./Options.module.css";
 
 export default function SaveThisCalculation() {
-  const { isLoading, error, sendRequest, clearError } = useHttpClient();
+  const { sendRequest } = useHttpClient();
   const [saveDies, setSaveDies] = useState(false);
   const [nameOfCalc, setNameOfCalc] = useState("");
 
@@ -26,7 +26,7 @@ export default function SaveThisCalculation() {
     try {
       setSaveDies(false);
       await sendRequest(
-        process.env.REACT_APP_BACKEND_URL + "/calculator_options",
+        process.env.REACT_APP_BACKEND_URL + "/calculator_options/save",
         "POST",
         JSON.stringify({
           id: auth.userId,

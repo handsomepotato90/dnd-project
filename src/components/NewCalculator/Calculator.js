@@ -24,11 +24,15 @@ export default function Calculator() {
             <Options></Options>
             <CalculatorButtons></CalculatorButtons>
           </div>
-
-          <button onClick={showPretsetDieFormulas}>
-            {presets ? "Close" : "Presets"}
-          </button>
-          {presets && <UseSavedCalculations></UseSavedCalculations>}
+          <div className={styles.preset_bar}>
+            <button
+              className={styles.preset_button}
+              onClick={showPretsetDieFormulas}
+            >
+              {presets ? "<" : ">"}
+            </button>
+            {presets && <UseSavedCalculations></UseSavedCalculations>}
+          </div>
         </CalculatorProvider>
       </div>
     </Draggable>
