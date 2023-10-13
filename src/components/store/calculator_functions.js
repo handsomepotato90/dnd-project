@@ -21,7 +21,7 @@ export function calculateArrayWithD(array) {
           result = operate(
             result,
             currentOperator,
-            Math.floor(Math.random() * num)
+            Math.floor(Math.random() * num + 1)
           );
         }
       } else if (
@@ -63,7 +63,6 @@ export function calculateMinimumRoll(array) {
       if (currentItem.startsWith("D")) {
         // Treat "D#" as 1 and perform the operation based on the current operator
 
-
         for (let j = 0; j < currentTimes; j++) {
           result = operate(result, currentOperator, 1);
         }
@@ -75,7 +74,7 @@ export function calculateMinimumRoll(array) {
         currentItem === "-" ||
         currentItem === "/" ||
         currentItem === "*"
-      ) { 
+      ) {
         // Set the current operator
         currentOperator = currentItem;
       }
