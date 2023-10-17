@@ -14,6 +14,7 @@ export function calculateArrayWithD(array) {
         // Check if there's a preceding number to determine count
         if (i > 0 && typeof array[i - 1] === "number") {
           count = array[i - 1];
+          result -= count; // Subtract the number before 'D4' from the result
         }
 
         // Generate random numbers 'count' times and add them to the result
