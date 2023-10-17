@@ -25,6 +25,7 @@ export default function UseSavedCalculations() {
             "Content-Type": "application/json",
           }
         );
+        
         calc.setCalculations(resData.presets.calculatorSaves);
       } catch (err) {}
     };
@@ -37,7 +38,9 @@ export default function UseSavedCalculations() {
       {formulas.map((preset, i) => (
         <Presets
           title={preset.calculationName}
+          id={auth.userId}
           formula={preset.formula}
+          presetId ={preset._id}
           key={i}
         ></Presets>
       ))}

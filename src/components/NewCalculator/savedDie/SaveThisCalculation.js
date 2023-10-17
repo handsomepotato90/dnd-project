@@ -25,7 +25,7 @@ export default function SaveThisCalculation() {
     }
     try {
       setSaveDies(false);
-      await sendRequest(
+      const resData = await sendRequest(
         process.env.REACT_APP_BACKEND_URL + "/calculator_options/save",
         "POST",
         JSON.stringify({
@@ -38,6 +38,7 @@ export default function SaveThisCalculation() {
           Authorization: "Bearer " + auth.token,
         }
       );
+      calc.setCalculations([...resData.presets]);
     } catch (err) {}
   };
 

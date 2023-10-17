@@ -10,7 +10,6 @@ import Build from "../../icons/Build.svg";
 import Profile from "../../icons/Profile.svg";
 import Logout from "../../icons/Logout.svg";
 import NavigationDrawer from "../UI/NavigationDrawer";
-import Dice from "../../icons/d20.svg";
 import CalculatorImage from "../UI/CalculatorRotation/CalculatorImage";
 import NavigatorBack from "./NavigatorBack";
 import Calculator from "../NewCalculator/Calculator";
