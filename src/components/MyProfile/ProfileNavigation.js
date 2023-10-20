@@ -7,6 +7,9 @@ export default function ProfileNavigation() {
       <Links to="/myProfile">
         <li>My Profile</li>
       </Links>
+      <Links to="/myProfile/CharecterSheets">
+        <li>Charecter Sheets</li>
+      </Links>
       <Links to="/myProfile/MyUploads">
         <li>My Uploads</li>
       </Links>

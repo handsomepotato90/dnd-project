@@ -1,0 +1,41 @@
+.buttons_health_mng {
+  width: 80px;
+  height: 25px;
+  color: white;
+}
+.values_calculators_style {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.health_managment {
+  grid-template-columns: 30% auto;
+  width: 100%;
+}
+.health_text,
+.health_text {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.health_text {
+  font-size: 18px;
+}
+.health_value_style {
+  font-size: 35px;
+}
+.temp_hp_style_general {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-size: 18px;
+}
+.temp_hp_style_general > span:last-child {
+  font-size: 40px;
+  color: rgb(26, 201, 224);
+}
+.health_value_style > input {
+  width: 55px;
+  height: 35px;
+}

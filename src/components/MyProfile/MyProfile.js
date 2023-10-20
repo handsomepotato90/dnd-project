@@ -6,28 +6,21 @@ import "./MyProfile.css";
 import Page404 from "../UI/Page404/Page404";
 
 const MyProfiles = React.lazy(() => import("./MyProfileGeneral"));
-const MyUploads = React.lazy(() =>
-  import("./MyUploads/MyUploads")
-);
-const Sessions = React.lazy(() =>
-  import("./Sessions/Sessions")
-);
-const AllSessions = React.lazy(() =>
-  import("./Sessions/AllSessionInvites")
-);
+const MyUploads = React.lazy(() => import("./MyUploads/MyUploads"));
+const Sessions = React.lazy(() => import("./Sessions/Sessions"));
+const AllSessions = React.lazy(() => import("./Sessions/AllSessionInvites"));
 const VotingForFreeDay = React.lazy(() =>
   import("./Sessions/SessionVotingForFreeDays")
 );
-const MySessions = React.lazy(() =>
-  import("./Sessions/MySessions")
+const MySessions = React.lazy(() => import("./Sessions/MySessions"));
+const Friends = React.lazy(() => import("./Friends/Friends"));
+const Edit = React.lazy(() => import("./MyUploads/Edit/Edit"));
+const CharecterSheets = React.lazy(() =>
+  import("./CharecterSheets/CharecterSheets")
 );
-const Friends = React.lazy(() =>
-  import("./Friends/Friends")
+const Charecters = React.lazy(() =>
+  import("./CharecterSheets/Charecters/Charecters")
 );
-const Edit = React.lazy(() =>
-  import("./MyUploads/Edit/Edit")
-);
-
 export default function MyProfile() {
   let routes = (
     <React.Fragment>
@@ -38,9 +31,13 @@ export default function MyProfile() {
       <Route path="/Sessions/AllSessions" element={<AllSessions />} />
       <Route path="/Sessions/AllSessions/:id" element={<VotingForFreeDay />} />
       <Route path="/Sessions/MySessions/:id" element={<MySessions />} />
+      <Route path="/CharecterSheets" element={<CharecterSheets />} />
+      <Route
+        path="/CharecterSheets/Charecters"
+        element={<Charecters />}
+      />
       <Route path="/" element={<MyProfiles />} />
       <Route path="*" element={<Page404 />} />
-
     </React.Fragment>
   );
   return (
