@@ -1,12 +1,19 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import CS from "../../../../store/CS-context";
+
 import styles from "./Stats.module.css";
 
 export default function ComponentInit(props) {
   const [changeValue, setChangeValue] = useState(false);
   const [prof, setProf] = useState(2);
+  const cs = useContext(CS);
   useEffect(() => {
     setProf(props.value);
-  }, [props.value]);
+
+    if (props.text === "Proficiency") {
+      cs.proff(props.value);
+    }
+  }, [props.value, cs]);
 
   return (
     <div className={styles.semi_important_stats}>

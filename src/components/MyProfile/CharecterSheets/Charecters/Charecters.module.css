@@ -14,3 +14,31 @@
   grid-template-columns: 50% 20% auto;
   gap: 30px;
 }
+.all_stats_holder {
+  height: 630px;
+  display: grid;
+  grid-template-columns: 25% 25% auto;
+}
+.left_pannel {
+  width: 400px;
+  height: 620px;
+  padding: 5px;
+}
+.prof_pannel_center {
+  width: 90%;
+  height: 580px;
+  margin: auto;
+  border: 2px solid red;
+  border-radius: 5px;
+  padding: 10px;
+}
+.right_panel {
+  width: 100%;
+  display: grid;
+  grid-template-rows: 20% auto;
+}
+.right_panel_top {
+  display: grid;
+  grid-template-columns: 20% 20% auto;
+  padding: 5px;
+}

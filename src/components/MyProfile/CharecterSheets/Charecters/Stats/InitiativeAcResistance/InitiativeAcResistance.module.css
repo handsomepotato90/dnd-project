@@ -1,0 +1,36 @@
+.general_look_initiative {
+  background-color: black;
+  border: 2px solid red;
+  border-radius: 30px;
+  text-align: center;
+  width: 100px;
+  margin: auto;
+}
+.initiative_value_style {
+  font-size: 42px;
+  color: red;
+}
+.initiative_value_style > input {
+  width: 70px;
+  height: 40px;
+  font-size: 32px;
+}
+.res_box {
+  border: 2px solid grey;
+  border-radius: 5px;
+  width: auto;
+  display: grid;
+  grid-template-columns: 49% auto;
+}
+.res_box_border {
+  border-right: 2px solid grey;
+}
+.res_box > div {
+  display: grid;
+  grid-template-rows: 25% auto;
+}
+.res_box > div > span {
+  text-align: center;
+  border-bottom: 2px solid grey;
+  color: white;
+}

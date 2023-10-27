@@ -1,0 +1,66 @@
+.wepons_desinghn {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  text-align: center;
+}
+.weapon_style {
+  margin-top: 10px;
+  color: white;
+}
+.other_actions_big {
+  max-width: 600px;
+  height: 150px;
+}
+.other_actions {
+  display: block;
+  word-wrap: break-word;
+  white-space: -moz-pre-wrap; /* Firefox 1.0-2.0 */
+  white-space: pre-wrap; /* current browsers */
+  margin-top: 10px;
+  margin-left: 30px;
+  border-left: 2px solid lightgray;
+  padding-left: 15px;
+}
+.title_for_content {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 15px;
+  margin-left: 10px;
+  color: gray;
+}
+.add_button_weapons {
+  height: 30px;
+  float: right;
+  cursor: pointer;
+}
+.weapon_boxes_holder {
+  padding: 10px;
+  border-bottom: 3px solid grey;
+  border-top: 3px solid grey;
+  height: 180px;
+  overflow: scroll;
+}
+.weapon_small_window {
+  left: 0;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 100px;
+  min-height: 300px;
+  padding: 5px;
+  width: auto;
+  position: absolute;
+  background-color: white;
+  border: 3px solid red;
+  border-radius: 5px;
+}
+.dice_trow {
+  min-width: 45px;
+  height: 35px;
+  margin: auto;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.normal_text_weapon{}

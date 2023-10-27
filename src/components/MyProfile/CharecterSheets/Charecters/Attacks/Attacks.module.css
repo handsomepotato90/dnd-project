@@ -1,0 +1,19 @@
+.attacks_big_box {
+  border: 2px solid red;
+  border-radius: 30px;
+  height: 96%;
+  display: grid;
+  grid-template-rows: 10% auto;
+}
+.attacks_navigation {
+  display: grid;
+  grid-template-columns: repeat(6, auto);
+  gap: 40px;
+  font-size: 14px;
+  color: white;
+  text-align: center;
+  margin: auto;
+}
+.attacks_navigation > div {
+  cursor: pointer;
+}

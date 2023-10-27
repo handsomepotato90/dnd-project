@@ -1,0 +1,21 @@
+.other {
+  border-radius: 5px;
+  margin-top: 10px;
+  width: 270px;
+  border: 2px solid red;
+  height: 270px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 15px;
+  padding: 10px;
+  overflow: scroll;
+}
+.main_text {
+  text-align: center;
+  font-weight: bolder;
+  color: lightgray;
+}
+.items_text {
+  text-align: center;
+}

@@ -1,0 +1,34 @@
+.general_description {
+  display: grid;
+  grid-template-columns: 10% 25% 30% auto;
+  gap: 20px;
+  width: 100%;
+}
+.general_description > span {
+  font-size: 12px;
+}
+.giant_skill_block {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.radio_button_skills {
+  width: 15px;
+  height: 15px;
+}
+.skill_orientation {
+  width: 100%;
+  text-align: center;
+  display: grid;
+  grid-template-columns: 10% 25% 50% auto;
+  font-size: 13px;
+  color: white;
+  margin-top: 10px;
+}
+.skill_orientation > input,
+.skill_orientation > div {
+  margin: auto;
+  height: 22px;
+  text-align: center;
+}
