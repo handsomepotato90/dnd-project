@@ -1,7 +1,7 @@
 .saving_trows_box {
   border-radius: 5px;
   margin-top: 10px;
-  width: 250px;
+  width: auto;
   border: 2px solid red;
   height: 100px;
   display: flex;
@@ -23,7 +23,7 @@
   text-align: center;
 }
 .saving_value_holder {
-  z-index: 5;
+  z-index: 1;
   background-color: grey;
   border: 1px solid red;
   border-radius: 100%;
@@ -34,7 +34,7 @@
   height: 30px;
 }
 .button_radio {
-  z-index: 5;
+  z-index: 1;
   width: 15px;
   height: 15px;
   border-radius: 100%;

@@ -1,0 +1,39 @@
+.currency_comp {
+  display: grid;
+  grid-template-columns: 40% auto;
+  margin-bottom: 10px;
+  margin-left: 10px;
+}
+.currency_type {
+  border: 2px solid red;
+  border-radius: 10px 0 0 10px;
+  color: white;
+  padding: 2px;
+}
+.currency_value {
+  width: 100%;
+  border: 2px solid red;
+  color: white;
+  border-left: 0;
+  padding: 2px;
+}
+.currency_set_value {
+  height: 30px;
+}
+.attunment_general {
+  display: grid;
+  grid-template-rows: 33% 33% auto;
+  gap: 10px;
+}
+.attuned_items_style {
+  border: 1px solid red;
+  width: 300px;
+  height: 30px;
+  margin: auto auto;
+}
+.text_area_style {
+  min-width: 99%;
+  min-height: 97%;
+  resize: none;
+  overflow: scroll;
+}

@@ -1,0 +1,7 @@
+.modifier_general_view {
+  width: 75%;
+  display: grid;
+  grid-template-columns: 33% 33% auto;
+  margin: 0 auto;
+
+}

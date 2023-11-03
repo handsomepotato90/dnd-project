@@ -1,0 +1,38 @@
+.inventory_box_look {
+  height: 100%;
+  display: grid;
+  grid-template-rows: 45% auto;
+}
+.top_part_look {
+  width: 100%;
+  min-height: 100%;
+  display: grid;
+  grid-template-columns: 20% auto;
+  text-align: center;
+}
+.description_style {
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+  gap: 20px;
+  overflow: scroll;
+}
+.notes_text_area {
+  width: 100%;
+  min-height: 430px;
+  resize: none;
+  overflow-y: scroll;
+}
+.general_notes {
+  background-color: #6e6e6e;
+  position: fixed;
+  z-index: 101;
+  width: 1000px;
+  height: 600px;
+  margin-left: calc(80% - 1000px);
+  margin-top: 10%;
+  border: 1px solid black;
+  display: grid;
+  grid-template-rows: 10% auto;
+  overflow-y: scroll;
+}

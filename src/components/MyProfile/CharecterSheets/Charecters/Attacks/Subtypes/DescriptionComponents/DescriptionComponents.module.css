@@ -1,0 +1,54 @@
+.background_style {
+  display: grid;
+  grid-template-rows: 30px auto;
+}
+.title_bck {
+  font-weight: bold;
+  font-size: 14px;
+  border-bottom: 1px solid grey;
+  margin-left: 15px;
+  margin-right: 15px;
+  color: #f44336;
+}
+.characteristics_style {
+  display: grid;
+  grid-template-rows: 15% auto;
+}
+.char_holder {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  padding: 10px 15px;
+}
+.single_char {
+  display: grid;
+  grid-template-rows: 50% auto;
+  height: 50px;
+  text-align: center;
+}
+.title_char_style {
+  font-size: 12px;
+  font-weight: bold;
+  color: #f44336;
+}
+.value_text {
+  font-size: 14px;
+  font-weight: bold;
+  color: white;
+}
+.input_text_style {
+  height: 25px;
+  width: 60px;
+  margin: 0 auto;
+  text-align: center;
+}
+.text_area_style {
+  padding: 10px;
+  min-height: 50px;
+  max-height: 300px;
+  height: auto;
+  resize: none;
+  overflow: scroll;
+}
+.text_area_size{
+    height: 300px;
+}

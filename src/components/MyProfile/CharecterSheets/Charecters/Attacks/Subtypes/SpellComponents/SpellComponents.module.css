@@ -30,7 +30,8 @@
   align-content: flex-start;
 }
 .one_spell_style {
-  width: 180px;
+  cursor: pointer;
+  width: 240px;
   text-align: center;
   border-bottom: 1px solid grey;
   color: #f44336;
@@ -39,7 +40,11 @@
   height: 30px;
   font-family: Mrs Eaves;
 }
-
+.add_spell_style {
+  text-align: center;
+  margin-left: 75px;
+  cursor: pointer;
+}
 .title_spell_text {
   font-size: 18px;
   font-weight: bold;
@@ -63,24 +68,41 @@
   z-index: 1000;
   left: 0;
   top: 0;
-  display: flex;
   width: auto;
-  flex-direction: column;
-  gap: 10px;
-  background-color: #f4ebd4;
   border: 3px solid #f44336;
   overflow: scroll;
 }
 .search_spells {
-  min-width: 150px;
+  background-color: #090a0a;
+  display: grid;
+  grid-template-rows: 90% auto;
+  min-width: 10px;
   min-height: 400px;
   padding: 5px;
   position: absolute;
   color: white;
 }
+.search_spells_window {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.search_spells_window_button {
+  width: 100%;
+  color: white;
+  background-color: red;
+}
+.search_spells_window_button:hover {
+  box-shadow: 0 0 20px #ececec;
+}
 .spell_text_block {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   left: 0;
   top: 0;
+  background-color: #f4ebd4;
   min-width: 200px;
   max-width: 400px;
   max-height: 500px;
@@ -88,4 +110,26 @@
   position: fixed;
   color: #f44336;
   border-radius: 5px;
+}
+.close_btn_pop_up {
+  cursor: pointer;
+  width: 25px;
+  background-color: #f44336;
+  border: none;
+  color: #ececec;
+  font-size: 20px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: 0;
+}
+.modifier_solo_view {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-size: 12px;
+  font-weight: bold;
+}
+.modifire_value{
+    font-size: 18px;
+    color: white;
 }

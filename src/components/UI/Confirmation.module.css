@@ -1,19 +1,22 @@
 .btn {
   width: 12vw;
   height: 4vh;
-  margin-top: 7%;
+  /* margin-top: 50px; */
   cursor: pointer;
   border: none;
   border-radius: 4px;
   font-size: 16px;
+  font-weight: bold;
   color: white;
 }
 .modal_big_box__style {
   z-index: 3;
   position: fixed;
   width: 30%;
-  height: 15vh;
+  min-height: 80px;
+  max-height: 300px;
   background-color: white;
+  box-shadow: 0 0 20px grey;
   margin-left: auto;
   margin-right: auto;
   left: 0;
@@ -23,6 +26,7 @@
   border-radius: 2px;
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   font-size: 3ch;
   font-weight: 600;
 }
@@ -59,19 +63,18 @@
   }
 }
 @media only screen and (max-width: 600px) {
-    .btn {
-        width: 30vw;
-        height: 4vh;
-        margin-top: 7%;
-        cursor: pointer;
-        border: none;
-        border-radius: 4px;
-        font-size: 2ch;
-        color: white;
-      }
-      .modal_big_box__style {
-        width: 80%;
-        font-size: 1.5ch;
-      }
-    
+  .btn {
+    width: 30vw;
+    height: 4vh;
+    margin-top: 7%;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    font-size: 2ch;
+    color: white;
+  }
+  .modal_big_box__style {
+    width: 80%;
+    font-size: 1.5ch;
+  }
 }

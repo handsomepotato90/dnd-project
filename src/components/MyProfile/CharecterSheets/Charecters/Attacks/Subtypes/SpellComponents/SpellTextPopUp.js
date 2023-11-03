@@ -5,8 +5,10 @@ export default function SpellTextPopUp(props) {
   console.log(!props.search ? 150 : 0);
   console.log(props.x);
 
-
   const removeMe = () => {
+    props.onClick(false);
+  };
+  const closeMe = () => {
     props.onClick(false);
   };
   return (
@@ -19,6 +21,9 @@ export default function SpellTextPopUp(props) {
         }}
         className={styles.spell_text_block}
       >
+        <button onClick={closeMe} className={styles.close_btn_pop_up}>
+          x
+        </button>
         <span className={styles.spell_name_style}>{props.name}</span>
         <span>{props.school}</span>
         <SpellText

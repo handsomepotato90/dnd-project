@@ -1,4 +1,6 @@
 import styles from "./SpellComponents.module.css";
+import { SvgComponent } from "../../../../../../Navigation/Navigation";
+import leftArrow from "../../../../../../../icons/leftArrow.svg";
 import Spell from "./Spell";
 
 const spellList = [
@@ -53,18 +55,42 @@ export default function SpellSearch(props) {
   const hideMe = () => {
     props.onClick(false);
   };
+  const addSpell = (spell) => {
+    props.addSpellToList(spell);
+  };
   return (
-    
     <div
       style={{
-        marginLeft: props.x + 50,
-        marginTop: props.y - 300,
+        marginLeft: 1450,
+        marginTop: 100,
       }}
       className={styles.search_spells}
     >
-      {spellList.map((e, i) => {
-        return <Spell search={true} key={i} spell={e}></Spell>;
-      })}
+      <div>
+        {spellList.map((e, i) => {
+          return (
+            <div className={styles.search_spells_window}>
+              <div onClick={() => addSpell(e)}>
+                <SvgComponent
+                  Image={leftArrow}
+                  height="30"
+                  color="red"
+                  width="30"
+                ></SvgComponent>
+              </div>
+              <Spell search={true} key={i} spell={e}></Spell>
+            </div>
+          );
+        })}
+      </div>
+      <div>
+        <button
+          onClick={hideMe}
+          className={`button ${styles.search_spells_window_button}`}
+        >
+          Close
+        </button>
+      </div>
     </div>
   );
 }

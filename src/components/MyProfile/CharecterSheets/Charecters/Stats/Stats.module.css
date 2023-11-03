@@ -1,49 +1,53 @@
 .important_stats_stats_holder {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  gap: 10px;
 }
 
 .semi_important_stats {
   border: 2px solid red;
-  width: 95px;
-  height: 95px;
+  min-width: 75px;
+  height: 75px;
   padding: 5px;
   text-align: center;
+}
+.semi_important_stats > span:first-child {
+  font-size: 12px;
+  font-weight: bold;
 }
 .semi_important {
   display: flex;
   flex-direction: row;
-  gap: 25px;
+  gap: 10px;
 }
 .semi_important_text_style {
   color: grey;
-  font-size: 40px;
+  font-size: 30px;
 }
 .stats_general_box {
   display: flex;
   flex-direction: column;
   border: 2px solid red;
-  width: 80px;
-  height: 95px;
+  width: 70px;
+  height: 75px;
   padding: 5px;
   color: white;
   text-align: center;
-  font-size: 40px;
+  font-size: 35px;
 }
 .stats_general_box > span:first-child {
-  font-size: 14px;
+  font-size: 10px;
+  font-weight: bold;
 }
 .total_stat {
   position: absolute;
-  width: 45px;
-  height: 30px;
-  font-size: 20px;
+  width: 35px;
+  height: 25px;
+  font-size: 16px;
   border: 2px solid red;
   /* color: black; */
   font-style: italic;
   border-radius: 50%;
-  margin-top: 75px;
+  margin-top: 65px;
   margin-left: 15px;
   text-align: center;
   background-color: white;
@@ -52,7 +56,7 @@
   border: 3px solid grey;
   border-radius: 5px;
   width: auto;
-  height: 90px;
+  height: 75px;
   padding: 5px;
   display: grid;
   grid-template-columns: 30% auto 30%;

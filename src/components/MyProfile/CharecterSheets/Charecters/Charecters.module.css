@@ -1,26 +1,28 @@
 .charecter_general {
-  border: 1px solid black;
-  width: 1200px;
+  display: block;
+  width: 75%;
   height: 800px;
   margin: 0 auto;
   padding: 10px;
 }
 .general_charecter_info {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns:auto 20%;
+  width: 100%;
+  height: 100px;
 }
 .important_stats_general_holder {
   display: grid;
-  grid-template-columns: 50% 20% auto;
-  gap: 30px;
+  grid-template-columns: 48% 16% auto;
+  gap: 10px;
 }
 .all_stats_holder {
   height: 630px;
   display: grid;
-  grid-template-columns: 25% 25% auto;
+  grid-template-columns: 21% 20% auto;
 }
 .left_pannel {
-  width: 400px;
+  width: auto;
   height: 620px;
   padding: 5px;
 }

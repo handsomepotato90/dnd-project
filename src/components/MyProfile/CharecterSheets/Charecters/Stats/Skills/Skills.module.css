@@ -1,7 +1,7 @@
 .general_description {
   display: grid;
   grid-template-columns: 10% 25% 30% auto;
-  gap: 20px;
+  gap: 15px;
   width: 100%;
 }
 .general_description > span {

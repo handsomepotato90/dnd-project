@@ -1,7 +1,7 @@
 .other {
   border-radius: 5px;
   margin-top: 10px;
-  width: 270px;
+  width: auto;
   border: 2px solid red;
   height: 270px;
   display: flex;

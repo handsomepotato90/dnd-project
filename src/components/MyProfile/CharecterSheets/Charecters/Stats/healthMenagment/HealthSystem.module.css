@@ -12,19 +12,25 @@
   grid-template-columns: 30% auto;
   width: 100%;
 }
-.health_text,
+
 .health_text {
   width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
-.health_text {
-  font-size: 18px;
+.health_text > span {
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
 }
 .health_value_style {
   font-size: 35px;
+  text-align: center;
+  font-weight: bold;
 }
+
 .temp_hp_style_general {
   display: flex;
   flex-direction: column;
@@ -38,4 +44,26 @@
 .health_value_style > input {
   width: 55px;
   height: 35px;
+}
+.death_saving_throws_general {
+  display: grid;
+  grid-template-rows: 30% auto auto;
+  height: 100%;
+  text-align: center;
+}
+.death_throw {
+  display: grid;
+  grid-template-columns: 50% auto;
+}
+.death_saving_throws_general > span {
+  color: white;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: bold;
+}
+.saving_throws {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
 }

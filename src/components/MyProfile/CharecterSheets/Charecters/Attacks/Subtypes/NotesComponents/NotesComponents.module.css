@@ -1,0 +1,129 @@
+.diff_sections {
+  display: flex;
+  margin: auto;
+  gap: 20px;
+  width: 100%;
+  justify-content: center;
+}
+.section_text {
+  font-size: 12px;
+  font-weight: bold;
+  color: #f44336;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 5px;
+}
+.sections_block {
+  display: grid;
+  grid-template-rows: 42px auto;
+  padding: 0 20px;
+}
+.search_block {
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto 10% 10%;
+  gap: 10px;
+}
+
+.add_new_comment_svg {
+  margin-top: 10px;
+  width: 50px;
+  cursor: pointer;
+}
+.pop_up_notes {
+  display: grid;
+  grid-template-rows: 10% auto 10%;
+  position: fixed;
+  z-index: 101;
+  width: 35vw;
+  height: 35vh;
+  background-color: white;
+  margin-left: 10%;
+  top: 25%;
+  background-color: grey;
+  border: 1px solid black;
+  gap: 10px;
+  padding: 20px 10px;
+  border-radius: 5px;
+}
+.back_drop {
+  position: fixed;
+  z-index: 2;
+  left: 0;
+  top: 0;
+  width: 100%;
+  min-height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.pop_up_text_area {
+  resize: none;
+}
+.pop_up_button {
+  width: 200px;
+  margin: auto;
+}
+.pop_up_button:hover {
+  box-shadow: 0 0 20px white;
+}
+.pop_up_input {
+  height: 35px;
+}
+.notes_display {
+  display: flex;
+  flex-direction: column;
+}
+.single_message_obj {
+  width: 95%;
+  height: auto;
+  margin: 0 auto;
+  text-align: justify;
+  display: grid;
+  grid-template-rows: 20px auto;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-top: 5px;
+  background-color: white;
+  padding: 10px 15px;
+  gap: 15px;
+}
+.title_note {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 14px;
+}
+.title_n_menu {
+  display: grid;
+  grid-template-columns: auto 50px 50px;
+}
+.eddit_button {
+  width: 30px;
+  margin: 0 auto;
+  cursor: pointer;
+}
+.eddit_input {
+  height: 30px;
+  padding: 0;
+}
+.eddit_text_area {
+  height: 300px;
+  resize: none;
+}
+.time_stamp {
+  margin-left: auto;
+  margin-right: 0;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.all_session_btn {
+  background-color: #b350af;
+}
+.all_session_btn:hover {
+  box-shadow: 0 0 20px #b350af;
+}
+.last_sessions_btn,
+.all_session_btn {
+  color: white;
+}

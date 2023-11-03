@@ -1,8 +1,9 @@
 import { useState } from "react";
 import SpellTextPopUp from "./SpellTextPopUp";
-
+import { SvgComponent } from "../../../../../../Navigation/Navigation";
 import styles from "./SpellComponents.module.css";
 import SpellSearch from "./SpellSearch";
+import add from "../../../../../../../icons/add.svg"
 export default function Spell(props) {
   const [cordinate, setCordinate] = useState({ x: 0, y: 0 });
   const [spellDescription, setSpellDescription] = useState(false);
@@ -11,9 +12,12 @@ export default function Spell(props) {
   const removePopUp = (rem) => {
     setSpellDescription(rem);
   };
-  const hideSpellSearch= (rem) =>{
-    setRequestSpells(rem)
-  }
+  const hideSpellSearch = (rem) => {
+    setRequestSpells(rem);
+  };
+  const addSpell = (spell) => {
+    props.newSpell(spell);
+  };
   return (
     <>
       {props.spell ? (
@@ -33,9 +37,14 @@ export default function Spell(props) {
             setRequestSpells(true);
             setCordinate({ x: e.clientX, y: e.clientY });
           }}
-          className={`${styles.one_spell_style}`}
+          className={`${styles.add_spell_style}`}
         >
-          Add Spell
+          <SvgComponent
+            Image={add}
+            height="30"
+            color="red"
+            width="30"
+          ></SvgComponent>
         </div>
       )}
       {spellDescription && props.spell && (
@@ -56,6 +65,7 @@ export default function Spell(props) {
       )}
       {requestSpells && (
         <SpellSearch
+          addSpellToList={addSpell}
           onClick={hideSpellSearch}
           x={cordinate.x}
           y={cordinate.y}

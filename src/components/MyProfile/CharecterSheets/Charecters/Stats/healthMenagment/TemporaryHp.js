@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useContext } from "react";
 import HealthContext from "../../../../../store/health_CSH-context";
 
 import styles from "./HealthSystem.module.css";
@@ -6,7 +6,6 @@ import styles from "./HealthSystem.module.css";
 export default function TemporaryHp() {
   const [giveThp, setGiveThp] = useState(false);
   const chp = useContext(HealthContext);
-  console.log(chp);
   return (
     <div className={styles.temp_hp_style_general}>
       <span>Temp HP</span>

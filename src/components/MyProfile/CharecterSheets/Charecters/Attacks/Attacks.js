@@ -6,7 +6,7 @@ import FeaturesNTraits from "./Subtypes/FeaturesNTraits";
 import Inventory from "./Subtypes/Inventory";
 import Notes from "./Subtypes/Notes";
 import Spells from "./Subtypes/Spells";
-
+import NotesModal from "../../../../UI/NotesModal";
 export default function Attacks() {
   const [actions, setActions] = useState(true);
   const [spells, setSpells] = useState(false);
@@ -14,6 +14,8 @@ export default function Attacks() {
   const [traits, setTraits] = useState(false);
   const [description, setDescription] = useState(false);
   const [notes, setNotes] = useState(false);
+
+  
 
   const switchActions = () => {
     setActions(true);
@@ -76,11 +78,11 @@ export default function Attacks() {
       </div>
       <div>
         {actions && <Actions></Actions>}
-        {description && <Description></Description>}
-        {traits && <FeaturesNTraits></FeaturesNTraits>}
-        {inventory && <Inventory></Inventory>}
-        {notes && <Notes></Notes>}
         {spells && <Spells></Spells>}
+        {inventory && <Inventory></Inventory>}
+        {traits && <FeaturesNTraits></FeaturesNTraits>}
+        {description && <Description></Description>}
+        {notes && <NotesModal onClick={(val) => setNotes(val)}><Notes></Notes></NotesModal>}
       </div>
     </div>
   );
