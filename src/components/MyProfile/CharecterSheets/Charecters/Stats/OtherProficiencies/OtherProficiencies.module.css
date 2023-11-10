@@ -2,7 +2,7 @@
   border-radius: 5px;
   margin-top: 10px;
   width: auto;
-  border: 2px solid red;
+  border: 2px solid #f44336;
   height: 270px;
   display: flex;
   flex-direction: column;
@@ -14,8 +14,12 @@
 .main_text {
   text-align: center;
   font-weight: bolder;
-  color: lightgray;
 }
 .items_text {
   text-align: center;
+  color: white;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: bold;
+  margin-top: 10px;
 }

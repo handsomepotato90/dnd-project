@@ -41,7 +41,7 @@ export default function ClassLevelComponent(props) {
         name="classes"
         onChange={getClassName}
       ></Select>
-      <input value={level} onChange={(e) => setLevel(e.target.value)}></input>
+      <input type="number" value={level} onChange={(e) => setLevel(e.target.value)}></input>
       <button onClick={submitClass}>ADD</button>
     </div>
   );

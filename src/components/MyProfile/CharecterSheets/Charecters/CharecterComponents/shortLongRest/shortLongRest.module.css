@@ -1,0 +1,28 @@
+.rest_buttons__styles {
+  width: 200px;
+  height: 35px;
+  border: 1px solid #f44336;
+  cursor: pointer;
+}
+.display_window {
+  position: fixed;
+  display: grid;
+  grid-template-rows: 5% 180px auto;
+  width: 280px;
+  height: 80%;
+  background-color: white;
+  right: 10px;
+  top: 100px;
+  border-radius: 10px;
+  border: 3px solid #f44336;
+  box-shadow: 0 0 20px #ccc;
+  padding: 10px;
+  z-index: 2;
+}
+.display_window__close {
+  cursor: pointer;
+  height: 40px;
+  width: 50px;
+  margin-left: auto;
+  margin-right: 20px;
+}

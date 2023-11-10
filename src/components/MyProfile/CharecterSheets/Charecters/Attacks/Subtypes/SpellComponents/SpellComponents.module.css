@@ -13,11 +13,14 @@
 .general_spell_title {
   margin: auto;
   margin-top: 10px;
-  display: block;
+  display: flex;
+  flex-direction: row;
   font-size: 18px;
   color: white;
   border-bottom: 1px solid grey;
   width: 95%;
+  align-items: flex-end;
+  gap: 30px;
 }
 .spells_display_box {
   display: flex;
@@ -71,11 +74,12 @@
   width: auto;
   border: 3px solid #f44336;
   overflow: scroll;
+  max-height: 92%;
 }
 .search_spells {
   background-color: #090a0a;
   display: grid;
-  grid-template-rows: 90% auto;
+  grid-template-rows: auto 93% ;
   min-width: 10px;
   min-height: 400px;
   padding: 5px;
@@ -129,7 +133,47 @@
   font-size: 12px;
   font-weight: bold;
 }
-.modifire_value{
-    font-size: 18px;
-    color: white;
+.modifire_value {
+  font-size: 18px;
+  color: white;
+}
+.spell_level_btns {
+  width: 100%;
+  margin-top: 10px;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+.spell_btn_holders {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  text-align: center;
+  width: 200px;
+  align-items: center;
+}
+.title_holder,
+.btn_text {
+  font-size: 14px;
+  font-weight: bold;
+}
+.btn_text {
+  color: white;
+  padding: 3px 6px;
+  border-radius: 5px;
+}
+.spell_add_remove_btn_holders {
+  display: flex;
+  gap: 15px;
+  flex-direction: row;
+  cursor: pointer;
+}
+.slots_display {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+}
+.add_slot_btn {
 }

@@ -7,7 +7,7 @@
 }
 .general_charecter_info {
   display: grid;
-  grid-template-columns:auto 20%;
+  grid-template-columns: auto 20%;
   width: 100%;
   height: 100px;
 }
@@ -17,20 +17,19 @@
   gap: 10px;
 }
 .all_stats_holder {
-  height: 630px;
+  height: 615px;
   display: grid;
   grid-template-columns: 21% 20% auto;
 }
 .left_pannel {
   width: auto;
   height: 620px;
-  padding: 5px;
 }
 .prof_pannel_center {
   width: 90%;
   height: 580px;
   margin: auto;
-  border: 2px solid red;
+  border: 2px solid #f44336;
   border-radius: 5px;
   padding: 10px;
 }
@@ -43,4 +42,17 @@
   display: grid;
   grid-template-columns: 20% 20% auto;
   padding: 5px;
+}
+.save_btn_holder_position {
+  position: fixed;
+  right: 20px;
+  top: 120px;
+  width: 150px;
+}
+.save_btn_position {
+  width: 100%;
+  margin: 0 auto;
+  padding: 10px;
+  border: 1px solid #f44336;
+  cursor: pointer;
 }

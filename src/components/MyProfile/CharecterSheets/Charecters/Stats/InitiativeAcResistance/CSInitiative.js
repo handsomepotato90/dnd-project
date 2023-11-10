@@ -6,12 +6,12 @@ export default function CSInitiative() {
   const [initiative, setInitiative] = useState(0);
   const cs = useContext(CS);
   useEffect(() => {
-    setInitiative(cs.stats.Dex.value);
+    setInitiative(cs.stats.Dex.modifire);
   }, [cs.stats.Dex]);
   return (
     <div className={styles.general_look_initiative}>
-      <span>Initiative</span>
-      <div className={styles.initiative_value_style}>{initiative}</div>
+      <span >Initiative</span>
+      <div className={`overflowing ${styles.initiative_value_style}`}>{initiative}</div>
     </div>
   );
 }

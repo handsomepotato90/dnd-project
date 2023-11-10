@@ -11,8 +11,6 @@ export default function Modifires(props) {
     cs.spellmods(props.title, newGivenValue);
     setChangeOfMod(false);
   };
-
-  console.log(cs);
   return (
     <div className={styles.modifier_solo_view}>
       {!changeOfMod ? (
@@ -24,6 +22,7 @@ export default function Modifires(props) {
         </span>
       ) : (
         <input
+          type="number"
           autoFocus={true}
           onBlur={newValue}
           onChange={(e) => setNewGivenValue(e.target.value)}

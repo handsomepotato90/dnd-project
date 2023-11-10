@@ -1,8 +1,6 @@
 import NameClassLevel from "./CharecterComponents/NameClassLevel";
 import ShortLongRest from "./CharecterComponents/ShortLongRest";
 import { CSProvider } from "../../../store/CS-context";
-
-import styles from "./Charecters.module.css";
 import Stats from "./Stats/Stats";
 import SavingThrows from "./Stats/SavingThrows/SavingThrows";
 import PassiveSenses from "./Stats/PassiveSenses/PassiveSenses";
@@ -11,8 +9,16 @@ import Skills from "./Stats/Skills/Skills";
 import CSInitiative from "./Stats/InitiativeAcResistance/CSInitiative";
 import CSArmorclass from "./Stats/InitiativeAcResistance/CSArmorclass";
 import Resistance from "./Stats/InitiativeAcResistance/Resistance";
-import Attacks from "./Attacks/Attacks"
+import Attacks from "./Attacks/Attacks";
+import SaveButton from "./SaveButton";
+
+
+import styles from "./Charecters.module.css";
+
 export default function Charecters() {
+
+
+
   return (
     <CSProvider>
       <div className={styles.charecter_general}>
@@ -39,10 +45,13 @@ export default function Charecters() {
               <Resistance></Resistance>
             </div>
             <div>
-                <Attacks></Attacks>
+              <Attacks></Attacks>
             </div>
           </div>
         </div>
+        <>
+          <SaveButton></SaveButton>
+        </>
       </div>
     </CSProvider>
   );

@@ -40,6 +40,7 @@ const ClassDisplay = (props) => {
         </span>
       ) : (
         <input
+          type="number"
           className={styles.class_level_input}
           autoFocus={true}
           onBlur={() => levelUp(props.classEntry.class)}

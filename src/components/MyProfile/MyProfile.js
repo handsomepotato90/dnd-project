@@ -18,8 +18,11 @@ const Edit = React.lazy(() => import("./MyUploads/Edit/Edit"));
 const CharecterSheets = React.lazy(() =>
   import("./CharecterSheets/CharecterSheets")
 );
-const Charecters = React.lazy(() =>
-  import("./CharecterSheets/Charecters/Charecters")
+const MyCharecters = React.lazy(() =>
+  import("./CharecterSheets/Charecters/CharectersContextHolder")
+);
+const NewCharecters = React.lazy(() =>
+  import("./CharecterSheets/Charecters/CharectersContextHolder")
 );
 export default function MyProfile() {
   let routes = (
@@ -34,7 +37,11 @@ export default function MyProfile() {
       <Route path="/CharecterSheets" element={<CharecterSheets />} />
       <Route
         path="/CharecterSheets/Charecters"
-        element={<Charecters />}
+        element={<NewCharecters />}
+      />
+      <Route
+        path="/CharecterSheets/Charecters/:id"
+        element={<MyCharecters />}
       />
       <Route path="/" element={<MyProfiles />} />
       <Route path="*" element={<Page404 />} />

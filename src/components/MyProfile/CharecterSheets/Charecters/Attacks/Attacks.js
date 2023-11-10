@@ -72,7 +72,7 @@ export default function Attacks() {
         <div onClick={switchActions}>Actions</div>
         <div onClick={switchSpells}>Spells</div>
         <div onClick={switchInventory}>Inventory</div>
-        <div onClick={switchTraits}>Features & Traits</div>
+        {/* <div onClick={switchTraits}>Features & Traits</div> */}
         <div onClick={switchDescription}>Description</div>
         <div onClick={switchNotes}>Notes</div>
       </div>
@@ -80,7 +80,7 @@ export default function Attacks() {
         {actions && <Actions></Actions>}
         {spells && <Spells></Spells>}
         {inventory && <Inventory></Inventory>}
-        {traits && <FeaturesNTraits></FeaturesNTraits>}
+        {/* {traits && <FeaturesNTraits></FeaturesNTraits>} */}
         {description && <Description></Description>}
         {notes && <NotesModal onClick={(val) => setNotes(val)}><Notes></Notes></NotesModal>}
       </div>

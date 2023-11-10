@@ -1,6 +1,7 @@
 import { useState, useContext, useEffect } from "react";
 import DeathSaving from "./DeathSaving";
 import HealthContext from "../../../../../store/health_CSH-context";
+import CS from "../../../../../store/CS-context";
 
 import styles from "./HealthSystem.module.css";
 
@@ -8,6 +9,7 @@ export default function Health() {
   const [needToChangeMaxHp, setNeedToChangeMaxHp] = useState(false);
   const [checkCurrHp, setCheckCurrHp] = useState(false);
   const csh = useContext(HealthContext);
+  const cs = useContext(CS);
   useEffect(() => {
     if (csh.currHp <= 0 && csh.maxHp > 0) {
       setCheckCurrHp(true);
@@ -15,6 +17,10 @@ export default function Health() {
       setCheckCurrHp(false);
     }
   }, [csh.currHp]);
+  useEffect(() => {
+    csh.changeMaxHp(cs.maxHp);
+  }, [cs.maxHp]);
+
   return (
     <div className={styles.health_managment}>
       {!checkCurrHp && (
@@ -32,9 +38,11 @@ export default function Health() {
               </span>
             ) : (
               <input
+                type="number"
                 autoFocus={true}
                 onChange={(e) => {
                   csh.changeMaxHp(e.target.value);
+                  cs.maxHpSetter(e.target.value);
                 }}
                 onBlur={() => setNeedToChangeMaxHp(false)}
               ></input>

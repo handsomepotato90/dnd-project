@@ -1,9 +1,11 @@
 import styles from "./CharecterComponents.module.css";
+import LongRest from "./shortLongRest/LongRest";
+import ShortRest from "./shortLongRest/ShortRest";
 export default function ShortLongRest() {
   return (
     <div className={styles.general_charecter_rest_style}>
-      <button>Short Rest</button>
-      <button>Long Rest</button>
+      <ShortRest></ShortRest>
+      <LongRest></LongRest>
     </div>
   );
 }

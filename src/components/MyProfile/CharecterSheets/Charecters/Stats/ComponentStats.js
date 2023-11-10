@@ -1,39 +1,39 @@
-import { useState } from "react";
-
+import { useState, useEffect, useContext } from "react";
+import CS from "../../../../store/CS-context";
 import styles from "./Stats.module.css";
-import { useEffect } from "react";
 
 export default function ComponentStats(props) {
+  const cs = useContext(CS);
   const [inputValue, setInputValue] = useState(false);
-  const [statValue, setStatValue] = useState(0);
-  const [modifier, setModifier] = useState(0);
+  const [statValue, setStatValue] = useState(cs.stats[props.shortHand].value);
+  const [modifier, setModifier] = useState(cs.stats[props.shortHand].modifire);
 
   useEffect(() => {
-    setStatValue(props.value);
-  }, [props.value]);
-
-  useEffect(() => {
+    setStatValue(cs.stats[props.shortHand].value);
+  }, [cs.stats]);
+  const changeStat = () => {
     const baseStatValue = -5;
     const modifierCalc = baseStatValue + Math.floor(statValue / 2);
-
     setModifier(modifierCalc);
-  }, [props.value, statValue]);
-
+    setInputValue(false);
+    cs.statsSetter(props.shortHand, statValue, modifierCalc);
+  };
   return (
     <div className={`black__background ${styles.stats_general_box}`}>
       <span>{props.text}</span>
-      <span className="red_text">{modifier}</span>
+      <span className="red_text overflowing">{modifier}</span>
       {inputValue ? (
         <input
+          type="number"
           className={`${styles.total_stat}`}
           autoFocus={true}
           onChange={(e) => setStatValue(e.target.value)}
-          onBlur={() => setInputValue(false)}
+          onBlur={changeStat}
         ></input>
       ) : (
         <div
           onClick={() => setInputValue(true)}
-          className={`red_text ${styles.total_stat}`}
+          className={`overflowing red_text ${styles.total_stat}`}
         >
           {statValue}
         </div>

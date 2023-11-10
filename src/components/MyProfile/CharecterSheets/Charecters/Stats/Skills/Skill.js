@@ -3,19 +3,20 @@ import CS from "../../../../../store/CS-context";
 import styles from "./Skills.module.css";
 
 export default function Skill(props) {
-  const [modifierValue, setModifierValues] = useState(0);
-  const [prof, setProf] = useState(false);
   const cs = useContext(CS);
-
+  const [modifierValue, setModifierValues] = useState(0);
+  const [prof, setProf] = useState(cs.skillsProf[props.skill].value);
   const changeProf = () => {
     setProf((current) => !current);
-    cs.setingSkills(props.skill, prof);
+    cs.setingSkills(props.skill, !prof);
   };
   useEffect(() => {
     if (prof === true) {
-      setModifierValues(cs.stats[props.mod].value + parseInt(cs.proficiency));
+      setModifierValues(
+        cs.stats[props.mod].modifire + parseInt(cs.proficiency)
+      );
     } else {
-      setModifierValues(cs.stats[props.mod].value);
+      setModifierValues(cs.stats[props.mod].modifire);
     }
   }, [props, cs.stats[props.mod], cs.skillsProf, prof, changeProf]);
 
@@ -29,7 +30,7 @@ export default function Skill(props) {
       ></input>
       <div>{props.mod}</div>
       <div className={styles.border_bot}>{props.skill}</div>
-      <button className={styles.border_bot}>{modifierValue}</button>
+      <button className={`overflowing ${styles.border_bot}`}>{modifierValue}</button>
     </div>
   );
 }

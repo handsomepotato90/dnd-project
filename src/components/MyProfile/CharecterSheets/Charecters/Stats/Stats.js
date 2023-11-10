@@ -7,16 +7,19 @@ export default function Stats(props) {
   return (
     <>
       <div className={styles.important_stats_stats_holder}>
-        <ComponentStats text={"STRENGHT"} value={14}></ComponentStats>
-        <ComponentStats text={"DEXTERITY"} value={20}></ComponentStats>
-        <ComponentStats text={"CONSTITUTION"} value={8}></ComponentStats>
-        <ComponentStats text={"INTELIGENCE"} value={20}></ComponentStats>
-        <ComponentStats text={"WISDOM"} value={10}></ComponentStats>
-        <ComponentStats text={"CHARISMA"} value={26}></ComponentStats>
+        <ComponentStats text={"STRENGHT"} shortHand={"Str"}></ComponentStats>
+        <ComponentStats text={"DEXTERITY"} shortHand={"Dex"}></ComponentStats>
+        <ComponentStats
+          text={"CONSTITUTION"}
+          shortHand={"Con"}
+        ></ComponentStats>
+        <ComponentStats text={"INTELIGENCE"} shortHand={"Int"}></ComponentStats>
+        <ComponentStats text={"WISDOM"} shortHand={"Wis"}></ComponentStats>
+        <ComponentStats text={"CHARISMA"} shortHand={"Cha"}></ComponentStats>
       </div>
       <div className={styles.semi_important}>
-        <ComponentInit text={"PROFICIENCY"} value={"2"}></ComponentInit>
-        <ComponentInit text={"SPEED"} value={`30ft.`}></ComponentInit>
+        <ComponentInit text={"PROFICIENCY"}></ComponentInit>
+        <ComponentInit text={"SPEED"}></ComponentInit>
       </div>
       <div>
         <HpAndHpManagment></HpAndHpManagment>

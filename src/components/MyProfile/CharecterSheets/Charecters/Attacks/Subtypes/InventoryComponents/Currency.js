@@ -24,7 +24,8 @@ export default function Currency(props) {
         </span>
       ) : (
         <input
-        className={styles.currency_set_value}
+          type="number"
+          className={styles.currency_set_value}
           autoFocus={true}
           onBlur={contextNewValue}
           onChange={(e) => setNewValue(e.target.value)}

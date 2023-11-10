@@ -13,6 +13,7 @@ export default function TemporaryHp() {
         <span onClick={() => setGiveThp(true)}>{chp.tempHp}</span>
       ) : (
         <input
+          type="number"
           autoFocus={true}
           onBlur={() => setGiveThp(false)}
           onChange={(e) => chp.changeTempHp(e.target.value)}

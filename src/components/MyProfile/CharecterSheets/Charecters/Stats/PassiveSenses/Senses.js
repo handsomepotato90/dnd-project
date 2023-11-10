@@ -9,28 +9,28 @@ export default function Senses(props) {
     if (props.text === "PASSIVE WIS (PERCEPTION)") {
       const passPerception =
         cs.stats.Wis.proff === true
-          ? 10 + cs.stats.Wis.value + parseInt(cs.proficiency)
-          : 10 + cs.stats.Wis.value;
+          ? 10 + cs.stats.Wis.modifire + parseInt(cs.proficiency)
+          : 10 + cs.stats.Wis.modifire;
       setPassivePerception(passPerception);
     }
     if (props.text === "PASSIVE INT (INVESTIGATION)") {
       const passPerception =
         cs.stats.Int.proff === true
-          ? 10 + cs.stats.Int.value + parseInt(cs.proficiency)
-          : 10 + cs.stats.Int.value;
+          ? 10 + cs.stats.Int.modifire + parseInt(cs.proficiency)
+          : 10 + cs.stats.Int.modifire;
       setPassivePerception(passPerception);
     }
     if (props.text === "PASSIVE WIS (INSIGHT)") {
       const passPerception =
         cs.stats.Wis.proff === true
-          ? 10 + cs.stats.Wis.value + parseInt(cs.proficiency)
-          : 10 + cs.stats.Wis.value;
+          ? 10 + cs.stats.Wis.modifire + parseInt(cs.proficiency)
+          : 10 + cs.stats.Wis.modifire;
       setPassivePerception(passPerception);
     }
   }, [props, cs.stats, cs.proficiency]);
   return (
     <div className={styles.sense_main_holder}>
-      <div className={styles.value_holder}>{passivePerception}</div>
+      <div className={`overflowing ${styles.value_holder}`}>{passivePerception}</div>
       <div className={styles.sense_holder}>{props.text}</div>
     </div>
   );

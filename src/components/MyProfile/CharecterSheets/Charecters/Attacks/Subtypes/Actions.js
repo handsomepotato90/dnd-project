@@ -13,22 +13,26 @@ export default function Actions() {
   const [cordinate, setCordinate] = useState({ x: 0, y: 0 });
   const cs = useContext(CS);
 
+  useEffect(() => {
+    setWeapons([...cs.weapons]);
+  }, [cs.weapons]);
+
   const openAddWeapon = (e) => {
     setCordinate({ x: e.clientX, y: e.clientY });
     setAddWeapon(true);
   };
   const addWeaponToList = () => {
     cs.addWeapons(type, range, hit, damage);
-    setWeapons(
-      weapons.concat(
-        <ActionsWeapons
-          type={type}
-          range={range}
-          hit={hit}
-          damage={damage}
-        ></ActionsWeapons>
-      )
-    );
+    // setWeapons(
+    //   weapons.concat(
+    //     <ActionsWeapons
+    //       type={type}
+    //       range={range}
+    //       hit={hit}
+    //       damage={damage}
+    //     ></ActionsWeapons>
+    //   )
+    // );
     setAddWeapon(false);
   };
   return (
@@ -42,7 +46,19 @@ export default function Actions() {
             <div className="red_text">HIT / DC</div>
             <div className="red_text">DAMAGE</div>
           </div>
-          <div className={`${styles.weapon_boxes_holder}`}>{weapons}</div>
+          <div className={`${styles.weapon_boxes_holder}`}>
+            {weapons.map((e, i) => {
+              return (
+                <ActionsWeapons
+                  key={i}
+                  type={e.type}
+                  range={e.range}
+                  hit={e.hit}
+                  damage={e.damage}
+                ></ActionsWeapons>
+              );
+            })}
+          </div>
           {addWeapon && (
             <div
               style={{
