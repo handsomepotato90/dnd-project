@@ -121,7 +121,6 @@ export const useAuth = () => {
     const storedData = JSON.parse(localStorage.getItem("userData"));
     const rememberUser = async () => {
       if (remember && remember !== "undefined" && !storedData) {
-        console.log("here")
         try {
           const resData = await sendRequest(
             process.env.REACT_APP_BACKEND_URL + "/remember",

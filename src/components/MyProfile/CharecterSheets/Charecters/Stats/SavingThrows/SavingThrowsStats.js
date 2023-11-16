@@ -27,6 +27,7 @@ export default function SavingThrowsStats(props) {
       <input
         className={styles.button_radio}
         type="radio"
+        readOnly={true}
         onClick={setProf}
         checked={proff}
       ></input>

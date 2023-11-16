@@ -8,7 +8,7 @@ export default function Proficiencies(props) {
   const cs = useContext(CS);
   useEffect(() => {
     setArmor(cs.otherProficiency[props.text]);
-  }, cs.otherProficiency);
+  }, [cs.otherProficiency]);
   const setOtherProf = () => {
     setMoreArmours(false);
     if (armor.trim() === "") {

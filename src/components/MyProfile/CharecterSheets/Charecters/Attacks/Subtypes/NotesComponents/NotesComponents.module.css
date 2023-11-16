@@ -33,12 +33,16 @@
 .pop_up_notes {
   display: grid;
   grid-template-rows: 10% auto 10%;
-  position: fixed;
+  position: absolute;
   z-index: 101;
   width: 35vw;
   height: 35vh;
   background-color: white;
-  margin-left: 10%;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  top: 10%;
   top: 25%;
   background-color: grey;
   border: 1px solid black;
@@ -126,4 +130,22 @@
 .last_sessions_btn,
 .all_session_btn {
   color: white;
+}
+@media only screen and (max-width: 600px) {
+  .sections_block {
+    padding: 0 5px;
+  }
+  .search_block {
+    grid-template-columns: auto 20% 20%;
+    gap: 5px;
+  }
+  .pop_up_notes {
+    width: 350px;
+    height: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    top: 20px;
+  }
 }

@@ -9,7 +9,6 @@ export default function OtherItems() {
   const inventorySave = () => {
     cs.otherInventory(inventoryItems);
   };
-  console.log(cs)
   return (
     <textarea
       onBlur={inventorySave}

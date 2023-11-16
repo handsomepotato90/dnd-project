@@ -11,6 +11,12 @@ export default function SpellContent(props) {
   const addNewSpell = (spell) => {
     setSpellArray([...spellArray, spell]);
   };
+  const removeSpell = (spell) => {
+    const indexOfSpell = spellArray.indexOf(spell)
+
+     spellArray.splice(indexOfSpell,1)
+     setSpellArray([...spellArray])
+  };
   const spellSlots = () => {
     setSlots(slots + 1);
     cs.spellSetter(props.display, "add");
@@ -32,7 +38,7 @@ export default function SpellContent(props) {
 
   useEffect(() => {
     setSpellArray([...cs.spells[props.display].spells]);
-  }, [props.display,cs.spells]);
+  }, [props.display, cs.spells]);
   return (
     <div>
       <div className={styles.general_spell_title}>
@@ -73,7 +79,13 @@ export default function SpellContent(props) {
       <div className={styles.spells_display_box}>
         {spellArray.map((e, i) => {
           return (
-            <Spell search={false} lvl={props.display} key={i} spell={e}></Spell>
+            <Spell
+              remove={removeSpell}
+              search={false}
+              lvl={props.display}
+              key={i}
+              spell={e}
+            ></Spell>
           );
         })}
         <Spell

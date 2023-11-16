@@ -5,12 +5,14 @@ import Spell from "./Spell";
 import CS from "../../../../../../store/CS-context";
 import { useState, useEffect, useContext } from "react";
 import { useHttpClient } from "../../../../../../hooks/http-hook";
+import useWindowSize from "../../../../../../hooks/screensize-hook";
 
 export default function SpellSearch(props) {
   const [spellList, setSpellList] = useState([]);
   const { sendRequest } = useHttpClient();
   const cs = useContext(CS);
-
+  const size = useWindowSize();
+  const mod = size.width > 600 ? 330 : -240;
   useEffect(() => {
     const searchSpellLevel = async () => {
       try {
@@ -35,7 +37,6 @@ export default function SpellSearch(props) {
     props.onClick(false);
   };
   const addSpell = (spell) => {
-    // console.log(spell);
     cs.addSpells(spell.level, spell);
     props.addSpellToList(spell);
   };
@@ -43,7 +44,7 @@ export default function SpellSearch(props) {
   return (
     <div
       style={{
-        marginLeft: 1450,
+        marginLeft: props.x + mod,
         marginTop: 100,
       }}
       className={styles.search_spells}

@@ -19,13 +19,9 @@ export const HealthCSHProvider = (props) => {
     setNewMaxHp(max);
   };
   const changeTempHp = (givenHp) => {
-    console.log(givenHp);
     setTempHp(givenHp);
   };
   const modifyHp = (value, dmgType) => {
-    console.log(typeof newCurrHp);
-    console.log(typeof value);
-
     let health;
     if (dmgType === "heal") {
       health =

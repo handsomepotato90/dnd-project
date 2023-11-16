@@ -32,3 +32,8 @@
   height: 22px;
   text-align: center;
 }
+@media only screen and (max-width: 800px) {
+  .giant_skill_block{
+    width: 85%;
+  }
+}

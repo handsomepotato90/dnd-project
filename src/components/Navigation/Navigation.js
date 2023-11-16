@@ -172,7 +172,7 @@ export const CustomLink = (props) => {
       onMouseEnter={onHover}
       onMouseLeave={onLeave}
       onClick={() => props.onClick(false)}
-      className="center_burger_link"
+      className="center_burger_link svg_style"
     >
       {props.children}
       {hover && <span className="hover__text">{props.description}</span>}

@@ -1,14 +1,16 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import SpellTextPopUp from "./SpellTextPopUp";
 import { SvgComponent } from "../../../../../../Navigation/Navigation";
 import styles from "./SpellComponents.module.css";
 import SpellSearch from "./SpellSearch";
-import add from "../../../../../../../icons/add.svg"
+import add from "../../../../../../../icons/add.svg";
+import remove from "../../../../../../../icons/reject.svg";
+import CS from "../../../../../../store/CS-context";
 export default function Spell(props) {
   const [cordinate, setCordinate] = useState({ x: 0, y: 0 });
   const [spellDescription, setSpellDescription] = useState(false);
   const [requestSpells, setRequestSpells] = useState(false);
-
+  const cs = useContext(CS);
   const removePopUp = (rem) => {
     setSpellDescription(rem);
   };
@@ -18,19 +20,39 @@ export default function Spell(props) {
   const addSpell = (spell) => {
     props.newSpell(spell);
   };
+  const removeSpell = () => {
+    props.remove(props.spell);
+    cs.removeSpell(props.spell._id, props.spell, props.lvl);
+  };
   return (
     <>
       {props.spell ? (
-        <span
-          onClick={(e) => {
-            setSpellDescription(true);
-            setCordinate({ x: e.clientX, y: e.clientY });
-          }}
-          className={`overflowing ${styles.one_spell_style}`}
-        >
+        <>
           {" "}
-          {props.spell.name}
-        </span>
+          <div className={`overflowing ${styles.one_spell}`}>
+            <span
+              onClick={(e) => {
+                setSpellDescription(true);
+                setCordinate({ x: e.clientX, y: e.clientY });
+              }}
+              className={`overflowing ${styles.one_spell_style}`}
+            >
+              {" "}
+              {props.spell.name}
+            </span>
+            {!props.search && (
+              <div onClick={removeSpell}>
+                {" "}
+                <SvgComponent
+                  Image={remove}
+                  height="20"
+                  color="red"
+                  width="20"
+                ></SvgComponent>
+              </div>
+            )}
+          </div>
+        </>
       ) : (
         <div
           onMouseUp={(e) => {
@@ -53,14 +75,7 @@ export default function Spell(props) {
           search={props.search}
           x={cordinate.x}
           y={cordinate.y}
-          name={props.spell.name}
-          school={props.spell.school}
-          casting_time={props.spell.casting_time}
-          range={props.spell.range}
-          components={props.spell.components}
-          duration={props.spell.duration}
-          class={props.spell.class}
-          desc={props.spell.desc}
+          spell={props.spell}
         ></SpellTextPopUp>
       )}
       {requestSpells && (

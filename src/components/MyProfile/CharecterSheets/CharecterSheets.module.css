@@ -1,0 +1,63 @@
+.general_sheet_display {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  justify-content: center
+}
+.charecter_blocks_styles {
+  width: 220px;
+  border: 6px solid #f44336;
+  border-style: outset;
+  height: 200px;
+  text-align: center;
+  background-size: cover;
+}
+.charecter_blocks_styles > a {
+  display: flex;
+  flex-direction: column;
+
+  height: 100%;
+  gap: 10px;
+  background-color: #03030362;
+}
+.name_style {
+  font-size: 18px;
+}
+.all_text_style,
+.name_style,
+.stats_style_text_value,
+.stats_style_text {
+  font-weight: bold;
+  text-transform: uppercase;
+  color: white;
+}
+
+.all_text_style {
+  font-size: 14px;
+}
+.stats_style {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  justify-content: space-evenly;
+}
+@media only screen and (max-width: 1400px) {
+  .charecter_blocks_styles {
+    width: 150px;
+    height: 150px;
+  }
+}
+@media only screen and (max-width: 800px) {
+  .general_sheet_display {
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    margin: auto auto;
+  }
+  .charecter_blocks_styles {
+    width: 250px;
+    height: 250px;
+  }
+}

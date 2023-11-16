@@ -20,11 +20,10 @@
   position: absolute;
   color: Black;
 }
-li {
-  /* width: 100px; */
+.svg_style {
   height: 40px;
 }
-li:hover {
+.svg_style:hover {
   background-color: rgb(46, 44, 44);
   border-radius: 5px;
   border-bottom: 4px solid #4b4783;

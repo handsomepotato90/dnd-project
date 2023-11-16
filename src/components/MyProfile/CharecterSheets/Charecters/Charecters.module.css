@@ -27,8 +27,7 @@
 }
 .prof_pannel_center {
   width: 90%;
-  height: 580px;
-  margin: auto;
+  margin: 10px auto;
   border: 2px solid #f44336;
   border-radius: 5px;
   padding: 10px;
@@ -55,4 +54,90 @@
   padding: 10px;
   border: 1px solid #f44336;
   cursor: pointer;
+}
+@media only screen and (max-width: 1400px) {
+  .charecter_general {
+    width: 100%;
+    height: 100%;
+  }
+}
+@media only screen and (max-width: 800px) {
+  .general_charecter_info {
+    grid-template-columns: auto 20%;
+  }
+  .charecter_general {
+    display: block;
+    width: 92%;
+    height: 100%;
+    margin-left: 10px;
+    margin-right: auto;
+    padding: 0;
+  }
+  .important_stats_general_holder {
+    display: grid;
+    grid-template-columns: 70% auto;
+    justify-content: space-around;
+  }
+  .all_stats_holder {
+    margin-top: 20px;
+    display: block;
+  }
+  .skill_midsize,
+  .proff_midsize,
+  .save_midsize,
+  .rest_minsize,
+  .resistance_midsize {
+    display: grid;
+    grid-template-columns: auto 99%;
+    position: absolute;
+    right: 0;
+    background-color: black;
+    border: 1px solid #f44336;
+    text-align: center;
+    box-shadow: 0 0 20px white;
+    z-index: 1;
+  }
+  .save_midsize {
+    top: 120px;
+  }
+  .proff_midsize {
+    top: 255px;
+  }
+  .skill_midsize {
+    top: 345px;
+  }
+  .left_pannel {
+    width: 350px;
+    height: auto;
+    overflow-y: scroll;
+  }
+
+  .save_btn_holder_position {
+    position: static;
+    margin: auto auto;
+    right: 0px;
+    top: 0px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .resistance_midsize {
+    top: 300px;
+  }
+  .rest_minsize {
+    top: 165px;
+  }
+  .general_charecter_info {
+    display: block;
+  }
+  .important_stats_general_holder {
+    display: block;
+  }
+  .charecter_general {
+    width: 85%;
+    height: 100%;
+  }
+  .right_panel_top {
+    grid-template-columns: 50% auto;
+    width: 350px;
+  }
 }

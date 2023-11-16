@@ -227,10 +227,19 @@ export const CSProvider = (props) => {
   );
 
   // ############################ Functions ##############################
+  const removeSpell = (id, spell, lvl) => {
+    const indexOfId = spells[lvl].spell_ids.indexOf(id);
+    const indexOfSpell = spells[lvl].spells.indexOf(spell);
+    if (indexOfId > -1) {
+      spells[lvl].spell_ids.splice(indexOfId, 1);
+    }
+    if (indexOfSpell > -1) {
+      spells[lvl].spells.splice(indexOfSpell, 1);
+    }
+    setSpells(spells);
+  };
   const addSpells = (level, spell) => {
-    console.log(level, spell);
     let lvl;
-
     switch (level) {
       case 0:
         lvl = "Can";
@@ -440,6 +449,7 @@ export const CSProvider = (props) => {
         meta: meta,
         otherProficiency: otherProficiency,
         spells: spells,
+        removeSpell: removeSpell,
         addSpells: addSpells,
         spellSetter: spellSetter,
         setOtherProficiency: setOtherProficiency,

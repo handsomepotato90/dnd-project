@@ -1,4 +1,4 @@
-li {
+.list_style {
   margin: 0 auto;
   font-size: 18px;
   vertical-align: middle;
@@ -14,7 +14,7 @@ a {
   color: rgb(255, 255, 255);
 }
 @media only screen and (max-width: 600px) {
-  li {
+ .list_style {
     font-size: 14px;
   }
   .text_box__style {

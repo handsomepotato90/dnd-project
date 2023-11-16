@@ -1,26 +1,26 @@
 import { Links } from "../Navigation/Navigation";
 import NavigatorBack from "../Navigation/NavigatorBack";
-
+import "./MyProfile.css"
 export default function ProfileNavigation() {
   return (
     <NavigatorBack className={"grey nav_flexbox"}>
       <Links to="/myProfile">
-        <li>My Profile</li>
+        <li className='list_style'>My Profile</li>
       </Links>
       <Links to="/myProfile/CharecterSheets">
-        <li>Charecter Sheets</li>
+        <li className='list_style'>Charecter Sheets</li>
       </Links>
       <Links to="/myProfile/MyUploads">
-        <li>My Uploads</li>
+        <li className='list_style'>My Uploads</li>
       </Links>
       <Links to="/myProfile/Friends">
-        <li>Friends</li>
+        <li className='list_style'>Friends</li>
       </Links>
       <Links to="/myProfile/Sessions">
-        <li>Sessions</li>
+        <li className='list_style'>Sessions</li>
       </Links>
       <Links to="/myProfile/Sessions/AllSessions">
-        <li>All Sessions</li>
+        <li className='list_style'>All Sessions</li>
       </Links>
     </NavigatorBack>
   );

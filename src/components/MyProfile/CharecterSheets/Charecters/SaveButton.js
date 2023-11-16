@@ -3,12 +3,14 @@ import ModalConfirmation from "../../../UI/ModalConfirmation";
 import CS from "../../../store/CS-context";
 import { LoginContext } from "../../../store/login-context";
 import { useHttpClient } from "../../../hooks/http-hook";
-
-import styles from "./Charecters.module.css";
+import ButtonActionComponent from "./ButtonActionComponent";
+import { useNavigate } from "react-router-dom";
+import LoadingSpinner from "../../../UI/LoadingSpinner";
 
 export default function SaveButton() {
   const [iWantToSave, setIWantToSave] = useState(false);
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
+  const navigate = useNavigate();
   const cs = useContext(CS);
   const user = useContext(LoginContext);
 
@@ -87,6 +89,7 @@ export default function SaveButton() {
             "Content-Type": "application/json",
           }
         );
+        navigate("/myProfile/CharecterSheets");
       } catch (err) {}
       setIWantToSave(false);
     }
@@ -103,14 +106,10 @@ export default function SaveButton() {
           onClick={resolveSave}
         ></ModalConfirmation>
       )}
-      <div className={styles.save_btn_holder_position}>
-        <button
-          onClick={() => setIWantToSave(true)}
-          className={`red_text black__background ${styles.save_btn_position}`}
-        >
-          Save
-        </button>
-      </div>
+      {isLoading && <LoadingSpinner asOverlay />}
+      <ButtonActionComponent onClick={(val) => setIWantToSave(val)}>
+        Save
+      </ButtonActionComponent>
     </>
   );
 }

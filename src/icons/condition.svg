@@ -1,0 +1,13 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
+<!-- Uploaded to: SVG Repo, www.svgrepo.com, Transformed by: SVG Repo Mixer Tools -->
+<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100" fill="none">
+  <!-- Shield for Defense -->
+  <rect x="20" y="20" width="60" height="60" rx="10" fill="#000" />
+
+  <!-- Symbol for Poisoned Condition -->
+  <circle cx="50" cy="50" r="10" fill="#00FF00" />
+
+  <!-- Symbol for Charmed Condition -->
+  <polygon points="75,50 50,75 25,50" fill="#FF0000" />
+</svg>

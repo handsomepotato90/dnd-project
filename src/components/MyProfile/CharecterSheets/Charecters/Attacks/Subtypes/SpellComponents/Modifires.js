@@ -4,7 +4,7 @@ import CS from "../../../../../../store/CS-context";
 
 export default function Modifires(props) {
   const cs = useContext(CS);
-  const [newGivenValue, setNewGivenValue] = useState();
+  const [newGivenValue, setNewGivenValue] = useState(0);
   const [changeOfMod, setChangeOfMod] = useState(false);
 
   const newValue = () => {

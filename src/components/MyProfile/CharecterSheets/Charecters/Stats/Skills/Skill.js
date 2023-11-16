@@ -25,6 +25,7 @@ export default function Skill(props) {
       <input
         className={styles.radio_button_skills}
         type="radio"
+        readOnly={true}
         checked={prof}
         onClick={changeProf}
       ></input>

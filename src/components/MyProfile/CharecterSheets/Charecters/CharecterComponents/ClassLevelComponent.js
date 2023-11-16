@@ -29,7 +29,6 @@ export default function ClassLevelComponent(props) {
     if (selectedClass === "" || level <= 0) {
       return;
     }
-    console.log(selectedClass, level)
     cs.newClass(selectedClass, level);
     props.onClick(false);
   };
