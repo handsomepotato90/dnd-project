@@ -12,7 +12,9 @@ export default function SpellSearch(props) {
   const { sendRequest } = useHttpClient();
   const cs = useContext(CS);
   const size = useWindowSize();
-  const mod = size.width > 600 ? 330 : -240;
+  const mod = size.width > 600 ? 330 : -props.x;
+  const modheight = size.width > 600 ? 100 : 0;
+
   useEffect(() => {
     const searchSpellLevel = async () => {
       try {
@@ -45,7 +47,7 @@ export default function SpellSearch(props) {
     <div
       style={{
         marginLeft: props.x + mod,
-        marginTop: 100,
+        marginTop: modheight,
       }}
       className={styles.search_spells}
     >

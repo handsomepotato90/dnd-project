@@ -16,6 +16,7 @@ import useWindowSize from "../../../hooks/screensize-hook";
 import { SvgComponent } from "../../../Navigation/Navigation";
 import sleep from "../../../../icons/sleep.svg";
 import skill from "../../../../icons/skills.svg";
+import shield from "../../../../icons/shield.svg";
 import proff from "../../../../icons/proff.svg";
 import saveSvg from "../../../../icons/saveRed.svg";
 import styles from "./Charecters.module.css";
@@ -37,7 +38,7 @@ export default function Charecters() {
     } else {
       setNewOrOld(false);
     }
-  });
+  }, []);
   return (
     <CSProvider>
       <div className={styles.charecter_general}>
@@ -123,13 +124,13 @@ export default function Charecters() {
               <CSArmorclass></CSArmorclass>
 
               {size.width > 600 ? (
-                  <Resistance></Resistance>
+                <Resistance></Resistance>
               ) : (
                 <div className={styles.resistance_midsize}>
                   <div onClick={() => setResistance((curr) => !curr)}>
                     {" "}
                     <SvgComponent
-                      Image={skill}
+                      Image={shield}
                       height="35"
                       color="red"
                       width="40"

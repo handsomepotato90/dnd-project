@@ -24,8 +24,8 @@ export default function SpellTextPopUp(props) {
       <div
         onDoubleClick={removeMe}
         style={{
-          marginLeft: props.x - (!props.search ? 150 : 0),
-          marginTop: props.y - (!props.search ? 500 : 0),
+          marginLeft: props.x - (!props.search ? 150 :  props.x),
+          marginTop: props.y - (!props.search ? 500 : props.y),
         }}
         className={styles.spell_text_block}
       >
