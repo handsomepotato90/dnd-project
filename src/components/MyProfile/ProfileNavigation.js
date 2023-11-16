@@ -8,7 +8,7 @@ export default function ProfileNavigation() {
         <li className='list_style'>My Profile</li>
       </Links>
       <Links to="/myProfile/CharecterSheets">
-        <li className='list_style'>Charecter Sheets</li>
+        <li className='list_style'>Character Sheets</li>
       </Links>
       <Links to="/myProfile/MyUploads">
         <li className='list_style'>My Uploads</li>

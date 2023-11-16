@@ -84,7 +84,7 @@ export default function CharecterSheets() {
         <Links to="/myProfile/CharecterSheets/Charecters">
           <span className={styles.all_text_style}>
             {" "}
-            Create New Charecter Sheet
+            Create New Character Sheet
           </span>
         </Links>
       </div>
