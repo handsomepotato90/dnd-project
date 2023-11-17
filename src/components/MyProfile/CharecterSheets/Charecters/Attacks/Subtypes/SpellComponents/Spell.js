@@ -6,11 +6,22 @@ import SpellSearch from "./SpellSearch";
 import add from "../../../../../../../icons/add.svg";
 import remove from "../../../../../../../icons/reject.svg";
 import CS from "../../../../../../store/CS-context";
+import { useEffect } from "react";
 export default function Spell(props) {
   const [cordinate, setCordinate] = useState({ x: 0, y: 0 });
   const [spellDescription, setSpellDescription] = useState(false);
   const [requestSpells, setRequestSpells] = useState(false);
+  const [contained, setContained] = useState(false);
   const cs = useContext(CS);
+
+  useEffect(() => {
+    if (
+      props.search &&
+      cs.spells[props.lvl].spell_ids.includes(props.spell._id)
+    ) {
+      setContained(true);
+    }
+  }, []);
   const removePopUp = (rem) => {
     setSpellDescription(rem);
   };
@@ -18,6 +29,7 @@ export default function Spell(props) {
     setRequestSpells(rem);
   };
   const addSpell = (spell) => {
+    setRequestSpells(false)
     props.newSpell(spell);
   };
   const removeSpell = () => {
@@ -35,10 +47,11 @@ export default function Spell(props) {
                 setSpellDescription(true);
                 setCordinate({ x: e.clientX, y: e.clientY });
               }}
+              style={{ color: contained ? "green" : null }}
               className={`overflowing ${styles.one_spell_style}`}
             >
               {" "}
-              {props.spell.name}
+              {`${contained ? `(Known) ` : ""}${props.spell.name}`}
             </span>
             {!props.search && (
               <div onClick={removeSpell}>

@@ -2,20 +2,22 @@ import { useState, useEffect, useContext } from "react";
 import CS from "../../../../../../store/CS-context";
 import Spell from "./Spell";
 import styles from "./SpellComponents.module.css";
+import SpellSlot from "./SpellSlot";
 
 export default function SpellContent(props) {
   const cs = useContext(CS);
   const [spellSlotsHolder, setSpellSlotsHolder] = useState({});
   const [spellArray, setSpellArray] = useState([]);
   const [slots, setSlots] = useState(cs.spells[props.display].slots);
+
   const addNewSpell = (spell) => {
     setSpellArray([...spellArray, spell]);
   };
   const removeSpell = (spell) => {
-    const indexOfSpell = spellArray.indexOf(spell)
+    const indexOfSpell = spellArray.indexOf(spell);
 
-     spellArray.splice(indexOfSpell,1)
-     setSpellArray([...spellArray])
+    spellArray.splice(indexOfSpell, 1);
+    setSpellArray([...spellArray]);
   };
   const spellSlots = () => {
     setSlots(slots + 1);
@@ -70,7 +72,7 @@ export default function SpellContent(props) {
             </div>
             <div className={styles.slots_display}>
               {[...Array(spellSlotsHolder)].map((e, i) => (
-                <input type="radio" key={i}></input>
+                <SpellSlot key={i}></SpellSlot>
               ))}
             </div>
           </>

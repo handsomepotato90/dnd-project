@@ -71,7 +71,7 @@
     border: 1px solid red;
     text-align: center;
     box-shadow: 0 0 20px white;
-    z-index: 10;
+    z-index: 1;
     top: 210px;
   }
   .hp_box_general {

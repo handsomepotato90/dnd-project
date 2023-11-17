@@ -63,3 +63,9 @@
   border-radius: 5px;
   cursor: pointer;
 }
+@media only screen and (max-width: 600px) {
+  .weapon_small_window {
+    min-width: 300px;
+    min-height: 300px;
+  }
+}

@@ -2,6 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import CS from "../../../../../store/CS-context";
 import styles from "./Actions.module.css";
 import ActionsWeapons from "./ActionsWeapons";
+import useWindowSize from "../../../../../hooks/screensize-hook";
 
 export default function Actions() {
   const [addWeapon, setAddWeapon] = useState(false);
@@ -11,8 +12,10 @@ export default function Actions() {
   const [damage, setDamage] = useState(false);
   const [weapons, setWeapons] = useState([]);
   const [cordinate, setCordinate] = useState({ x: 0, y: 0 });
+  const size = useWindowSize();
   const cs = useContext(CS);
-
+  const position = size.width > 600 ? cordinate.x : 0;
+  const styleWidth = size.width > 600 ? null : size.width - 20;
   useEffect(() => {
     setWeapons([...cs.weapons]);
   }, [cs.weapons]);
@@ -23,16 +26,6 @@ export default function Actions() {
   };
   const addWeaponToList = () => {
     cs.addWeapons(type, range, hit, damage);
-    // setWeapons(
-    //   weapons.concat(
-    //     <ActionsWeapons
-    //       type={type}
-    //       range={range}
-    //       hit={hit}
-    //       damage={damage}
-    //     ></ActionsWeapons>
-    //   )
-    // );
     setAddWeapon(false);
   };
   return (
@@ -62,7 +55,8 @@ export default function Actions() {
           {addWeapon && (
             <div
               style={{
-                marginLeft: cordinate.x,
+                width: styleWidth,
+                marginLeft: position,
                 marginTop: cordinate.y - 350,
               }}
               className={styles.weapon_small_window}

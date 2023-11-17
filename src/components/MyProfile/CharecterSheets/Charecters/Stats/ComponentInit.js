@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import CS from "../../../../store/CS-context";
-
+import AutoFocusInputEnterEvent from "../../../../UI/AutoFocusInputEnterEvent";
 import styles from "./Stats.module.css";
 
 export default function ComponentInit(props) {
@@ -16,13 +16,13 @@ export default function ComponentInit(props) {
     }
   }, [cs.proficiency, cs.speed]);
 
-  const settingProff = () => {
+  const settingProff = (val) => {
     setChangeValue(false);
     if (props.text === "PROFICIENCY") {
-      cs.proff(prof);
+      cs.proff(val);
     }
     if (props.text === "SPEED") {
-      cs.setSpeed(prof);
+      cs.setSpeed(val);
     }
   };
   return (
@@ -36,13 +36,10 @@ export default function ComponentInit(props) {
           {prof}
         </div>
       ) : (
-        <input
-          type="number"
-          className={styles.semi_important_text_style}
-          autoFocus={true}
-          onChange={(e) => setProf(e.target.value)}
-          onBlur={settingProff}
-        ></input>
+        <AutoFocusInputEnterEvent
+          valuesTosubmit={settingProff}
+          value={prof}
+        ></AutoFocusInputEnterEvent>
       )}
     </div>
   );

@@ -71,7 +71,7 @@ export default function SpellSearch(props) {
                   width="30"
                 ></SvgComponent>
               </div>
-              <Spell search={true} key={i} spell={e}></Spell>
+              <Spell search={true} key={i} spell={e} lvl={props.lvl}></Spell>
             </div>
           );
         })}
