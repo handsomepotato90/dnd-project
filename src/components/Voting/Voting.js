@@ -7,6 +7,7 @@ import Countdown from "react-countdown";
 import ConteinerBox from "../UI/ConteinerBox";
 
 import styles from "./Voting.module.css";
+import MonsterName from "./MonsterName";
 
 export default function Voting() {
   const [monsters, setMonsters] = useState([]);
@@ -39,9 +40,7 @@ export default function Voting() {
           height="250px"
         >
           <div className={styles.name_plate__style}>
-            <span className={`${styles.name_plate} overflowing`}>
-              {monster.name}
-            </span>
+            <MonsterName name={monster.name}></MonsterName>
             <Countdown
               className={`${styles.clock__style} ${
                 (monster.timeforvoting - currentDate) / 1000 < 86400

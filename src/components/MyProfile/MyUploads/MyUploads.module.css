@@ -19,6 +19,19 @@
   text-align: center;
   margin: auto;
 }
+.name_plate__style {
+  text-align: center;
+  background-color: #151617;
+  border-radius: 5px 5px 0px 0px;
+  color: white;
+  object-fit: cover;
+  font-size: clamp(1ch, 1.8ch, 2ch);
+}
+.name_plate {
+  width: 150px;
+  font-size: 16px;
+  float: left;
+}
 .edit_button__style {
   padding: 1ch 4.5ch;
   font-size: 16px;

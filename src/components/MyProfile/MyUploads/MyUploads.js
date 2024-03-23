@@ -11,6 +11,7 @@ import MonsterBattleBox from "../../MyEncounters/MonsterBattleBox";
 import ConteinerBox from "../../UI/ConteinerBox";
 
 import styles from "./MyUploads.module.css";
+import MonsterName from "../../Voting/MonsterName";
 
 export default function MyUploads() {
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
@@ -81,9 +82,7 @@ export default function MyUploads() {
   const removeModal = () => {
     navigate("/");
   };
-  // const loadMore = () => {
-  //   setLimit(limit + 10);
-  // };
+  console.log(myMonsters);
   return (
     <>
       {isLoading && <LoadingSpinner as0verlay></LoadingSpinner>}
@@ -113,7 +112,6 @@ export default function MyUploads() {
         onKeyUp={nameSearch}
         placeholder="Search"
       ></input>
-      {/* )} */}
       <ConteinerBox>
         {myMonsters.map((monster, i) => (
           <MonsterBattleBox
@@ -122,26 +120,30 @@ export default function MyUploads() {
             battleSideBar={false}
             stats={monster}
             modalStats={true}
-            width="250px"
+            width="265px"
             height="250px"
           >
-            <span
-              className={`${
-                monster.timeforvoting > now
-                  ? "grey"
+            <div className={styles.name_plate__style}>
+              <MonsterName name={monster.name} />
+              <span
+                className={`${
+                  monster.timeforvoting > now
+                    ? "grey"
+                    : monster.votes.number > 0 ||
+                      monster.votes.number === undefined
+                    ? "green"
+                    : "red"
+                } 
+                  ${styles.voting_status__style}`}
+              >
+                {monster.timeforvoting > now
+                  ? "Ongoing"
                   : monster.votes.number > 0 ||
                     monster.votes.number === undefined
-                  ? "green"
-                  : "red"
-              } 
-                  ${styles.voting_status__style}`}
-            >
-              {monster.timeforvoting > now
-                ? "Ongoing"
-                : monster.votes.number > 0 || monster.votes.number === undefined
-                ? "Accepted"
-                : "Rejected"}
-            </span>
+                  ? "Accepted"
+                  : "Rejected"}
+              </span>
+            </div>
             <div>
               <Edit id={monster._id}></Edit>
               <button
@@ -155,21 +157,6 @@ export default function MyUploads() {
           </MonsterBattleBox>
         ))}
       </ConteinerBox>
-      {/* {myMonsters.length > 10 && (
-        <>
-          <section>
-            <a href="/MyUploads/?page=1">1</a>
-            <a href="/MyUploads/?page=2">2</a>
-            <a href="/MyUploads/?page=3">3</a>
-          </section>
-          <button
-            className={`${styles.btn_load_more} button`}
-            onClick={loadMore}
-          >
-            Load More
-          </button>
-        </>
-      )} */}
     </>
   );
 }

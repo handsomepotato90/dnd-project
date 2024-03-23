@@ -30,9 +30,6 @@ export default function MonsterBattleBox(props) {
   const [playerArmorClass, setPlayerArmorClass] = useState(true);
   const [playerGivenAc, setPlayerGivenAc] = useState(0);
 
-  // const openInputToGiveAc = () => {
-  //   setPlayerArmorClass(false);
-  // };
   const rememberAcValue = () => {
     setPlayerArmorClass(true);
   };
@@ -140,9 +137,10 @@ export default function MonsterBattleBox(props) {
       {!props.battleSideBar || (
         <div className={styles.stat_battle_box}>
           <div>
-            <span className={`${styles.text__style} ${styles.health__styling}`}>AC: {!props.stats.level && props.stats["Armor Class"].value } </span>
-            {props.stats.level &&
-            
+            <span className={`${styles.text__style} ${styles.health__styling}`}>
+              AC: {!props.stats.level && props.stats["Armor Class"].value}{" "}
+            </span>
+            {props.stats.level && (
               <div className={styles.input__wraper}>
                 <input
                   autoFocus={true}
@@ -152,7 +150,7 @@ export default function MonsterBattleBox(props) {
                   value={playerGivenAc}
                 ></input>
               </div>
-            }
+            )}
           </div>
           {!props.stats.level ? (
             <>
@@ -160,7 +158,10 @@ export default function MonsterBattleBox(props) {
                 onChange={deathTraker}
                 hp={props.stats["Hit Points"].hp}
               ></HealthPool>
-              <Initiative initiative= {props.stats.initiative} dexMod={props.stats.DEX_mod}></Initiative>
+              <Initiative
+                initiative={props.stats.initiative}
+                dexMod={props.stats.DEX_mod}
+              ></Initiative>
             </>
           ) : (
             <>
@@ -169,7 +170,7 @@ export default function MonsterBattleBox(props) {
                 player="player"
                 hp={0}
               ></HealthPool>
-              <Initiative initiative= {props.stats.initiative}></Initiative>
+              <Initiative initiative={props.stats.initiative}></Initiative>
             </>
           )}
         </div>
