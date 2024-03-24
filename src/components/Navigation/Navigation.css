@@ -1,7 +1,7 @@
 .nav__size {
   width: 100%;
   list-style-type: none;
-  height: 50px;
+  height: 60px;
 }
 .nav__bcc {
   position: relative;
@@ -59,6 +59,7 @@ nav {
   flex-direction: row;
   margin: 0 auto;
   list-style-type: none;
+  height: 40px;
 }
 .link_style {
   display: inline;
