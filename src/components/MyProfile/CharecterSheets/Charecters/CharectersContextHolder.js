@@ -8,6 +8,7 @@ import OtherProficiencies from "./Stats/OtherProficiencies/OtherProficiencies";
 import Skills from "./Stats/Skills/Skills";
 import CSInitiative from "./Stats/InitiativeAcResistance/CSInitiative";
 import CSArmorclass from "./Stats/InitiativeAcResistance/CSArmorclass";
+import SpecialResource from "./Stats/InitiativeAcResistance/SpecialResource";
 import Resistance from "./Stats/InitiativeAcResistance/Resistance";
 import Attacks from "./Attacks/Attacks";
 import SaveButton from "./SaveButton";
@@ -122,6 +123,7 @@ export default function Charecters() {
             <div className={styles.right_panel_top}>
               <CSInitiative></CSInitiative>
               <CSArmorclass></CSArmorclass>
+              <SpecialResource></SpecialResource>
 
               {size.width > 600 ? (
                 <Resistance></Resistance>

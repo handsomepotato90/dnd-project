@@ -16,11 +16,19 @@ export default function Health() {
     } else {
       setCheckCurrHp(false);
     }
-  }, [csh.currHp]);
+  }, [csh.currHp, csh.maxHp]);
+
+  useEffect(() => {
+    cs.currentHpSetter(csh.currHp);
+  }, [csh.currHp, cs]);
+
   useEffect(() => {
     csh.changeMaxHp(cs.maxHp);
-  }, [cs.maxHp]);
+  }, [cs.maxHp, csh]);
 
+  useEffect(() => {
+    csh.changeCurrenHp(cs.currHp, cs.maxHp);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
   return (
     <div className={styles.health_managment}>
       {!checkCurrHp && (
@@ -43,6 +51,7 @@ export default function Health() {
                 onChange={(e) => {
                   csh.changeMaxHp(e.target.value);
                   cs.maxHpSetter(e.target.value);
+                  csh.changeCurrenHp(e.target.value);
                 }}
                 onBlur={() => setNeedToChangeMaxHp(false)}
               ></input>

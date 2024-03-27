@@ -7,17 +7,20 @@ export default function HealthMenagment() {
   const [valueToChangeHealth, setValueToChangeHealth] = useState(0);
   const csh = useContext(HealthContext);
   const cs = useContext(CS);
+
   useEffect(() => {
     if (cs.fullHeal === true) {
       csh.modifyHp(csh.maxHp, "heal");
       cs.healingDone();
     }
-  }, [cs.fullHeal]);
+  }, [cs.fullHeal, cs, csh]);
+
   useEffect(() => {
     if (cs.healForHitDie.is === true) {
       csh.modifyHp(cs.healForHitDie.value, "heal");
     }
-  }, [cs.healForHitDie]);
+  }, [cs.healForHitDie, csh]);
+
   return (
     <div className={styles.values_calculators_style}>
       <button

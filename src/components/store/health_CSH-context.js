@@ -4,6 +4,7 @@ const HealthContext = React.createContext({
   maxHp: 0,
   currHp: 0,
   tempHp: 0,
+  changeCurrenHp: () => {},
   modifyHp: () => {},
   changeMaxHp: () => {},
   changeTempHp: () => {},
@@ -15,9 +16,17 @@ export const HealthCSHProvider = (props) => {
   const [newCurrHp, setNewCurrHp] = useState(0);
 
   const changeMaxHp = (max) => {
-    setNewCurrHp(max);
     setNewMaxHp(max);
   };
+
+  const changeCurrenHp = (hp, max = 0) => {
+    if (hp === -1000) {
+      setNewCurrHp(max);
+      return;
+    }
+    setNewCurrHp(hp);
+  };
+
   const changeTempHp = (givenHp) => {
     setTempHp(givenHp);
   };
@@ -48,6 +57,7 @@ export const HealthCSHProvider = (props) => {
         currHp: newCurrHp,
         tempHp: tempHitPoints,
         modifyHp: modifyHp,
+        changeCurrenHp: changeCurrenHp,
         changeMaxHp: changeMaxHp,
         changeTempHp: changeTempHp,
       }}

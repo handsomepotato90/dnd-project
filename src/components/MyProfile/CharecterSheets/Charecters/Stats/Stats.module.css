@@ -17,7 +17,7 @@
 .semi_important {
   display: flex;
   flex-direction: row;
-  gap: 10px;
+  gap: 5px;
 }
 .semi_important_text_style {
   color: grey;

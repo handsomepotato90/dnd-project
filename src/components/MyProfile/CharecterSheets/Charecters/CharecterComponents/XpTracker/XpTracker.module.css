@@ -1,0 +1,20 @@
+.xp_tracker{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    text-align:center;
+}
+
+.xp_tracker_text{
+    height: 25px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+.xp_tracker_lvl{
+    font-size: 22px;
+    font-weight: bold;
+    color: gold;
+}

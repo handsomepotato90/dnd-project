@@ -30,6 +30,7 @@ export default function Stats(props) {
         <div className={styles.semi_important}>
           <ComponentInit text={"PROFICIENCY"}></ComponentInit>
           <ComponentInit text={"SPEED"}></ComponentInit>
+          <ComponentInit text={"INSPIRATION"}></ComponentInit>
         </div>
       ) : (
         <div className={styles.medium_size_hp_svg}>

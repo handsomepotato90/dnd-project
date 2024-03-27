@@ -24,6 +24,7 @@ export default function ComponentStats(props) {
       <span className="red_text overflowing">{modifier}</span>
       {inputValue ? (
         <AutoFocusInputEnterEvent
+          type="number"
           valuesTosubmit={changeStat}
           value={statValue}
         ></AutoFocusInputEnterEvent>

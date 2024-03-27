@@ -14,7 +14,10 @@ export default function ComponentInit(props) {
     if (props.text === "SPEED") {
       setProf(cs.speed);
     }
-  }, [cs.proficiency, cs.speed]);
+    if (props.text === "INSPIRATION") {
+      setProf(cs.inspiration);
+    }
+  }, [cs.proficiency, cs.speed, cs.inspiration]);
 
   const settingProff = (val) => {
     setChangeValue(false);
@@ -23,6 +26,9 @@ export default function ComponentInit(props) {
     }
     if (props.text === "SPEED") {
       cs.setSpeed(val);
+    }
+    if (props.text === "INSPIRATION") {
+      cs.setInspiration(val);
     }
   };
   return (
@@ -37,6 +43,7 @@ export default function ComponentInit(props) {
         </div>
       ) : (
         <AutoFocusInputEnterEvent
+          type="number"
           valuesTosubmit={settingProff}
           value={prof}
         ></AutoFocusInputEnterEvent>

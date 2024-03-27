@@ -4,6 +4,8 @@ const CS = React.createContext({
   armorClass: 0,
   proficiency: 0,
   maxHp: 0,
+  tempHp: 0,
+  currHp: 0,
   defences: "",
   conditions: "",
   classes: [],
@@ -12,6 +14,7 @@ const CS = React.createContext({
   notes: { ORGS: [], ALLIES: [], ENEMIES: [], TOWNS: [], OTHER: [] },
   characteristics: {},
   stats: {},
+  xp: 0,
   skillsProf: {
     Acrobatics: { value: false },
     "Animal Handling": { value: false },
@@ -42,6 +45,7 @@ const CS = React.createContext({
   speed: 0,
   otherProficiency: {},
   spells: {},
+  xpSetter: () => {},
   spellSetter: () => {},
   setOtherProficiency: () => {},
   metaSetter: () => {},
@@ -64,10 +68,13 @@ const CS = React.createContext({
   proficiencySet: () => {},
   setingSkills: () => {},
   armorClassSetter: () => {},
+  currentHpSetter: () => {},
+  tempHpSetter: () => {},
 });
 
 export const CSProvider = (props) => {
   const CSheet = JSON.parse(localStorage.getItem("charSheet"));
+
   const [armorClass, setArmorClass] = useState(
     CSheet ? parseInt(CSheet.AC) : 0
   );
@@ -82,6 +89,12 @@ export const CSProvider = (props) => {
   );
   const [speed, setErSpeed] = useState(
     CSheet?.speed ? parseInt(CSheet.speed) : 0
+  );
+  const [currHp, setCurrHp] = useState(
+    CSheet?.currHp ? parseInt(CSheet.currHp) : -1000
+  );
+  const [tempHp, setTempHp] = useState(
+    CSheet?.tempHp ? parseInt(CSheet.tempHp) : 0
   );
   const [maxHp, setMaxHp] = useState(
     CSheet?.hp_max ? parseInt(CSheet.hp_max) : 0
@@ -225,8 +238,22 @@ export const CSProvider = (props) => {
           Can: { slots: 0, spells: [], spell_ids: [] },
         }
   );
+  const [xp, setXp] = useState(CSheet?.xp ? CSheet.xp : 0);
+  const [inspiration, setInspiration] = useState(
+    CSheet?.inspiration ? CSheet.inspiration : 0
+  );
+  const [specialStat, setSpecialStat] = useState(
+    CSheet?.specialStat ? CSheet.specialStat : 0
+  );
+  const [specialName, setSpecialName] = useState(
+    CSheet?.specialName ? CSheet.specialName : "Special Res"
+  );
 
   // ############################ Functions ##############################
+  const xpSetter = (points) => {
+    setXp(xp + points);
+  };
+
   const removeSpell = (id, spell, lvl) => {
     const indexOfId = spells[lvl].spell_ids.indexOf(id);
     const indexOfSpell = spells[lvl].spells.indexOf(spell);
@@ -238,6 +265,7 @@ export const CSProvider = (props) => {
     }
     setSpells(spells);
   };
+
   const addSpells = (level, spell) => {
     let lvl;
     switch (level) {
@@ -260,6 +288,7 @@ export const CSProvider = (props) => {
     spells[lvl].spell_ids.push(spell._id);
     setSpells(spells, spells[lvl]);
   };
+
   const spellSetter = (val, acc) => {
     if (acc === "add") {
       spells[val].slots = spells[val].slots + 1;
@@ -270,15 +299,26 @@ export const CSProvider = (props) => {
       setSpells(spells, spells[val]);
     }
   };
+
   const setOtherProficiency = (key, value) => {
     otherProficiency[key] = value;
     setProficiency(otherProficiency);
   };
+
   const metaSetter = (name, val) => {
     meta[name] = val;
 
     setMeta(meta);
   };
+
+  const tempHpSetter = (thp) => {
+    setTempHp(thp);
+  };
+
+  const currentHpSetter = (current) => {
+    setCurrHp(current);
+  };
+
   const maxHpSetter = (hp) => {
     setMaxHp(hp);
   };
@@ -427,6 +467,9 @@ export const CSProvider = (props) => {
   return (
     <CS.Provider
       value={{
+        currHp: currHp,
+        tempHp: tempHp,
+        xp: xp,
         proficiency: proficiency,
         stats: stats,
         skillsProf: skills,
@@ -449,6 +492,13 @@ export const CSProvider = (props) => {
         meta: meta,
         otherProficiency: otherProficiency,
         spells: spells,
+        inspiration: inspiration,
+        specialStat: specialStat,
+        specialName: specialName,
+        setSpecialStat: setSpecialStat,
+        setSpecialName: setSpecialName,
+        setInspiration: setInspiration,
+        setWeapons: setWeapons,
         removeSpell: removeSpell,
         addSpells: addSpells,
         spellSetter: spellSetter,
@@ -470,12 +520,15 @@ export const CSProvider = (props) => {
         addWeapons: addWeapons,
         spellmods: spellmods,
         proff: proff,
+        xpSetter: xpSetter,
         savingThrows: savingThrows,
         proficiencySet: proficiencySet,
         setingSkills: setingSkills,
         armorClassSetter: armorClassSetter,
         defencesSetter: defencesSetter,
         conditionsSetter: conditionsSetter,
+        currentHpSetter: currentHpSetter,
+        tempHpSetter: tempHpSetter,
       }}
     >
       {" "}

@@ -1,18 +1,16 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useContext } from "react";
 import ModalConfirmation from "../../../UI/ModalConfirmation";
 import CS from "../../../store/CS-context";
 import { LoginContext } from "../../../store/login-context";
 import { useHttpClient } from "../../../hooks/http-hook";
 import ButtonActionComponent from "./ButtonActionComponent";
-import { useNavigate } from "react-router-dom";
 import LoadingSpinner from "../../../UI/LoadingSpinner";
 import ModalSubmitSucces from "../../../UI/ModalSubmitSucces";
 
 export default function UpdateButton() {
   const [iWantToSave, setIWantToSave] = useState(false);
-  const { isLoading, error, sendRequest, clearError } = useHttpClient();
+  const { isLoading, sendRequest } = useHttpClient();
   const [success, setSuccess] = useState(false);
-  const navigate = useNavigate();
 
   const cs = useContext(CS);
   const user = useContext(LoginContext);
@@ -25,6 +23,9 @@ export default function UpdateButton() {
             "/myProfile/CharecterSheets/Charecters/:id",
           "PATCH",
           JSON.stringify({
+            xp: cs.xp,
+            currHp: cs.currHp,
+            tempHp: cs.tempHp,
             csId: localId,
             proficiency: cs.proficiency,
             stats: cs.stats,
@@ -46,6 +47,9 @@ export default function UpdateButton() {
             meta: cs.meta,
             creator: user.userId,
             otherProff: cs.otherProficiency,
+            inspiration: cs.inspiration,
+            specialStat: cs.specialStat,
+            specialName: cs.specialName,
             spells: {
               "1st": {
                 slots: cs.spells["1st"].slots,

@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useContext } from "react";
 import ModalConfirmation from "../../../UI/ModalConfirmation";
 import CS from "../../../store/CS-context";
 import { LoginContext } from "../../../store/login-context";
@@ -9,7 +9,7 @@ import LoadingSpinner from "../../../UI/LoadingSpinner";
 
 export default function SaveButton() {
   const [iWantToSave, setIWantToSave] = useState(false);
-  const { isLoading, error, sendRequest, clearError } = useHttpClient();
+  const { isLoading, sendRequest } = useHttpClient();
   const navigate = useNavigate();
   const cs = useContext(CS);
   const user = useContext(LoginContext);
@@ -22,6 +22,7 @@ export default function SaveButton() {
             "/myProfile/CharecterSheets/Charecters",
           "POST",
           JSON.stringify({
+            xp: cs.xp,
             proficiency: cs.proficiency,
             stats: cs.stats,
             skills: cs.skillsProf,
@@ -38,10 +39,15 @@ export default function SaveButton() {
             notes: cs.notes,
             classes: cs.classes,
             speed: cs.speed,
+            currHp: cs.currHp,
             hp_max: cs.maxHp,
+            tempHp: cs.tempHp,
             meta: cs.meta,
             creator: user.userId,
             otherProff: cs.otherProficiency,
+            inspiration: cs.inspiration,
+            specialStat: cs.specialStat,
+            specialName: cs.specialName,
             spells: {
               "1st": {
                 slots: cs.spells["1st"].slots,

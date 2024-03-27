@@ -11,7 +11,7 @@ export default function AutoFocusInputEnterEvent(props) {
   };
   return (
     <input
-      type="number"
+      type={props.type}
       autoFocus={true}
       onBlur={submitValue}
       onKeyUp={handleKeyUp}

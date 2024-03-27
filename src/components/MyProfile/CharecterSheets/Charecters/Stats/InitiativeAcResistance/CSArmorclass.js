@@ -1,4 +1,5 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useContext } from "react";
+import GeneralLookInitiative from "./GeneralLookInitiative";
 import CS from "../../../../../store/CS-context";
 import AutoFocusInputEnterEvent from "../../../../../UI/AutoFocusInputEnterEvent";
 import styles from "./InitiativeAcResistance.module.css";
@@ -13,18 +14,19 @@ export default function CSArmorclass() {
     cs.armorClassSetter(val);
   };
   return (
-    <div className={styles.general_look_initiative}>
+    <GeneralLookInitiative>
       <span>Armor Class</span>
       <div className={`overflowing ${styles.initiative_value_style}`}>
         {!changeAc ? (
           <span onClick={() => setChangeAc(true)}>{newAc}</span>
         ) : (
           <AutoFocusInputEnterEvent
+            type="number"
             valuesTosubmit={changeArmorClass}
             value={newAc}
           ></AutoFocusInputEnterEvent>
         )}
       </div>{" "}
-    </div>
+    </GeneralLookInitiative>
   );
 }

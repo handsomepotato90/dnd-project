@@ -2,76 +2,62 @@ import { useState, useEffect, useContext } from "react";
 import CS from "../../../../../store/CS-context";
 import styles from "./Actions.module.css";
 import ActionsWeapons from "./ActionsWeapons";
-import useWindowSize from "../../../../../hooks/screensize-hook";
+import AddWeapon from "./AddWeapon";
 
 export default function Actions() {
   const [addWeapon, setAddWeapon] = useState(false);
-  const [type, setType] = useState(false);
-  const [range, setRange] = useState(false);
-  const [hit, setHit] = useState(false);
-  const [damage, setDamage] = useState(false);
   const [weapons, setWeapons] = useState([]);
   const [cordinate, setCordinate] = useState({ x: 0, y: 0 });
-  const size = useWindowSize();
   const cs = useContext(CS);
-  const position = size.width > 600 ? cordinate.x : 0;
-  const styleWidth = size.width > 600 ? null : size.width - 20;
+
   useEffect(() => {
     setWeapons([...cs.weapons]);
   }, [cs.weapons]);
 
-  const openAddWeapon = (e) => {
-    setCordinate({ x: e.clientX, y: e.clientY });
-    setAddWeapon(true);
-  };
-  const addWeaponToList = () => {
-    cs.addWeapons(type, range, hit, damage);
+  const closeWindow = () => {
     setAddWeapon(false);
   };
+  const openAddWeapon = (e) => {
+    setAddWeapon(true);
+    setCordinate({ x: e.clientX, y: e.clientY });
+  };
+
   return (
     <div className={`overflowing  ${styles.weapon_holder}`}>
       <div>
         <div className={styles.title_for_content}>Actions</div>
         <div>
           <div className={styles.wepons_desinghn}>
+            <div></div>
             <div className="red_text">ATTACK</div>
             <div className="red_text">RANGE</div>
             <div className="red_text">HIT / DC</div>
             <div className="red_text">DAMAGE</div>
+            <div></div>
           </div>
           <div className={`${styles.weapon_boxes_holder}`}>
             {weapons.map((e, i) => {
               return (
                 <ActionsWeapons
                   key={i}
+                  place={i}
                   type={e.type}
                   range={e.range}
                   hit={e.hit}
                   damage={e.damage}
+                  coordinateX={cordinate.x}
+                  coordinateY={cordinate.y}
                 ></ActionsWeapons>
               );
             })}
           </div>
           {addWeapon && (
-            <div
-              style={{
-                width: styleWidth,
-                marginLeft: position,
-                marginTop: cordinate.y - 350,
-              }}
-              className={styles.weapon_small_window}
-            >
-              <span>Type</span>
-              <input onChange={(e) => setType(e.target.value)}></input>
-              <span>Range</span>
-              <input onChange={(e) => setRange(e.target.value)}></input>
-              <span>Hit/DC</span>
-              <input onChange={(e) => setHit(e.target.value)}></input>
-              <span>Damage</span>
-              <input onChange={(e) => setDamage(e.target.value)}></input>
-              <button onClick={() => setAddWeapon(false)}>Cancel</button>
-              <button onClick={addWeaponToList}>Add Weapon</button>
-            </div>
+            <AddWeapon
+              action={"add"}
+              coordinateX={cordinate.x}
+              coordinateY={cordinate.y}
+              closeWindow={closeWindow}
+            ></AddWeapon>
           )}
           <button className={styles.add_button_weapons} onClick={openAddWeapon}>
             Add New Weapon
