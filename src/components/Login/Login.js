@@ -12,7 +12,7 @@ import { LoginContext } from "../store/login-context";
 import LoadingSpinner from "../UI/LoadingSpinner";
 import ModalError from "../UI/ModalError";
 import { useHttpClient } from "../hooks/http-hook";
-import FacebookLogin from "./FacebookLogin";
+// import FacebookLogin from "./FacebookLogin";
 import { gapi } from "gapi-script";
 import styles from "./Login.module.css";
 import { GoogleOAuthProvider } from "@react-oauth/google";
@@ -163,9 +163,9 @@ export default function Login() {
           </Button>
         </form>
         <div>
-          <FacebookLogin
+          {/* <FacebookLogin
             buttonText={`${isLogin ? `LOGIN` : `SIGNUP`}`}
-          ></FacebookLogin>
+          ></FacebookLogin> */}
           <GoogleOAuthProvider clientId="935993487799-3sfsjrrfjh8qol2fe65pjjt3ik0tcpqn.apps.googleusercontent.com">
             <GoogleLoginX buttonText={`${isLogin ? `LOGIN` : `SIGNUP`}`} />
           </GoogleOAuthProvider>

@@ -2,9 +2,8 @@ import React, { useContext } from "react";
 import { LoginContext } from "../store/login-context";
 import { useHttpClient } from "../hooks/http-hook";
 
-
 import "./MainMonsterBox.css";
-import styles from "./Voting.module.css"
+import styles from "./Voting.module.css";
 
 export default function Button(props) {
   const login = useContext(LoginContext);
@@ -39,9 +38,18 @@ export default function Button(props) {
 
   return (
     <React.Fragment>
-      <button onClick={Vote} style={{float: `${props.styleFloat}`, borderRadius: `${props.styleRadius}`}} className={`${styles.btn_add__style} ${cName}`}>
-       
-        <div>  {props.text}: {props.number}</div>
+      <button
+        onClick={Vote}
+        style={{
+          float: `${props.styleFloat}`,
+          borderRadius: `${props.styleRadius}`,
+        }}
+        className={`${styles.btn_add__style} ${cName}`}
+      >
+        <div>
+          {" "}
+          {props.text}: {props.number}
+        </div>
       </button>
     </React.Fragment>
   );
