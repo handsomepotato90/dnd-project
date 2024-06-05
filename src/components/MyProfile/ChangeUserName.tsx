@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import React, { useState, useContext } from "react";
 import NewsBox from "../UI/NewsBox";
 import Input from "../form-elements/Input";
 import Button from "../form-elements/Button";
@@ -17,7 +17,7 @@ interface ChangeUserNameProps {
   uname: string|null;
 }
 
-export default function ChangeUserName(props: ChangeUserNameProps) {
+const ChangeUserName: React.FC<ChangeUserNameProps> = (props) => {
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const [intentionForSubmit, setIntentionForSubmit] = useState(false);
   const auth = useContext(LoginContext);
@@ -96,3 +96,5 @@ export default function ChangeUserName(props: ChangeUserNameProps) {
     </div>
   );
 }
+
+export default ChangeUserName;

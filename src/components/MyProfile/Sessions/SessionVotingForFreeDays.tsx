@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useHttpClient } from "../../hooks/http-hook";
 import { LoginContext } from "../../store/login-context";
 import ConteinerBox from "../../UI/ConteinerBox";
@@ -33,7 +33,7 @@ export interface Data {
   votes: Vote[];
 }
 
-export default function SessionVotingForFreeDays() {
+const SessionVotingForFreeDays: React.FC = () => {
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const auth = useContext(LoginContext);
   const [resData, setResData] = useState<Data | null>(null);
@@ -138,3 +138,4 @@ export default function SessionVotingForFreeDays() {
     </ConteinerBox>
   );
 }
+export default SessionVotingForFreeDays;

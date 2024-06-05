@@ -1,9 +1,9 @@
-import { useContext } from "react";
+import React, { useContext } from "react";
 import CalculatorContext from "../../../store/calculator-context";
 
 import styles from "./Screen.module.css";
 
-export default function Result() {
+const Result: React.FC = () => {
   const calc = useContext(CalculatorContext);
 
   return (
@@ -12,3 +12,4 @@ export default function Result() {
     </div>
   );
 }
+export default Result;

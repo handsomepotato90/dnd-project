@@ -1,10 +1,20 @@
-import { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import CS from "../../../../../store/CS-context";
 import useWindowSize from "../../../../../hooks/screensize-hook";
 
 import styles from "./Actions.module.css";
 
-export default function AddWeapon(props: { type: string; range: string; hit: string; damage: string; coordinateX: number; coordinateY: number; action: string; position: number; closeWindow: (arg0: boolean) => void; }) {
+const AddWeapon: React.FC<{
+  type: string;
+  range: string;
+  hit: string;
+  damage: string;
+  coordinateX: number;
+  coordinateY: number;
+  action: string;
+  position: number;
+  closeWindow: (arg0: boolean) => void;
+}> = (props) => {
   const [type, setType] = useState(props.type);
   const [range, setRange] = useState(props.range);
   const [hit, setHit] = useState(props.hit);
@@ -14,7 +24,6 @@ export default function AddWeapon(props: { type: string; range: string; hit: str
   const size = useWindowSize();
 
   const position = (size.width ?? 0) > 600 ? cordinate.x : 0;
-  const styleWidth = (size.width ?? 0) > 600 ? null : (size.width ?? 0) - 20;
 
   useEffect(() => {
     setCordinate({ x: props.coordinateX, y: props.coordinateY });
@@ -22,7 +31,7 @@ export default function AddWeapon(props: { type: string; range: string; hit: str
 
   const addWeaponToList = () => {
     if (props.action === "add") {
-      cs.addWeapons(type, range, parseInt(hit), damage);
+      cs.addWeapons(type, range, hit, damage);
     }
     if (props.action === "edit") {
       const weaponIndex = props.position;
@@ -56,20 +65,11 @@ export default function AddWeapon(props: { type: string; range: string; hit: str
       className={styles.weapon_small_window}
     >
       <span>Type</span>
-      <input
-        onChange={(e) => setType(e.target.value)}
-        value={type}
-      ></input>
+      <input onChange={(e) => setType(e.target.value)} value={type}></input>
       <span>Range</span>
-      <input
-        onChange={(e) => setRange(e.target.value)}
-        value={range}
-      ></input>
+      <input onChange={(e) => setRange(e.target.value)} value={range}></input>
       <span>Hit/DC</span>
-      <input
-        onChange={(e) => setHit(e.target.value)}
-        value={hit}
-      ></input>
+      <input onChange={(e) => setHit(e.target.value)} value={hit}></input>
       <span>Damage</span>
       <input
         onChange={(e) => setDamage(e.target.value)}
@@ -79,4 +79,6 @@ export default function AddWeapon(props: { type: string; range: string; hit: str
       <button onClick={addWeaponToList}>Add Weapon</button>
     </div>
   );
-}
+};
+
+export default AddWeapon;

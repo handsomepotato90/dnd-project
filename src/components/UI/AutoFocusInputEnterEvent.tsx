@@ -1,6 +1,12 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
-export default function AutoFocusInputEnterEvent(props: { value: string|number; valuesOnsubmit: (arg0: string|number) => void; type: string; }) {
+type AutoFocusInputEnterEventProps = {
+  value: string | number;
+  valuesOnsubmit: (arg0: string | number) => void;
+  type: string;
+};
+
+const AutoFocusInputEnterEvent: React.FC<AutoFocusInputEnterEventProps> = (props) => {
   const [value, setValue] = useState(props.value);
   const handleKeyUp = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
@@ -19,4 +25,5 @@ export default function AutoFocusInputEnterEvent(props: { value: string|number; 
       onChange={(e) => setValue(e.target.value)}
     ></input>
   );
-}
+};
+export default AutoFocusInputEnterEvent;

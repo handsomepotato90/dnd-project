@@ -1,15 +1,19 @@
-import NameAndAlignment from "./NameAndAlignment";
-import LifeArmorSpeed from "./LifeArmorSpeed";
-import Stats from "./Stats";
-import General from "./General";
-import Actions from "../Actions";
-import MonsterStats from "../../../types/MonsterStatsTypes"
+import React from 'react'; // Import React
 
+import NameAndAlignment from './NameAndAlignment';
+import LifeArmorSpeed from './LifeArmorSpeed';
+import Stats from './Stats';
+import General from './General';
+import Actions from '../Actions';
+import MonsterStats from '../../../types/MonsterStatsTypes';
+
+// Define interface for props
 interface StatBlockProps {
   monsterStats: MonsterStats;
 }
 
-const StatBlock: React.FC<StatBlockProps> = ({monsterStats}) => {
+const StatBlock: React.FC<StatBlockProps> = ({ monsterStats }) => {
+  // Destructure props and render components
   return (
     <>
       <NameAndAlignment
@@ -60,5 +64,6 @@ const StatBlock: React.FC<StatBlockProps> = ({monsterStats}) => {
       )}
     </>
   );
-}
+};
+
 export default StatBlock;

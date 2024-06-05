@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useHttpClient } from "../../hooks/http-hook";
 import { LoginContext } from "../../store/login-context";
 import ConteinerBox from "../../UI/ConteinerBox";
@@ -9,7 +9,7 @@ import ModalConfirmation from "../../UI/ModalConfirmation";
 import { useNavigate } from "react-router-dom";
 import { Data } from "./SessionVotingForFreeDays";
 
-export default function MySessions() {
+const MySessions: React.FC = () => {
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const auth = useContext(LoginContext);
   const [resData, setResData] = useState<Data>();
@@ -42,7 +42,7 @@ export default function MySessions() {
           }
         );
         setResData(resData);
-        let pushToThisArray = [];
+        const pushToThisArray = [];
         for (let index = 0; index < resData.votes.length; index++) {
           pushToThisArray.push(...resData.votes[index].dates);
         }
@@ -55,7 +55,7 @@ export default function MySessions() {
   }, [auth.token, sendRequest, resData, url]);
 
   const mode = (numbers: string[]) => {
-    let counted: {[key: string]: number} = numbers.reduce((acc, curr) => {
+    const counted: {[key: string]: number} = numbers.reduce((acc, curr) => {
       if (curr in acc) {
         acc[curr]++;
       } else {
@@ -63,7 +63,7 @@ export default function MySessions() {
       }
       return acc;
     }, Object.create(null));
-    let mode = Math.max(...Object.values(counted));
+    const mode = Math.max(...Object.values(counted));
     return Object.keys(counted).filter((x) => counted[x] === mode);
   };
   
@@ -140,3 +140,4 @@ export default function MySessions() {
     </ConteinerBox>
   );
 }
+export default MySessions;

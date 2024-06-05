@@ -1,7 +1,8 @@
+import React from "react";
 import textData from "./text.json";
 import HomeBrewSave from "./HomeBrewSave";
 
-const SubmitHomeBrew = () => {
+const SubmitHomeBrew: React.FC = () => {
   const { reqFields, fields, textZone } = textData;
 
   return (

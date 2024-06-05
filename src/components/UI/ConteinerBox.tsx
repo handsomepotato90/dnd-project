@@ -2,8 +2,8 @@ import React from "react";
 import styles from "./ConteinerBox.module.css";
 
 interface ContainerProps  {
-  fromStart?: Boolean ;
-  fromEnd?: Boolean ;
+  fromStart?: boolean ;
+  fromEnd?: boolean ;
   children?: React.ReactNode;
 }
 

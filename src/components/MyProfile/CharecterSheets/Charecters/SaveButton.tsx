@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import React, { useState, useContext } from "react";
 import ModalConfirmation from "../../../UI/ModalConfirmation";
 import CS from "../../../store/CS-context";
 import { LoginContext } from "../../../store/login-context";
@@ -7,7 +7,7 @@ import ButtonActionComponent from "./ButtonActionComponent";
 import { useNavigate } from "react-router-dom";
 import LoadingSpinner from "../../../UI/LoadingSpinner";
 
-export default function SaveButton() {
+const SaveButton: React.FC = () => {
   const [iWantToSave, setIWantToSave] = useState<boolean>(false);
   const { isLoading, sendRequest } = useHttpClient();
   const navigate = useNavigate();
@@ -118,4 +118,6 @@ export default function SaveButton() {
       </ButtonActionComponent>
     </>
   );
-}
+};
+
+export default SaveButton;

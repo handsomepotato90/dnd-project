@@ -1,10 +1,10 @@
-import { useState, useContext } from "react";
+import React, { useState, useContext } from "react";
 import ModalConfirmation from "../../../../../UI/ModalConfirmation";
 import CS from "../../../../../store/CS-context";
 
 import styles from "./shortLongRest.module.css";
 
-export default function LongRest() {
+const LongRest: React.FC = () => {
   const [fullRest, setFullRest] = useState(false);
   const cs = useContext(CS);
 
@@ -31,3 +31,5 @@ export default function LongRest() {
     </>
   );
 }
+
+export default LongRest;

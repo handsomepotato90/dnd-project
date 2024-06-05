@@ -1,11 +1,10 @@
-import { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import CS from "../../../../store/CS-context";
 import styles from "./CharecterComponents.module.css";
-import { useEffect } from "react";
 
-import {CharacterClass} from "../../../../types/CSTypes"
+import { CharacterClass } from "../../../../types/CSTypes";
 
-export default function ChosenClassNLevel() {
+const ChosenClassNLevel: React.FC = () => {
   const cs = useContext(CS);
   const [classes, setClasses] = useState<CharacterClass[]>([]);
 
@@ -20,7 +19,8 @@ export default function ChosenClassNLevel() {
       })}
     </>
   );
-}
+};
+
 interface ClassEntry {
   class: string;
   level: number;
@@ -62,3 +62,5 @@ const ClassDisplay: React.FC<Props> = (props) => {
     </div>
   );
 };
+
+export default ChosenClassNLevel;

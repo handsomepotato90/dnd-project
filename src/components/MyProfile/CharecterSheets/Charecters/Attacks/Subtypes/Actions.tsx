@@ -1,12 +1,12 @@
-import { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import CS from "../../../../../store/CS-context";
 import styles from "./Actions.module.css";
 import ActionsWeapons from "./ActionsWeapons";
 import AddWeapon from "./AddWeapon";
 
-import {Weapon} from "../../../../../types/CSTypes";
+import { Weapon } from "../../../../../types/CSTypes";
 
-export default function Actions() {
+const Actions: React.FC = () => {
   const [addWeapon, setAddWeapon] = useState(false);
   const [weapons, setWeapons] = useState<Weapon[]>([]);
   const [cordinate, setCordinate] = useState({ x: 0, y: 0 });
@@ -19,7 +19,7 @@ export default function Actions() {
   const closeWindow = () => {
     setAddWeapon(false);
   };
-  const openAddWeapon = (e: {clientX: number; clientY: number; }) => {
+  const openAddWeapon = (e: { clientX: number; clientY: number }) => {
     setAddWeapon(true);
     setCordinate({ x: e.clientX, y: e.clientY });
   };
@@ -62,7 +62,7 @@ export default function Actions() {
               hit={""}
               damage={""}
               position={0}
-              ></AddWeapon>
+            ></AddWeapon>
           )}
           <button className={styles.add_button_weapons} onClick={openAddWeapon}>
             Add New Weapon
@@ -78,4 +78,6 @@ export default function Actions() {
       </div>
     </div>
   );
-}
+};
+
+export default Actions;

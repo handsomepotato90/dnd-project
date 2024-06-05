@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useHttpClient } from "../hooks/http-hook";
 import EmptyPage from "../UI/EmptyPage";
 import MonsterBattleBox from "../MyEncounters/MonsterBattleBox";
@@ -8,40 +8,10 @@ import ConteinerBox from "../UI/ConteinerBox";
 
 import styles from "./Voting.module.css";
 import MonsterName from "./MonsterName";
+import MonsterStats from "../types/MonsterStatsTypes";
 
-interface Monster {
-  _id: string;
-  name: string;
-  timeforvoting: number;
-  votes: { yes: Array<string>; no: Array<string> };
-}
-
-interface Armor {
-  value: number;
-  type: string;
-}
-
-interface HP {
-  dice: string;
-  hp: number;
-}
-
-interface Monster{
-  "Armor Class": Armor;
-  "Hit Points": HP;
-  "Condition Immunities": Array<string> | void;
-  "Damage Immunities": Array<string> | void;
-  "Damage Resistances": Array<string> | void;
-  "Damage Vulnerabilities": Array<string> | void;
-  "initiative": number;
-  "DEX_mod": number;
-  "level": number;
-  "img_url": string;
-}
-
-
-const Voting = () => {
-  const [monsters, setMonsters] = useState<Monster[]>([]);
+const Voting: React.FC = () =>  {
+  const [monsters, setMonsters] = useState<MonsterStats[]>([]);
   const { sendRequest } = useHttpClient();
   const currentDate = new Date().getTime();
 
@@ -61,8 +31,8 @@ const Voting = () => {
 
   return (
     <ConteinerBox
-    fromStart={false}
-    fromEnd={false}
+      fromStart={false}
+      fromEnd={false}
     >
       {monsters.length < 1 && (
         <EmptyPage message="There are no new submitted creatures at this time." />

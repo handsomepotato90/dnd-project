@@ -1,7 +1,9 @@
+import React from "react";
 import styles from "./CharecterComponents.module.css";
 import LongRest from "./shortLongRest/LongRest";
 import ShortRest from "./shortLongRest/ShortRest";
-export default function ShortLongRest() {
+
+const ShortLongRest: React.FC = () => {
   return (
     <div className={styles.general_charecter_rest_style}>
       <ShortRest></ShortRest>
@@ -9,3 +11,5 @@ export default function ShortLongRest() {
     </div>
   );
 }
+
+export default ShortLongRest;

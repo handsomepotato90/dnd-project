@@ -6,15 +6,15 @@ import "./MainMonsterBox.css";
 import styles from "./Voting.module.css";
 
 interface ButtonTypes{
-    onClick: Function,
-    styleFloat: 'left' | 'right' | 'none',
-    styleRadius: string, 
-    name: string,
-    votes: Array<string>, 
-    number: number, 
-    id: string,
-    text: string,
-    className: string
+  onClick: (arg0: string, arg1: string) => void | (() => void),
+  styleFloat: 'left' | 'right' | 'none',
+  styleRadius: string, 
+  name: string,
+  votes: Array<string>, 
+  number: number, 
+  id: string,
+  text: string,
+  className: string
 }
 
 const Button: React.FC<ButtonTypes> = ({onClick, styleFloat, styleRadius, votes, number, id, text, className}) =>  {

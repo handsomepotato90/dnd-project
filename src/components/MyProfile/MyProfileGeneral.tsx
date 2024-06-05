@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import React, { useContext } from "react";
 import ConteinerBox from "../UI/ConteinerBox";
 import ChangePassword from "./ChangePassword";
 import ChangeUserName from "./ChangeUserName";
@@ -7,7 +7,7 @@ import { LoginContext } from "../store/login-context";
 
 import "./MyProfile.css";
 
-export default function MyProfileGeneral() {
+const MyProfileGeneral = () => {
   const context = useContext(LoginContext);
 
   return (
@@ -26,3 +26,4 @@ export default function MyProfileGeneral() {
     </ConteinerBox>
   );
 }
+export default MyProfileGeneral;

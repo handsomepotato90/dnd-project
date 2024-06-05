@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { SvgComponent } from "../../../../../../Navigation/Navigation";
 import CS from "../../../../../../store/CS-context";
 import edit from "../../../../../../../icons/pencil.svg";
@@ -8,7 +8,8 @@ import trash from "../../../../../../../icons/trashcan-black.svg";
 import styles from "./NotesComponents.module.css";
 import ModalConfirmation from "../../../../../../UI/ModalConfirmation";
 
-import {NotesCategory} from "../../../../../../types/CSTypes";
+import { NotesCategory } from "../../../../../../types/CSTypes";
+
 export interface DataItem {
   _id: string;
   title: string;
@@ -16,7 +17,7 @@ export interface DataItem {
   time: string;
 }
 
-export default function NotesLogic(props: { array: DataItem; sectionToDisplay: NotesCategory; }) {
+const NotesLogic: React.FC<{ array: DataItem; sectionToDisplay: NotesCategory }> = (props) => {
   const [editNote, setEditNote] = useState(false);
   const [title, setTitle] = useState(props.array.title);
   const [text, setText] = useState(props.array.value);
@@ -27,6 +28,7 @@ export default function NotesLogic(props: { array: DataItem; sectionToDisplay: N
     setTitle(props.array.title);
     setText(props.array.value);
   }, [props.array]);
+
   const saveChanges = () => {
     cs.newNote(
       "UPDATE",
@@ -38,6 +40,7 @@ export default function NotesLogic(props: { array: DataItem; sectionToDisplay: N
     );
     setEditNote(false);
   };
+
   const deleteNote = (val: boolean) => {
     if (val === false) {
       setToDelete(false);
@@ -54,6 +57,7 @@ export default function NotesLogic(props: { array: DataItem; sectionToDisplay: N
       );
     }
   };
+
   return (
     <>
       {toDelete && (
@@ -125,4 +129,6 @@ export default function NotesLogic(props: { array: DataItem; sectionToDisplay: N
       </div>
     </>
   );
-}
+};
+
+export default NotesLogic;

@@ -1,12 +1,12 @@
 import React, { ReactNode, useState } from "react";
-import CSContextProps, {Notes as Note, Meta} from "../types/CSTypes"
-import Spell from "../types/SpellsTypes"
+import CSContextProps, { Notes as Note, Meta } from "../types/CSTypes";
+import Spell from "../types/SpellsTypes";
 
 const CS = React.createContext<CSContextProps>({
   armorClass: "",
   inspiration: 0,
   specialStat: 0,
-  specialName: '',
+  specialName: "",
   proficiency: 0,
   maxHp: 0,
   tempHp: 0,
@@ -43,8 +43,8 @@ const CS = React.createContext<CSContextProps>({
   },
   backNapp: {},
   attunedItems: { first: "", second: "", third: "" },
-  spellMods: { Modifire: '0', "Spell Attack": '0', "Save DC": '0' },
-  currency: { PP: '0', GP: '0', EP:'0', SP: '0', CP: '0' },
+  spellMods: { Modifire: "0", "Spell Attack": "0", "Save DC": "0" },
+  currency: { PP: "0", GP: "0", EP: "0", SP: "0", CP: "0" },
   weapons: [{ type: "", range: "", hit: "", damage: "" }],
   inventory: "",
   speed: 0,
@@ -107,19 +107,17 @@ interface Character {
   hitDie: number;
 }
 
-export const CSProvider = ({children}: {children: ReactNode}) => {
-  const CSheet = JSON.parse(localStorage?.getItem("charSheet") ?? 'false');
+export const CSProvider = ({ children }: { children: ReactNode }) => {
+  const CSheet = JSON.parse(localStorage?.getItem("charSheet") ?? "false");
 
   const [armorClass, setArmorClass] = useState<string>(
-    CSheet ? CSheet.AC : '0'
+    CSheet ? CSheet.AC : "0"
   );
   const [fullHeal, setFullHeal] = useState<boolean>(false);
   const [proficiency, setPorficincy] = useState<number>(
     CSheet ? parseInt(CSheet.proficiency) : 0
   );
-  const [defenses, setDefenses] = useState<string>(
-    CSheet?.defences || ""
-  );
+  const [defenses, setDefenses] = useState<string>(CSheet?.defences || "");
   const [conditions, setConditions] = useState<string>(
     CSheet?.conditions || ""
   );
@@ -136,9 +134,11 @@ export const CSProvider = ({children}: {children: ReactNode}) => {
     CSheet?.hp_max ? parseInt(CSheet.hp_max) : 0
   );
   const [meta, setMeta] = useState<Meta>(
-    CSheet?.meta ||  {  name: "Name", bg: "Background", al: "Alignment", }
+    CSheet?.meta || { name: "Name", bg: "Background", al: "Alignment" }
   );
-  const [stats, setStats] = useState<Record<string, { value: number, modifire?: number, proff: boolean }>>(
+  const [stats, setStats] = useState<
+    Record<string, { value: number; modifire?: number; proff: boolean }>
+  >(
     CSheet?.stats || {
       Str: { value: 10, modifire: 0, proff: false },
       Dex: { value: 10, modifire: 0, proff: false },
@@ -149,21 +149,26 @@ export const CSProvider = ({children}: {children: ReactNode}) => {
     }
   );
   const [weapons, setWeapons] = useState<Weapon[]>(CSheet?.weapons || []);
-  const [healForHitDie, setHealForHitDie] = useState<{ value: number; is: boolean; }>({ value: 0, is: false });
-  const [notes, setNotes] = useState<Notes>( CSheet?.notes || {
-    ORGS: [],
-    ALLIES: [],
-    ENEMIES: [],
-    TOWNS: [],
-    OTHER: [],
-});
-  const [inventory, setInventory] = useState<string>(
-    CSheet?.inventory || ""
+  const [healForHitDie, setHealForHitDie] = useState<{
+    value: number;
+    is: boolean;
+  }>({ value: 0, is: false });
+  const [notes, setNotes] = useState<Notes>(
+    CSheet?.notes || {
+      ORGS: [],
+      ALLIES: [],
+      ENEMIES: [],
+      TOWNS: [],
+      OTHER: [],
+    }
   );
+  const [inventory, setInventory] = useState<string>(CSheet?.inventory || "");
   const [backNapp, setBackNapp] = useState<Record<string, string>>(
     CSheet?.background_appearance || { BACKGROUND: "", APPEARANCE: "" }
   );
-  const [characteristics, setCharacteristics] = useState<Record<string, string>>(
+  const [characteristics, setCharacteristics] = useState<
+    Record<string, string>
+  >(
     CSheet?.characteristics || {
       ALIGNMENT: "-",
       GENDER: "-",
@@ -230,19 +235,21 @@ export const CSProvider = ({children}: {children: ReactNode}) => {
       LANGUAGES: "NONE",
     }
   );
-  const [spells, setSpells] = useState<Record<string, { slots: number, spells: Spell[], spell_ids: string[] }>>(
+  const [spells, setSpells] = useState<
+    Record<string, { slots: number; spells: Spell[]; spell_ids: string[] }>
+  >(
     CSheet?.spells || {
-          "1st": { slots: 0, spells: [], spell_ids: [] },
-          "2nd": { slots: 0, spells: [], spell_ids: [] },
-          "3rd": { slots: 0, spells: [], spell_ids: [] },
-          "4th": { slots: 0, spells: [], spell_ids: [] },
-          "5th": { slots: 0, spells: [], spell_ids: [] },
-          "6th": { slots: 0, spells: [], spell_ids: [] },
-          "7th": { slots: 0, spells: [], spell_ids: [] },
-          "8th": { slots: 0, spells: [], spell_ids: [] },
-          "9th": { slots: 0, spells: [], spell_ids: [] },
-          Can: { slots: 0, spells: [], spell_ids: [] },
-        }
+      "1st": { slots: 0, spells: [], spell_ids: [] },
+      "2nd": { slots: 0, spells: [], spell_ids: [] },
+      "3rd": { slots: 0, spells: [], spell_ids: [] },
+      "4th": { slots: 0, spells: [], spell_ids: [] },
+      "5th": { slots: 0, spells: [], spell_ids: [] },
+      "6th": { slots: 0, spells: [], spell_ids: [] },
+      "7th": { slots: 0, spells: [], spell_ids: [] },
+      "8th": { slots: 0, spells: [], spell_ids: [] },
+      "9th": { slots: 0, spells: [], spell_ids: [] },
+      Can: { slots: 0, spells: [], spell_ids: [] },
+    }
   );
   const [xp, setXp] = useState<number>(CSheet?.xp || 0);
   const [inspiration, setInspiration] = useState<number>(
@@ -273,51 +280,49 @@ export const CSProvider = ({children}: {children: ReactNode}) => {
     setSpells(spells);
   };
 
-    const addSpells = (level: number, spell: Spell) => {
-      let lvl;
+  const addSpells = (level: number, spell: Spell) => {
+    let lvl;
 
-      switch (level) {
-          case 0:
-              lvl = "Can";
-              break;
-          case 1:
-              lvl = "1st";
-              break;
-          case 2:
-              lvl = "2nd";
-              break;
-          case 3:
-              lvl = "3rd";
-              break;
-          default:
-              lvl = `${level}th`;
-      }
+    switch (level) {
+      case 0:
+        lvl = "Can";
+        break;
+      case 1:
+        lvl = "1st";
+        break;
+      case 2:
+        lvl = "2nd";
+        break;
+      case 3:
+        lvl = "3rd";
+        break;
+      default:
+        lvl = `${level}th`;
+    }
 
-      setSpells((prevSpells) => {
-          const newSpells = { ...prevSpells };
+    setSpells((prevSpells) => {
+      const newSpells = { ...prevSpells };
 
-          newSpells[lvl] = {
-              ...newSpells[lvl],
-              spells: [...newSpells[lvl].spells, spell],
-              spell_ids: [...newSpells[lvl].spell_ids, spell._id]
-          };
-          return newSpells;
-      });
+      newSpells[lvl] = {
+        ...newSpells[lvl],
+        spells: [...newSpells[lvl].spells, spell],
+        spell_ids: [...newSpells[lvl].spell_ids, spell._id],
+      };
+      return newSpells;
+    });
   };
-
 
   const spellSetter = (val: string, acc: string) => {
     setSpells((prevSpells) => {
+      const newSpells = { ...prevSpells };
 
-        const newSpells = { ...prevSpells };
-        
-        if (acc === "add") {
-            newSpells[val].slots = newSpells[val].slots + 1;
-        } else if (acc === "remove") {
-            newSpells[val].slots = newSpells[val].slots - 1;
-        }
+      if (acc === "add") {
+        newSpells[val].slots = newSpells[val].slots + 1;
+      } else if (acc === "remove") {
+        newSpells[val].slots = newSpells[val].slots - 1;
+      }
 
-        return newSpells;
+      return newSpells;
     });
   };
 
@@ -354,7 +359,6 @@ export const CSProvider = ({children}: {children: ReactNode}) => {
   const logRestNow = () => {
     const newArray = [];
     for (let i = 0; i < classes.length; i++) {
-
       const element = classes[i];
 
       element.hitDie = element.level;
@@ -363,9 +367,7 @@ export const CSProvider = ({children}: {children: ReactNode}) => {
     setFullHeal(true);
     setClasses([...newArray]);
   };
-  console.log(notes)
   const healFor = (cl: string, hitDie: number, heal: number) => {
-
     for (let i = 0; i < classes.length; i++) {
       const element = classes[i];
       if (element.class === cl) {
@@ -377,7 +379,6 @@ export const CSProvider = ({children}: {children: ReactNode}) => {
     }
   };
   const newClass = (cl: string, lvl: number) => {
-
     if (classes.length === 0) {
       setClasses([...classes, { class: cl, level: lvl, hitDie: lvl }]);
       return;
@@ -392,7 +393,7 @@ export const CSProvider = ({children}: {children: ReactNode}) => {
       }
     }
   };
-  const backNApp = (title: string, text:string) => {
+  const backNApp = (title: string, text: string) => {
     backNapp[title] = text;
     setBackNapp(backNapp);
   };
@@ -415,42 +416,54 @@ export const CSProvider = ({children}: {children: ReactNode}) => {
     spellMods[mod] = value;
     setSpellMods(spellMods);
   };
-  const addWeapons = (type: string, range: string, hit: string, damage: string) => {
+  const addWeapons = (
+    type: string,
+    range: string,
+    hit: string,
+    damage: string
+  ) => {
     setWeapons([
       ...weapons,
       { type: type, range: range, hit: hit, damage: damage },
     ]);
   };
 
-  const newNote = (types: string, section: string, title: string, value: string, time: string, id: string) => {
+  const newNote = (
+    types: string,
+    section: string,
+    title: string,
+    value: string,
+    time: string,
+    id: string
+  ) => {
     setNotes((prevState) => {
-        let updatedSection;
+      let updatedSection;
 
-        switch (types) {
-            case "DELETE":
-                updatedSection = prevState[section].filter(note => note._id !== id);
-                break;
-            case "UPDATE":
-                updatedSection = prevState[section].map(note => 
-                    note._id === id ? { _id: id, title, value, time } : note
-                );
-                break;
-            case "ADD":
-                updatedSection = [
-                    ...prevState[section],
-                    { _id: id, title, value, time }
-                ];
-                break;
-            default:
-                return prevState;
-        }
+      switch (types) {
+        case "DELETE":
+          updatedSection = prevState[section].filter((note) => note._id !== id);
+          break;
+        case "UPDATE":
+          updatedSection = prevState[section].map((note) =>
+            note._id === id ? { _id: id, title, value, time } : note
+          );
+          break;
+        case "ADD":
+          updatedSection = [
+            ...prevState[section],
+            { _id: id, title, value, time },
+          ];
+          break;
+        default:
+          return prevState;
+      }
 
-        return {
-            ...prevState,
-            [section]: updatedSection
-        };
-      });
-  };            
+      return {
+        ...prevState,
+        [section]: updatedSection,
+      };
+    });
+  };
   const defencesSetter = (def: string) => {
     setDefenses(def);
   };
@@ -483,7 +496,6 @@ export const CSProvider = ({children}: {children: ReactNode}) => {
       proff: status,
     };
     setStats(stats);
-
   };
   return (
     <CS.Provider

@@ -1,7 +1,9 @@
+import React from "react";  
 import Skill from "./Skill";
 
 import styles from "./Skills.module.css";
-export default function Skills() {
+
+const Skills: React.FC = () => {
   return (
     <div className={styles.giant_skill_block}>
       <div className={styles.general_description}>
@@ -31,3 +33,4 @@ export default function Skills() {
     </div>
   );
 }
+export default Skills;

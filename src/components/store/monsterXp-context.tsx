@@ -78,7 +78,7 @@ export const MonsterXpProvider: React.FC<{ children: React.ReactNode }> = ({
   };
 
   const [monsterBlock, selectMonsterBlock] = useState<MonsterData[]>([]);
-  let monsterChallengeLadder = monsterXpSum(monsterBlock);
+  const monsterChallengeLadder = monsterXpSum(monsterBlock);
 
   const selectMonster = (monster: MonsterStats) => {
     selectMonsterBlock([

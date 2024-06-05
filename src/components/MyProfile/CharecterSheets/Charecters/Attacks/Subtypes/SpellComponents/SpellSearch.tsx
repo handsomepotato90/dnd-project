@@ -1,15 +1,20 @@
+import React, { useState, useEffect, useContext } from "react";
 import styles from "./SpellComponents.module.css";
 import { SvgComponent } from "../../../../../../Navigation/Navigation";
 import leftArrow from "../../../../../../../icons/leftArrow.svg";
 import Spell from "./Spell";
 import CS from "../../../../../../store/CS-context";
-import { useState, useEffect, useContext } from "react";
 import { useHttpClient } from "../../../../../../hooks/http-hook";
 import useWindowSize from "../../../../../../hooks/screensize-hook";
 
 import SpellTypes from "../../../../../../types/SpellsTypes";
 
-export default function SpellSearch(props: { x: number; lvl: string; onClick: (arg0: boolean) => void; addSpellToList: (arg0: SpellTypes) => void; }) {
+const SpellSearch: React.FC<{
+  x: number;
+  lvl: string;
+  onClick: (arg0: boolean) => void;
+  addSpellToList: (arg0: SpellTypes) => void;
+}> = (props) => {
   const [spellList, setSpellList] = useState<SpellTypes[]>([]);
   const { sendRequest } = useHttpClient();
   const cs = useContext(CS);
@@ -81,4 +86,6 @@ export default function SpellSearch(props: { x: number; lvl: string; onClick: (a
       </div>
     </div>
   );
-}
+};
+
+export default SpellSearch;

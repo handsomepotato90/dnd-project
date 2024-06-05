@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import styles from "./BattleScreen.module.css";
 import { LoginContext } from "../store/login-context";
 import MonsterBattleBox from "./MonsterBattleBox";
@@ -12,7 +12,7 @@ import ConteinerBox from "../UI/ConteinerBox";
 
 import MonsterStats from "../types/MonsterStatsTypes";
 
-const BattleScreen = () => {
+const BattleScreen: React.FC = () => {
   const auth = useContext(LoginContext);
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const [deleted, setDeleted] = useState(false);
@@ -28,7 +28,7 @@ const BattleScreen = () => {
           `${process.env.REACT_APP_BACKEND_URL}/battle_scr/${url[1]}`
         );
         const participants = [
-          ...resData.monsters.flat().map((monster:MonsterStats) => ({
+          ...resData.monsters.flat().map((monster: MonsterStats) => ({
             ...monster,
             initiative: 0,
           })),
@@ -43,9 +43,8 @@ const BattleScreen = () => {
     };
 
     fetchMonsters();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sendRequest]);
-  
+
   const deleteEncounter = () => {
     setDeleteClick(true);
   };
@@ -124,5 +123,5 @@ const BattleScreen = () => {
       </div>
     </>
   );
-}
+};
 export default BattleScreen;

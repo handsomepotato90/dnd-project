@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import styles from "./Attacks.module.css";
 import Actions from "./Subtypes/Actions";
 import Description from "./Subtypes/Description";
@@ -7,7 +7,7 @@ import Notes from "./Subtypes/Notes";
 import Spells from "./Subtypes/Spells";
 import NotesModal from "../../../../UI/NotesModal";
 
-export default function Attacks() {
+const Attacks: React.FC = () => {
   const [activeTab, setActiveTab] = useState("actions");
   const [isNotesModalOpen, setIsNotesModalOpen] = useState(false);
 
@@ -21,7 +21,7 @@ export default function Attacks() {
 
   const closeNotesModal = () => {
     setIsNotesModalOpen(false);
-    setActiveTab("notes"); 
+    setActiveTab("notes");
   };
 
   return (
@@ -48,4 +48,6 @@ export default function Attacks() {
       </div>
     </div>
   );
-}
+};
+
+export default Attacks;

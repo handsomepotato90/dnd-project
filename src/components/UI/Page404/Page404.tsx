@@ -1,7 +1,8 @@
+import React from "react";
 import styles from "./Page404.module.css";
 import { useNavigate } from "react-router-dom";
 
-export default function Page404() {
+const Page404: React.FC = () => {
   const navigate = useNavigate();
   const returnToHomePage = () => {
     navigate("/");
@@ -10,10 +11,10 @@ export default function Page404() {
     <div className={styles.error_page__main_div}>
       <h1 className={styles.error_code_code}>404 Error</h1>
       <h1 className={styles.error_code_message}>
-        Oops! You've Rolled a Critical Fail
+        Oops! You&apos;ve Rolled a Critical Fail
       </h1>
       <span className={styles.error_code_text}>
-        Hark, traveler of the digital realm! It seems you've taken a wrong turn
+        Hark, traveler of the digital realm! It seems you&apos;ve taken a wrong turn
         through the arcane corridors of the internet. Alas, the page you were
         searching for has been spirited away by a mischievous rogue or a
         teleportation mishap!
@@ -28,3 +29,4 @@ export default function Page404() {
     </div>
   );
 }
+export default Page404;

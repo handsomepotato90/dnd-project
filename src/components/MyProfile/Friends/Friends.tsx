@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import ConteinerBox from "../../UI/ConteinerBox";
 import SendFriendRequest from "./SendFriendRequest/SendFriendRequest";
 import FriendRequest from "./FriendRequest/FriendRequest";

@@ -1,8 +1,8 @@
-import { useState, useContext } from "react";
+import React, { useState, useContext } from "react";
 import CS from "../../../../../../store/CS-context";
 import styles from "./DescriptionComponents.module.css";
 
-export default function Characteristics() {
+const Characteristics: React.FC = () => {
   return (
     <div className={styles.characteristics_style}>
       <span className={styles.title_bck}>CHARACTERISTICS</span>
@@ -20,9 +20,9 @@ export default function Characteristics() {
       </div>
     </div>
   );
-}
+};
 
-const CharSingle = (props: { title: string; }) => {
+const CharSingle: React.FC<{ title: string }> = (props) => {
   const { title } = props;
   const cs = useContext(CS);
   const [charValue, setCharValue] = useState(cs.characteristics[title]);
@@ -54,3 +54,5 @@ const CharSingle = (props: { title: string; }) => {
     </div>
   );
 };
+
+export default Characteristics;

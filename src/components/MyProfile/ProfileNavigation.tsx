@@ -1,7 +1,10 @@
+import React from "react";
 import { Links } from "../Navigation/Navigation";
 import NavigatorBack from "../Navigation/NavigatorBack";
 import "./MyProfile.css"
-export default function ProfileNavigation() {
+
+
+const ProfileNavigation: React.FC = () => {
   return (
     <NavigatorBack className={"grey nav_flexbox"}>
       <Links to="/myProfile">
@@ -25,3 +28,4 @@ export default function ProfileNavigation() {
     </NavigatorBack>
   );
 }
+export default ProfileNavigation;

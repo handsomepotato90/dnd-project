@@ -47,9 +47,9 @@ export const CalculatorProvider: React.FC<CalculatorProviderProps> = ({
   
   const clickedDie = (die: number | string) => {
     if (die === "Roll") {
-      let value = calculateArrayWithD(valueOfDice);
-      let minValue = calculateMinimumRoll(valueOfDice);
-      let maxValue = calculateMaximumRoll(valueOfDice);
+      const value = calculateArrayWithD(valueOfDice);
+      const minValue = calculateMinimumRoll(valueOfDice);
+      const maxValue = calculateMaximumRoll(valueOfDice);
       setResult(Math.floor(value));
       setMinResult(Math.floor(minValue));
       setMaxResult(Math.floor(maxValue));
@@ -64,9 +64,9 @@ export const CalculatorProvider: React.FC<CalculatorProviderProps> = ({
 
   const PresetsCalculator = (preset: (string|number)[]) => {
     setValueOfDice(preset);
-    let value = calculateArrayWithD(preset);
-    let minValue = calculateMinimumRoll(preset);
-    let maxValue = calculateMaximumRoll(preset);
+    const value = calculateArrayWithD(preset);
+    const minValue = calculateMinimumRoll(preset);
+    const maxValue = calculateMaximumRoll(preset);
     setResult(Math.floor(value));
     setMinResult(Math.floor(minValue));
     setMaxResult(Math.floor(maxValue));

@@ -1,17 +1,15 @@
+import React from "react";
+import DieButtons from "./Buttons/DieButtons";
+import StandartButtons from "./Buttons/StandartButtons";
+import styles from "./CalculatorButtons.module.css";
 
-import DieButtons from "./Buttons/DieButtons"
-import StandartButtons from "./Buttons/StandartButtons"
+const CalculatorButtons: React.FC = () => {
+  return (
+    <div className={styles.calculator_buttons__general_div}>
+      <DieButtons />
+      <StandartButtons />
+    </div>
+  );
+};
 
-
-
-import styles from "./CalculatorButtons.module.css"
-
-
-export default function CalculatorButtons() {
-  return(<div className={styles.calculator_buttons__general_div}>
-
-     <DieButtons></DieButtons>
-     <StandartButtons></StandartButtons>
-
-  </div>);
-}
+export default CalculatorButtons;

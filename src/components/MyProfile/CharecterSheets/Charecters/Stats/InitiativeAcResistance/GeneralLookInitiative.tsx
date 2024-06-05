@@ -1,6 +1,8 @@
-import { ReactNode} from "react";
+import React, { ReactNode } from "react";
 import styles from "./InitiativeAcResistance.module.css";
 
-export default function GeneralLookInitiative(props: { children: ReactNode; }) {
+const GeneralLookInitiative: React.FC<{ children: ReactNode }> = (props) => {
   return <div className={styles.general_look_initiative}>{props.children}</div>;
-}
+};
+
+export default GeneralLookInitiative;

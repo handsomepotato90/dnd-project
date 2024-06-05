@@ -1,11 +1,11 @@
-import { useContext, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import MonsterXp from "../../store/monsterXp-context";
 import { useHttpClient } from "../../hooks/http-hook";
 import MonsterBattleBox from "../../MyEncounters/MonsterBattleBox";
 
 import styles from "./MonsterLibrary.module.css";
 
-export default function MonsterLibrary() {
+const MonsterLibrary: React.FC = () => {
   const { sendRequest } = useHttpClient();
   const mxp = useContext(MonsterXp);
   useEffect(() => {
@@ -46,4 +46,6 @@ export default function MonsterLibrary() {
       ))}
     </>
   );
-}
+};
+
+export default MonsterLibrary;

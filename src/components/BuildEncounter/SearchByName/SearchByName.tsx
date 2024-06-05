@@ -1,8 +1,8 @@
-import { useContext, useRef } from "react";
+import React, { useContext, useRef } from "react";
 import styles from "./SearchByName.module.css";
 import MonsterXp from "../../store/monsterXp-context";
 
-const SearchByName = () => {
+const SearchByName: React.FC = () => {
   const text = useRef<HTMLInputElement>(null);
   const mxp = useContext(MonsterXp);
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);

@@ -19,7 +19,7 @@
     "react-draggable": "^4.4.5",
     "react-input-range": "^1.3.0",
     "react-router-dom": "^6.3.0",
-    "react-scripts": "5.0.1",
+    "react-scripts": "^5.0.1",
     "react-select": "^5.4.0",
     "react-svg": "^16.1.18",
     "websocket": "^1.0.34"
@@ -28,7 +28,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint ."
   },
   "eslintConfig": {
     "extends": [
@@ -49,12 +50,19 @@
     ]
   },
   "devDependencies": {
+    "@eslint/compat": "^1.0.3",
     "@types/css-modules": "^1.0.5",
     "@types/react": "^18.2.74",
     "@types/styled-components": "^5.1.34",
     "@types/websocket": "^1.0.10",
-    "@typescript-eslint/parser": "^7.5.0",
+    "@typescript-eslint/eslint-plugin": "^7.12.0",
+    "@typescript-eslint/parser": "^7.12.0",
+    "eslint": "^9.4.0",
+    "eslint-config-react-app": "^7.0.1",
+    "eslint-plugin-react": "^7.34.2",
+    "globals": "^15.3.0",
     "nodemon": "3.1.0",
-    "typescript": "^5.4.4"
+    "typescript": "^5.4.4",
+    "typescript-eslint": "^7.12.0"
   }
 }

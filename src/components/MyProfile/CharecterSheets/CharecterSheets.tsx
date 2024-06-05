@@ -1,7 +1,8 @@
+import React, { useContext, useEffect } from "react";
 import { Links } from "../../Navigation/Navigation";
 import { LoginContext } from "../../store/login-context";
 import { useHttpClient } from "../../hooks/http-hook";
-import { useState, useEffect, useContext } from "react";
+import { useState } from "react";
 import plus from "../../../icons/plus.svg";
 import Artificer from "../../../icons/Artificer.svg";
 import Barbarian from "../../../icons/barbarian.svg";
@@ -41,12 +42,11 @@ function getClassWithHighestLevel(classes: CharacterClass[]) {
   return result.class;
 }
 
-
-export default function CharecterSheets() {
-  const { isLoading, error, sendRequest, clearError } = useHttpClient();
+const CharecterSheets: React.FC = () => {
+  const { isLoading, sendRequest } = useHttpClient();
   const [chars, setChars] = useState<CharecterSheetTypes[]>([]);
 
- type IconType = React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
+  type IconType = React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
   const classForIcon: { [key: string]: IconType } = {
     Artificer,
     Barbarian,
@@ -62,7 +62,6 @@ export default function CharecterSheets() {
     Sorcerer,
     Wizard,
   };
-
 
   const lgn = useContext(LoginContext);
   useEffect(() => {
@@ -154,4 +153,6 @@ export default function CharecterSheets() {
         })}
     </div>
   );
-}
+};
+
+export default CharecterSheets;

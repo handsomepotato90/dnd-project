@@ -1,4 +1,5 @@
-import { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import PropTypes from 'prop-types'; // Import PropTypes
 import CalculatorContext from "../../store/calculator-context";
 import { SvgComponent } from "../../Navigation/Navigation";
 import pencil from "../../../icons/pencil.svg";
@@ -10,13 +11,13 @@ import styles from "./Options.module.css";
 import HoverFormula from "./HoverFormula";
 
 interface PresetsProps {
-  formula:string[],
+  formula: string[],
   id: string,
   presetId: string,
   title: string,
 }
 
-const Presets: React.FC<PresetsProps> = ({formula, id, presetId, title}) => {
+const Presets: React.FC<PresetsProps> = ({ formula, id, presetId, title }) => {
   const { sendRequest } = useHttpClient();
   const calc = useContext(CalculatorContext);
   const [editPresetName, setEditPresetName] = useState(false);
@@ -41,7 +42,7 @@ const Presets: React.FC<PresetsProps> = ({formula, id, presetId, title}) => {
   const rollPreset = () => {
     calc.PresetsCalculator(formula);
   };
-  const newNameOfPreset = (event:  React.ChangeEvent<HTMLInputElement> ) => {
+  const newNameOfPreset = (event: React.ChangeEvent<HTMLInputElement>) => {
     setNewNameOfPreset(event.target.value);
   };
   const editName = () => {
@@ -61,7 +62,7 @@ const Presets: React.FC<PresetsProps> = ({formula, id, presetId, title}) => {
         }
       );
       calc.setCalculations([...getRes.presets]);
-    } catch (err) {}
+    } catch (err) { }
   };
   const renamePreset = async () => {
     try {
@@ -81,7 +82,7 @@ const Presets: React.FC<PresetsProps> = ({formula, id, presetId, title}) => {
       );
 
       calc.setCalculations([...getRes.presets]);
-    } catch (err) {}
+    } catch (err) { }
   };
 
   const popUpFormula = () => {
@@ -143,4 +144,12 @@ const Presets: React.FC<PresetsProps> = ({formula, id, presetId, title}) => {
     </>
   );
 }
+
+Presets.propTypes = {
+  formula: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  id: PropTypes.string.isRequired,
+  presetId: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+}
+
 export default Presets;

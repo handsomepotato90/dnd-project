@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import Draggable from "react-draggable";
 import useWindowSize from "../hooks/screensize-hook";
 import { CalculatorProvider } from "../store/calculator-context";
@@ -9,7 +9,7 @@ import UseSavedCalculations from "./savedDie/UseSavedCalculations";
 
 import styles from "./Calculator.module.css";
 
-export default function Calculator() {
+const Calculator: React.FC = () => {
   const [presets, setPresets] = useState(false);
   const size = useWindowSize();
 
@@ -42,3 +42,4 @@ export default function Calculator() {
     </Draggable>
   );
 }
+export default Calculator;

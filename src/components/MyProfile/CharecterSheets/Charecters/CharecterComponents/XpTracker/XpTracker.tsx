@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 
 import ProgressBar from "./ProgressBar";
 import CS from "../../../../../store/CS-context";
@@ -36,7 +36,7 @@ const xp_levels: XPLevels = {
   20: 355000,
 };
 
-export default function XpTracker() {
+const XpTracker: React.FC = () => {
   const cs = useContext(CS);
   const [currentXp, setCurrentXp] = useState(cs.xp);
   const [toNextLevel, setToNextLevel] = useState(0);
@@ -91,3 +91,5 @@ export default function XpTracker() {
     </div>
   );
 }
+
+export default XpTracker;

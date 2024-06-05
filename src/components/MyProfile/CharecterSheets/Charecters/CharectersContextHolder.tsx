@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from "react";
 import NameClassLevel from "./CharecterComponents/NameClassLevel";
 import ShortLongRest from "./CharecterComponents/ShortLongRest";
 import { CSProvider } from "../../../store/CS-context";
@@ -21,9 +22,8 @@ import shield from "../../../../icons/shield.svg";
 import proff from "../../../../icons/proff.svg";
 import saveSvg from "../../../../icons/saveRed.svg";
 import styles from "./Charecters.module.css";
-import { useState, useEffect } from "react";
 
-export default function Charecters() {
+const Charecters: React.FC = () => {
   const [newOrOld, setNewOrOld] = useState<boolean>();
   const [sills, setSkills] = useState(false);
   const [proffs, setProffs] = useState(false);
@@ -40,6 +40,7 @@ export default function Charecters() {
       setNewOrOld(false);
     }
   }, []);
+
   return (
     <CSProvider>
       <div className={styles.charecter_general}>
@@ -177,4 +178,6 @@ export default function Charecters() {
       </div>
     </CSProvider>
   );
-}
+};
+
+export default Charecters;

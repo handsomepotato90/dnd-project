@@ -1,7 +1,8 @@
+import React from "react";
 import DeathRadio from "./DeathRadio";
 import styles from "./HealthSystem.module.css";
 
-export default function DeathSaving() {
+const DeathSaving: React.FC = () => {
   return (
     <div className={styles.death_saving_throws_general}>
       <span>Death Saving Throws</span>
@@ -25,3 +26,4 @@ export default function DeathSaving() {
     </div>
   );
 }
+export default DeathSaving;

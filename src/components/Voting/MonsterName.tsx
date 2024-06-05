@@ -1,3 +1,4 @@
+import React from "react";
 import styles from "./MonsterName.module.css";
 
 interface MonsterNameTypes{

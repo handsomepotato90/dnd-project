@@ -25,7 +25,7 @@ const NewCharecters = React.lazy(() =>
   import("./CharecterSheets/Charecters/CharectersContextHolder")
 );
 export default function MyProfile() {
-  let routes = (
+  const routes = (
     <React.Fragment>
       <Route path="/MyUploads" element={<MyUploads />} />
       <Route path="/MyUploads/Edit/:id" element={<Edit />} />

@@ -1,13 +1,13 @@
-import { useContext } from "react";
+import React, { useContext } from "react";
 import styles from "./Difficulty.module.css";
 import "./DifficultyBar.css";
 import GroupXp from "../../store/groupXp-context";
 import MonsterXp from "../../store/monsterXp-context";
 import DifficultyBar from "./DifficultyBar";
 
-export default function Difficulty() {
-  let ctx = useContext(GroupXp);
-  let mxp = useContext(MonsterXp);
+const Difficulty: React.FC = () => {
+  const ctx = useContext(GroupXp);
+  const mxp = useContext(MonsterXp);
   
   let difficultiText = "None";
   let diff = "";
@@ -106,3 +106,5 @@ export default function Difficulty() {
     </div>
   );
 }
+
+export default Difficulty;

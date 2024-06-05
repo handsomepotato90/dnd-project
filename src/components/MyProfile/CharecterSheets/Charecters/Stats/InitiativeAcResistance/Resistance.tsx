@@ -1,9 +1,9 @@
-import { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import CS from "../../../../../store/CS-context";
 
 import styles from "./InitiativeAcResistance.module.css";
 
-export default function Resistance() {
+const Resistance: React.FC = () => {
   const [defenses, setDefenses] = useState(
     "Resistances, Immunities, or Vulnerabilities"
   );
@@ -56,4 +56,6 @@ export default function Resistance() {
       </div>
     </div>
   );
-}
+};
+
+export default Resistance;

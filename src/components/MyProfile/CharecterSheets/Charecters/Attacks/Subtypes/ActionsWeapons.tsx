@@ -1,4 +1,4 @@
-import { useState, useContext} from "react";
+import React, { useState, useContext } from "react";
 import CS from "../../../../../store/CS-context";
 import { SvgComponent } from "../../../../../Navigation/Navigation";
 import Edit from "../../../../../../icons/pencil.svg";
@@ -7,7 +7,7 @@ import Delete from "../../../../../../icons/trashcan.svg";
 import styles from "./Actions.module.css";
 import AddWeapon from "./AddWeapon";
 
-export default function ActionsWeapons(props: { place: number; type: string; range: string; hit: string; damage: string;}): JSX.Element {
+const ActionsWeapons: React.FC<{ place: number; type: string; range: string; hit: string; damage: string; }> = (props) => {
   const [editWeapon, setEditWeapon] = useState(false);
   const [cordinate, setCordinate] = useState({ x: 0, y: 0 });
   const cs = useContext(CS);
@@ -20,7 +20,7 @@ export default function ActionsWeapons(props: { place: number; type: string; ran
     setEditWeapon(false);
   };
 
-  const editWeapons = (e: {clientX: number; clientY: number; }) => {
+  const editWeapons = (e: { clientX: number; clientY: number; }) => {
     setCordinate({ x: e.clientX, y: e.clientY });
     setEditWeapon(true);
   };
@@ -70,3 +70,5 @@ export default function ActionsWeapons(props: { place: number; type: string; ran
     </>
   );
 }
+
+export default ActionsWeapons;

@@ -1,9 +1,9 @@
-import { useState, useContext } from "react";
+import React, { useState, useContext } from "react";
 import CS from "../../../../../../store/CS-context";
 
 import styles from "./InventoryComponents.module.css";
 
-export default function OtherItems() {
+const OtherItems: React.FC = () => {
   const cs = useContext(CS);
   const [inventoryItems, setInventoryItems] = useState(cs.inventory);
   const inventorySave = () => {
@@ -19,3 +19,5 @@ export default function OtherItems() {
     >{inventoryItems}</textarea>
   );
 }
+
+export default OtherItems;

@@ -17,7 +17,7 @@ const SendFriendRequest: FC<SendFriendRequestProps> = (props) => {
   const text = useRef<HTMLInputElement>(null);
   let timer: NodeJS.Timeout;
 
-  const nameSearch = (event: React.KeyboardEvent<HTMLInputElement>) => {
+  const nameSearch = () => {
     if (text.current && text.current.value.trim() !== "") {
       if (timer) {
         clearTimeout(timer);

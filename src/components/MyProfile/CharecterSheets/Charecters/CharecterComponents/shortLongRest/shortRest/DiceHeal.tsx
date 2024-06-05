@@ -1,6 +1,4 @@
-
-
-import { useState, useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import CS from "../../../../../../store/CS-context";
 
 import styles from "./Short.module.css";
@@ -44,7 +42,7 @@ const classHitDie: ClassHitDie = {
   Barbarian: 12,
 };
 
-export default function DiceHeal(props: Props) {
+const DiceHeal: React.FC<Props> = (props) => {
   const cs = useContext(CS);
   const [healForDice, sethealForDice] = useState<number>(0);
   const [healedFor, setHealedFor] = useState<number>(0);
@@ -121,4 +119,6 @@ export default function DiceHeal(props: Props) {
       )}
     </div>
   );
-}
+};
+
+export default DiceHeal;

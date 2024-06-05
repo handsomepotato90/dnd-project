@@ -1,9 +1,10 @@
+import React from "react";
 import TitleNTextArea from "./DescriptionComponents/TitleNTextArea";
 // import Background from "./DescriptionComponents/Background";
 import Characteristics from "./DescriptionComponents/Characteristics";
 import styles from "./Inventory.module.css";
 
-export default function Description() {
+const Description: React.FC = () => {
   return (
     <div className={styles.description_style}>
       <TitleNTextArea title={"BACKGROUND"}></TitleNTextArea>
@@ -12,3 +13,5 @@ export default function Description() {
     </div>
   );
 }
+
+export default Description;

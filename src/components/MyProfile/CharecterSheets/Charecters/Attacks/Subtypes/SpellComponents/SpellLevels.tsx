@@ -1,3 +1,4 @@
+import React from "react";
 import styles from "./SpellComponents.module.css";
 
 export interface SpellLevelsProps {
@@ -5,7 +6,7 @@ export interface SpellLevelsProps {
   onClick: (lvl: string) => void;
 }
 
-export default function SpellLevels(props: SpellLevelsProps): JSX.Element {
+const SpellLevels: React.FC<SpellLevelsProps> = (props) => {
   const returnClickedLevel = (): void => {
     props.onClick(props.lvl);
   };
@@ -19,4 +20,6 @@ export default function SpellLevels(props: SpellLevelsProps): JSX.Element {
       </button>
     </div>
   );
-}
+};
+
+export default SpellLevels;

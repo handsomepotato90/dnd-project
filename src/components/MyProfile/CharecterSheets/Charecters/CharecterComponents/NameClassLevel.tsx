@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import ClassLevel from "./ClassLevel";
 import CS from "../../../../store/CS-context";
 import styles from "./CharecterComponents.module.css";
@@ -14,7 +14,7 @@ interface Meta {
   al: string;
 }
 
-export default function NameClassLevel() {
+const NameClassLevel: React.FC = () => {
   return (
     <div className={styles.general_charecter_Style}>
       <div className={styles.general_char_info_style}>
@@ -25,9 +25,9 @@ export default function NameClassLevel() {
       <ClassLevel />
     </div>
   );
-}
+};
 
-export const TextInputSwitch = (props: TextInputProps) => {
+export const TextInputSwitch: React.FC<TextInputProps> = (props) => {
   const cs = useContext(CS);
   const [switchMode, setSwitchMode] = useState(false);
   const [value, setValue] = useState<string>("");
@@ -35,7 +35,7 @@ export const TextInputSwitch = (props: TextInputProps) => {
   const color = props.shortName === "name" ? `red_text ${styles.text_decoration_name}` : "";
 
   useEffect(() => {
-      setValue(cs.meta[props.shortName].toString());
+    setValue(cs.meta[props.shortName].toString());
   }, [cs.meta, props.shortName]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -65,3 +65,5 @@ export const TextInputSwitch = (props: TextInputProps) => {
     </>
   );
 };
+
+export default NameClassLevel;

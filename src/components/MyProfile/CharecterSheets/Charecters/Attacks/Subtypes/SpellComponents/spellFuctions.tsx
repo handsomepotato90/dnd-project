@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./SpellComponents.module.css";
 
 export function replaceDiceNotation(text: string): string {

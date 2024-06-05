@@ -1,9 +1,9 @@
-import { useContext } from "react";
+import React, { useContext } from "react";
 import MonsterXp from "../../store/monsterXp-context";
 
 import style from "./MonsterLibrary.module.css";
 
-export default function LoadMoreButton() {
+const LoadMoreButton: React.FC = () => {
   const mxp = useContext(MonsterXp);
 
   const loadMore = () => {
@@ -19,3 +19,5 @@ export default function LoadMoreButton() {
     </button>
   );
 }
+
+export default LoadMoreButton;

@@ -1,7 +1,8 @@
+import React from "react";
 import styles from "./SavingThrows.module.css";
 import SavingThrowsStats from "./SavingThrowsStats";
 
-export default function SavingThrows() {
+const SavingThrows: React.FC = () => {
   return (
     <div className={styles.saving_trows_box}>
       <SavingThrowsStats text={"Str"} prof={false}></SavingThrowsStats>
@@ -13,3 +14,5 @@ export default function SavingThrows() {
     </div>
   );
 }
+
+export default SavingThrows;

@@ -1,4 +1,4 @@
-import { useState, useContext, ChangeEvent } from "react";
+import React, { useState, useContext, ChangeEvent } from "react";
 import CalculatorContext from "../../store/calculator-context";
 import { LoginContext } from "../../store/login-context";
 import { useHttpClient } from "../../hooks/http-hook";

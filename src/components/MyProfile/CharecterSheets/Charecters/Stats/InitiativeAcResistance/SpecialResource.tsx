@@ -1,11 +1,11 @@
-import { useState, useContext } from "react";
+import React, { useState, useContext } from "react";
 import GeneralLookInitiative from "./GeneralLookInitiative";
 import AutoFocusInputEnterEvent from "../../../../../UI/AutoFocusInputEnterEvent";
 import CS from "../../../../../store/CS-context";
 
 import styles from "./InitiativeAcResistance.module.css";
 
-export default function SpecialResource() {
+const SpecialResource: React.FC = () => {
   const cs = useContext(CS);
   const [statSpecial, setAmount] = useState(cs.specialStat);
   const [changeValue, setAmountToEnter] = useState(false);
@@ -48,3 +48,5 @@ export default function SpecialResource() {
     </GeneralLookInitiative>
   );
 }
+
+export default SpecialResource;

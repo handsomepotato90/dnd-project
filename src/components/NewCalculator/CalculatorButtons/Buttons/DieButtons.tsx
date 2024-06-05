@@ -1,7 +1,9 @@
+import React from "react";
 import DxValueDie from "./Dice/DxValueDie";
 
 import styles from "./Dice.module.css";
-export default function DieButtons() {
+
+const DieButtons: React.FC = () => {
   return (
     <div className={styles.d_twenty__container}>
       <DxValueDie display={"D20"} color="gold" value={"D20"}></DxValueDie>
@@ -14,3 +16,4 @@ export default function DieButtons() {
     </div>
   );
 }
+export default DieButtons;

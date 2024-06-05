@@ -1,7 +1,8 @@
+import React from "react";
 import DxValueDie from "./Dice/DxValueDie";
 import styles from "./Dice.module.css";
 
-export default function StandartButtons() {
+const StandartButtons: React.FC = () => {
   return (
     <div className={styles.stadard_die__keybord}>
       <DxValueDie display="C" color="red" value="C" />
@@ -24,3 +25,4 @@ export default function StandartButtons() {
     </div>
   );
 }
+export default StandartButtons;

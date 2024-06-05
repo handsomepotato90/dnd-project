@@ -1,6 +1,6 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
-export default function DeathRadio() {
+const DeathRadio: React.FC = () => {
   const [radio, setRadio] = useState(false);
   return (
     <input
@@ -11,3 +11,4 @@ export default function DeathRadio() {
     ></input>
   );
 }
+export default DeathRadio;

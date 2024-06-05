@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import SpellTextPopUp from "./SpellTextPopUp";
 import { SvgComponent } from "../../../../../../Navigation/Navigation";
 import styles from "./SpellComponents.module.css";
@@ -6,8 +6,6 @@ import SpellSearch from "./SpellSearch";
 import add from "../../../../../../../icons/add.svg";
 import remove from "../../../../../../../icons/reject.svg";
 import CS from "../../../../../../store/CS-context";
-import { useEffect } from "react";
-
 import SpellsTypes from "../../../../../../types/SpellsTypes";
 
 interface NewType {
@@ -18,10 +16,10 @@ interface NewType {
   newSpell?(spell: SpellsTypes): unknown;
   search: boolean;
   lvl: string;
-  spell?: SpellsTypes
+  spell?: SpellsTypes;
 }
 
-export default function Spell(props: NewType) {
+const Spell: React.FC<NewType> = (props) => {
   const [cordinate, setCordinate] = useState({ x: 0, y: 0 });
   const [spellDescription, setSpellDescription] = useState(false);
   const [requestSpells, setRequestSpells] = useState(false);
@@ -37,29 +35,33 @@ export default function Spell(props: NewType) {
       setContained(true);
     }
   }, []);
+
   const removePopUp = (rem: boolean) => {
     setSpellDescription(rem);
   };
+
   const hideSpellSearch = (rem: boolean) => {
     setRequestSpells(rem);
   };
+
   const addSpell = (spell: SpellsTypes) => {
     setRequestSpells(false);
     if (props.newSpell) {
       props.newSpell(spell);
     }
   };
+
   const removeSpell = () => {
-    if (props.remove && props.spell) { // Check if props.spell is defined
+    if (props.remove && props.spell) {
       props.remove(props.spell);
       cs.removeSpell(props.spell._id, props.spell, props.lvl);
     }
   };
+
   return (
     <>
       {props.spell ? (
         <>
-          {" "}
           <div className={`overflowing ${styles.one_spell}`}>
             <span
               onClick={(e) => {
@@ -69,12 +71,10 @@ export default function Spell(props: NewType) {
               style={{ color: contained ? "green" : undefined }}
               className={`overflowing ${styles.one_spell_style}`}
             >
-              {" "}
               {`${contained ? "(Known) " : ""}${props.spell.name}`}
             </span>
             {!props.search && (
               <div onClick={removeSpell}>
-                {" "}
                 <SvgComponent
                   Image={remove}
                   height="20"
@@ -120,4 +120,6 @@ export default function Spell(props: NewType) {
       )}
     </>
   );
-}
+};
+
+export default Spell;

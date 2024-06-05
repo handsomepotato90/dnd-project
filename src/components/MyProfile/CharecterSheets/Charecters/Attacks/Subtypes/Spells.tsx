@@ -1,8 +1,9 @@
+import React from "react";
 import SpellBlock from "./SpellComponents/SpellBlock";
 import Modifires from "./SpellComponents/Modifires";
 import styles from "./Spells.module.css";
 
-export default function Spells() {
+const Spells: React.FC = () => {
   return (
     <div>
       <div className={styles.modifier_general_view}>
@@ -16,3 +17,5 @@ export default function Spells() {
     </div>
   );
 }
+
+export default Spells;

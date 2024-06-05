@@ -1,9 +1,9 @@
-import { useState, useContext } from "react";
+import React, { useState, useContext } from "react";
 import CS from "../../../../../../store/CS-context";
 
 import styles from "./InventoryComponents.module.css";
 
-export default function AttunedItem() {
+const AttunedItem: React.FC = () => {
   const [firstItem, setFirstItem] = useState("");
   const [secondItem, setSecondItem] = useState("");
   const [thirdItem, setThirdItem] = useState("");
@@ -83,3 +83,5 @@ export default function AttunedItem() {
     </div>
   );
 }
+
+export default AttunedItem;

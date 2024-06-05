@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import CS from "../../../../store/CS-context";
 import styles from "./Stats.module.css";
 import AutoFocusInputEnterEvent from "../../../../UI/AutoFocusInputEnterEvent";
@@ -8,7 +8,7 @@ interface Props {
   shortHand: string;
 }
 
-export default function ComponentStats(props: Props): JSX.Element {
+const ComponentStats: React.FC<Props> = (props) => {
   const cs = useContext(CS);
   const [inputValue, setInputValue] = useState<boolean>(false);
   const [statValue, setStatValue] = useState<number>(cs.stats[props.shortHand].value);
@@ -47,3 +47,5 @@ export default function ComponentStats(props: Props): JSX.Element {
     </div>
   );
 }
+
+export default ComponentStats;

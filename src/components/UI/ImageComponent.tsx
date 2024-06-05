@@ -1,3 +1,4 @@
+import React from 'react';
 import "./ImageComponent.css";
 
 // classNames for image size
@@ -9,13 +10,14 @@ interface ImageComponentProps {
   size?: string; 
 }
 
-const ImageComponent: React.FC<ImageComponentProps> = ({src, alt, size}) => {
+const ImageComponent: React.FC<ImageComponentProps> = ({ src, alt, size }) => {
   return (
     <img
       className={`${size}`}
       src={src}
       alt={alt}
-    ></img>
+    />
   );
 }
+
 export default ImageComponent;

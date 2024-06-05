@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import HomeBrewSave from "../../../SubmitHomeBrew/HomeBrewSave";
 import { useHttpClient } from "../../../hooks/http-hook";
 import LoadingSpinner from "../../../UI/LoadingSpinner";
@@ -12,7 +12,7 @@ interface MonsterData {
   value?: string;
 }
 
-export default function Edit() {
+const Edit: React.FC = () => {
   const { isLoading, sendRequest } = useHttpClient();
   const [reqFields, setMonsterForEdit] = useState<MonsterData[]>([]);
   const [fields, setFields] = useState<MonsterData[]>([]);
@@ -286,3 +286,4 @@ export default function Edit() {
     </>
   );
 }
+export default Edit;

@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import React, { useState, useContext } from "react";
 import ModalConfirmation from "../../../UI/ModalConfirmation";
 import CS from "../../../store/CS-context";
 import { LoginContext } from "../../../store/login-context";
@@ -7,7 +7,7 @@ import ButtonActionComponent from "./ButtonActionComponent";
 import LoadingSpinner from "../../../UI/LoadingSpinner";
 import ModalSubmitSucces from "../../../UI/ModalSubmitSucces";
 
-export default function UpdateButton() {
+const UpdateButton = () => {
   const [iWantToSave, setIWantToSave] = useState(false);
   const { isLoading, sendRequest } = useHttpClient();
   const [success, setSuccess] = useState<boolean|undefined>(false);
@@ -130,3 +130,4 @@ export default function UpdateButton() {
     </>
   );
 }
+export default UpdateButton;

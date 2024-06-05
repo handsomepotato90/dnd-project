@@ -1,8 +1,13 @@
-import { useEffect, useState, useContext,} from "react";
+import React, { useEffect, useState, useContext } from "react";
 import CS from "../../../../../store/CS-context";
 import styles from "./SavingThrows.module.css";
 
-export default function SavingThrowsStats(props: { text: string; prof: boolean}) {
+interface Props {
+  text: string;
+  prof: boolean;
+}
+
+const SavingThrowsStats: React.FC<Props> = (props) => {
   const profName = props.text;
   const cs = useContext(CS);
   const [value, setValue] = useState(cs.stats[profName].modifire);
@@ -15,15 +20,12 @@ export default function SavingThrowsStats(props: { text: string; prof: boolean})
 
   useEffect(() => {
     if (proff === true) {
-      setValue(
-        (cs.stats[profName].modifire ?? 0) + cs.proficiency
-      );
+      setValue((cs.stats[profName].modifire ?? 0) + cs.proficiency);
     } else {
       setValue(cs.stats[profName].modifire);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cs.stats[profName].modifire, cs.proficiency, setProf]);
-
 
   return (
     <div className={styles.saving_box}>
@@ -38,4 +40,6 @@ export default function SavingThrowsStats(props: { text: string; prof: boolean})
       <div className={`overflowing ${styles.saving_value_holder}`}>{value}</div>
     </div>
   );
-}
+};
+
+export default SavingThrowsStats;

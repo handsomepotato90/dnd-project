@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { SvgComponent } from "../../../../Navigation/Navigation";
 import addClass from "../../../../../icons/add.svg";
 import styles from "./CharecterComponents.module.css";
@@ -6,7 +6,7 @@ import ClassLevelComponent from "./ClassLevelComponent";
 import ChosenClassNLevel from "./ChosenClassNLevel";
 import XpTracker from "./XpTracker/XpTracker";
 
-export default function ClassLevel() {
+const ClassLevel: React.FC = () => {
   const [addNewClass, setNewAddClass] = useState(false);
   return (
     <div className={styles.xp_class_holder}>
@@ -38,3 +38,4 @@ export default function ClassLevel() {
     </div>
   );
 }
+export default ClassLevel;

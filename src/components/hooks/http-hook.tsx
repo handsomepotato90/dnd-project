@@ -4,7 +4,7 @@ import { useState, useCallback, useRef, useEffect } from "react";
 interface HttpClientResponse {
   isLoading: boolean;
   error: string | null;
-  sendRequest: (url: string, method?: string, body?: string| null, headers?: {}) => Promise<any>;
+  sendRequest: (url: string, method?: string, body?: string| null, headers?: object) => Promise<any>;
   clearError: () => void;
 }
 

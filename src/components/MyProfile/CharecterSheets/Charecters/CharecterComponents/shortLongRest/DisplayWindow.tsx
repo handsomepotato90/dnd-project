@@ -1,3 +1,4 @@
+import React from "react";
 import { SvgComponent } from "../../../../../Navigation/Navigation";
 import close from "../../../../../../icons/Close.svg";
 import styles from "./shortLongRest.module.css";
@@ -7,7 +8,7 @@ interface DisplayWindowProps {
   children: React.ReactNode;
 }
 
-export default function DisplayWindow(props: DisplayWindowProps) {
+const DisplayWindow: React.FC<DisplayWindowProps> = (props) => {
   return (
     <div className={styles.display_window}>
       <div className={styles.display_window__close} onClick={() => props.onClick(false)}>
@@ -22,3 +23,5 @@ export default function DisplayWindow(props: DisplayWindowProps) {
     </div>
   );
 }
+
+export default DisplayWindow;

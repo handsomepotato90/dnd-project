@@ -1,9 +1,11 @@
+import React from "react";
 import Currency from "./InventoryComponents/Currency";
 import AttunedItem from "./InventoryComponents/AttunedItem";
 
 import styles from "./Inventory.module.css";
 import OtherItems from "./InventoryComponents/OtherItems";
-export default function Inventory() {
+
+const Inventory: React.FC = () => {
   return (
     <div className={styles.inventory_box_look}>
       <div className={styles.top_part_look}>
@@ -25,3 +27,5 @@ export default function Inventory() {
     </div>
   );
 }
+
+export default Inventory;

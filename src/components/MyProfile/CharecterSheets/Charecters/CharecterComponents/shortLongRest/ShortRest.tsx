@@ -1,11 +1,11 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import DisplayWindow from "./DisplayWindow";
 import TextComponent from "./shortRest/TextComponent";
 import HitDieHolder from "./shortRest/HitDieHolder";
 
 import styles from "./shortLongRest.module.css";
 
-export default function ShortRest() {
+const ShortRest: React.FC = () => {
   const [shoudOpen, setShoudOpen] = useState(false);
   const openWindow = () => {
     setShoudOpen(true);
@@ -24,3 +24,5 @@ export default function ShortRest() {
     </div>
   );
 }
+
+export default ShortRest;

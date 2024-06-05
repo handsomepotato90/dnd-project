@@ -1,7 +1,8 @@
+import React from "react";
 import Difficulty from "./Difficulty";
 import SelectedMonsters from "./SelectedMonsters";
 
-export default function EncounterSummary() {
+const EncounterSummary: React.FC = () => {
   return (
     <>
       <Difficulty></Difficulty>
@@ -9,3 +10,5 @@ export default function EncounterSummary() {
     </>
   );
 }
+
+export default EncounterSummary;

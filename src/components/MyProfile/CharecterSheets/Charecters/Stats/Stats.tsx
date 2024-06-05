@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import ComponentStats from "./ComponentStats";
 import ComponentInit from "./ComponentInit";
 import HpAndHpManagment from "./HpAndHpManagment";
@@ -7,7 +7,7 @@ import { SvgComponent } from "../../../../Navigation/Navigation";
 import hpImage from "../../../../../icons/health.svg";
 import styles from "./Stats.module.css";
 
-export default function Stats() {
+const Stats: React.FC = () => {
   const [hpmanager, setHpmanager] = useState(false);
   const size = useWindowSize();
   const openHpManager = () => {
@@ -74,3 +74,4 @@ export default function Stats() {
     </>
   );
 }
+export default Stats;

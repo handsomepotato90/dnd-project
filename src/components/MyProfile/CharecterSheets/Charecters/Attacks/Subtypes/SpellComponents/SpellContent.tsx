@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext, useCallback } from "react";
+import React, { useState, useEffect, useContext, useCallback } from "react";
 import CS from "../../../../../../store/CS-context";
 import Spell from "./Spell";
 import styles from "./SpellComponents.module.css";
@@ -6,7 +6,7 @@ import SpellSlot from "./SpellSlot";
 
 import SpellsTypes from "../../../../../../types/SpellsTypes";
 
-export default function SpellContent(props: { display: string; }) {
+const SpellContent: React.FC<{ display: string }> = (props) => {
   const cs = useContext(CS);
   const [spellSlotsHolder, setSpellSlotsHolder] = useState({});
   const [spellArray, setSpellArray] = useState<SpellsTypes[]>([]);
@@ -44,6 +44,7 @@ export default function SpellContent(props: { display: string; }) {
   useEffect(() => {
     setSpellArray([...cs.spells[props.display].spells]);
   }, [props.display, cs.spells]);
+
   return (
     <div>
       <div className={styles.general_spell_title}>
@@ -102,3 +103,5 @@ export default function SpellContent(props: { display: string; }) {
     </div>
   );
 }
+
+export default SpellContent;

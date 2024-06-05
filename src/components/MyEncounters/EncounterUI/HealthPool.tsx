@@ -3,7 +3,7 @@ import PopUpOnClick from "../../UI/PopUpOnClick";
 import styles from "../BattleScreen.module.css";
 
 interface HealthPoolProps {
-  onChange:Function;
+  onChange:(arg: boolean)=>void;
   hp: number;
   player?: string;
 }
@@ -12,14 +12,14 @@ const HealthPool: React.FC<HealthPoolProps> = ({onChange, hp, player}) => {
   const [health, healthHandler] = useState<number>(hp);
   const [calculate, calculateHanler] = useState<number>(0);
   const [playerMaxHp, setPcMaxHealth] = useState<number>(hp);
-  const [clikedPlayerMaxHealtInput, setCliket] = useState<Boolean>(false);
+  const [clikedPlayerMaxHealtInput, setCliket] = useState<boolean>(false);
 
   const hpTarget = !player ? hp : playerMaxHp;
 
   const givePlayerHp = () => {
     setCliket(true);
   };
-  const setPcHp = (value: Boolean) => {
+  const setPcHp = (value: boolean) => {
     setCliket(value);
   };
   const givePlayerHealth = (event: React.ChangeEvent<HTMLInputElement>) => {

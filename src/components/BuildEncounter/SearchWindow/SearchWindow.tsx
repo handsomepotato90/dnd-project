@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import React, { useState, useContext } from "react";
 import Select, { MultiValue, SingleValue } from "react-select";
 import InputRange from "react-input-range";
 import { useHttpClient } from "../../hooks/http-hook";
@@ -28,7 +28,7 @@ interface SelectOption {
   label: string;
 }
 
-const SearchWindow = (): JSX.Element => {
+const SearchWindow: React.FC = () => {
   const [rating, ratingHandler] = useState<RatingArmorHealth>({ min: 0, max: 30 });
   const [armor, armorHandler] = useState<RatingArmorHealth>({ min: 0, max: 50 });
   const [health, healthHandler] = useState<RatingArmorHealth>({ min: 0, max: 1500 });
@@ -85,7 +85,7 @@ const SearchWindow = (): JSX.Element => {
   };
 
   const customStyles: CustomStyles = {
-    control: (base, state) => ({
+    control: (base) => ({
       ...base,
       backgroundColor: "#151516",
     }),

@@ -1,6 +1,6 @@
-import { useState, useContext } from "react";
+import React, { useState, useContext } from "react";
 import CS from "../../../../store/CS-context";
-import Select, { SingleValue, ActionMeta } from "react-select";
+import Select, { SingleValue } from "react-select";
 import styles from "./CharecterComponents.module.css";
 
 export interface Class {
@@ -27,12 +27,12 @@ interface ClassLevelComponentProps {
   onClick: (value: boolean) => void;
 }
 
-export default function ClassLevelComponent(props: ClassLevelComponentProps) {
+const ClassLevelComponent: React.FC<ClassLevelComponentProps> = (props) => {
   const [level, setLevel] = useState<number>(1);
   const [selectedClass, setSelectedClass] = useState<string>("");
   const cs = useContext(CS);
 
-  const getClassName = (newValue: SingleValue<Class>, actionMeta: ActionMeta<Class>) => {
+  const getClassName = (newValue: SingleValue<Class>) => {
     if (newValue) {
       setSelectedClass(newValue.value);
     } else {
@@ -65,3 +65,5 @@ export default function ClassLevelComponent(props: ClassLevelComponentProps) {
     </div>
   );
 }
+
+export default ClassLevelComponent;

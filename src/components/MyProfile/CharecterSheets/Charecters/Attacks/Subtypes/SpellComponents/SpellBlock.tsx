@@ -1,12 +1,12 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import SpellLevels from "./SpellLevels";
 import SpellContent from "./SpellContent";
 
 import styles from "./SpellComponents.module.css";
 
-export default function SpellBlock() {
+const SpellBlock: React.FC = () => {
   const [spellLevel, setSpellLevel] = useState("Can");
-  const spellLevelToDisplay = (lvl:string) => {
+  const spellLevelToDisplay = (lvl: string) => {
     setSpellLevel(lvl);
   };
 
@@ -28,3 +28,5 @@ export default function SpellBlock() {
     </>
   );
 }
+
+export default SpellBlock;

@@ -1,9 +1,9 @@
-import { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import HealthContext from "../../../../../store/health_CSH-context";
 import CS from "../../../../../store/CS-context";
 import styles from "./HealthSystem.module.css";
 
-export default function HealthMenagment() {
+const HealthMenagment: React.FC = () => {
   const [valueToChangeHealth, setValueToChangeHealth] = useState(0);
   const csh = useContext(HealthContext);
   const cs = useContext(CS);
@@ -43,3 +43,4 @@ export default function HealthMenagment() {
     </div>
   );
 }
+export default HealthMenagment;

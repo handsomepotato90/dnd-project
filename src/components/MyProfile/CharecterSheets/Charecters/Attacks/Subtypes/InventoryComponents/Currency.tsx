@@ -1,9 +1,9 @@
-import { useState, useContext} from "react";
+import React, { useState, useContext } from "react";
 import CS from "../../../../../../store/CS-context";
 
 import styles from "./InventoryComponents.module.css";
 
-export default function Currency(props: { type: string}) {
+const Currency: React.FC<{ type: string }> = (props) => {
   const cs = useContext(CS);
   const [modCurrency, setModCurrency] = useState(false);
   const [newValue, setNewValue] = useState(cs.currency[props.type]);
@@ -12,6 +12,7 @@ export default function Currency(props: { type: string}) {
     cs.currencyValue(props.type, newValue);
     setModCurrency(false);
   };
+
   return (
     <div className={styles.currency_comp}>
       <span className={styles.currency_type}>{props.type}</span>
@@ -34,4 +35,6 @@ export default function Currency(props: { type: string}) {
       )}
     </div>
   );
-}
+};
+
+export default Currency;

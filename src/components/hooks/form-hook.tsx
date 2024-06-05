@@ -1,13 +1,13 @@
 import { useCallback, useReducer } from 'react';
 
 export interface FormState {
-  inputs: { [key: string]: { value: any; isValid: boolean } };
+  inputs: { [key: string]: { value: string; isValid: boolean } };
   isValid: boolean;
 }
 
 type FormAction =
-  | { type: 'INPUT_CHANGE'; value: any; isValid: boolean; inputId: string }
-  | { type: 'SET_DATA'; inputs: { [key: string]: { value: any; isValid: boolean } }; formIsValid: boolean };
+  | { type: 'INPUT_CHANGE'; value: string; isValid: boolean; inputId: string }
+  | { type: 'SET_DATA'; inputs: { [key: string]: { value: string; isValid: boolean } }; formIsValid: boolean };
 
 const formReducer = (state: FormState, action: FormAction): FormState => {
   switch (action.type) {

@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext, useCallback } from "react";
+import React, { useState, useEffect, useContext, useCallback } from "react";
 import CS from "../../../../../store/CS-context";
 import styles from "./Skills.module.css";
 
@@ -7,7 +7,7 @@ interface SkillProps {
   mod: string;
 }
 
-export default function Skill(props: SkillProps): JSX.Element {
+export default function Skill(props: SkillProps): React.ReactElement {
   const cs = useContext(CS);
   const [modifierValue, setModifierValues] = useState<number>(0);
   const [prof, setProf] = useState<boolean>(cs.skillsProf[props.skill].value);
@@ -25,7 +25,6 @@ export default function Skill(props: SkillProps): JSX.Element {
     } else {
       setModifierValues(cs.stats[props.mod]?.modifire ?? 0);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props, cs.stats[props.mod], cs.skillsProf, prof, changeProf, cs.proficiency, cs.stats]);
   
 

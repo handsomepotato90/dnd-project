@@ -1,11 +1,11 @@
-import { useState, useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import DeathSaving from "./DeathSaving";
 import HealthContext from "../../../../../store/health_CSH-context";
 import CS from "../../../../../store/CS-context";
 
 import styles from "./HealthSystem.module.css";
 
-export default function Health() {
+const Health: React.FC = () => {
   const [needToChangeMaxHp, setNeedToChangeMaxHp] = useState(false);
   const [checkCurrHp, setCheckCurrHp] = useState(false);
   const csh = useContext(HealthContext);
@@ -28,7 +28,6 @@ export default function Health() {
 
   useEffect(() => {
     csh.changeCurrenHp(cs.currHp, cs.maxHp);
-     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   
   return (
@@ -65,3 +64,4 @@ export default function Health() {
     </div>
   );
 }
+export default Health;

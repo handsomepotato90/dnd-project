@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import React, { useContext } from "react";
 import styles from "./Monster.module.css";
 import MonsterXp from "../../store/monsterXp-context";
 import ImageComponent from "../../UI/ImageComponent";
@@ -52,4 +52,5 @@ const Monster: React.FC<MonsterProps> = ({monster}) => {
     </div>
   );
 }
+
 export default Monster;

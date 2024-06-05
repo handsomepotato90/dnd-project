@@ -1,10 +1,10 @@
-import { useContext } from "react";
+import React, { useContext } from "react";
 import Monster from "./Monster";
 import styles from "./SelectedMonster.module.css";
 import MonsterXp from "../../store/monsterXp-context";
 
-export default function SelectedMonsters() {
-  let mtxp = useContext(MonsterXp);
+const SelectedMonsters: React.FC = () => {
+  const mtxp = useContext(MonsterXp);
   return (
     <div className={`black__background ${styles.general__style}`}>
       {mtxp.monsterBlock.map((monster, i) => (
@@ -12,4 +12,6 @@ export default function SelectedMonsters() {
       ))}
     </div>
   );
-}
+};
+
+export default SelectedMonsters;

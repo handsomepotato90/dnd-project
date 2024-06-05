@@ -1,14 +1,17 @@
-import { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import GeneralLookInitiative from "./GeneralLookInitiative";
 import CS from "../../../../../store/CS-context";
 
 import styles from "./InitiativeAcResistance.module.css";
-export default function CSInitiative() {
+
+const CSInitiative: React.FC = () => {
   const [initiative, setInitiative] = useState(0);
   const cs = useContext(CS);
+
   useEffect(() => {
     setInitiative(cs.stats.Dex.modifire ?? 0);
   }, [cs.stats.Dex]);
+
   return (
     <GeneralLookInitiative>
       <span>Initiative</span>
@@ -18,3 +21,5 @@ export default function CSInitiative() {
     </GeneralLookInitiative>
   );
 }
+
+export default CSInitiative;

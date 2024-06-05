@@ -1,13 +1,11 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import NotesDisplay from "./NotesDisplay";
-import  {DataItem} from "./NotesLogic";
+import { DataItem } from "./NotesLogic";
 import styles from "./NotesComponents.module.css";
 
-import {NotesCategory} from "../../../../../../types/CSTypes";
+import { NotesCategory } from "../../../../../../types/CSTypes";
 
-
-
-export default function Sections(props: { array: DataItem[]; sectionToDisplay: NotesCategory; }) {
+const Sections: React.FC<{ array: DataItem[]; sectionToDisplay: NotesCategory }> = (props) => {
   const [searchable, setSearchable] = useState("");
   const [newArray, setNewArray] = useState(props.array);
   const [lastSession, setLastSession] = useState(false);
@@ -24,7 +22,7 @@ export default function Sections(props: { array: DataItem[]; sectionToDisplay: N
   const getLastSessionNotes = () => {
     setLastSession(true);
     const last = props.array.slice(-1);
-    const [lastDate, time] = last[0].time.split(" ");
+    const [lastDate] = last[0].time.split(" ");
     changeArray(lastDate);
   };
   const allNotes = () => {
@@ -63,4 +61,6 @@ export default function Sections(props: { array: DataItem[]; sectionToDisplay: N
       ></NotesDisplay>
     </div>
   );
-}
+};
+
+export default Sections;

@@ -1,9 +1,9 @@
-import { useContext } from "react";
+import React, { useContext } from "react";
 import LevelOfPlayer from "./LevelOfPlayer";
 import PlayerBox from "./PlayerBox";
 import GroupXp from "../../store/groupXp-context";
 
-const PlayerChoice = () => {
+const PlayerChoice: React.FC = () => {
   const xpt = useContext(GroupXp);
   return (
     <>
@@ -12,4 +12,5 @@ const PlayerChoice = () => {
     </>
   );
 };
+
 export default PlayerChoice;

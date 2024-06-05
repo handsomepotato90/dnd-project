@@ -1,12 +1,12 @@
+import React from "react";
 import AddNewNote from "./AddNewNote";
-import NotesLogic,{DataItem} from "./NotesLogic";
+import NotesLogic, { DataItem } from "./NotesLogic";
 
 import styles from "./NotesComponents.module.css";
 
-import {NotesCategory} from "../../../../../../types/CSTypes";
+import { NotesCategory } from "../../../../../../types/CSTypes";
 
-
-export default function NotesDisplay(props: { sectionToDisplay: NotesCategory; array: DataItem[]; }) {
+const NotesDisplay: React.FC<{ sectionToDisplay: NotesCategory; array: DataItem[] }> = (props) => {
   return (
     <div className={styles.notes_display}>
       <AddNewNote sectionToDisplay={props.sectionToDisplay}></AddNewNote>
@@ -23,3 +23,5 @@ export default function NotesDisplay(props: { sectionToDisplay: NotesCategory; a
     </div>
   );
 }
+
+export default NotesDisplay;

@@ -1,8 +1,8 @@
+import React, { useEffect, useState, useContext } from "react";
 import styles from "./PassiveSenses.module.css";
-import { useEffect, useState, useContext } from "react";
 import CS from "../../../../../store/CS-context";
 
-export default function Senses(props: { text: string}) {
+const Senses: React.FC<{ text: string }> = (props) => {
   const [passivePerception, setPassivePerception] = useState<number>(0);
   const cs = useContext(CS);
   const wisMod = 10 + (cs.stats.Wis.modifire ?? 0);
@@ -24,10 +24,13 @@ export default function Senses(props: { text: string}) {
       setPassivePerception(passPerception);
     }
   }, [props, cs.stats, cs.proficiency, wisMod, intMod]);
+
   return (
     <div className={styles.sense_main_holder}>
       <div className={`overflowing ${styles.value_holder}`}>{passivePerception}</div>
       <div className={styles.sense_holder}>{props.text}</div>
     </div>
   );
-}
+};
+
+export default Senses;

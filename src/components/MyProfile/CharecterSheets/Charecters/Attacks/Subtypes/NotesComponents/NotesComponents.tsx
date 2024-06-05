@@ -1,12 +1,12 @@
-import { useState, useEffect, useContext} from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Sections from "./Sections";
 import styles from "./NotesComponents.module.css";
 import CS from "../../../../../../store/CS-context";
 
-import {Notes} from "../../../../../../types/CSTypes";
+import { Notes } from "../../../../../../types/CSTypes";
 type NotesCategory = "ORGS" | "ALLIES" | "ENEMIES" | "TOWNS" | "OTHER";
 
-export default function NotesComponents() {
+const NotesComponents: React.FC = () => {
   const cs = useContext(CS);
   const [arrayToDisplay, setArrayToDisplay] = useState<Notes[]>([]);
 
@@ -53,9 +53,13 @@ export default function NotesComponents() {
       <Sections sectionToDisplay={sectionToDisplay} array={arrayToDisplay} />
     </>
   );
-}
+};
 
-const SectionButtons = (props: { value: boolean; onClick: (arg0: NotesCategory) => void; title: NotesCategory; }) => {
+const SectionButtons: React.FC<{
+  value: boolean;
+  onClick: (arg0: NotesCategory) => void;
+  title: NotesCategory;
+}> = (props) => {
   const [chosen, setChosen] = useState(props.value);
 
   useEffect(() => {
@@ -80,3 +84,5 @@ const SectionButtons = (props: { value: boolean; onClick: (arg0: NotesCategory) 
     </div>
   );
 };
+
+export default NotesComponents;

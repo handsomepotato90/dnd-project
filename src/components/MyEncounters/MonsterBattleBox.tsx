@@ -28,19 +28,19 @@ import styles from "./BattleScreen.module.css";
 
 interface MonsterBox{
   stats: MonsterStats;
-  childrenTopAndBottom: Boolean;
+  childrenTopAndBottom: boolean;
   width: string;
   height: string;
-  modalStats: Boolean;
-  battleSideBar: Boolean;
+  modalStats: boolean;
+  battleSideBar: boolean;
   children?: React.ReactNode;
-  onClick?: (state: Boolean) => void;
+  onClick?: (state: boolean) => void;
 }
 
 const MonsterBattleBox: React.FC<MonsterBox> = ({stats, childrenTopAndBottom, width, height, modalStats, battleSideBar, children})=> {
-  const [isShown, setIsShown] = useState<Boolean>(false);
-  const [isDead, setDead] = useState<Boolean>(false);
-  const [isRead, setReading] = useState<Boolean>(false);
+  const [isShown, setIsShown] = useState<boolean>(false);
+  const [isDead, setDead] = useState<boolean>(false);
+  const [isRead, setReading] = useState<boolean>(false);
   const [playerGivenAc, setPlayerGivenAc] = useState<number>(0);
 
   const renderChildren = Array.isArray(children) ? (
@@ -52,7 +52,7 @@ const MonsterBattleBox: React.FC<MonsterBox> = ({stats, childrenTopAndBottom, wi
     setPlayerGivenAc(parseInt(event.target.value));
   };
 
-  const deathTraker = (state: Boolean) => {
+  const deathTraker = (state: boolean) => {
     setDead(state);
     setIsShown(false);
   };
@@ -60,7 +60,7 @@ const MonsterBattleBox: React.FC<MonsterBox> = ({stats, childrenTopAndBottom, wi
   const renderModal = () => {
     setReading(true);
   };
-  const removeModal = (state: Boolean) => {
+  const removeModal = (state: boolean) => {
     setReading(state);
   };
   return (

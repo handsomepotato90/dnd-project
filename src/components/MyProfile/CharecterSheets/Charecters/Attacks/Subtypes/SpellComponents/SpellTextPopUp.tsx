@@ -1,3 +1,4 @@
+import React from "react";
 import styles from "./SpellComponents.module.css";
 import Draggable from "react-draggable";
 import { formatAsParagraphs, getAllEntries } from "./spellFuctions";
@@ -26,7 +27,8 @@ const magicSchools: MagicSchools = {
   I: "Illusion",
   C: "Conjuration",
 };
-export default function SpellTextPopUp(props: SpellTextPopUpProps) {
+
+const SpellTextPopUp: React.FC<SpellTextPopUpProps> = (props) => {
   const removeMe = () => {
     props.onClick(false);
   };
@@ -39,7 +41,7 @@ export default function SpellTextPopUp(props: SpellTextPopUpProps) {
       <div
         onDoubleClick={removeMe}
         style={{
-          marginLeft: props.x - (!props.search ? 150 :  props.x),
+          marginLeft: props.x - (!props.search ? 150 : props.x),
           marginTop: props.y - (!props.search ? 500 : props.y),
         }}
         className={styles.spell_text_block}
@@ -104,8 +106,15 @@ export default function SpellTextPopUp(props: SpellTextPopUpProps) {
       </div>
     </Draggable>
   );
+};
+
+interface SpellTextProps {
+  components?: { v: boolean; s: boolean; m: string | string[] };
+  title: string;
+  value?: string;
 }
-const SpellText = (props: { components?: { v: boolean; s: boolean; m: string | string[]; }; title: string; value?: string; }) => {
+
+const SpellText: React.FC<SpellTextProps> = (props) => {
   return (
     <div>
       {props.components ? (
@@ -130,3 +139,5 @@ const SpellText = (props: { components?: { v: boolean; s: boolean; m: string | s
     </div>
   );
 };
+
+export default SpellTextPopUp;

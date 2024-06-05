@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import PlayerChoice from "./PlayerChoice/PlayerChoice";
 import MonsterLibrary from "./MonsterLibrary/MonsterLibrary";
 import EncounterSummary from "./EncounterSummary/EncounterSummary";
@@ -13,7 +13,7 @@ import ConteinerBox from "../UI/ConteinerBox";
 
 import styles from "./BuildEncounter.module.css";
 
-const BuildEncounter = () => {
+const BuildEncounter: React.FC = () => {
   const [searchClick, setSearchClick] = useState(false);
   const [playerClick, setPlayerClick] = useState(false);
   const [playerBoxOpen, setPlayerBoxOpen] = useState(false);
@@ -125,4 +125,5 @@ const BuildEncounter = () => {
     </GroupXpProvider>
   );
 }
+
 export default BuildEncounter;

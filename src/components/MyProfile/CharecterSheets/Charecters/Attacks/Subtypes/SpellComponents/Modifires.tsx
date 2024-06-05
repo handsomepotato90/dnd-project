@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import React, { useState, useContext } from "react";
 import styles from "./SpellComponents.module.css";
 import CS from "../../../../../../store/CS-context";
 
@@ -7,7 +7,7 @@ interface ModifiersProps {
   title: string;
 }
 
-export default function Modifiers(props: ModifiersProps) {
+const Modifiers: React.FC<ModifiersProps> = (props) => {
   const cs = useContext(CS);
   const [newGivenValue, setNewGivenValue] = useState<number>(0);
   const [changeOfMod, setChangeOfMod] = useState<boolean>(false);
@@ -38,3 +38,5 @@ export default function Modifiers(props: ModifiersProps) {
     </div>
   );
 }
+
+export default Modifiers;

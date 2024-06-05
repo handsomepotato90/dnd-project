@@ -1,8 +1,8 @@
+import React from "react";
 import styles from "../SavingThrows/SavingThrows.module.css";
 import Senses from "./Senses";
 
-
-export default function PassiveSenses() {
+const PassiveSenses: React.FC = () => {
   return (
     <div className={styles.saving_trows_box}>
       <Senses text="PASSIVE WIS (PERCEPTION)"></Senses>
@@ -11,3 +11,5 @@ export default function PassiveSenses() {
     </div>
   );
 }
+
+export default PassiveSenses;

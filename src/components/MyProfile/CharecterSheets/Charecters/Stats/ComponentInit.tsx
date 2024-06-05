@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import CS from "../../../../store/CS-context";
 import AutoFocusInputEnterEvent from "../../../../UI/AutoFocusInputEnterEvent";
 import styles from "./Stats.module.css";
@@ -7,7 +7,7 @@ interface Props {
   text: string;
 }
 
-export default function ComponentInit(props: Props): JSX.Element {
+const ComponentInit: React.FC<Props> = (props) => {
   const cs = useContext(CS);
   const [changeValue, setChangeValue] = useState<boolean>(false);
   const [prof, setProf] = useState<number>(0);
@@ -57,3 +57,5 @@ export default function ComponentInit(props: Props): JSX.Element {
     </div>
   );
 }
+
+export default ComponentInit;

@@ -175,7 +175,7 @@ interface CustomLinkProps{
   children: React.ReactNode,
 }
 
-export const CustomLink: React.FC<CustomLinkProps> = ({to, onClick, description, children}) => {
+export const CustomLink: React.FC<CustomLinkProps> = ({ onClick, description, children}) => {
   const [hover, setHover] = useState(false);
 
   const onHover = () => {
@@ -226,7 +226,7 @@ interface CustomButtonProps {
   onClick: (action:boolean) => void,
 }
 
-export const CustomButton: React.FC<CustomButtonProps> = ({ to, children, onClick, action}) => {
+export const CustomButton: React.FC<CustomButtonProps> = ({ children, onClick, action}) => {
   return (
     <div className="link_style" onClick={() => onClick(action)}>
       {children}

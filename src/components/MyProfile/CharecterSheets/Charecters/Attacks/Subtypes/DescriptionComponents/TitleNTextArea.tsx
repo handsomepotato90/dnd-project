@@ -1,8 +1,8 @@
-import { useState, useEffect, useContext} from "react";
+import React, { useState, useEffect, useContext } from "react";
 import CS from "../../../../../../store/CS-context";
 import styles from "./DescriptionComponents.module.css";
 
-export default function TitleNTextArea(props: { title: string}) {
+const TitleNTextArea: React.FC<{ title: string }> = (props) => {
   const cs = useContext(CS);
   const [text, setText] = useState(cs.backNapp[props.title]);
   const [changeText, setChangeText] = useState(false);
@@ -17,6 +17,7 @@ export default function TitleNTextArea(props: { title: string}) {
       setChangeText(true);
     }
   }, [text]);
+
   return (
     <div className={styles.background_style}>
       <span className={styles.title_bck}>{props.title}</span>
@@ -38,4 +39,6 @@ export default function TitleNTextArea(props: { title: string}) {
       )}
     </div>
   );
-}
+};
+
+export default TitleNTextArea;

@@ -1,6 +1,6 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
-export default function SpellSlot() {
+const SpellSlot: React.FC = () => {
   const [status, setStatus] = useState(false);
   const changeStatus = () => {
     setStatus((curr) => !curr);
@@ -14,4 +14,6 @@ export default function SpellSlot() {
       onClick={changeStatus}
     ></input>
   );
-}
+};
+
+export default SpellSlot;

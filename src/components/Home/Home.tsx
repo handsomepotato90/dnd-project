@@ -1,3 +1,4 @@
+import React from "react";
 import imageOne from "../../icons/dnd1.jpg";
 import imageTwo from "../../icons/dnd2.jpg";
 import imageThree from "../../icons/dnd3.jpg";
@@ -6,7 +7,7 @@ import NewsBox from "../UI/NewsBox";
 
 import "./Home.css";
 
-export default function Home() {
+const Home: React.FC = () => {
   const NewsFiller = [
     {
       url: imageOne,
@@ -26,14 +27,14 @@ export default function Home() {
       url: imageThree,
       text: "Encounter Creator",
       redirect: "/build_encounter",
-      description: "Build your encounters and ballance them to the party.",
+      description: "Build your encounters and balance them to the party.",
     },
     {
       url: imageFour,
       text: "Organise a Session.",
       redirect: "/myProfile/Sessions",
       description:
-        "Organise a session. Invite your Friends and vote on the day for your upcoming session.",
+        "Organize a session. Invite your Friends and vote on the day for your upcoming session.",
     },
   ];
 
@@ -55,4 +56,6 @@ export default function Home() {
       </div>
     </div>
   );
-}
+};
+
+export default Home;

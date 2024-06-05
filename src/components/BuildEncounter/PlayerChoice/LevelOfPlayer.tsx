@@ -1,14 +1,23 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import Select from "react-select";
 import styles from "./LevelOfPlayer.module.css";
 
-interface Option {
-    value: number,
-    label: string 
+interface Player {
+  easy: number;
+  medium: number;
+  hard: number;
+  deadly: number;
+  player: number;
 }
 
-interface LevelOfPlayerProps{
-  onChange: Function;
+
+interface Option {
+  value: number,
+  label: string 
+}
+
+interface LevelOfPlayerProps {
+  onChange: (player: Player) => void;
 }
 
 const options = [
@@ -59,7 +68,7 @@ const encounterXpTable = [
 ];
 
 const LevelOfPlayer: React.FC<LevelOfPlayerProps> = ({onChange}) => {
-  let [currValue, changeValue] = useState<number>(0);
+  const [currValue, changeValue] = useState<number>(0);
 
   const handleChange = (event: Option | null) => {
     if(event){

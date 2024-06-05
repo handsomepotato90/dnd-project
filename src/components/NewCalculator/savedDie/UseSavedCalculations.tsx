@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import CalculatorContext from "../../store/calculator-context";
 import { LoginContext } from "../../store/login-context";
 import { useHttpClient } from "../../hooks/http-hook";
@@ -19,7 +19,7 @@ interface resDataTypes{
     }
 }
 
-export default function UseSavedCalculations() {
+const UseSavedCalculations: React.FC = () => {
   const { sendRequest } = useHttpClient();
   const calc = useContext(CalculatorContext);
   const auth = useContext(LoginContext);
@@ -45,7 +45,6 @@ export default function UseSavedCalculations() {
     if (formulas.length === 0) {
       fetchFriends();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <div className={styles.load_presets}>
@@ -61,3 +60,4 @@ export default function UseSavedCalculations() {
     </div>
   );
 }
+export default UseSavedCalculations;

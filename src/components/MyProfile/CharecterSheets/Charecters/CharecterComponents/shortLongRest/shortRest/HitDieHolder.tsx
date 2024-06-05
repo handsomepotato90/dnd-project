@@ -1,10 +1,10 @@
-import { useState, useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import CS from "../../../../../../store/CS-context";
 import DiceHeal from "./DiceHeal";
 
-import {CharacterClass} from "../../../../../../types/CSTypes"
+import { CharacterClass } from "../../../../../../types/CSTypes";
 
-export default function HitDieHolder() {
+const HitDieHolder: React.FC = () => {
   const [arrayOfClassHitDie, setArrayOfClassHitDie] = useState<CharacterClass[]>([]);
   const cs = useContext(CS);
   useEffect(() => {
@@ -14,8 +14,10 @@ export default function HitDieHolder() {
   return (
     <div>
       {arrayOfClassHitDie.map((e, i) => {
-        return <DiceHeal key={i} dieArray={e}></DiceHeal>
+        return <DiceHeal key={i} dieArray={e}></DiceHeal>;
       })}
     </div>
   );
-}
+};
+
+export default HitDieHolder;

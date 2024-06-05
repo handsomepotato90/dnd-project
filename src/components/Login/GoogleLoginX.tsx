@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import React, { useContext } from "react";
 import { useHttpClient } from "../hooks/http-hook";
 import { LoginContext } from "../store/login-context";
 import { useGoogleLogin } from "@react-oauth/google";
@@ -10,7 +10,7 @@ interface GoogleLoginXProps {
   buttonText: string;
 }
 
-export default function GoogleLoginX(props: GoogleLoginXProps): JSX.Element {
+const GoogleLoginX: React.FC<GoogleLoginXProps> = (props) => {
   const { sendRequest } = useHttpClient();
   const auth = useContext(LoginContext);
 
@@ -44,13 +44,10 @@ export default function GoogleLoginX(props: GoogleLoginXProps): JSX.Element {
       className={`button__style ${styles.google__style} `}
       onClick={googleLogin}
     >
-      <SvgComponent
-        Image={GoogleSvg}
-        height="45"
-        color="red"
-        width="50"
-      ></SvgComponent>
+      <SvgComponent Image={GoogleSvg} height="45" color="red" width="50" />
       <span>{`${props.buttonText} WITH GOOGLE`}</span>
     </button>
   );
-}
+};
+
+export default GoogleLoginX;

@@ -1,12 +1,11 @@
-import { useState, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { SvgComponent } from "../../../../../../Navigation/Navigation";
 import add from "../../../../../../../icons/add.svg";
 import BackDrop from "../../../../../../UI/BackDrop";
 import styles from "./NotesComponents.module.css";
 import CS from "../../../../../../store/CS-context";
 
-import {NotesCategory} from "../../../../../../types/CSTypes";
-
+import { NotesCategory } from "../../../../../../types/CSTypes";
 
 function makeid(length: number) {
   let result = "";
@@ -21,7 +20,7 @@ function makeid(length: number) {
   return result;
 }
 
-export default function AddNewNote(props: { sectionToDisplay: NotesCategory; }) {
+const AddNewNote: React.FC<{ sectionToDisplay: NotesCategory }> = (props) => {
   const [openWindow, setOpenWindow] = useState(false);
 
   return (
@@ -45,9 +44,12 @@ export default function AddNewNote(props: { sectionToDisplay: NotesCategory; }) 
       )}
     </>
   );
-}
+};
 
-const CommentWindow = (props: { sectionToDisplay: string; onClick: (arg0: boolean) => void; }) => {
+const CommentWindow: React.FC<{
+  sectionToDisplay: string;
+  onClick: (arg0: boolean) => void;
+}> = (props) => {
   const [title, newTitle] = useState("");
   const [note, newNoteText] = useState("");
   const cs = useContext(CS);
@@ -90,3 +92,5 @@ const CommentWindow = (props: { sectionToDisplay: string; onClick: (arg0: boolea
     </>
   );
 };
+
+export default AddNewNote;

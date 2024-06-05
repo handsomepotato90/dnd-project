@@ -1,6 +1,7 @@
+import React from "react";
 import "./CalculatorImage.scss";
 
-const CalculatorImage = () => {
+const CalculatorImage: React.FC = () => {
   return (
     <>
       <div className="content">

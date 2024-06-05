@@ -1,6 +1,7 @@
-import styles from "./Short.module.css"
+import React from "react";
+import styles from "./Short.module.css";
 
-export default function TextComponent() {
+const TextComponent: React.FC = () => {
   return (
     <div className={styles.title_short_rest}>
       <h3>Short Rest</h3>
@@ -11,4 +12,6 @@ export default function TextComponent() {
       </span>
     </div>
   );
-}
+};
+
+export default TextComponent;

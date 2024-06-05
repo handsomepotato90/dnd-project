@@ -1,4 +1,4 @@
-import { useContext, useState, FormEvent } from "react";
+import React, { useContext, useState, FormEvent } from "react";
 import { VALIDATOR_REQUIRE } from "../util/validators";
 import TextArea from "./TextArea";
 import Input from "../form-elements/Input";
@@ -35,7 +35,7 @@ interface HomeBrewSaveProps {
   valid: boolean;
 }
 
-export default function HomeBrewSave(props: HomeBrewSaveProps) {
+const HomeBrewSave: React.FC<HomeBrewSaveProps> = (props) => {
   const navigate = useNavigate();
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const [ckEditorText, setCkEditorText] = useState<{ [key: string]: string }>({});
@@ -202,3 +202,4 @@ export default function HomeBrewSave(props: HomeBrewSaveProps) {
     </>
   );
 }
+export default HomeBrewSave;

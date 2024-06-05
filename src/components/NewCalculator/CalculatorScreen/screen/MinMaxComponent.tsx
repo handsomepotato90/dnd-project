@@ -1,9 +1,9 @@
-import { useContext } from "react";
+import React, { useContext } from "react";
 import CalculatorContext from "../../../store/calculator-context";
 
 import MinMaxRoll from "./MinMaxRoll";
 
-export default function MinMaxComponent() {
+const MinMaxComponent: React.FC = () => {
   const calc = useContext(CalculatorContext);
 
   return (
@@ -13,3 +13,4 @@ export default function MinMaxComponent() {
     </div>
   );
 }
+export default MinMaxComponent;
