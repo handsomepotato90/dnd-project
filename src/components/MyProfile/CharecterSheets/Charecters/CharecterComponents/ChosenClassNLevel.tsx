@@ -55,8 +55,8 @@ const ClassDisplay: React.FC<Props> = (props) => {
           type="number"
           className={styles.class_level_input}
           autoFocus={true}
-          onBlur={() => levelUp}
-          onChange={(e) => setNewLevel(Number(e.target.value))}
+          onBlur={() => levelUp()}
+          onChange={(e) => setNewLevel(parseInt(e.target.value))}
         ></input>
       )}
     </div>
