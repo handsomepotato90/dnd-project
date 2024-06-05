@@ -1,0 +1,73 @@
+{
+  "monsterType": [
+    { "value": "aberration", "label": "Aberration" },
+    { "value": "beast", "label": "Beast" },
+    { "value": "celestial", "label": "Celestial" },
+    { "value": "construct", "label": "Construct" },
+    { "value": "dragon", "label": "Dragon" },
+    { "value": "elemental", "label": "Elemental" },
+    { "value": "fey", "label": "Fey" },
+    { "value": "fiend", "label": "Fiend" },
+    { "value": "giant", "label": "Giant" },
+    { "value": "humanoid", "label": "Humanoid" },
+    { "value": "monstrosity", "label": "Monstrosity" },
+    { "value": "ooze", "label": "Ooze" },
+    { "value": "plant", "label": "Plant" },
+    { "value": "undead", "label": "Undead" }
+  ],
+  "alignment": [
+    { "value": "lawful good", "label": "Lawful Good" },
+    { "value": "neutral good", "label": "Neutral Good" },
+    { "value": "chaotic good", "label": "Chaotic Good" },
+    { "value": "lawful neutral", "label": "Lawful Neutral" },
+    { "value": "neutral", "label": "Neutral" },
+    { "value": "chaotic neutral", "label": "Chaotic Neutral" },
+    { "value": "lawful evil", "label": "Lawful Evil" },
+    { "value": "neutral evil", "label": "Neutral Evil" },
+    { "value": "chaotic evil", "label": "Chaotic Evil" },
+    { "value": "unaligned", "label": "Unaligned" },
+    { "value": "evil", "label": "Any Evil Alignment" },
+    { "value": "good", "label": "Any Good Alignment" },
+    { "value": "chaotic", "label": "Any Chaotic Alignment" },
+    { "value": "lawful", "label": "Any Lawful Alignment" },
+    { "value": "any", "label": "Any" }
+  ],
+  "condition": [
+    { "value": "Blinded", "label": "Blinded" },
+    { "value": "Charmed", "label": "Charmed" },
+    { "value": "Deafened", "label": "Deafened" },
+    { "value": "Exhaustion", "label": "Exhaustion" },
+    { "value": "Frightened", "label": "Frightened" },
+    { "value": "Grappled", "label": "Grappled" },
+    { "value": "Incapacitated", "label": "Incapacitated" },
+    { "value": "Invisible", "label": "Invisible" },
+    { "value": "Paralyzed", "label": "Paralyzed" },
+    { "value": "Petrified", "label": "Petrified" },
+    { "value": "Poisoned", "label": "Poisoned" },
+    { "value": "Prone", "label": "Prone" },
+    { "value": "Restrained", "label": "Restrained" },
+    { "value": "Stunned", "label": "Stunned" },
+    { "value": "Unconscious", "label": "Unconscious" }
+  ],
+  "damageIm": [
+    { "value": "Bludgeoning", "label": "Bludgeoning" },
+    { "value": "Piercing", "label": "Piercing" },
+    { "value": "Slashing", "label": "Slashing" },
+    { "value": "Lightning", "label": "Lightning" },
+    { "value": "Thunder", "label": "Thunder" },
+    { "value": "Grappled", "label": "Grappled" },
+    { "value": "Poison", "label": "Poison" },
+    { "value": "Cold", "label": "Cold" },
+    { "value": "Radiant", "label": "Radiant" },
+    { "value": "Fire", "label": "Fire" },
+    { "value": "Necrotic", "label": "Necrotic" },
+    { "value": "Acid", "label": "Acid" },
+    { "value": "Psychic", "label": "Psychic" },
+    { "value": "Force", "label": "Force" }
+  ],
+  "legendary": [
+    { "value": "Any", "label": "Any" },
+    { "value": true, "label": "Yes" },
+    { "value": false, "label": "No" }
+  ]
+}

@@ -21,7 +21,7 @@ const SubmitHomeBrew = React.lazy(() =>
 );
 const MyProfile = React.lazy(() => import("./components/MyProfile/MyProfile"));
 const Home = React.lazy(() => import("./components/Home/Home"));
-const Voting = React.lazy(() => import("./components/Voting/Voting"));
+const Voting = React.lazy(() => import("./components/Voting/Voting.tsx"));
 const Page404 = React.lazy(() => import("./components/UI/Page404/Page404"));
 
 function App() {
