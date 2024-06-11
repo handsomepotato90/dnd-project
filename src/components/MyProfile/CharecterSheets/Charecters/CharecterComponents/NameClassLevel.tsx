@@ -23,8 +23,7 @@ const NameClassLevel: React.FC = () => {
     <div className={styles.general_charecter_Style}>
       <div className={styles.general_char_info_style}>
         <TextInputSwitch title="Name" shortName="name" />
-        {(size.width && size.width < 800) ||
-        (size.height && size.height < 800) ? (
+        {size.width && size.width < 800 ? (
           <div className={styles.small_view}>
             <TextInputSwitch title="Background" shortName="bg" />
             <TextInputSwitch title="Alignment" shortName="al" />

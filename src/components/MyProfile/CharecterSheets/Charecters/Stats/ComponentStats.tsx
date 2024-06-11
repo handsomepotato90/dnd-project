@@ -11,8 +11,12 @@ interface Props {
 const ComponentStats: React.FC<Props> = (props) => {
   const cs = useContext(CS);
   const [inputValue, setInputValue] = useState<boolean>(false);
-  const [statValue, setStatValue] = useState<number>(cs.stats[props.shortHand].value);
-  const [modifier, setModifier] = useState<number>(cs.stats[props.shortHand].modifire ?? 0);
+  const [statValue, setStatValue] = useState<number>(
+    cs.stats[props.shortHand].value
+  );
+  const [modifier, setModifier] = useState<number>(
+    cs.stats[props.shortHand].modifire ?? 0
+  );
 
   useEffect(() => {
     setStatValue(cs.stats[props.shortHand].value);
@@ -46,6 +50,6 @@ const ComponentStats: React.FC<Props> = (props) => {
       )}
     </div>
   );
-}
+};
 
 export default ComponentStats;

@@ -46,8 +46,7 @@ const Charecters: React.FC = () => {
 
   return (
     <CSProvider>
-      {(size.width && size.width < 800) ||
-      (size.height && size.height < 800) ? (
+      {size.width && size.width < 800 ? (
         <MobileViewCharacterSheet />
       ) : (
         <div className={styles.charecter_general}>

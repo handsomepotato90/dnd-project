@@ -24,6 +24,7 @@
   font-size: 30px;
 }
 .stats_general_box {
+  position: relative;
   display: flex;
   flex-direction: column;
   border: 2px solid red;
@@ -34,24 +35,27 @@
   text-align: center;
   font-size: 35px;
 }
+
 .stats_general_box > span:first-child {
   font-size: 10px;
   font-weight: bold;
 }
+
 .total_stat {
   position: absolute;
+  bottom: -12.5px;
+  left: 50%;
+  transform: translateX(-50%);
   width: 35px;
   height: 25px;
   font-size: 16px;
   border: 2px solid red;
-  /* color: black; */
   font-style: italic;
   border-radius: 50%;
-  margin-top: 65px;
-  margin-left: 15px;
   text-align: center;
   background-color: white;
 }
+
 .hp_box_general {
   border: 3px solid grey;
   border-radius: 5px;
