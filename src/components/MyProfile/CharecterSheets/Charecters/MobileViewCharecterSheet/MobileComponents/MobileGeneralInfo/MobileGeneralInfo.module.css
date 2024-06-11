@@ -3,7 +3,7 @@
     min-height: 90vh;
     height: auto;
     display: grid;
-    grid-template-rows: 35% 8% 15% 15% 30% 5%;
+    grid-template-rows: 35% 15% 15% 15% 30% auto;
   }
 .stats_orientation{
     display: grid;
