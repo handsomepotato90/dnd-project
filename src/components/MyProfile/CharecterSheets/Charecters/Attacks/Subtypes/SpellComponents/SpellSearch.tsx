@@ -20,7 +20,7 @@ const SpellSearch: React.FC<{
   const cs = useContext(CS);
   const size = useWindowSize();
 
-  const mod = (size.width ?? 0) > 600 ? 330 : -props.x;
+  const mod = (size.width ?? 0) > 800 ? 330 : -props.x;
   const modheight = (size.width ?? 0) > 600 ? 100 : 0;
 
   useEffect(() => {
@@ -54,7 +54,7 @@ const SpellSearch: React.FC<{
   return (
     <div
       style={{
-        marginLeft: props.x + mod,
+        marginLeft: (size.width ?? 0) > 800 ? props.x + mod : 0,
         marginTop: modheight,
       }}
       className={styles.search_spells}

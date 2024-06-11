@@ -26,13 +26,11 @@
   margin-left: auto;
   margin-right: 20px;
 }
-@media only screen and (max-width: 1400px) {
-  .rest_buttons__styles {
-    width: 150px;
-  }
-}
 @media only screen and (max-width: 800px) {
   .display_window {
     z-index: 150;
+  }
+  .rest_buttons__styles{
+    width: 150px;
   }
 }

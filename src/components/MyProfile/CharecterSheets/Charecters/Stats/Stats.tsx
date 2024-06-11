@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import ComponentStats from "./ComponentStats";
 import ComponentInit from "./ComponentInit";
 import HpAndHpManagment from "./HpAndHpManagment";
 import useWindowSize from "../../../../hooks/screensize-hook";
 import { SvgComponent } from "../../../../Navigation/Navigation";
 import hpImage from "../../../../../icons/health.svg";
 import styles from "./Stats.module.css";
+import MainStats from "./Skills/MainStats";
 
 const Stats: React.FC = () => {
   const [hpmanager, setHpmanager] = useState(false);
@@ -16,15 +16,7 @@ const Stats: React.FC = () => {
   return (
     <>
       <div className={styles.important_stats_stats_holder}>
-        <ComponentStats text={"STRENGHT"} shortHand={"Str"}></ComponentStats>
-        <ComponentStats text={"DEXTERITY"} shortHand={"Dex"}></ComponentStats>
-        <ComponentStats
-          text={"CONSTITUTION"}
-          shortHand={"Con"}
-        ></ComponentStats>
-        <ComponentStats text={"INTELIGENCE"} shortHand={"Int"}></ComponentStats>
-        <ComponentStats text={"WISDOM"} shortHand={"Wis"}></ComponentStats>
-        <ComponentStats text={"CHARISMA"} shortHand={"Cha"}></ComponentStats>
+        <MainStats />
       </div>
       {size.width ?? 0 > 600 ? (
         <div className={styles.semi_important}>
@@ -73,5 +65,5 @@ const Stats: React.FC = () => {
       )}
     </>
   );
-}
+};
 export default Stats;

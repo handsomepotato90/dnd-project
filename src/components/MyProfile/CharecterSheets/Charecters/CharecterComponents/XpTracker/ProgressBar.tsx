@@ -31,11 +31,13 @@ const ProgressBar: React.FC<ProgressBarProps> = (props) => {
         className={styles.progress_bar_fill}
         style={{ width: `${percentage}%` }}
       ></div>
+      <div className={styles.progress_bar_text_content}>
+        {`${currentValue} / ${maxValue}`}
+      </div>
       {hover && (
         <span className="hover__text">{`You need ${toNextLVL} more XP to next LvL`}</span>
       )}
     </div>
   );
 };
-
 export default ProgressBar;

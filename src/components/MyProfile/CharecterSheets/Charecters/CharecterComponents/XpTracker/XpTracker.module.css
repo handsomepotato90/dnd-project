@@ -5,16 +5,46 @@
     justify-content: space-evenly;
     text-align:center;
 }
-
-.xp_tracker_text{
-    height: 25px;
+.xp_tracker_main{
     display: flex;
     flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    text-align:center;
+    margin: auto auto;
+}
+
+.xp_tracker_text{
+    font-size: 22px;
+    display: flex;
+    flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    padding: 10px;
 }
 .xp_tracker_lvl{
-    font-size: 22px;
+    font-size: 32px;
     font-weight: bold;
     color: gold;
+}
+.xp_add_main{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    text-align:center;
+    margin: auto auto;
+}
+.add_xp{
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 5px 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin-left: 5px;
+    cursor: pointer;
+    border-radius: 5px;
 }

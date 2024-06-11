@@ -21,6 +21,7 @@
 }
 @media only screen and (max-width: 600px) {
   .attacks_big_box {
-    width: 400px;
+    width: auto;
+    height: calc(100% - 4px);
   }
 }

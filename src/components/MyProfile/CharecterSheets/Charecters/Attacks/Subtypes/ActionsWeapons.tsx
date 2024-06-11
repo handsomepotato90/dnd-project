@@ -7,7 +7,13 @@ import Delete from "../../../../../../icons/trashcan.svg";
 import styles from "./Actions.module.css";
 import AddWeapon from "./AddWeapon";
 
-const ActionsWeapons: React.FC<{ place: number; type: string; range: string; hit: string; damage: string; }> = (props) => {
+const ActionsWeapons: React.FC<{
+  place: number;
+  type: string;
+  range: string;
+  hit: string;
+  damage: string;
+}> = (props) => {
   const [editWeapon, setEditWeapon] = useState(false);
   const [cordinate, setCordinate] = useState({ x: 0, y: 0 });
   const cs = useContext(CS);
@@ -20,7 +26,7 @@ const ActionsWeapons: React.FC<{ place: number; type: string; range: string; hit
     setEditWeapon(false);
   };
 
-  const editWeapons = (e: { clientX: number; clientY: number; }) => {
+  const editWeapons = (e: { clientX: number; clientY: number }) => {
     setCordinate({ x: e.clientX, y: e.clientY });
     setEditWeapon(true);
   };
@@ -36,9 +42,9 @@ const ActionsWeapons: React.FC<{ place: number; type: string; range: string; hit
         >
           <SvgComponent
             Image={Edit}
-            height="25"
+            height="20"
             color="white"
-            width="60"
+            width="30"
           ></SvgComponent>
         </div>
         <span className={styles.normal_text_weapon}>{props.type}</span>
@@ -69,6 +75,6 @@ const ActionsWeapons: React.FC<{ place: number; type: string; range: string; hit
       )}
     </>
   );
-}
+};
 
 export default ActionsWeapons;

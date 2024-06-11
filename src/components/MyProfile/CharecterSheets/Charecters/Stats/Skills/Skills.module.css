@@ -34,6 +34,15 @@
 }
 @media only screen and (max-width: 800px) {
   .giant_skill_block{
+    margin: 0 auto;
+    margin-top: 20px;
     width: 85%;
+  }
+  .general_description > span{
+    text-align: center;
+  }
+  .general_description {
+    grid-template-columns: 10% 25% 50% auto;
+    gap: 0px;
   }
 }

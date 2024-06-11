@@ -41,6 +41,7 @@ const XpTracker: React.FC = () => {
   const [currentXp, setCurrentXp] = useState(cs.xp);
   const [toNextLevel, setToNextLevel] = useState(0);
   const [currentLevel, setCurrentLevel] = useState(0);
+  const [userInput, setUserInput] = useState(0);
   const [nextLevel, setNextLevel] = useState(0);
 
   const changeCurrentXp = (value: number) => {
@@ -71,25 +72,37 @@ const XpTracker: React.FC = () => {
   }, [cs.xp]);
 
   return (
-    <div className={styles.xp_tracker}>
-      <span className={`${styles.xp_tracker_text} red_text`}>
-        You are LVL{" "}
-        <span className={styles.xp_tracker_lvl}>{currentLevel}</span>
-      </span>
-      <input
-        type="number"
-        onBlur={(e) => changeCurrentXp(parseInt(e.target.value))}
-        placeholder={'0'}
-      ></input>
-
-      <ProgressBar
-        minValue={xp_levels[currentLevel]}
-        maxValue={xp_levels[nextLevel]}
-        currentValue={currentXp}
-        toNextLVL={toNextLevel}
-      ></ProgressBar>
+    <div className="xp-tracker-container">
+      <div className={styles.xp_tracker_main}>
+        <div className={styles.xp_tracker}>
+          <span className={`${styles.xp_tracker_text} red_text`}>
+            L: <span className={styles.xp_tracker_lvl}>{currentLevel}</span>
+          </span>
+        </div>
+        <div className={styles.xp_tracker}>
+          <div className={styles.xp_add_main}>
+            <input
+              type="number"
+              onChange={(e) => setUserInput(parseInt(e.target.value))}
+              placeholder={"0"}
+            ></input>
+            <button
+              className={styles.add_xp}
+              onClick={() => changeCurrentXp(userInput)}
+            >
+              Add Xp
+            </button>
+          </div>
+          <ProgressBar
+            minValue={xp_levels[currentLevel]}
+            maxValue={xp_levels[nextLevel]}
+            currentValue={currentXp}
+            toNextLVL={toNextLevel}
+          ></ProgressBar>
+        </div>
+      </div>
     </div>
   );
-}
+};
 
 export default XpTracker;
