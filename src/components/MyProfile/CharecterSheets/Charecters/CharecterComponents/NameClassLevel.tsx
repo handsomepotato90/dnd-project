@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
 import ClassLevel from "./ClassLevel";
 import CS from "../../../../store/CS-context";
+import useWindowSize from "../../../../hooks/screensize-hook";
+
 import styles from "./CharecterComponents.module.css";
 
 interface TextInputProps {
@@ -15,12 +17,24 @@ interface Meta {
 }
 
 const NameClassLevel: React.FC = () => {
+  const size = useWindowSize();
+
   return (
     <div className={styles.general_charecter_Style}>
       <div className={styles.general_char_info_style}>
         <TextInputSwitch title="Name" shortName="name" />
-        <TextInputSwitch title="Background" shortName="bg" />
-        <TextInputSwitch title="Alignment" shortName="al" />
+        {(size.width && size.width < 800) ||
+        (size.height && size.height < 800) ? (
+          <div className={styles.small_view}>
+            <TextInputSwitch title="Background" shortName="bg" />
+            <TextInputSwitch title="Alignment" shortName="al" />
+          </div>
+        ) : (
+          <>
+            <TextInputSwitch title="Background" shortName="bg" />
+            <TextInputSwitch title="Alignment" shortName="al" />
+          </>
+        )}
       </div>
       <ClassLevel />
     </div>
@@ -32,7 +46,8 @@ export const TextInputSwitch: React.FC<TextInputProps> = (props) => {
   const [switchMode, setSwitchMode] = useState(false);
   const [value, setValue] = useState<string>("");
 
-  const color = props.shortName === "name" ? `red_text ${styles.text_decoration_name}` : "";
+  const color =
+    props.shortName === "name" ? `red_text ${styles.text_decoration_name}` : "";
 
   useEffect(() => {
     setValue(cs.meta[props.shortName].toString());

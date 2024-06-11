@@ -89,15 +89,24 @@
   .general_char_info_style{
     text-align: center;
     margin-top: 5px;
+    margin-bottom: 10px;
+    height: 70px;
   }
   .xp_class_holder{
     grid-template-columns: none;
-    grid-template-rows:50% auto;
+    grid-template-rows: 50% auto;
+    gap: 10px;
   }
   .class_style {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+  }
+  .small_view{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    font-size: 16px;
   }
 }
 
