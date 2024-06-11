@@ -125,7 +125,7 @@ export const CSProvider = ({ children }: { children: ReactNode }) => {
     CSheet?.speed ? parseInt(CSheet.speed) : 0
   );
   const [currHp, setCurrHp] = useState<number>(
-    CSheet?.currHp ? parseInt(CSheet.currHp) : -1000
+    CSheet?.currHp ? parseInt(CSheet.currHp) : 0
   );
   const [tempHp, setTempHp] = useState<number>(
     CSheet?.tempHp ? parseInt(CSheet.tempHp) : 0
