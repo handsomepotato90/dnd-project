@@ -42,7 +42,7 @@ const ChangeMail: React.FC<ChangeMailProps> = (props) => {
   return (
     <div>
       {props.children}
-      <NewsBox>
+      <NewsBox color={"#1f2125"}>
         <form onSubmit={authSubmitHandler}>
           <Input
             errorText={null}

@@ -29,7 +29,11 @@ const FriendRequest: React.FC<Props> = (props) => {
     }
   }, [props.requests]);
 
-  const decision = async (res: "accept" | "reject", name: string, id: string) => {
+  const decision = async (
+    res: "accept" | "reject",
+    name: string,
+    id: string
+  ) => {
     setFoundUsers(foundUsers.filter((user) => user.name !== name));
     try {
       await sendRequest(
@@ -57,7 +61,7 @@ const FriendRequest: React.FC<Props> = (props) => {
         {props.children}
       </div>
 
-      <NewsBox>
+      <NewsBox color={"#1f2125"}>
         {foundUsers.map((req, i) => (
           <UserHolderBox invites={true} key={i} name={req.name}>
             <div className={`${styles.decision_box__style}`}>

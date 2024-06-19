@@ -3,14 +3,22 @@ import { useNavigate } from "react-router-dom";
 import "./NewsBox.css";
 
 interface NewsBoxProps {
-  className?:string,
-  image?: string,
-  url?: string,
-  text?: string,
-  children: React.ReactNode
+  className?: string;
+  image?: string;
+  url?: string;
+  text?: string;
+  children: React.ReactNode;
+  color: string;
 }
 
-const NewsBox: React.FC<NewsBoxProps> = ({className, image, url, text, children}) => {
+const NewsBox: React.FC<NewsBoxProps> = ({
+  className,
+  image,
+  url,
+  text,
+  color,
+  children,
+}) => {
   const cNames = "news_box_bcc__color news_box_size " + className;
   const [isShown, setIsShown] = useState(false);
   const navigate = useNavigate();
@@ -19,13 +27,13 @@ const NewsBox: React.FC<NewsBoxProps> = ({className, image, url, text, children}
     backgroundImage: `url(${image})`,
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
+    backgroundColor: color,
   };
 
   const redirectToDesiredPage = () => {
     if (image && url) {
       navigate(url);
     }
-  
   };
   return (
     <div
@@ -39,5 +47,5 @@ const NewsBox: React.FC<NewsBoxProps> = ({className, image, url, text, children}
       {isShown && text && <p>{text}</p>}
     </div>
   );
-}
+};
 export default NewsBox;

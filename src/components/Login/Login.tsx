@@ -37,15 +37,15 @@ const Login: React.FC = () => {
   const clientId =
     "935993487799-3sfsjrrfjh8qol2fe65pjjt3ik0tcpqn.apps.googleusercontent.com";
 
-    useEffect(() => {
-      const initClient = () => {
-        gapi.auth2.init({
-          clientId: clientId,
-          scope: "",
-        });
-      };
-      gapi.load("client:auth2", initClient);
-    });
+  useEffect(() => {
+    const initClient = () => {
+      gapi.auth2.init({
+        clientId: clientId,
+        scope: "",
+      });
+    };
+    gapi.load("client:auth2", initClient);
+  });
 
   const switchMode = () => {
     if (!isLogin) {
@@ -60,14 +60,15 @@ const Login: React.FC = () => {
         false // Set formValidity to false when switching modes
       );
     } else {
-      setFormData({
-        ...formState.inputs,
-        email: {
-          value: "",
-          isValid: false,
+      setFormData(
+        {
+          ...formState.inputs,
+          email: {
+            value: "",
+            isValid: false,
+          },
         },
-      }, 
-      false
+        false
       );
     }
     setIsLogin((prevMode) => !prevMode);
@@ -128,7 +129,10 @@ const Login: React.FC = () => {
           onClick={errorHandler}
         />
       )}
-      <NewsBox className={`login_black__background ${styles.login_box__style}`}>
+      <NewsBox
+        className={`login_black__background ${styles.login_box__style}`}
+        color={"none"}
+      >
         {isLoading && <LoadingSpinner asOverlay />}
         <h2 className={styles.text__style}>Login Required</h2>
         <hr />
@@ -163,11 +167,7 @@ const Login: React.FC = () => {
             onInput={inputHandler}
           />
           <label className={styles.rememberMe__style}>
-            <input
-              type="checkbox"
-              checked={checked}
-              onChange={handleChange}
-            />
+            <input type="checkbox" checked={checked} onChange={handleChange} />
             Remember me
           </label>
           <Button type="submit" disabled={!formState.isValid}>

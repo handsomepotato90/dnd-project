@@ -48,6 +48,7 @@ const Home: React.FC = () => {
             text={news.description}
             image={news.url}
             url={news.redirect}
+            color={"none"}
           >
             {" "}
             <h1>{news.text}</h1>

@@ -1,4 +1,4 @@
-import React, { useState, useRef, FC } from "react";
+import { useState, useRef, FC } from "react";
 import NewsBox from "../../../UI/NewsBox";
 import { useHttpClient } from "../../../hooks/http-hook";
 import MatchingUsers from "./MatchingUsers";
@@ -54,7 +54,7 @@ const SendFriendRequest: FC<SendFriendRequestProps> = (props) => {
         />
       </div>
 
-      <NewsBox className={props.overflow}>
+      <NewsBox className={props.overflow} color={"#1f2125"}>
         {foundUsers.map((user, i) => (
           <MatchingUsers key={i} ids={props.ids} name={user.name} />
         ))}

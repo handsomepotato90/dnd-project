@@ -42,7 +42,9 @@ const ChangePassword: React.FC<ChangePasswordProps> = (props) => {
       setintentionForSubmit(false);
       return;
     }
-    if (formState.inputs.password.value !== formState.inputs.re_password.value) {
+    if (
+      formState.inputs.password.value !== formState.inputs.re_password.value
+    ) {
       setpasswordError(true);
       setintentionForSubmit(false);
       return;
@@ -61,9 +63,7 @@ const ChangePassword: React.FC<ChangePasswordProps> = (props) => {
           "Content-Type": "application/json",
         }
       );
-    } catch (err) {
-
-    }
+    } catch (err) {}
     props.ids.logout();
   };
 
@@ -74,7 +74,7 @@ const ChangePassword: React.FC<ChangePasswordProps> = (props) => {
 
   return (
     <div>
-      {isLoading && <LoadingSpinner asOverlay  />}
+      {isLoading && <LoadingSpinner asOverlay />}
       {error && (
         <ModalError
           header="An Error Occurred"
@@ -96,7 +96,7 @@ const ChangePassword: React.FC<ChangePasswordProps> = (props) => {
         />
       )}
       {props.children}
-      <NewsBox>
+      <NewsBox color={"#1f2125"}>
         <form onSubmit={authSubmitHandler}>
           <Input
             element="input"

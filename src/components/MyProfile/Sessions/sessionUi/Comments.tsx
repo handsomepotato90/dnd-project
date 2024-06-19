@@ -34,7 +34,7 @@ const Comments: React.FC<Props> = (props) => {
   }, [props.comments, props.wscomments]);
 
   return (
-    <NewsBox className={props.className}>
+    <NewsBox className={props.className} color={"#1f2125"}>
       {stateComments.map((el, i) => (
         <div
           key={i}
@@ -52,7 +52,9 @@ const Comments: React.FC<Props> = (props) => {
           )}
           <span
             dangerouslySetInnerHTML={{ __html: el.comment }}
-            className={`${styles.text__style} ${styles.general_comment__style} ${
+            className={`${styles.text__style} ${
+              styles.general_comment__style
+            } ${
               props.thisUser === el.username
                 ? styles.sameuser__bcccolor__style
                 : styles.diffuser__bcccolor__style

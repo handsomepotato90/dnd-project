@@ -15,9 +15,8 @@ interface Props {
   overflow?: string;
   remove?: boolean;
   add?: boolean;
-  onSelection?: (name: string, id: string) => void; 
+  onSelection?: (name: string, id: string) => void;
   children?: React.ReactNode;
-
 }
 
 const FriendList: React.FC<Props> = (props) => {
@@ -41,7 +40,7 @@ const FriendList: React.FC<Props> = (props) => {
   return (
     <>
       <span className={styles.span_title__style}>{props.title}</span>
-      <NewsBox className={props.overflow}>
+      <NewsBox className={props.overflow} color={"#1f2125"}>
         {foundUsers.map((user, i) => (
           <UserHolderBox
             key={i}

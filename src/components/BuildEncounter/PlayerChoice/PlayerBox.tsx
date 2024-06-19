@@ -24,7 +24,7 @@ const PlayerBox: React.FC<PlayerBoxProps> = ({ player }) => {
   };
 
   return (
-    <NewsBox className={styles.news_box__stayel}>
+    <NewsBox className={styles.news_box__stayel} color={"#1f2125"}>
       {player.map((p, i) => (
         <div className={styles.box_player__style} key={i}>
           <div>Player Level:</div>

@@ -14,7 +14,7 @@ import { useHttpClient } from "../hooks/http-hook";
 interface ChangeUserNameProps {
   children?: React.ReactNode;
   ids: string;
-  uname: string|null;
+  uname: string | null;
 }
 
 const ChangeUserName: React.FC<ChangeUserNameProps> = (props) => {
@@ -77,7 +77,7 @@ const ChangeUserName: React.FC<ChangeUserNameProps> = (props) => {
         />
       )}
       {props.children}
-      <NewsBox>
+      <NewsBox color={"#1f2125"}>
         <form onSubmit={submitUserNameChange}>
           <Input
             element="input"
@@ -95,6 +95,6 @@ const ChangeUserName: React.FC<ChangeUserNameProps> = (props) => {
       </NewsBox>
     </div>
   );
-}
+};
 
 export default ChangeUserName;
