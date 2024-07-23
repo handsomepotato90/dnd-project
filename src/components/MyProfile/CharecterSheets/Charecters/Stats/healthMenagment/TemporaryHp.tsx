@@ -10,7 +10,7 @@ const TemporaryHp: React.FC = () => {
   const csh = useContext(HealthContext);
   const cs = useContext(CS);
 
-  const changeTemp = (val: string|number) => {
+  const changeTemp = (val: string | number) => {
     const num = parseInt(val as string);
     setGiveThp(false);
     setTmp(num);
@@ -35,5 +35,5 @@ const TemporaryHp: React.FC = () => {
       )}
     </div>
   );
-}
+};
 export default TemporaryHp;

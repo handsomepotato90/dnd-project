@@ -16,8 +16,10 @@ const OtherItems: React.FC = () => {
         setInventoryItems(e.target.value);
       }}
       className={styles.text_area_style}
-    >{inventoryItems}</textarea>
+    >
+      {inventoryItems}
+    </textarea>
   );
-}
+};
 
 export default OtherItems;

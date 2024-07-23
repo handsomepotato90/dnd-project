@@ -1,106 +1,41 @@
-import React, { useState, useContext } from "react";
+import { useState, useEffect } from "react";
 import ModalConfirmation from "../../../UI/ModalConfirmation";
-import CS from "../../../store/CS-context";
-import { LoginContext } from "../../../store/login-context";
 import { useHttpClient } from "../../../hooks/http-hook";
 import ButtonActionComponent from "./ButtonActionComponent";
 import LoadingSpinner from "../../../UI/LoadingSpinner";
 import ModalSubmitSucces from "../../../UI/ModalSubmitSucces";
+import { useNavigate } from "react-router-dom";
+import useCharSheet from "./charecterSheetCurrent";
+import checkForObjectEquality from "./checkForObjectEquality";
 
 const UpdateButton = () => {
   const [iWantToSave, setIWantToSave] = useState(false);
   const { isLoading, sendRequest } = useHttpClient();
-  const [success, setSuccess] = useState<boolean|undefined>(false);
+  const [success, setSuccess] = useState<boolean | undefined>(false);
+  const charSheet = useCharSheet();
+  const navigate = useNavigate();
 
-  const cs = useContext(CS);
-  const user = useContext(LoginContext);
   const localId = JSON.parse(localStorage.getItem("charSheet") ?? "")._id;
-  
-  const resolveSave = async (val: boolean) => {
+
+  const triggerUpdate = async () => {
+    try {
+      await sendRequest(
+        process.env.REACT_APP_BACKEND_URL +
+          "/myProfile/CharecterSheets/Charecters/:id",
+        "PATCH",
+        JSON.stringify({ ...charSheet, csId: localId }),
+        {
+          "Content-Type": "application/json",
+        }
+      );
+    } catch (err) {}
+  };
+
+  const resolveUpdate = async (val: boolean) => {
     if (val === true) {
-      try {
-        const resData = await sendRequest(
-          process.env.REACT_APP_BACKEND_URL +
-            "/myProfile/CharecterSheets/Charecters/:id",
-          "PATCH",
-          JSON.stringify({
-            xp: cs.xp,
-            currHp: cs.currHp,
-            tempHp: cs.tempHp,
-            csId: localId,
-            proficiency: cs.proficiency,
-            stats: cs.stats,
-            skills: cs.skillsProf,
-            AC: cs.armorClass,
-            defences: cs.defences,
-            conditions: cs.conditions,
-            weapons: cs.weapons,
-            spell_mod: cs.spellMods,
-            currency: cs.currency,
-            attuned_items: cs.attunedItems,
-            inventory: cs.inventory,
-            characteristics: cs.characteristics,
-            Background_appearance: cs.backNapp,
-            notes: cs.notes,
-            classes: cs.classes,
-            speed: cs.speed,
-            hp_max: cs.maxHp,
-            meta: cs.meta,
-            creator: user.userId,
-            otherProff: cs.otherProficiency,
-            inspiration: cs.inspiration,
-            specialStat: cs.specialStat,
-            specialName: cs.specialName,
-            spells: {
-              "1st": {
-                slots: cs.spells["1st"].slots,
-                spell_ids: cs.spells["1st"].spell_ids,
-              },
-              "2nd": {
-                slots: cs.spells["2nd"].slots,
-                spell_ids: cs.spells["2nd"].spell_ids,
-              },
-              "3rd": {
-                slots: cs.spells["3rd"].slots,
-                spell_ids: cs.spells["3rd"].spell_ids,
-              },
-              "4th": {
-                slots: cs.spells["4th"].slots,
-                spell_ids: cs.spells["4th"].spell_ids,
-              },
-              "5th": {
-                slots: cs.spells["5th"].slots,
-                spell_ids: cs.spells["5th"].spell_ids,
-              },
-              "6th": {
-                slots: cs.spells["6th"].slots,
-                spell_ids: cs.spells["6th"].spell_ids,
-              },
-              "7th": {
-                slots: cs.spells["7th"].slots,
-                spell_ids: cs.spells["7th"].spell_ids,
-              },
-              "8th": {
-                slots: cs.spells["8th"].slots,
-                spell_ids: cs.spells["8th"].spell_ids,
-              },
-              "9th": {
-                slots: cs.spells["9th"].slots,
-                spell_ids: cs.spells["9th"].spell_ids,
-              },
-              Can: {
-                slots: cs.spells["Can"].slots,
-                spell_ids: cs.spells["Can"].spell_ids,
-              },
-            },
-          }),
-          {
-            "Content-Type": "application/json",
-          }
-        );
-        localStorage.setItem("charSheet", JSON.stringify(resData.charecter));
-        setSuccess(true);
-      } catch (err) {}
+      triggerUpdate();
+      setSuccess(true);
+      navigate("/myProfile/CharecterSheets");
       setIWantToSave(false);
     }
     if (val === false) {
@@ -108,12 +43,31 @@ const UpdateButton = () => {
     }
   };
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (!checkForObjectEquality(charSheet)) {
+        triggerUpdate();
+        localStorage.removeItem("charSheet");
+        localStorage.setItem(
+          "charSheet",
+          JSON.stringify({ ...charSheet, csId: localId })
+        );
+      } else {
+        clearInterval(interval);
+      }
+    }, 1 * 60 * 1000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [charSheet]);
+
   return (
     <>
       {iWantToSave && (
         <ModalConfirmation
           title={"Update Charecter Sheet ?"}
-          onClick={resolveSave}
+          onClick={resolveUpdate}
         ></ModalConfirmation>
       )}
       {isLoading && <LoadingSpinner asOverlay />}
@@ -129,5 +83,5 @@ const UpdateButton = () => {
       </ButtonActionComponent>
     </>
   );
-}
+};
 export default UpdateButton;

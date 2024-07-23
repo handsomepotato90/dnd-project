@@ -6,7 +6,7 @@ import styles from "./InitiativeAcResistance.module.css";
 
 const CSArmorclass: React.FC = () => {
   const cs = useContext(CS);
-  const [newAc, setNewAc] = useState<string>(cs.armorClass);
+  const [newAc, setNewAc] = useState<string>(cs.AC);
   const [changeAc, setChangeAc] = useState(false);
   const changeArmorClass = (val: string) => {
     setChangeAc(false);
@@ -22,13 +22,15 @@ const CSArmorclass: React.FC = () => {
         ) : (
           <AutoFocusInputEnterEvent
             type="number"
-            valuesOnsubmit={(val: string | number) => changeArmorClass(val.toString())}
+            valuesOnsubmit={(val: string | number) =>
+              changeArmorClass(val.toString())
+            }
             value={newAc}
           ></AutoFocusInputEnterEvent>
         )}
       </div>{" "}
     </GeneralLookInitiative>
   );
-}
+};
 
 export default CSArmorclass;

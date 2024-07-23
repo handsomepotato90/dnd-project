@@ -9,17 +9,20 @@ const Senses: React.FC<{ text: string }> = (props) => {
   const intMod = 10 + (cs.stats.Int.modifire ?? 0);
 
   useEffect(() => {
-    if (props.text === "PASSIVE WIS (PERCEPTION)" || props.text === "PASSIVE WIS (INSIGHT)") {
+    if (
+      props.text === "PASSIVE WIS (PERCEPTION)" ||
+      props.text === "PASSIVE WIS (INSIGHT)"
+    ) {
       const passPerception =
         cs.stats.Wis.proff === true
-          ? wisMod + cs.proficiency
+          ? wisMod + parseInt(cs.proficiency)
           : wisMod;
       setPassivePerception(passPerception);
     }
     if (props.text === "PASSIVE INT (INVESTIGATION)") {
       const passPerception =
         cs.stats.Int.proff === true
-          ? intMod + cs.proficiency
+          ? intMod + parseInt(cs.proficiency)
           : intMod;
       setPassivePerception(passPerception);
     }
@@ -27,7 +30,9 @@ const Senses: React.FC<{ text: string }> = (props) => {
 
   return (
     <div className={styles.sense_main_holder}>
-      <div className={`overflowing ${styles.value_holder}`}>{passivePerception}</div>
+      <div className={`overflowing ${styles.value_holder}`}>
+        {passivePerception}
+      </div>
       <div className={styles.sense_holder}>{props.text}</div>
     </div>
   );

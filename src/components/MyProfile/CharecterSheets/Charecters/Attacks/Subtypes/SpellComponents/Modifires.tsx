@@ -24,7 +24,7 @@ const Modifiers: React.FC<ModifiersProps> = (props) => {
           onClick={() => setChangeOfMod(true)}
           className={styles.modifier_value}
         >
-          {cs.spellMods[props.title]}
+          {cs.spell_mod[props.title]}
         </span>
       ) : (
         <input
@@ -37,6 +37,6 @@ const Modifiers: React.FC<ModifiersProps> = (props) => {
       <span>{props.title}</span>
     </div>
   );
-}
+};
 
 export default Modifiers;

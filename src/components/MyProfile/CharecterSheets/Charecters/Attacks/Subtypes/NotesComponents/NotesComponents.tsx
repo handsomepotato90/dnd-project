@@ -10,7 +10,8 @@ const NotesComponents: React.FC = () => {
   const cs = useContext(CS);
   const [arrayToDisplay, setArrayToDisplay] = useState<Notes[]>([]);
 
-  const [sectionToDisplay, setSectionToDisplay] = useState<NotesCategory>("ALLIES");
+  const [sectionToDisplay, setSectionToDisplay] =
+    useState<NotesCategory>("ALLIES");
 
   const [state, setState] = useState([
     { title: "ORGS", value: false },

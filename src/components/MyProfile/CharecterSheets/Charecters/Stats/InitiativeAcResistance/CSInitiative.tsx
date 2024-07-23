@@ -20,6 +20,6 @@ const CSInitiative: React.FC = () => {
       </div>
     </GeneralLookInitiative>
   );
-}
+};
 
 export default CSInitiative;

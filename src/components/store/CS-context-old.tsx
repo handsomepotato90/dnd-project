@@ -1,38 +1,27 @@
 import React, { ReactNode, useState } from "react";
+import CSContextProps, { Notes as Note, Meta } from "../types/CSTypes";
 import Spell from "../types/SpellsTypes";
-import CSContextProps, {
-  Notes as Note,
-  Meta,
-  CharacterDefault,
-} from "../types/CSTypes";
 
 const CS = React.createContext<CSContextProps>({
-  AC: "",
-  creator: "",
-  background_appearance: { title: "", text: "" },
-  conditions: "",
+  armorClass: "",
+  inspiration: 0,
+  specialStat: 0,
+  specialName: "",
+  proficiency: 0,
+  maxHp: 0,
+  tempHp: 0,
+  currHp: 0,
+  fullHeal: false,
   defences: "",
-  attuned_items: { first: "", second: "", third: "" },
-  characteristics: {
-    AGE: "",
-    ALIGNMENT: "",
-    EYES: "",
-    FAITH: "",
-    GENDER: "",
-    HAIR: "",
-    HEIGHT: "",
-    SIZE: "",
-    SKIN: "",
-    WEIGHT: "",
-  },
+  conditions: "",
   classes: [],
-  currency: { PP: "0", GP: "0", EP: "0", SP: "0", CP: "0" },
-  inventory: "",
-  hp_max: 0,
   meta: { name: "", bg: "", al: "" },
+  healForHitDie: { value: 0, is: false },
   notes: { ORGS: [], ALLIES: [], ENEMIES: [], TOWNS: [], OTHER: [] },
-  proficiency: "0",
-  skills: {
+  characteristics: {},
+  stats: {},
+  xp: 0,
+  skillsProf: {
     Acrobatics: { value: false },
     "Animal Handling": { value: false },
     Arcana: { value: false },
@@ -52,36 +41,15 @@ const CS = React.createContext<CSContextProps>({
     Stealth: { value: false },
     Survival: { value: false },
   },
-  speed: "0",
-  spell_mod: { MODIFIER: "0", "SPELL ATTACK": "0", "SAVE DC": "0" },
-  stats: {
-    Cha: { value: 0, modifire: 0, proff: false },
-    Con: { value: 0, modifire: 0, proff: false },
-    Dex: { value: 0, modifire: 0, proff: false },
-    Int: { value: 0, modifire: 0, proff: false },
-    Str: { value: 0, modifire: 0, proff: false },
-    Wis: { value: 0, modifire: 0, proff: false },
-  },
-  otherProff: { ARMOUR: "", LANGUAGES: "", TOOLS: "", WEAPONS: "" },
-  weapons: [],
-  spells: {
-    "1st": { slots: 0, spell_ids: [], spells: [] },
-    "2nd": { slots: 0, spell_ids: [], spells: [] },
-    "3rd": { slots: 0, spell_ids: [], spells: [] },
-    "4th": { slots: 0, spell_ids: [], spells: [] },
-    "5th": { slots: 0, spell_ids: [], spells: [] },
-    "6th": { slots: 0, spell_ids: [], spells: [] },
-    "7th": { slots: 0, spell_ids: [], spells: [] },
-    "8th": { slots: 0, spell_ids: [], spells: [] },
-    "9th": { slots: 0, spell_ids: [], spells: [] },
-    Can: { slots: 0, spell_ids: [], spells: [] },
-  },
-  xp: 0,
-  currHp: 0,
-  tempHp: 0,
-  inspiration: "0",
-  specialStat: 0,
-  specialName: "",
+  backNapp: {},
+  attunedItems: { first: "", second: "", third: "" },
+  spellMods: { Modifire: "0", "Spell Attack": "0", "Save DC": "0" },
+  currency: { PP: "0", GP: "0", EP: "0", SP: "0", CP: "0" },
+  weapons: [{ type: "", range: "", hit: "", damage: "" }],
+  inventory: "",
+  speed: 0,
+  otherProficiency: {},
+  spells: {},
   xpSetter: () => {},
   spellSetter: () => {},
   setOtherProficiency: () => {},
@@ -116,11 +84,6 @@ const CS = React.createContext<CSContextProps>({
   healingDone: () => {},
   defencesSetter: () => {},
   conditionsSetter: () => {},
-  healForHitDie: {
-    value: 0,
-    is: false,
-  },
-  fullHeal: false,
 });
 
 interface Notes {
@@ -131,7 +94,6 @@ interface Notes {
   TOWNS: Note[];
   OTHER: Note[];
 }
-
 interface Weapon {
   type: string;
   range: string;
@@ -146,35 +108,105 @@ interface Character {
 }
 
 export const CSProvider = ({ children }: { children: ReactNode }) => {
-  const name = window.location.href.split("/Charecters/")[1];
-  const CSheets = JSON.parse(localStorage?.getItem("charSheets") ?? "false");
-  let CSheet: CharacterDefault = {
-    AC: "0",
-    creator: "",
-    background_appearance: { title: "", text: "" },
-    conditions: "",
-    defences: "",
-    attuned_items: { first: "", second: "", third: "" },
-    characteristics: {
-      AGE: "-",
+  const CSheet = JSON.parse(localStorage?.getItem("charSheet") ?? "false");
+
+  const [armorClass, setArmorClass] = useState<string>(
+    CSheet ? CSheet.AC : "0"
+  );
+  const [fullHeal, setFullHeal] = useState<boolean>(false);
+  const [proficiency, setPorficincy] = useState<number>(
+    CSheet ? parseInt(CSheet.proficiency) : 0
+  );
+  const [defenses, setDefenses] = useState<string>(CSheet?.defences || "");
+  const [conditions, setConditions] = useState<string>(
+    CSheet?.conditions || ""
+  );
+  const [speed, setErSpeed] = useState<number>(
+    CSheet?.speed ? parseInt(CSheet.speed) : 0
+  );
+  const [currHp, setCurrHp] = useState<number>(
+    CSheet?.currHp ? parseInt(CSheet.currHp) : 0
+  );
+  const [tempHp, setTempHp] = useState<number>(
+    CSheet?.tempHp ? parseInt(CSheet.tempHp) : 0
+  );
+  const [maxHp, setMaxHp] = useState<number>(
+    CSheet?.hp_max ? parseInt(CSheet.hp_max) : 0
+  );
+  const [meta, setMeta] = useState<Meta>(
+    CSheet?.meta || { name: "Name", bg: "Background", al: "Alignment" }
+  );
+  const [stats, setStats] = useState<
+    Record<string, { value: number; modifire?: number; proff: boolean }>
+  >(
+    CSheet?.stats || {
+      Str: { value: 10, modifire: 0, proff: false },
+      Dex: { value: 10, modifire: 0, proff: false },
+      Con: { value: 10, modifire: 0, proff: false },
+      Int: { value: 10, modifire: 0, proff: false },
+      Wis: { value: 10, modifire: 0, proff: false },
+      Cha: { value: 10, modifire: 0, proff: false },
+    }
+  );
+  const [weapons, setWeapons] = useState<Weapon[]>(CSheet?.weapons || []);
+  const [healForHitDie, setHealForHitDie] = useState<{
+    value: number;
+    is: boolean;
+  }>({ value: 0, is: false });
+  const [notes, setNotes] = useState<Notes>(
+    CSheet?.notes || {
+      ORGS: [],
+      ALLIES: [],
+      ENEMIES: [],
+      TOWNS: [],
+      OTHER: [],
+    }
+  );
+  const [inventory, setInventory] = useState<string>(CSheet?.inventory || "");
+  const [backNapp, setBackNapp] = useState<Record<string, string>>(
+    CSheet?.background_appearance || { BACKGROUND: "", APPEARANCE: "" }
+  );
+  const [characteristics, setCharacteristics] = useState<
+    Record<string, string>
+  >(
+    CSheet?.characteristics || {
       ALIGNMENT: "-",
-      EYES: "-",
-      FAITH: "-",
       GENDER: "-",
-      HAIR: "-",
-      HEIGHT: "-",
+      EYES: "-",
       SIZE: "-",
+      HEIGHT: "-",
+      FAITH: "-",
+      HAIR: "-",
       SKIN: "-",
+      AGE: "-",
       WEIGHT: "-",
-    },
-    classes: [],
-    currency: { PP: "0", GP: "0", EP: "0", SP: "0", CP: "0" },
-    inventory: "",
-    hp_max: "0",
-    meta: { name: "NAME", bg: "Background", al: "Alignment" },
-    notes: { ORGS: [], ALLIES: [], ENEMIES: [], TOWNS: [], OTHER: [] },
-    proficiency: "0",
-    skills: {
+    }
+  );
+  const [attunedItems, setAttunedItems] = useState<Record<string, string>>(
+    CSheet?.attuned_items || {
+      first: "",
+      second: "",
+      third: "",
+    }
+  );
+  const [currency, setCurrency] = useState<Record<string, string>>(
+    CSheet?.currency || {
+      PP: 0,
+      GP: 0,
+      EP: 0,
+      SP: 0,
+      CP: 0,
+    }
+  );
+  const [spellMods, setSpellMods] = useState<Record<string, string>>(
+    CSheet?.spell_mod || {
+      MODIFIER: 0,
+      "SPELL ATTACK": 0,
+      "SAVE DC": 0,
+    }
+  );
+  const [skills, setSkills] = useState<Record<string, { value: boolean }>>(
+    CSheet?.skills || {
       Acrobatics: { value: false },
       "Animal Handling": { value: false },
       Arcana: { value: false },
@@ -193,118 +225,43 @@ export const CSProvider = ({ children }: { children: ReactNode }) => {
       "Sleight of Hand": { value: false },
       Stealth: { value: false },
       Survival: { value: false },
-    },
-    speed: "0",
-    spell_mod: { MODIFIER: "0", "SPELL ATTACK": "0", "SAVE DC": "0" },
-    stats: {
-      Cha: { value: 0, modifire: 0, proff: false },
-      Con: { value: 0, modifire: 0, proff: false },
-      Dex: { value: 0, modifire: 0, proff: false },
-      Int: { value: 0, modifire: 0, proff: false },
-      Str: { value: 0, modifire: 0, proff: false },
-      Wis: { value: 0, modifire: 0, proff: false },
-    },
-    otherProff: {
-      ARMOUR: "NONE",
-      LANGUAGES: "NONE",
-      TOOLS: "NONE",
-      WEAPONS: "NONE",
-    },
-    weapons: [],
-    spells: {
-      "1st": { slots: 0, spell_ids: [], spells: [] },
-      "2nd": { slots: 0, spell_ids: [], spells: [] },
-      "3rd": { slots: 0, spell_ids: [], spells: [] },
-      "4th": { slots: 0, spell_ids: [], spells: [] },
-      "5th": { slots: 0, spell_ids: [], spells: [] },
-      "6th": { slots: 0, spell_ids: [], spells: [] },
-      "7th": { slots: 0, spell_ids: [], spells: [] },
-      "8th": { slots: 0, spell_ids: [], spells: [] },
-      "9th": { slots: 0, spell_ids: [], spells: [] },
-      Can: { slots: 0, spell_ids: [], spells: [] },
-    },
-    xp: 0,
-    currHp: 0,
-    tempHp: 0,
-    inspiration: "0",
-    specialStat: 0,
-    specialName: "Special Res",
-    healForHitDie: {
-      value: 0,
-      is: false,
-    },
-    fullHeal: false,
-  };
-
-  if (name && CSheets) {
-    const foundSheet = CSheets.find(
-      (e: CSContextProps) => e.meta.name === name.replace(/%20/g, " ")
-    );
-    if (foundSheet) {
-      CSheet = foundSheet;
     }
-  }
-
-  const [armorClass, setArmorClass] = useState<string>(CSheet.AC);
-  const [fullHeal, setFullHeal] = useState<boolean>(false);
-  const [proficiency, setPorficincy] = useState<string>(CSheet.proficiency);
-  const [defenses, setDefenses] = useState<string>(CSheet.defences);
-  const [conditions, setConditions] = useState<string>(CSheet.conditions);
-  const [speed, setErSpeed] = useState<string>(CSheet.speed);
-  const [currHp, setCurrHp] = useState<number>(CSheet.currHp);
-  const [tempHp, setTempHp] = useState<number>(CSheet.tempHp);
-  const [maxHp, setMaxHp] = useState<number>(parseInt(CSheet.hp_max));
-  const [meta, setMeta] = useState<Meta>(CSheet.meta);
-  const [stats, setStats] = useState<
-    Record<string, { value: number; modifire?: number; proff: boolean }>
-  >(CSheet.stats);
-  const [weapons, setWeapons] = useState<Weapon[]>(CSheet.weapons);
-  const [healForHitDie, setHealForHitDie] = useState<{
-    value: number;
-    is: boolean;
-  }>({ value: 0, is: false });
-  const [notes, setNotes] = useState<Notes>(CSheet.notes);
-  const [inventory, setInventory] = useState<string>(CSheet.inventory);
-  const [backNapp, setBackNapp] = useState<Record<string, string>>(
-    CSheet.background_appearance
-  );
-
-  const [characteristics, setCharacteristics] = useState<
-    Record<string, string>
-  >(CSheet?.characteristics);
-
-  const [attunedItems, setAttunedItems] = useState<{
-    first: string;
-    second: string;
-    third: string;
-  }>({
-    first: "",
-    second: "",
-    third: "",
-  });
-
-  const [currency, setCurrency] = useState<Record<string, string>>(
-    CSheet.currency
-  );
-
-  const [spellMods, setSpellMods] = useState<Record<string, string>>(
-    CSheet.spell_mod
-  );
-
-  const [skills, setSkills] = useState<Record<string, { value: boolean }>>(
-    CSheet.skills
   );
   const [otherProficiency, setProficiency] = useState<Record<string, string>>(
-    CSheet.otherProff
+    CSheet?.otherProff || {
+      ARMOUR: "NONE",
+      WEAPONS: "NONE",
+      TOOLS: "NONE",
+      LANGUAGES: "NONE",
+    }
   );
   const [spells, setSpells] = useState<
     Record<string, { slots: number; spells: Spell[]; spell_ids: string[] }>
-  >(CSheet.spells);
-  const [xp, setXp] = useState<number>(CSheet.xp);
-  const [inspiration, setInspiration] = useState<string>(CSheet.inspiration);
-  const [specialStat, setSpecialStat] = useState<number>(CSheet.specialStat);
-  const [specialName, setSpecialName] = useState<string>(CSheet.specialName);
-  const [classes, setClasses] = useState<Character[]>(CSheet.classes);
+  >(
+    CSheet?.spells || {
+      "1st": { slots: 0, spells: [], spell_ids: [] },
+      "2nd": { slots: 0, spells: [], spell_ids: [] },
+      "3rd": { slots: 0, spells: [], spell_ids: [] },
+      "4th": { slots: 0, spells: [], spell_ids: [] },
+      "5th": { slots: 0, spells: [], spell_ids: [] },
+      "6th": { slots: 0, spells: [], spell_ids: [] },
+      "7th": { slots: 0, spells: [], spell_ids: [] },
+      "8th": { slots: 0, spells: [], spell_ids: [] },
+      "9th": { slots: 0, spells: [], spell_ids: [] },
+      Can: { slots: 0, spells: [], spell_ids: [] },
+    }
+  );
+  const [xp, setXp] = useState<number>(CSheet?.xp || 0);
+  const [inspiration, setInspiration] = useState<number>(
+    CSheet?.inspiration || 0
+  );
+  const [specialStat, setSpecialStat] = useState<number>(
+    CSheet?.specialStat || 0
+  );
+  const [specialName, setSpecialName] = useState<string>(
+    CSheet?.specialName || "Special Res"
+  );
+  const [classes, setClasses] = useState<Character[]>(CSheet?.classes || []);
 
   // ############################ Functions ##############################
   const xpSetter = (points: number) => {
@@ -391,7 +348,7 @@ export const CSProvider = ({ children }: { children: ReactNode }) => {
     setMaxHp(hp);
   };
 
-  const setSpeed = (s: string) => {
+  const setSpeed = (s: number) => {
     setErSpeed(s);
   };
 
@@ -447,7 +404,7 @@ export const CSProvider = ({ children }: { children: ReactNode }) => {
   const otherInventory = (text: string) => {
     setInventory(text);
   };
-  const attuneItem = (number: "first" | "second" | "third", item: string) => {
+  const attuneItem = (number: string, item: string) => {
     attunedItems[number] = item;
     setAttunedItems(attunedItems);
   };
@@ -516,7 +473,7 @@ export const CSProvider = ({ children }: { children: ReactNode }) => {
   const armorClassSetter = (ac: string) => {
     setArmorClass(ac);
   };
-  const proff = (p: string) => {
+  const proff = (p: number) => {
     setPorficincy(p);
   };
   const setingSkills = (text: string, status: boolean) => {
@@ -543,31 +500,30 @@ export const CSProvider = ({ children }: { children: ReactNode }) => {
   return (
     <CS.Provider
       value={{
-        creator: CSheet.creator,
-        hp_max: maxHp,
         currHp,
         tempHp,
         xp,
         proficiency,
         stats,
-        skills,
-        AC: armorClass,
+        skillsProf: skills,
+        armorClass,
         defences: defenses,
         conditions,
         weapons,
-        spell_mod: spellMods,
+        spellMods,
         currency,
-        attuned_items: attunedItems,
+        attunedItems,
         inventory,
         characteristics,
-        background_appearance: backNapp,
+        backNapp,
         notes,
         classes,
         healForHitDie,
         fullHeal,
         speed,
+        maxHp,
         meta,
-        otherProff: otherProficiency,
+        otherProficiency,
         spells,
         inspiration,
         specialStat,

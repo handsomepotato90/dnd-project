@@ -3,19 +3,19 @@ import styles from "./Monster.module.css";
 import MonsterXp from "../../store/monsterXp-context";
 import ImageComponent from "../../UI/ImageComponent";
 
-interface Monster {
-  name: string,
-  url: string,
-  type: string,
-  challenge: number,
-  xp: number
+interface Monsters {
+  name: string;
+  url: string;
+  type: string;
+  challenge: number;
+  xp: number;
 }
 
 interface MonsterProps {
-    monster: Monster
+  monster: Monsters;
 }
 
-const Monster: React.FC<MonsterProps> = ({monster}) => {
+const Monster: React.FC<MonsterProps> = ({ monster }) => {
   const mds = useContext(MonsterXp);
   const deleteThisMonster = () => {
     mds.DeleteMonster(monster.name);
@@ -51,6 +51,6 @@ const Monster: React.FC<MonsterProps> = ({monster}) => {
       </div>
     </div>
   );
-}
+};
 
 export default Monster;

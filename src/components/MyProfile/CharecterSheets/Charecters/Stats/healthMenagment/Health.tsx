@@ -23,13 +23,13 @@ const Health: React.FC = () => {
   }, [csh.currHp, cs]);
 
   useEffect(() => {
-    csh.changeMaxHp(cs.maxHp);
-  }, [cs.maxHp, csh]);
+    csh.changeMaxHp(cs.hp_max);
+  }, [cs.hp_max, csh]);
 
   useEffect(() => {
-    csh.changeCurrenHp(cs.currHp, cs.maxHp);
+    csh.changeCurrenHp(cs.currHp, cs.hp_max);
   }, []);
-  
+
   return (
     <div className={styles.health_managment}>
       {!checkCurrHp && (
@@ -63,5 +63,5 @@ const Health: React.FC = () => {
       {checkCurrHp && <DeathSaving></DeathSaving>}
     </div>
   );
-}
+};
 export default Health;

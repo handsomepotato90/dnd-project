@@ -22,26 +22,34 @@ import sleep from "../../../../icons/sleep.svg";
 import skill from "../../../../icons/skills.svg";
 import shield from "../../../../icons/shield.svg";
 import proff from "../../../../icons/proff.svg";
-import saveSvg from "../../../../icons/saveRed.svg";
 
 import styles from "./Charecters.module.css";
 
 const Charecters: React.FC = () => {
-  const [newOrOld, setNewOrOld] = useState<boolean>();
+  const [newOrOld, setNewOrOld] = useState<boolean>(false);
   const [sills, setSkills] = useState(false);
   const [proffs, setProffs] = useState(false);
-  const [save, setSave] = useState(false);
   const [rest, setRest] = useState(false);
   const [resistance, setResistance] = useState(false);
 
   const size = useWindowSize();
   useEffect(() => {
-    const local = localStorage.getItem("charSheet");
-    if (local) {
-      setNewOrOld(true);
+    const name = window.location.href.split("/Charecters/")[1];
+
+    if (name) {
+      name.replace(/%20/g, " ");
     } else {
       setNewOrOld(false);
+      return;
     }
+    const local = JSON.parse(localStorage.getItem("charSheets") || "null");
+
+    local.forEach((item: any) => {
+      if (item.meta.name === name.replace(/%20/g, " ")) {
+        localStorage.setItem("charSheet", JSON.stringify(item));
+        setNewOrOld(true);
+      }
+    });
   }, []);
 
   return (
@@ -163,21 +171,11 @@ const Charecters: React.FC = () => {
               )
             ) : (
               <div className={styles.save_midsize}>
-                <div onClick={() => setSave((curr) => !curr)}>
-                  {" "}
-                  <SvgComponent
-                    Image={saveSvg}
-                    height="35"
-                    color="red"
-                    width="40"
-                  ></SvgComponent>
-                </div>
-                {save &&
-                  (newOrOld ? (
-                    <UpdateButton></UpdateButton>
-                  ) : (
-                    <SaveButton></SaveButton>
-                  ))}
+                {newOrOld ? (
+                  <UpdateButton></UpdateButton>
+                ) : (
+                  <SaveButton></SaveButton>
+                )}
               </div>
             )}
           </>

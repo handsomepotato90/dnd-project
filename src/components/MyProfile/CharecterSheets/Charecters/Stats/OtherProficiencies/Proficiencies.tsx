@@ -8,8 +8,8 @@ const Proficiencies: React.FC<{ text: string }> = (props) => {
   const cs = useContext(CS);
 
   useEffect(() => {
-    setArmor(cs.otherProficiency[props.text]);
-  }, [cs.otherProficiency]);
+    setArmor(cs.otherProff[props.text]);
+  }, [cs.otherProff]);
 
   const setOtherProf = () => {
     setMoreArmours(false);

@@ -4,7 +4,7 @@ import styles from "./DescriptionComponents.module.css";
 
 const TitleNTextArea: React.FC<{ title: string }> = (props) => {
   const cs = useContext(CS);
-  const [text, setText] = useState(cs.backNapp[props.title]);
+  const [text, setText] = useState(cs.background_appearance[props.title]);
   const [changeText, setChangeText] = useState(false);
 
   const newText = () => {

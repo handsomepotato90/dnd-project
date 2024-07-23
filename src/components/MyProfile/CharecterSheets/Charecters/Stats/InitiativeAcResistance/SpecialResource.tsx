@@ -30,7 +30,9 @@ const SpecialResource: React.FC = () => {
       ) : (
         <AutoFocusInputEnterEvent
           type="text"
-          valuesOnsubmit={(val: string | number) => changeSpecialName(val.toString())}
+          valuesOnsubmit={(val: string | number) =>
+            changeSpecialName(val.toString())
+          }
           value={name}
         ></AutoFocusInputEnterEvent>
       )}
@@ -40,13 +42,15 @@ const SpecialResource: React.FC = () => {
         ) : (
           <AutoFocusInputEnterEvent
             type="number"
-            valuesOnsubmit={(val: string | number) => changeSpecial(Number(val))}
+            valuesOnsubmit={(val: string | number) =>
+              changeSpecial(Number(val))
+            }
             value={statSpecial}
           ></AutoFocusInputEnterEvent>
         )}
       </div>
     </GeneralLookInitiative>
   );
-}
+};
 
 export default SpecialResource;

@@ -2,11 +2,13 @@ import React, { useState } from "react";
 
 type AutoFocusInputEnterEventProps = {
   value: string | number;
-  valuesOnsubmit: (arg0: string | number) => void;
+  valuesOnsubmit: (arg0: string) => void;
   type: string;
 };
 
-const AutoFocusInputEnterEvent: React.FC<AutoFocusInputEnterEventProps> = (props) => {
+const AutoFocusInputEnterEvent: React.FC<AutoFocusInputEnterEventProps> = (
+  props
+) => {
   const [value, setValue] = useState(props.value);
   const handleKeyUp = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
@@ -14,7 +16,7 @@ const AutoFocusInputEnterEvent: React.FC<AutoFocusInputEnterEventProps> = (props
     }
   };
   const submitValue = () => {
-    props.valuesOnsubmit(value);
+    props.valuesOnsubmit(String(value));
   };
   return (
     <input

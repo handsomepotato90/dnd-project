@@ -10,7 +10,7 @@ interface Props {
 const ComponentInit: React.FC<Props> = (props) => {
   const cs = useContext(CS);
   const [changeValue, setChangeValue] = useState<boolean>(false);
-  const [prof, setProf] = useState<number>(0);
+  const [prof, setProf] = useState<string>("0");
 
   useEffect(() => {
     if (props.text === "PROFICIENCY") {
@@ -24,7 +24,7 @@ const ComponentInit: React.FC<Props> = (props) => {
     }
   }, [cs.proficiency, cs.speed, cs.inspiration]);
 
-  const settingProff = (val: number): void => {
+  const settingProff = (val: string): void => {
     setChangeValue(false);
     if (props.text === "PROFICIENCY") {
       cs.proff(val);
@@ -50,12 +50,12 @@ const ComponentInit: React.FC<Props> = (props) => {
       ) : (
         <AutoFocusInputEnterEvent
           type="number"
-          valuesOnsubmit={(val: string | number) => settingProff(Number(val))}
+          valuesOnsubmit={(val: string) => settingProff(val)}
           value={prof}
         ></AutoFocusInputEnterEvent>
       )}
     </div>
   );
-}
+};
 
 export default ComponentInit;

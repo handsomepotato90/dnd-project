@@ -7,9 +7,6 @@ import CSArmorclass from "../../../Stats/InitiativeAcResistance/CSArmorclass";
 import CSInitiative from "../../../Stats/InitiativeAcResistance/CSInitiative";
 import SpecialResource from "../../../Stats/InitiativeAcResistance/SpecialResource";
 import HealthModal from "./HealthModal";
-import { SvgComponent } from "../../../../../../Navigation/Navigation";
-
-import saveSvg from "../../../../../../../icons/saveRed.svg";
 
 import CS from "../../../../../../store/CS-context";
 

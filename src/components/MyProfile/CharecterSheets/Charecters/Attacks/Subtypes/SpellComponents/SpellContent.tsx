@@ -55,7 +55,8 @@ const SpellContent: React.FC<{ display: string }> = (props) => {
               <div className={styles.spell_btn_holders}>
                 <span className={styles.title_holder}>Spell Slots</span>
                 <div className={styles.spell_add_remove_btn_holders}>
-                  {typeof spellSlotsHolder === 'number' && spellSlotsHolder <= 20 ? (
+                  {typeof spellSlotsHolder === "number" &&
+                  spellSlotsHolder <= 20 ? (
                     <span
                       className={`green ${styles.add_slot_btn} ${styles.btn_text}`}
                       onClick={spellSlots}
@@ -63,7 +64,8 @@ const SpellContent: React.FC<{ display: string }> = (props) => {
                       ADD
                     </span>
                   ) : null}
-                  {typeof spellSlotsHolder === 'number' && spellSlotsHolder > 0 ? (
+                  {typeof spellSlotsHolder === "number" &&
+                  spellSlotsHolder > 0 ? (
                     <span
                       className={`red ${styles.btn_text}`}
                       onClick={removeSlots}
@@ -102,6 +104,6 @@ const SpellContent: React.FC<{ display: string }> = (props) => {
       </div>
     </div>
   );
-}
+};
 
 export default SpellContent;

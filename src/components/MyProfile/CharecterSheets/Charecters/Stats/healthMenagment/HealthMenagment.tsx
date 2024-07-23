@@ -42,5 +42,5 @@ const HealthMenagment: React.FC = () => {
       </button>
     </div>
   );
-}
+};
 export default HealthMenagment;

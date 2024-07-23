@@ -13,15 +13,15 @@ const AttunedItem: React.FC = () => {
   const cs = useContext(CS);
 
   const setFirstAttuned = () => {
-    cs.attuneItem('first',firstItem)
+    cs.attuneItem("first", firstItem);
     setFirst(false);
   };
   const setSecondAttuned = () => {
-    cs.attuneItem('second',secondItem)
+    cs.attuneItem("second", secondItem);
     setSecond(false);
   };
   const setThirdAttuned = () => {
-    cs.attuneItem('third',thirdItem)
+    cs.attuneItem("third", thirdItem);
     setThird(false);
   };
   return (
@@ -31,7 +31,7 @@ const AttunedItem: React.FC = () => {
           className={styles.attuned_items_style}
           onClick={() => setFirst(true)}
         >
-          {cs.attunedItems['first']}
+          {cs.attuned_items["first"]}
         </span>
       ) : (
         <input
@@ -49,7 +49,7 @@ const AttunedItem: React.FC = () => {
           className={styles.attuned_items_style}
           onClick={() => setSecond(true)}
         >
-          {cs.attunedItems['second']}
+          {cs.attuned_items["second"]}
         </span>
       ) : (
         <input
@@ -67,7 +67,7 @@ const AttunedItem: React.FC = () => {
           className={styles.attuned_items_style}
           onClick={() => setThird(true)}
         >
-          {cs.attunedItems['third']}
+          {cs.attuned_items["third"]}
         </span>
       ) : (
         <input
@@ -82,6 +82,6 @@ const AttunedItem: React.FC = () => {
       )}
     </div>
   );
-}
+};
 
 export default AttunedItem;

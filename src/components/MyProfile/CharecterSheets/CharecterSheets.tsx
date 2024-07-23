@@ -71,23 +71,24 @@ const CharecterSheets: React.FC = () => {
           process.env.REACT_APP_BACKEND_URL +
             `/myProfile/CharecterSheets/${lgn.userId}`
         );
+        localStorage.setItem("charSheets", JSON.stringify(resData));
         setChars(resData);
       } catch (err) {}
     };
     fetchMonsters();
   }, [sendRequest]);
 
-  const putInfoToLocal = (info: CharecterSheetTypes) => {
-    localStorage.setItem("charSheet", JSON.stringify(info));
-  };
-  const removeInfoToLocal = () => {
-    localStorage.removeItem("charSheet");
-  };
+  // const putInfoToLocal = (info: CharecterSheetTypes) => {
+  //   localStorage.setItem("charSheet", JSON.stringify(info));
+  // };
+  // const removeInfoToLocal = () => {
+  //   localStorage.removeItem("charSheet");
+  // };
   return (
     <div className={styles.general_sheet_display}>
       <div
         className={`${styles.charecter_blocks_styles}`}
-        onClick={removeInfoToLocal}
+        // onClick={removeInfoToLocal}
         style={{
           backgroundImage: `url(${plus})`,
         }}
@@ -115,7 +116,7 @@ const CharecterSheets: React.FC = () => {
                   classForIcon[getClassWithHighestLevel(e.classes)]
                 })`,
               }}
-              onClick={() => putInfoToLocal(e)}
+              // onClick={() => putInfoToLocal(e)}
             >
               <Links
                 to={`/myProfile/CharecterSheets/Charecters/${e.meta.name}`}

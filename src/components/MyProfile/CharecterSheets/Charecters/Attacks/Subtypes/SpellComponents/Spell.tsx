@@ -9,10 +9,7 @@ import CS from "../../../../../../store/CS-context";
 import SpellsTypes from "../../../../../../types/SpellsTypes";
 
 interface NewType {
-  remove?(spell: {
-    _id: string;
-    name: string;
-  }): unknown;
+  remove?(spell: { _id: string; name: string }): unknown;
   newSpell?(spell: SpellsTypes): unknown;
   search: boolean;
   lvl: string;

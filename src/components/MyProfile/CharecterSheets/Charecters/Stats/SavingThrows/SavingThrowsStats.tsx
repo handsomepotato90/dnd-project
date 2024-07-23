@@ -20,7 +20,7 @@ const SavingThrowsStats: React.FC<Props> = (props) => {
 
   useEffect(() => {
     if (proff === true) {
-      setValue((cs.stats[profName].modifire ?? 0) + cs.proficiency);
+      setValue((cs.stats[profName].modifire ?? 0) + parseInt(cs.proficiency));
     } else {
       setValue(cs.stats[profName].modifire);
     }
